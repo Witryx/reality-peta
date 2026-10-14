@@ -1,9 +1,34 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { hasDatabase, migrationDatabaseUrl } from "./database.server";
+import { hasDatabase, migrationDatabaseUrl, postgresParameters } from "./database.server";
 
 afterEach(() => vi.unstubAllEnvs());
 
 describe("production database configuration", () => {
+  it("passes JSON objects to Postgres.js so serialized documents are not encoded twice", () => {
+    const doc = {
+      title: 'Článek s citací "text"',
+      updatedAt: "2026-10-14",
+      sections: [{ paragraphs: ["Obsah"] }],
+    };
+    const connection = { json: (value: unknown) => ({ json: value }) };
+    const parameters = postgresParameters(
+      connection,
+      "INSERT INTO articles(id,slug,data) VALUES ($1,$2,$3::jsonb)",
+      ["article-id", "slug", JSON.stringify(doc)],
+    );
+    expect(parameters).toEqual(["article-id", "slug", { json: doc }]);
+    expect(
+      postgresParameters(connection, "UPDATE website_content SET data=$1::jsonb WHERE version=$2", [
+        JSON.stringify({ "site.name": "Web" }),
+        4,
+      ]),
+    ).toEqual([{ json: { "site.name": "Web" } }, 4]);
+    expect(
+      postgresParameters(connection, "SELECT filename FROM media WHERE filename=$1", [
+        "photo.webp",
+      ]),
+    ).toEqual(["photo.webp"]);
+  });
   it("uses separate migration credentials even when app credentials are configured", () => {
     expect(
       migrationDatabaseUrl({

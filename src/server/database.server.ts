@@ -6,6 +6,22 @@ import { randomUUID } from "node:crypto";
 import { originalArticles } from "./article-seed.server";
 
 type Row = Record<string, any>;
+// Postgres.js serializes inferred jsonb parameters itself. Passing serialized JSON
+// directly would serialize it twice; PGlite accepts the serialized form unchanged.
+export function postgresParameters(
+  connection: { json: (value: any) => unknown },
+  statement: string,
+  values: unknown[],
+): unknown[] {
+  const jsonIndexes = new Set(
+    [...statement.matchAll(/\$(\d+)\s*::\s*jsonb\b/gi)].map((match) => Number(match[1]) - 1),
+  );
+  return values.map((value, index) =>
+    jsonIndexes.has(index)
+      ? connection.json(typeof value === "string" ? JSON.parse(value) : value)
+      : value,
+  );
+}
 export interface Database {
   query<T extends Row = Row>(sql: string, values?: unknown[]): Promise<T[]>;
   transaction<T>(work: (db: Database) => Promise<T>): Promise<T>;
@@ -70,7 +86,7 @@ async function connect(url: string | undefined): Promise<Database> {
   const sql = postgres(url, { max: 8, idle_timeout: 20, connect_timeout: 10, onnotice: () => {} });
   const adapt = (conn: any): Database => ({
     query: async <T extends Row>(text: string, values: unknown[] = []) =>
-      (await conn.unsafe(text, values)) as T[],
+      (await conn.unsafe(text, postgresParameters(conn, text, values))) as T[],
     transaction: (work) => sql.begin((tx) => work(adapt(tx))) as unknown as Promise<any>,
     exec: async (text) => {
       await conn.unsafe(text);
@@ -83,6 +99,16 @@ export async function migrate(db: Database) {
   await db.transaction(async (tx) => {
     await tx.query("SELECT pg_advisory_xact_lock(762342)");
     await tx.exec(await readFile(path.resolve("database/schema.sql"), "utf8"));
+    // Repair documents written as JSON strings by the previous Postgres.js adapter.
+    // Decode their representation without changing their content or edit versions.
+    for (const table of ["properties", "website_content", "articles"]) {
+      await tx.query(
+        `UPDATE ${table} SET data=(data #>> '{}')::jsonb WHERE jsonb_typeof(data)='string'`,
+      );
+    }
+    await tx.query(
+      "INSERT INTO schema_migrations(version) VALUES ('jsonb-encoding-v1') ON CONFLICT DO NOTHING",
+    );
     const [seeded] = await tx.query(
       "SELECT version FROM schema_migrations WHERE version='articles-seed-v1'",
     );

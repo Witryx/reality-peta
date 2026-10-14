@@ -115,3 +115,40 @@ it("moves original articles and overrides into the new table when the upgrade ru
   ).toBe("Dosavadní upravený článek");
   expect((await request("/api/admin/articles", "GET", undefined, true)).status).toBe(200);
 });
+it("repairs production JSON string documents without losing content or edit versions", async () => {
+  const article = { ...defaultArticles[0]!, title: "Zachovaný vlastní název" };
+  await db.query("UPDATE articles SET data=$1::jsonb,version=9 WHERE slug=$2", [
+    JSON.stringify(JSON.stringify(article)),
+    article.slug,
+  ]);
+  const [website] = await db.query<{ data: Record<string, string>; version: number }>(
+    "SELECT data,version FROM website_content WHERE id='main'",
+  );
+  await db.query("UPDATE website_content SET data=$1::jsonb", [
+    JSON.stringify(JSON.stringify(website!.data)),
+  ]);
+  const property = { id: randomUUID(), publishedAt: "2020-01-01", images: [] };
+  await db.query(
+    "INSERT INTO properties(id,slug,publication,data,version) VALUES ($1,'encoded-property','draft',$2::jsonb,8)",
+    [property.id, JSON.stringify(JSON.stringify(property))],
+  );
+  await migrate(db);
+  const [stored] = await db.query<{ data: unknown; version: number }>(
+    "SELECT data,version FROM articles WHERE slug=$1",
+    [article.slug],
+  );
+  expect(stored).toEqual({ data: article, version: 9 });
+  expect((await publicArticles(db)).find((value) => value.slug === article.slug)?.title).toBe(
+    article.title,
+  );
+  expect((await db.query("SELECT data,version FROM website_content WHERE id='main'"))[0]).toEqual(
+    website,
+  );
+  expect(
+    (await db.query("SELECT data,version FROM properties WHERE id=$1", [property.id]))[0],
+  ).toEqual({ data: property, version: 8 });
+  await migrate(db);
+  expect(
+    (await db.query("SELECT data,version FROM articles WHERE slug=$1", [article.slug]))[0],
+  ).toEqual(stored);
+});
