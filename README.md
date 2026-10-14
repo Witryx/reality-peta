@@ -180,9 +180,11 @@ Ve Vercel projektu odstraňte případné vlastní nastavení Output Directory n
 nebo `.output/public`; serverový výstup obsluhuje Nitro přes Build Output API.
 
 Úspěšný build sám o sobě nepřipojí databázi ani fotografie. Pro běh veřejných
-nabídek, formulářů a administrace nastavte `DATABASE_URL` na externí PostgreSQL
+nabídek, formulářů a administrace nastavte `APP_DATABASE_URL` na externí PostgreSQL
 s připraveným `database/schema.sql` a omezenou rolí `realty_app` (příprava pomocí
-`npm run db:setup` s oddělenými migračními údaji). Doplňte `APP_URL` na přesné HTTPS
+`npm run db:setup` s oddělenými migračními údaji v `DATABASE_URL`). Neon integrace
+automaticky přidává vlastní `DATABASE_*` proměnné; web na Vercelu používá výhradně
+samostatné `APP_DATABASE_URL` s rolí `realty_app`. Doplňte `APP_URL` na přesné HTTPS
 URL nasazení a `VITE_SITE_URL` na kanonické URL. `LOCAL_DATABASE` v produkci
 nezapínejte a lokální `.env` ani lokální databázi na Vercel nekopírujte.
 

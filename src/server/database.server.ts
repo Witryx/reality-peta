@@ -24,9 +24,15 @@ export function embeddedAdapter(pg: PGlite): Database {
 }
 // Keep one embedded connection across Vite hot reloads, which otherwise reopen the same files.
 const runtime = globalThis as typeof globalThis & { __realtyDatabase?: Promise<Database> };
+function configuredDatabaseUrl() {
+  if (process.env["APP_DATABASE_URL"]) return process.env["APP_DATABASE_URL"];
+  // Vercel integrations provide owner credentials; hosted runtime must use the app role.
+  if (process.env["VERCEL"] === "1" && process.env["NODE_ENV"] === "production") return;
+  return process.env["DATABASE_URL"];
+}
 export function hasDatabase() {
   return Boolean(
-    process.env["DATABASE_URL"] ||
+    configuredDatabaseUrl() ||
     (process.env["LOCAL_DATABASE"] === "1" && process.env["NODE_ENV"] !== "production"),
   );
 }
@@ -39,11 +45,11 @@ export function getDatabase(): Promise<Database> {
   return runtime.__realtyDatabase;
 }
 async function connect(): Promise<Database> {
-  const url = process.env["DATABASE_URL"];
+  const url = configuredDatabaseUrl();
   if (!url) {
     if (process.env["LOCAL_DATABASE"] !== "1" || process.env["NODE_ENV"] === "production") {
       throw new Error(
-        "Databáze není nastavená. Nastavte DATABASE_URL nebo lokálně LOCAL_DATABASE=1.",
+        "Databáze není nastavená. Na Vercelu nastavte APP_DATABASE_URL, na vlastním serveru DATABASE_URL nebo lokálně LOCAL_DATABASE=1.",
       );
     }
     const { PGlite } = await import("@electric-sql/pglite");
