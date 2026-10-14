@@ -1,9 +1,17 @@
 import type { ImgHTMLAttributes } from "react";
+import { useWebsiteImage, useWebsiteImageAlt } from "@/lib/website-context";
+import type { WebsiteImageKey } from "@/data/website-images";
 export function BrandImage({
   asset,
+  imageKey,
   ...props
-}: ImgHTMLAttributes<HTMLImageElement> & { asset: { url: string; original_filename: string } }) {
-  if (asset.url) return <img {...props} src={asset.url} />;
+}: ImgHTMLAttributes<HTMLImageElement> & {
+  asset: { url: string; original_filename: string };
+  imageKey?: WebsiteImageKey;
+}) {
+  const src = useWebsiteImage(imageKey, asset.url);
+  const alt = useWebsiteImageAlt(imageKey, props.alt ?? "");
+  if (src) return <img {...props} src={src} alt={alt} />;
   return (
     <span
       className={`brand-media-placeholder ${props.className || ""}`}

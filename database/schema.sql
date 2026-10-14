@@ -20,6 +20,18 @@ CREATE TABLE IF NOT EXISTS properties (
   updated_at timestamptz NOT NULL DEFAULT now()
 );
 CREATE INDEX IF NOT EXISTS properties_publication ON properties(publication);
+CREATE TABLE IF NOT EXISTS articles (
+  id uuid PRIMARY KEY, slug text NOT NULL UNIQUE,
+  publication text NOT NULL DEFAULT 'draft' CHECK (publication IN ('draft', 'published', 'archived')),
+  data jsonb NOT NULL, version integer NOT NULL DEFAULT 1,
+  created_at timestamptz NOT NULL DEFAULT now(), updated_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS articles_publication ON articles(publication);
+DO $$ BEGIN
+  IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname='realty_app') THEN
+    GRANT SELECT,INSERT,UPDATE,DELETE ON articles TO realty_app;
+  END IF;
+END $$;
 -- Compatible with the exported Supabase leads table. Existing leads stay intact.
 CREATE TABLE IF NOT EXISTS leads (
   id uuid PRIMARY KEY,

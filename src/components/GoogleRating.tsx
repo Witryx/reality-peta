@@ -20,7 +20,7 @@ export function GoogleRating() {
         <div>
           <div
             aria-label={`Google hodnocení ${site.googleReviews.rating} z 5`}
-            className="flex gap-1 text-accent"
+            className="flex gap-1 text-review-star"
           >
             {
               <SiteText>

@@ -1,3 +1,4 @@
+import { useSiteConfig } from "@/lib/website-context";
 import stelar from "@/assets/stelar-reality-logo.png.asset.json";
 import egypt from "@/assets/egyptskoceska-reality-logo.png.asset.json";
 import { SiteText } from "./SiteText";
@@ -14,6 +15,7 @@ export function PartnerLogo({
   compact?: boolean;
   showPlaceholder?: boolean;
 }) {
+  const site = useSiteConfig();
   const asset = logos[index];
   if (!asset?.url) {
     return asset || showPlaceholder ? (
@@ -22,7 +24,7 @@ export function PartnerLogo({
       </p>
     ) : null;
   }
-  return (
+  const content = (
     <div
       className={`partner-logo ${compact ? "partner-logo-compact" : ""} ${index === 2 ? "partner-logo-egypt" : ""}`}
     >
@@ -36,5 +38,19 @@ export function PartnerLogo({
         decoding="async"
       />
     </div>
+  );
+  const href = site.partnerUrls[index];
+  return href ? (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={site.partners[index]}
+      className="block rounded-sm focus-visible:outline-2 focus-visible:outline-ring"
+    >
+      {content}
+    </a>
+  ) : (
+    content
   );
 }

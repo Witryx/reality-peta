@@ -41,16 +41,28 @@ import {
 } from "@/data/admin";
 import { PropertyEditor } from "./PropertyEditor";
 import { WebsiteEditor } from "./WebsiteEditor";
+import { ArticlesEditor } from "./ArticlesEditor";
+import { WebsiteImagesEditor } from "./WebsiteImagesEditor";
 import { useDialogFocus } from "./useDialogFocus";
 import "./admin.css";
 
 type Admin = { id: string; name: string; email: string };
-type Page = "overview" | "properties" | "leads" | "media" | "website" | "settings";
+type Page =
+  | "overview"
+  | "properties"
+  | "leads"
+  | "media"
+  | "website"
+  | "websiteImages"
+  | "articles"
+  | "settings";
 const pages = [
   { id: "overview", label: "Přehled", icon: LayoutDashboard },
   { id: "properties", label: "Nemovitosti", icon: Building2 },
   { id: "leads", label: "Poptávky", icon: Mail },
   { id: "media", label: "Fotografie", icon: ImagePlus },
+  { id: "articles", label: "Články", icon: FileText },
+  { id: "websiteImages", label: "Fotky webu", icon: ImagePlus },
   { id: "website", label: "Texty webu", icon: FileText },
   { id: "settings", label: "Nastavení", icon: Settings },
 ] as const;
@@ -219,7 +231,7 @@ export function AdminPanel() {
     ]);
   }
   async function logout() {
-    if (contentDirty && !window.confirm("Odhlásit se bez uložení textů webu?")) return;
+    if (contentDirty && !window.confirm("Odhlásit se bez uložení změn?")) return;
     try {
       await api("/api/admin/logout", { method: "POST", body: "{}" });
       await query.resetQueries({ queryKey: ["admin-session"] });
@@ -387,6 +399,20 @@ export function AdminPanel() {
               )}
               {page === "leads" && <Leads items={inquiries} refresh={refresh} />}
               {page === "website" && <WebsiteEditor onDirty={setContentDirty} />}
+              {page === "articles" && (
+                <ArticlesEditor
+                  media={media.data?.items ?? []}
+                  onMediaChange={refresh}
+                  onDirty={setContentDirty}
+                />
+              )}
+              {page === "websiteImages" && (
+                <WebsiteImagesEditor
+                  media={media.data?.items ?? []}
+                  onMediaChange={refresh}
+                  onDirty={setContentDirty}
+                />
+              )}
               {page === "media" && (
                 <MediaLibrary items={media.data?.items ?? []} refresh={refresh} />
               )}

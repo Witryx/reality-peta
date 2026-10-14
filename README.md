@@ -16,6 +16,8 @@ případná synchronizace zdrojových souborů s Lovable může pokračovat.
 - Kontaktní formulář, odhad i dotaz k nabídce skutečně zapisují do tabulky `leads`.
 - Správa poptávek: stavy, interní poznámky, kontakty, výmaz a CSV export.
 - Změna hesla, historie zásahů a JSON export dat.
+- Články: nové blogy, úpravy stávajících, sekce s odstavci a odrážkami, titulní fotografie, koncept / zveřejnění / archiv.
+- Fotky webu: výměna úvodní fotografie, pobřeží Egypta, prezentace služeb a obou portrétů, výběr z knihovny a návrat k originálu. Texty a fotky sdílejí kontrolu verze a audit.
 - Docker Compose, HTTPS přes Caddy, trvalé volumes, healthcheck, záloha a obnova.
 
 ## Lokální spuštění
@@ -33,6 +35,11 @@ Staré proměnné Supabase se již nepoužívají.
 ```sh
 npm run db:migrate
 ```
+
+Po aktualizaci aplikace spusťte migraci i na existující databázi (migračním účtem).
+Přidá tabulku `articles` a práva stávajícího `realty_app`, jednorázově převede dosavadní
+články včetně textových úprav. Opakované migrace články nepřepisují ani neobnovují smazané články.
+Články pak spravujete v `/admin` → Články; fotografie sekcí v `/admin` → Fotky webu.
 
 Lokálně běží PGlite (PostgreSQL ve WASM); data jsou trvale v `.local/postgres`.
 Databázi používejte jen z jednoho procesu současně: pro vytváření správce nejdřív

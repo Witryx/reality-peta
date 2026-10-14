@@ -154,6 +154,8 @@ for (const filename of files) {
       const expression = node.expression.getText(ast);
       const propertyData =
         /\bp\.|\bimg\.|\bim\./.test(expression) ||
+        (filename.includes("/clanky/") && /\b(?:article|a|s)\.|^[pb]$/.test(expression)) ||
+        (filename === "src/routes/index.tsx" && /\ba\./.test(expression)) ||
         (filename.endsWith("nabidka.$slug.tsx") && /^[dv]$/.test(expression));
       if (
         !propertyData &&
@@ -200,7 +202,6 @@ for (const filename of files) {
 }
 for (const [filename, group] of [
   ["src/data/content.ts", "Služby a reference"],
-  ["src/data/articles.ts", "Články"],
   ["src/config/site.ts", "Identita"],
   ["src/data/energy.ts", "Energetická třída"],
   ["src/data/nearby.ts", "Okolí nemovitosti"],

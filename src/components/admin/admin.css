@@ -1395,6 +1395,59 @@
   }
 }
 /* Shared identity and colours follow the public site's tokens. */
+.admin-image-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 14px 0;
+}
+.admin-site-images {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.admin-site-image {
+  padding: 24px;
+}
+.admin-site-image > p {
+  color: var(--muted-foreground);
+  margin: 8px 0 16px;
+  font-size: 12px;
+}
+.admin-site-image-preview {
+  display: block;
+  width: 100%;
+  height: 240px;
+  margin: 16px 0;
+  object-fit: contain;
+  border-radius: 8px;
+  background: var(--secondary);
+}
+.admin-photo-filter {
+  max-width: 360px;
+  margin: 24px 0;
+}
+.admin-article-fields {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  margin: 24px 0;
+}
+.admin-article-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+@media (max-width: 700px) {
+  .admin-site-images,
+  .admin-article-meta {
+    grid-template-columns: 1fr;
+  }
+}
 .admin-brand .brand-name {
   font-size: 20px;
 }

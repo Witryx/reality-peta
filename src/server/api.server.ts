@@ -19,6 +19,7 @@ import {
 import { adminProperty, audit, saveProperty } from "./properties.server";
 import { leadSchema } from "./validation";
 import { loadWebsiteContent, saveWebsiteContent } from "./website.server";
+import { adminArticle, saveArticle, type ArticleRow } from "./articles.server";
 
 const json = (data: unknown, status = 200, headers: Record<string, string> = {}) =>
   Response.json(data, {
@@ -86,7 +87,11 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
       const [published] = await db.query(
         `SELECT id FROM properties WHERE publication='published'
         AND (data->>'publishedAt')::date <= (now() AT TIME ZONE 'Europe/Prague')::date AND EXISTS
-        (SELECT 1 FROM jsonb_array_elements(data->'images') image WHERE image->>'src'=$1) LIMIT 1`,
+        (SELECT 1 FROM jsonb_array_elements(data->'images') image WHERE image->>'src'=$1)
+        UNION ALL SELECT id FROM articles WHERE publication='published' AND data->'image'->>'src'=$1
+        UNION ALL SELECT NULL::uuid FROM website_content WHERE EXISTS
+        (SELECT 1 FROM jsonb_each_text(data) entry WHERE entry.key LIKE 'image.%' AND entry.key NOT LIKE '%.alt' AND entry.value=$1)
+        LIMIT 1`,
         [url.pathname],
       );
       if (!published) await requireAdmin(db, request);
@@ -173,6 +178,30 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
         return json(await saveWebsiteContent(db, admin.id, await body(request)));
     }
     if (route[0] === "session" && request.method === "GET") return json({ admin });
+    if (route[0] === "articles") {
+      if (request.method === "GET" && !route[1])
+        return json({
+          items: (
+            await db.query<ArticleRow>("SELECT * FROM articles ORDER BY updated_at DESC")
+          ).map(adminArticle),
+        });
+      if (request.method === "POST" && !route[1])
+        return json(await saveArticle(db, admin.id, await body(request)), 201);
+      if (request.method === "PUT" && route[1])
+        return json(await saveArticle(db, admin.id, await body(request), uuid(route[1])));
+      if (request.method === "DELETE" && route[1]) {
+        const id = uuid(route[1]);
+        await db.transaction(async (tx) => {
+          const [row] = await tx.query(
+            "DELETE FROM articles WHERE id=$1 AND version=$2 RETURNING id",
+            [id, Number(url.searchParams.get("version"))],
+          );
+          if (!row) throw new HttpError(409, "Článek se změnil. Obnovte seznam a zkuste to znovu.");
+          await audit(tx, admin.id, "article.delete", id);
+        });
+        return json({ ok: true });
+      }
+    }
     if (route[0] === "logout" && request.method === "POST") {
       await db.query("DELETE FROM admin_sessions WHERE token_hash=$1", [
         hashToken(sessionToken(request)),
@@ -305,13 +334,16 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
           const [record] = await tx.query("SELECT * FROM media WHERE id=$1 FOR UPDATE", [id]);
           if (!record) throw new HttpError(404, "Fotografie nenalezena.");
           const [used] = await tx.query(
-            "SELECT id FROM properties WHERE EXISTS (SELECT 1 FROM jsonb_array_elements(data->'images') image WHERE image->>'src'=$1) LIMIT 1",
+            `SELECT id FROM properties WHERE EXISTS (SELECT 1 FROM jsonb_array_elements(data->'images') image WHERE image->>'src'=$1)
+            UNION ALL SELECT id FROM articles WHERE data->'image'->>'src'=$1
+            UNION ALL SELECT NULL::uuid FROM website_content WHERE EXISTS
+            (SELECT 1 FROM jsonb_each_text(data) entry WHERE entry.key LIKE 'image.%' AND entry.key NOT LIKE '%.alt' AND entry.value=$1) LIMIT 1`,
             [`/uploads/${record["filename"]}`],
           );
           if (used)
             throw new HttpError(
               409,
-              "Fotografie je použitá v nabídce. Nejprve ji odeberte z galerie.",
+              "Fotografie je použitá v nabídce, článku nebo na webu. Nejprve ji tam odeberte nebo nahraďte.",
             );
           await tx.query("DELETE FROM media WHERE id=$1", [id]);
           await audit(tx, admin.id, "media.delete", id);
@@ -326,6 +358,7 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
         {
           exportedAt: new Date().toISOString(),
           properties: (await db.query("SELECT * FROM properties")).map(adminProperty),
+          articles: (await db.query<ArticleRow>("SELECT * FROM articles")).map(adminArticle),
           leads: await db.query("SELECT * FROM leads"),
           media: await db.query("SELECT * FROM media"),
           websiteContent: await loadWebsiteContent(db),

@@ -11,7 +11,9 @@ import { handleApi } from "./api.server";
 import { hashPassword } from "./security.server";
 import { publicProperties } from "./properties.server";
 import { loadWebsiteContent } from "./website.server";
+import { publicArticles } from "./articles.server";
 import { copyKey } from "@/lib/site-copy";
+import { defaultArticles } from "@/data/articles.defaults";
 
 describe("Self-hosted admin and public API", () => {
   let db: Database;
@@ -95,6 +97,8 @@ describe("Self-hosted admin and public API", () => {
 
   it("rejects anonymous admin access and forged cross-site writes", async () => {
     expect((await request("/api/admin/properties")).status).toBe(401);
+    expect((await request("/api/admin/articles")).status).toBe(401);
+    expect((await request("/api/admin/articles", "POST", {}, false)).status).toBe(401);
     expect((await request("/api/admin/website")).status).toBe(401);
     expect((await request("/api/admin/website", "PUT", { values: {}, version: 1 })).status).toBe(
       401,
@@ -370,6 +374,195 @@ describe("Self-hosted admin and public API", () => {
     expect((await request(media.src)).status).toBe(200);
     expect((await request(`/api/admin/media/${media.id}`, "DELETE", {}, true)).status).toBe(409);
   });
+  it("creates and edits articles, protects versions, controls publication and keeps migration idempotent", async () => {
+    const article = {
+      title: "Nový blog",
+      slug: "novy-blog",
+      category: "Reality",
+      excerpt: "Úvod článku",
+      readingMinutes: 2,
+      updatedAt: "2026-10-14",
+      sections: [{ heading: "Nadpis", paragraphs: ["Obsah článku"], bullets: ["První bod"] }],
+      publication: "draft",
+    };
+    expect((await publicArticles(db)).length).toBe(5);
+    expect(
+      (await request("/api/admin/articles", "POST", article, true, "https://evil.example")).status,
+    ).toBe(403);
+    expect(
+      (await request("/api/admin/articles", "POST", { ...article, updatedAt: "2026-02-30" }, true))
+        .status,
+    ).toBe(422);
+    expect(
+      (
+        await request(
+          "/api/admin/articles",
+          "POST",
+          { ...article, sections: [{ heading: "Prázdná sekce" }] },
+          true,
+        )
+      ).status,
+    ).toBe(422);
+    const response = await request("/api/admin/articles", "POST", article, true);
+    expect(response.status).toBe(201);
+    const created = await response.json();
+    expect((await publicArticles(db)).some((value) => value.slug === article.slug)).toBe(false);
+    const input = { ...article, title: "Upravený blog", publication: "published", version: 1 };
+    expect((await request(`/api/admin/articles/${created.id}`, "PUT", input, true)).status).toBe(
+      200,
+    );
+    expect((await publicArticles(db)).find((value) => value.slug === article.slug)?.title).toBe(
+      "Upravený blog",
+    );
+    expect((await request(`/api/admin/articles/${created.id}`, "PUT", input, true)).status).toBe(
+      409,
+    );
+    expect(
+      (await request(`/api/admin/articles/${created.id}?version=1`, "DELETE", {}, true)).status,
+    ).toBe(409);
+    await migrate(db);
+    expect((await publicArticles(db)).find((value) => value.slug === article.slug)?.title).toBe(
+      "Upravený blog",
+    );
+    expect(
+      (
+        await request(
+          `/api/admin/articles/${created.id}`,
+          "PUT",
+          { ...input, publication: "archived", version: 2 },
+          true,
+        )
+      ).status,
+    ).toBe(200);
+    expect((await publicArticles(db)).some((value) => value.slug === article.slug)).toBe(false);
+    expect(
+      (await request(`/api/admin/articles/${created.id}?version=3`, "DELETE", {}, true)).status,
+    ).toBe(200);
+    await migrate(db);
+    expect((await db.query("SELECT id FROM articles WHERE slug=$1", [article.slug])).length).toBe(
+      0,
+    );
+  });
+  it("migrates existing article text overrides once and leaves edited articles intact", async () => {
+    const legacy = embeddedAdapter(new PGlite());
+    try {
+      await legacy.exec(
+        "CREATE TABLE website_content (id text PRIMARY KEY, data jsonb NOT NULL DEFAULT '{}'::jsonb, version integer NOT NULL DEFAULT 1, updated_at timestamptz NOT NULL DEFAULT now())",
+      );
+      const original = defaultArticles[0]!;
+      await legacy.query("INSERT INTO website_content(id,data) VALUES ('main',$1::jsonb)", [
+        JSON.stringify({
+          [copyKey(original.title)]: "Dříve upravený název",
+          [copyKey(original.sections[0]!.paragraphs![0]!)]: "Dříve upravený odstavec",
+        }),
+      ]);
+      await migrate(legacy);
+      const migrated = (await publicArticles(legacy)).find(
+        (article) => article.slug === original.slug,
+      )!;
+      expect(migrated.title).toBe("Dříve upravený název");
+      expect(migrated.sections[0]!.paragraphs![0]).toBe("Dříve upravený odstavec");
+      await legacy.query(
+        "UPDATE articles SET data=jsonb_set(data,'{title}',to_jsonb('Název z editoru'::text)) WHERE slug=$1",
+        [original.slug],
+      );
+      await migrate(legacy);
+      expect(
+        (await publicArticles(legacy)).find((article) => article.slug === original.slug)?.title,
+      ).toBe("Název z editoru");
+    } finally {
+      await legacy.close();
+    }
+  });
+  it("publishes website and article photographs, protects their references and preserves website text", async () => {
+    const bytes = await sharp({
+      create: { width: 20, height: 20, channels: 3, background: "#f7a501" },
+    })
+      .png()
+      .toBuffer();
+    const response = await handleApi(
+      new Request(origin + "/api/admin/media?name=web.png", {
+        method: "POST",
+        headers: { origin, cookie: token, "content-type": "image/png" },
+        body: new Uint8Array(bytes),
+      }),
+      db,
+    );
+    expect(response?.status).toBe(201);
+    const media = await response!.json();
+    const website = await loadWebsiteContent(db);
+    const input = {
+      ...website,
+      values: {
+        ...website.values,
+        [copyKey("Co bude váš")]: "Fotografie a text",
+        "image.home": media.src,
+      },
+    };
+    expect(
+      (
+        await request(
+          "/api/admin/website",
+          "PUT",
+          { ...input, values: { "image.home": "https://evil.example/photo.jpg" } },
+          true,
+        )
+      ).status,
+    ).toBe(422);
+    expect(
+      (
+        await request(
+          "/api/admin/website",
+          "PUT",
+          { ...input, values: { "image.home": `/uploads/${randomUUID()}.webp` } },
+          true,
+        )
+      ).status,
+    ).toBe(422);
+    expect((await request("/api/admin/website", "PUT", input, true)).status).toBe(200);
+    expect((await loadWebsiteContent(db)).values).toMatchObject(input.values);
+    expect((await request(media.src)).status).toBe(200);
+    expect((await request(`/api/admin/media/${media.id}`, "DELETE", {}, true)).status).toBe(409);
+    expect((await request("/api/admin/website", "PUT", input, true)).status).toBe(409);
+    const { ["image.home"]: _photo, ...values } = input.values;
+    expect(
+      (await request("/api/admin/website", "PUT", { values, version: website.version + 1 }, true))
+        .status,
+    ).toBe(200);
+    expect((await request(media.src)).status).toBe(401);
+    const article = {
+      title: "Blog s fotkou",
+      slug: "blog-s-fotkou",
+      category: "Reality",
+      excerpt: "Úvod",
+      readingMinutes: 1,
+      updatedAt: "2026-10-14",
+      sections: [{ paragraphs: ["Obsah"] }],
+      image: { src: media.src, alt: "Titulek" },
+      publication: "draft",
+    };
+    const createdResponse = await request("/api/admin/articles", "POST", article, true);
+    expect(createdResponse.status).toBe(201);
+    const created = await createdResponse.json();
+    expect((await request(media.src)).status).toBe(401);
+    expect((await request(`/api/admin/media/${media.id}`, "DELETE", {}, true)).status).toBe(409);
+    expect(
+      (
+        await request(
+          `/api/admin/articles/${created.id}`,
+          "PUT",
+          { ...article, publication: "published", version: 1 },
+          true,
+        )
+      ).status,
+    ).toBe(200);
+    expect((await request(media.src)).status).toBe(200);
+    expect(
+      (await request(`/api/admin/articles/${created.id}?version=2`, "DELETE", {}, true)).status,
+    ).toBe(200);
+    expect((await request(media.src)).status).toBe(401);
+    expect((await request(`/api/admin/media/${media.id}`, "DELETE", {}, true)).status).toBe(200);
+  });
   it("archives an offer immediately and revokes logout sessions", async () => {
     expect(
       (
@@ -395,6 +588,7 @@ describe("Self-hosted admin and public API", () => {
       await tx.query("SET LOCAL ROLE realty_app");
       expect((await tx.query("SELECT id FROM leads")).length).toBe(2);
       expect(await tx.query("SELECT id FROM website_content")).toHaveLength(1);
+      expect(await tx.query("SELECT id FROM articles")).toHaveLength(5);
     });
     await expect(
       db.transaction(async (tx) => {

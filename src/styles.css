@@ -112,6 +112,7 @@
   --color-sea: var(--sea);
   --color-sea-surface: var(--sea-surface);
   --color-valuation: var(--valuation);
+  --color-review-star: #f7a501;
   --color-valuation-foreground: var(--valuation-foreground);
   --color-valuation-surface: var(--valuation-surface);
   --color-valuation-ink: var(--valuation-ink);

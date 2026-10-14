@@ -9,3 +9,18 @@ export function useSiteCopy() {
 export function useSiteConfig() {
   return resolveSiteConfig(useContext(WebsiteContentContext));
 }
+
+export function useWebsiteImage(
+  key: import("@/data/website-images").WebsiteImageKey | undefined,
+  fallback: string,
+) {
+  const values = useContext(WebsiteContentContext);
+  return key ? (values[key] ?? fallback) : fallback;
+}
+export function useWebsiteImageAlt(
+  key: import("@/data/website-images").WebsiteImageKey | undefined,
+  fallback: string,
+) {
+  const values = useContext(WebsiteContentContext);
+  return key ? (values[`${key}.alt`] ?? fallback) : fallback;
+}

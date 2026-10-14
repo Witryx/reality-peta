@@ -45,17 +45,19 @@ function Page() {
             params={{ slug: a.slug }}
             className="group flex flex-col rounded-lg border bg-card p-6 transition-shadow hover:shadow-md"
           >
-            <p className="eyebrow">
-              <SiteText>{a.category}</SiteText>
-            </p>
-            <h2 className="mt-3 font-display text-2xl leading-snug">
-              <SiteText>{a.title}</SiteText>
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              <SiteText>{a.excerpt}</SiteText>
-            </p>
+            {a.image && (
+              <img
+                src={a.image.src}
+                alt={a.image.alt}
+                loading="lazy"
+                className="mb-5 aspect-[16/9] w-full rounded object-cover"
+              />
+            )}
+            <p className="eyebrow">{a.category}</p>
+            <h2 className="mt-3 font-display text-2xl leading-snug">{a.title}</h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{a.excerpt}</p>
             <p className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
-              <Clock className="size-3.5" aria-hidden /> <SiteText>{a.readingMinutes}</SiteText>
+              <Clock className="size-3.5" aria-hidden /> {a.readingMinutes}
               <SiteText>{" min čtení"}</SiteText>
               <span
                 className="ml-auto inline-flex items-center gap-1 text-accent opacity-0 transition-opacity group-hover:opacity-100"

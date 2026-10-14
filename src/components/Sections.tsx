@@ -1,6 +1,6 @@
 import { SiteText } from "@/components/SiteText";
 import { Link } from "@tanstack/react-router";
-import { processSteps, services, testimonials, videoTestimonials } from "@/data/content";
+import { processSteps, services, testimonials } from "@/data/content";
 import { Star } from "lucide-react";
 import { LeadForm } from "./LeadForm";
 import { Placeholder } from "./ContactLinks";
@@ -99,7 +99,7 @@ export function Testimonials() {
         {testimonials.map((t) => (
           <figure key={t.name} className="flex flex-col rounded-lg bg-card p-8 shadow-soft">
             <div className="mb-4 flex items-center gap-2" aria-label="Hodnocení 5 z 5">
-              <span className="flex text-valuation-ink" aria-hidden="true">
+              <span className="flex text-review-star" aria-hidden="true">
                 {
                   <SiteText>
                     {Array.from({ length: 5 }).map((_, i) => (
@@ -131,69 +131,7 @@ export function Testimonials() {
           </figure>
         ))}
       </div>
-      <VideoReels />
     </>
-  );
-}
-
-function VideoReels() {
-  return (
-    <div className="mt-16" aria-labelledby="video-reference">
-      <div className="flex items-end justify-between gap-4">
-        <div>
-          <p className="eyebrow">
-            <SiteText>{"Reference na videu"}</SiteText>
-          </p>
-          <h3 id="video-reference" className="mt-2 font-display text-2xl md:text-3xl">
-            <SiteText>{"Slovo mají klienti"}</SiteText>
-          </h3>
-        </div>
-        <p className="text-sm text-muted-foreground md:hidden" aria-hidden="true">
-          <SiteText>{"Posuňte do strany →"}</SiteText>
-        </p>
-      </div>
-      <ul className="-mx-4 mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 md:mx-0 md:grid md:grid-cols-5 md:overflow-visible md:px-0">
-        {videoTestimonials.map((v, i) => (
-          <li key={i} className="w-[62%] shrink-0 snap-start sm:w-[40%] md:w-auto">
-            <figure>
-              <div className="relative aspect-[9/16] overflow-hidden rounded-lg bg-muted shadow-soft">
-                {v.src ? (
-                  <video
-                    className="h-full w-full object-cover"
-                    src={v.src}
-                    poster={v.poster}
-                    controls
-                    playsInline
-                    preload="metadata"
-                    aria-label={`Video reference: ${v.title}`}
-                  />
-                ) : (
-                  <div className="flex h-full flex-col items-center justify-center gap-3 p-4 text-center text-muted-foreground">
-                    <span
-                      className="flex h-12 w-12 items-center justify-center rounded-full border border-current"
-                      aria-hidden="true"
-                    >
-                      ▶
-                    </span>
-                    <Placeholder>
-                      <SiteText>{"Video doplníme"}</SiteText>
-                    </Placeholder>
-                  </div>
-                )}
-              </div>
-              <figcaption className="mt-3 text-sm">
-                <span className="font-semibold">
-                  <SiteText>{v.title}</SiteText>
-                </span>
-                <span className="block text-muted-foreground">
-                  <SiteText>{v.context}</SiteText>
-                </span>
-              </figcaption>
-            </figure>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }
 
@@ -252,6 +190,7 @@ export function AboutTeaser({ full = false }: { full?: boolean }) {
       <div className="flex aspect-[4/5] items-end justify-center overflow-hidden bg-surface">
         <BrandImage
           asset={full ? fullPortrait : portrait}
+          imageKey={full ? "image.fullPortrait" : "image.portrait"}
           alt="Petr Pavlát, realitní makléř"
           width={full ? 585 : 1439}
           height={full ? 1355 : 1825}

@@ -1,3 +1,4 @@
+import { SiteImage } from "@/components/SiteImage";
 import { useSiteConfig } from "@/lib/website-context";
 import { SiteText } from "@/components/SiteText";
 import { Link } from "@tanstack/react-router";
@@ -32,7 +33,8 @@ export function EgyptSection({ detail = false }: { detail?: boolean }) {
     <section className="egypt-band py-20 md:py-24" data-reveal="slide">
       <div className="container-page grid gap-10 md:grid-cols-2 md:items-stretch">
         <div className="relative overflow-hidden">
-          <img
+          <SiteImage
+            imageKey="image.egypt"
             src={coast}
             width={1440}
             height={1024}

@@ -27,6 +27,7 @@ export const site = {
     linkedin: "",
   },
   googleReviews: { rating: "4,7", profileUrl: "https://share.google/3ERvci4sNYmAwJnEp" },
+  partnerUrls: ["", "", "https://www.egyptskoceskareality.cz/"],
   partners: ["STELAR reality", "STELAR Advisory", "Egyptsko-Česká Reality"],
 };
 

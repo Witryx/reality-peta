@@ -1,3 +1,4 @@
+import { SiteImage } from "@/components/SiteImage";
 import { SiteText } from "@/components/SiteText";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import hero from "@/assets/hero.jpg";
@@ -90,7 +91,8 @@ function Home() {
             <CollaborationStrip className="hero-trust mt-6 border-t pt-4" />
           </div>
           <div className="hero-photo relative overflow-hidden">
-            <img
+            <SiteImage
+              imageKey="image.home"
               src={hero}
               alt="Světlý pražský byt s výhledem na Pražský hrad"
               width={1600}
@@ -261,17 +263,19 @@ function Home() {
                 params={{ slug: a.slug }}
                 className="group flex flex-col rounded-lg border bg-card p-6 transition-shadow hover:shadow-md"
               >
-                <p className="eyebrow">
-                  <SiteText>{a.category}</SiteText>
-                </p>
-                <h3 className="mt-3 font-display text-2xl leading-snug">
-                  <SiteText>{a.title}</SiteText>
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  <SiteText>{a.excerpt}</SiteText>
-                </p>
+                {a.image && (
+                  <img
+                    src={a.image.src}
+                    alt={a.image.alt}
+                    loading="lazy"
+                    className="mb-5 aspect-[16/9] w-full rounded object-cover"
+                  />
+                )}
+                <p className="eyebrow">{a.category}</p>
+                <h3 className="mt-3 font-display text-2xl leading-snug">{a.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{a.excerpt}</p>
                 <p className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
-                  <Clock className="size-3.5" aria-hidden /> <SiteText>{a.readingMinutes}</SiteText>
+                  <Clock className="size-3.5" aria-hidden /> {a.readingMinutes}
                   <SiteText>{" min čtení"}</SiteText>
                 </p>
               </Link>

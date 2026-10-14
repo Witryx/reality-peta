@@ -1,3 +1,4 @@
+import { SiteImage } from "@/components/SiteImage";
 import { SiteText } from "@/components/SiteText";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import kitchen from "@/assets/prop-kitchen.jpg";
@@ -32,7 +33,8 @@ function Page() {
       </section>
       <EgyptSection />
       <section className="container-page grid gap-10 pb-20 md:grid-cols-2 md:items-center">
-        <img
+        <SiteImage
+          imageKey="image.services"
           src={kitchen}
           alt="Interiér připravený k prodeji"
           loading="lazy"

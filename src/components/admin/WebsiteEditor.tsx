@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 import { ExternalLink, Loader2, RotateCcw, Save, Search } from "lucide-react";
 import { websiteFields as catalog } from "@/data/website-fields";
@@ -29,6 +29,7 @@ const searchText = (value: string) =>
 
 export function WebsiteEditor({ onDirty }: { onDirty: (value: boolean) => void }) {
   const router = useRouter();
+  const client = useQueryClient();
   const query = useQuery({
     queryKey: ["admin-website"],
     queryFn: () => api<WebsiteContent>("/api/admin/website"),
@@ -76,6 +77,8 @@ export function WebsiteEditor({ onDirty }: { onDirty: (value: boolean) => void }
       });
       baseline.current = JSON.stringify(saved.values);
       setDraft(saved);
+      client.setQueryData(["admin-website"], saved);
+      client.setQueryData(["admin-website-images"], saved);
       onDirty(false);
       setMessage("Texty jsou uložené a zobrazují se na webu. Není potřeba nové nasazení.");
       await router.invalidate();
@@ -93,6 +96,8 @@ export function WebsiteEditor({ onDirty }: { onDirty: (value: boolean) => void }
       const latest = await api<WebsiteContent>("/api/admin/website");
       baseline.current = JSON.stringify(latest.values);
       setDraft(latest);
+      client.setQueryData(["admin-website"], latest);
+      client.setQueryData(["admin-website-images"], latest);
       onDirty(false);
       setMessage("Aktuální obsah je načtený.");
     } catch (cause) {
@@ -149,9 +154,9 @@ export function WebsiteEditor({ onDirty }: { onDirty: (value: boolean) => void }
         </a>
       </div>
       <p className="admin-description">
-        Vyberte stránku, přepište text a uložte změny. Rozložení, fotografie a funkce webu zůstanou
-        zachované. Text rozdělený zalomením nebo zvýrazněním má samostatná pole. Stejný text použitý
-        vícekrát se upraví na všech těchto místech.
+        Vyberte stránku, přepište text a uložte změny. Fotografie upravíte v sekci Fotky webu.
+        Rozložení a funkce webu zůstanou zachované. Text rozdělený zalomením nebo zvýrazněním má
+        samostatná pole. Stejný text použitý vícekrát se upraví na všech těchto místech.
       </p>
       {error && (
         <Notice>

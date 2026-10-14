@@ -35,7 +35,7 @@ export const Route = createFileRoute("/clanky/$slug")({
             description: a.excerpt,
             dateModified: a.updatedAt,
             author: { "@type": "Person", name: "Petr Pavlát" },
-          }),
+          }).replace(/</g, "\\u003c"),
         },
       ],
     };
@@ -64,40 +64,34 @@ function ArticlePage() {
         <SiteText> </SiteText>
         <span aria-hidden>/</span>
         {<SiteText> </SiteText>}
-        <span>
-          <SiteText>{article.category}</SiteText>
-        </span>
+        <span>{article.category}</span>
       </nav>
       <header className="mt-6 max-w-3xl">
-        <p className="eyebrow">
-          <SiteText>{article.category}</SiteText>
-        </p>
-        <h1 className="mt-3 text-4xl leading-tight md:text-6xl">
-          <SiteText>{article.title}</SiteText>
-        </h1>
+        <p className="eyebrow">{article.category}</p>
+        <h1 className="mt-3 text-4xl leading-tight md:text-6xl">{article.title}</h1>
         <p className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
-          <Clock className="size-4" aria-hidden /> <SiteText>{article.readingMinutes}</SiteText>
+          <Clock className="size-4" aria-hidden /> {article.readingMinutes}
           <SiteText>{" min čtení"}</SiteText>
         </p>
-        <p className="mt-6 font-display text-2xl leading-snug">
-          <SiteText>{article.excerpt}</SiteText>
-        </p>
+        <p className="mt-6 font-display text-2xl leading-snug">{article.excerpt}</p>
       </header>
 
+      {article.image && (
+        <img
+          src={article.image.src}
+          alt={article.image.alt}
+          loading="lazy"
+          className="mt-8 aspect-[16/9] w-full max-w-3xl rounded-lg object-cover"
+        />
+      )}
       <div className="mt-12 max-w-3xl space-y-10">
         {article.sections.map((s, i) => (
           <section key={i}>
-            {s.heading && (
-              <h2 className="text-3xl">
-                <SiteText>{s.heading}</SiteText>
-              </h2>
-            )}
+            {s.heading && <h2 className="text-3xl">{s.heading}</h2>}
             {s.paragraphs && (
               <div className="mt-4 space-y-4 leading-relaxed text-muted-foreground">
                 {s.paragraphs.map((p, j) => (
-                  <p key={j}>
-                    <SiteText>{p}</SiteText>
-                  </p>
+                  <p key={j}>{p}</p>
                 ))}
               </div>
             )}
@@ -106,9 +100,7 @@ function ArticlePage() {
                 {s.bullets.map((b, j) => (
                   <li key={j} className="flex gap-3 leading-relaxed">
                     <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-accent" aria-hidden />
-                    <span>
-                      <SiteText>{b}</SiteText>
-                    </span>
+                    <span>{b}</span>
                   </li>
                 ))}
               </ul>
