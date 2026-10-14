@@ -1,0 +1,13 @@
+node_modules
+.output
+dist
+.git
+.env
+.env.*
+.local
+uploads
+backups
+test-results
+playwright-report
+.lovable
+*.log

@@ -1,0 +1,77 @@
+name: pavlat-reality
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: realty
+      POSTGRES_USER: realty
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      TZ: Europe/Prague
+    volumes:
+      - database:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U realty -d realty"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    logging: &logging
+      driver: json-file
+      options: { max-size: 10m, max-file: "3" }
+  migrate:
+    image: pavlat-realty:local
+    build:
+      context: .
+      args:
+        VITE_SITE_URL: https://${DOMAIN:?Set DOMAIN in .env}
+    environment:
+      DATABASE_URL: postgres://realty:${POSTGRES_PASSWORD}@db:5432/realty
+      APP_DB_PASSWORD: ${APP_DB_PASSWORD:?Set APP_DB_PASSWORD in .env}
+    command: [npm, run, db:setup]
+    depends_on:
+      db: { condition: service_healthy }
+    logging: *logging
+  app:
+    image: pavlat-realty:local
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgres://realty_app:${APP_DB_PASSWORD}@db:5432/realty
+      APP_URL: https://${DOMAIN}
+      TRUST_PROXY: "1"
+      TZ: Europe/Prague
+    volumes:
+      - uploads:/app/uploads
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+    healthcheck:
+      test:
+        [
+          CMD,
+          node,
+          -e,
+          "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    logging: *logging
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports: ["80:80", "443:443", "443:443/udp"]
+    environment:
+      DOMAIN: ${DOMAIN}
+      ACME_EMAIL: ${ACME_EMAIL:?Set ACME_EMAIL in .env}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      app: { condition: service_healthy }
+    logging: *logging
+volumes:
+  database:
+  uploads:
+  caddy_data:
+  caddy_config:

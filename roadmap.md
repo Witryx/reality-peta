@@ -1,0 +1,21 @@
+- [x] Place uploaded logo, portraits and signature in the header, about sections and contact page.
+- [x] Derive the favicon from the uploaded logo.
+- [x] Verify image rendering and page layout.
+- [x] Update only cookie dialog copy and consent version; verify choices and mobile wrapping without publishing.
+- [x] Unify brand lockups, header, footer, cookie branding and social/contact controls.
+- [x] Rebalance homepage, add nationwide copy, sensitive service topics and varied accessible motion.
+- [x] Add distinct Egypt section/page and partner-logo placeholders.
+- [x] Add Google 4,7 rating with configurable profile link; preserve existing testimonials.
+- [x] Verify desktop/tablet/mobile pages, consent, form submissions and build without publishing.
+- [x] Refine lowercase brand, new slogan and contemporary typography throughout.
+- [x] Enhance layered motion, homepage introduction and free valuation composition/CTAs.
+- [x] Add collaboration names to footer and verify layouts, motion, forms and consent without publishing.
+- [x] Correct editorial serif, sandy actions and sequential hero with collaboration strip.
+- [x] Refine introductory story, authentic about copy and brand/SEO wording; preserve valuation layout.
+- [x] Verify desktop/mobile rendering, motion, metadata and existing forms/cookies without publishing.
+- [x] Update cookie banner copy, information dialog, category settings and consent-version behavior; verify gating and footer reopening.
+- [x] Add the verified email, Egyptian WhatsApp-only contact, verified Instagram link and revised footer location copy.
+- [x] Verify cookie and contact changes across desktop, tablet and mobile without publishing.
+- [x] Simplify homepage hero with a personal icebreaker, without repeating the header brand and slogan.
+- [x] Make homepage properties browsable while retaining the full listing; verify desktop/mobile and navigation without publishing.
+- [x] Add restrained animated graphic connections between homepage chapters; preserve valuation and verify layouts and reduced motion without publishing.- [x] Add browsable Egypt demo offers (carousel + detail pages) to the Egypt page without changing the Czech listing.

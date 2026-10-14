@@ -1,0 +1,1997 @@
+[
+  {
+    "key": "text_d7e5a881",
+    "default": "Zásady používání cookies",
+    "groups": ["Cookies – vyhledávače"]
+  },
+  {
+    "key": "text_2742dade",
+    "default": "Jaké cookies web používá a jak můžete změnit svůj souhlas.",
+    "groups": ["Cookies – vyhledávače"]
+  },
+  {
+    "key": "text_ddabb505",
+    "default": "Právní informace",
+    "groups": ["Cookies", "Ochrana osobních údajů"]
+  },
+  {
+    "key": "text_58f3dcc4",
+    "default": "Cookies",
+    "groups": ["Cookies", "Patička"]
+  },
+  {
+    "key": "text_3194b3b0",
+    "default": "Nezbytné",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_1fbb6499",
+    "default": "Uložení vaší volby souhlasu (localStorage „ppr-consent“). Bez nich web nefunguje správně.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_ef20775f",
+    "default": "Administrace používá nezbytnou cookie „realty_session“ pro přihlášení správce. Je chráněná před čtením z JavaScriptu a platí nejdéle 8 hodin.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_c7cac61e",
+    "default": "Analytické",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_d81c0c30",
+    "default": "Google Analytics 4 / Google Tag Manager – anonymní statistiky návštěvnosti. Načtou se až po vašem souhlasu.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_3b10b7d1",
+    "default": "Marketingové",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_f8fb3597",
+    "default": "Google Ads a Meta Pixel – měření účinnosti reklam. Načtou se až po vašem souhlasu.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_96a3c1b0",
+    "default": "Stejný souhlas umožní načtení externího obsahu: Google Map, videí YouTube / Vimeo a virtuálních prohlídek Matterport. Bez souhlasu se vložené mapy a přehrávače nenačítají. Google Mapy můžete otevřít samostatným odkazem.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_af4782f0",
+    "default": "Změna souhlasu",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_f647b71f",
+    "default": "Souhlas můžete kdykoli změnit nebo odvolat.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_17d6f6d3",
+    "default": "Otevřít nastavení cookies",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_1c5b07d8",
+    "default": "Nemovitosti v Egyptě – bydlení u Rudého moře",
+    "groups": ["Egypt – vyhledávače"]
+  },
+  {
+    "key": "text_936d8304",
+    "default": "Nemovitosti v Egyptě s Petrem Pavlátem a partnerskými značkami. Druhý domov i využití majetku, s jasnými informacemi o postupu a rizicích.",
+    "groups": ["Egypt – vyhledávače"]
+  },
+  {
+    "key": "text_4edfdf5f",
+    "default": "Egypt · srozumitelně a osobně",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_e9ad6159",
+    "default": "Nejdřív otázky. Potom rozhodnutí.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_53fe14fd",
+    "default": "Společně si ujasníme, proč o nemovitosti v Egyptě přemýšlíte, jaký máte rozpočet a co od ní očekáváte.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_592aa94",
+    "default": "Druhý domov",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_eba53b85",
+    "default": "Pro vlastní pobyty, čas s rodinou nebo delší zimní měsíce u moře. Důležitá je lokalita i každodenní zázemí.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_6e6c9cfc",
+    "default": "Využití majetku",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_596eb72d",
+    "default": "Projdeme možnosti pronájmu, správu a související výdaje. Výnos ani růst hodnoty nejsou zaručené.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_7a25e21b",
+    "default": "Jasný postup",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_e69c3600",
+    "default": "S partnery probereme dostupnou nabídku, právní režim vlastnictví, poplatky, kurzová rizika a správu na místě.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_42789672",
+    "default": "Vybrané nabídky",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_7d5b8cb2",
+    "default": "Nemovitosti u Rudého moře",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_b27db081",
+    "default": "Přehled aktuálních možností. Každou nabídku projdeme osobně, včetně právního režimu vlastnictví a provozních nákladů.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_2c480182",
+    "default": "Jde o ukázkové nabídky — konkrétní a ověřené nemovitosti doplníme podle aktuální dostupnosti od partnerů. Aktuální možnosti rád proberu osobně.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_db58642b",
+    "default": "Kontakt pro Egypt",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_a253e3a6",
+    "default": "Co vás láká k moři?",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_457358a",
+    "default": "Napište mi, co hledáte. Probereme možnosti i otázky, které je dobré si položit před koupí.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_2c891d4f",
+    "default": "WhatsApp pro Egypt:",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_b0787ed6",
+    "default": "Pro kontakt na egyptském čísle prosím využijte WhatsApp. Komunikace přes WhatsApp je zdarma.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_cecc80d9",
+    "default": "Probrat nabídku v Egyptě",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_9458cf88",
+    "default": "Petr Pavlát reality. Prodej, koupě a pronájem napříč Českem a pomoc s nemovitostmi v Egyptě.",
+    "groups": ["Úvodní stránka – vyhledávače"]
+  },
+  {
+    "key": "text_41e04177",
+    "default": "Prodej · Koupě · Pronájem",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_5b6a42a7",
+    "default": "Co bude váš",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_eefea666",
+    "default": "další domov?",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_1837dbc1",
+    "default": "Možná ho hledáte. Možná se s tím současným loučíte. Pojďme si říct, co právě řešíte — a najít další krok, který vám dává smysl.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_8b04a3a9",
+    "default": "Zjistit cenu nemovitosti zdarma",
+    "groups": ["Úvodní stránka", "Navigace", "Články"]
+  },
+  {
+    "key": "text_3b0037a3",
+    "default": "Prohlédnout nabídku",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_ba8ae35",
+    "default": "Reality šité na",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_7dcdd54f",
+    "default": "míru vaší situace.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_a192d499",
+    "default": "Každá nemovitost má svůj příběh.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_f0fa3fca",
+    "default": "A každý člověk svou situaci.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_b7c08aa3",
+    "default": "Prodáváte, kupujete, pronajímáte nebo dědíte? Řešíte složitou životní situaci, nebo chcete svůj majetek lépe využít a zhodnotit?",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_9563ace",
+    "default": "Pomohu vám zorientovat se v možnostech a otevřeně říct, co dává smysl. I při exekuci nebo tlaku kolem majetku. Citlivě, bez hodnocení a bez nátlaku — a podle potřeby s pomocí odborníků.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_18f12d7c",
+    "default": "Probrat moji situaci",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_572bd7bb",
+    "default": "Vše transparentně s osobním přístupem od A do Z",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_7c9b5dda",
+    "default": "Reálná cena podle skutečných prodejů a exkluzivita",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_4957ac49",
+    "default": "Právní a hypoteční servis pod jednou střechou",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_88145f6",
+    "default": "Aktuální nabídka",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_3d45d8b1",
+    "default": "Nemovitosti v Česku, které právě hledají nové majitele",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_ec6d2622",
+    "default": "Celá nabídka",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_b168bdb8",
+    "default": "Služby",
+    "groups": ["Úvodní stránka", "Identita"]
+  },
+  {
+    "key": "text_dad88553",
+    "default": "S čím vám pomohu",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_ab0f73af",
+    "default": "Nabídka v Egyptě",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_3482be80",
+    "default": "Nemovitosti v Hurghádě přímo u Rudého moře",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_1d649e4f",
+    "default": "Jak to u moře děláme",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_23d87204",
+    "default": "Celá nabídka v Egyptě",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_12be45d5",
+    "default": "JAK PROBÍHÁ SPOLUPRÁCE?",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_1df6b932",
+    "default": "Prodej v pěti klidných krocích",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_adc8c33a",
+    "default": "Reference",
+    "groups": ["Úvodní stránka", "Reference", "Identita"]
+  },
+  {
+    "key": "text_c6bf9c85",
+    "default": "Co na spolupráci říkají klienti",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_2de4e34a",
+    "default": "Články",
+    "groups": ["Úvodní stránka", "Články", "Identita"]
+  },
+  {
+    "key": "text_6077bc96",
+    "default": "Informace, na které si dát pozor",
+    "groups": ["Úvodní stránka", "Články"]
+  },
+  {
+    "key": "text_d7a8c795",
+    "default": "Všechny články",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_c56610e",
+    "default": "min čtení",
+    "groups": ["Úvodní stránka", "Články"]
+  },
+  {
+    "key": "text_42ec9773",
+    "default": "Kontakt",
+    "groups": ["Úvodní stránka", "Kontakt – vyhledávače", "Kontakt", "Identita"]
+  },
+  {
+    "key": "text_8abcf143",
+    "default": "Pojďme si promluvit",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_9c2d016e",
+    "default": "Zavolejte, napište nebo vyplňte formulář. Ozvu se osobně.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_26f24eff",
+    "default": "Odeslat zprávu",
+    "groups": ["Úvodní stránka", "Kontakt"]
+  },
+  {
+    "key": "text_292cb62e",
+    "default": "Kontaktujte realitního makléře Petra Pavláta – telefon, e-mail, WhatsApp nebo kontaktní formulář.",
+    "groups": ["Kontakt – vyhledávače"]
+  },
+  {
+    "key": "text_213778a0",
+    "default": "Napište mi, nebo rovnou zavolejte",
+    "groups": ["Kontakt"]
+  },
+  {
+    "key": "text_4dbb9b13",
+    "default": "Odpovídám osobně, obvykle ještě týž den.",
+    "groups": ["Kontakt"]
+  },
+  {
+    "key": "text_2a160385",
+    "default": "Realitní makléř ·",
+    "groups": ["Kontakt"]
+  },
+  {
+    "key": "text_64f41cce",
+    "default": "Tato nemovitost už není v nabídce.",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_1b6e3349",
+    "default": "Zpět na nabídku",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_d6415427",
+    "default": "Nabídka",
+    "groups": ["Detail nemovitosti", "Nabídka", "Identita"]
+  },
+  {
+    "key": "text_276e402d",
+    "default": "Ukázková nabídka",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_e0633d1f",
+    "default": "sold",
+    "groups": ["Detail nemovitosti", "Nabídka"]
+  },
+  {
+    "key": "text_7c2e0074",
+    "default": "Prodáno",
+    "groups": ["Detail nemovitosti", "Nabídka"]
+  },
+  {
+    "key": "text_2314f19e",
+    "default": "Parametry",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_59ed3179",
+    "default": "Vybavení",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_df0edc4",
+    "default": "Lokalita",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_145c9367",
+    "default": "Video a virtuální prohlídka",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_9f6ff109",
+    "default": "Video / Matterport URL – doplnit v administraci",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_54ed8dff",
+    "default": "Hledáte podobnou nemovitost?",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_53ab002d",
+    "default": "Domluvit prohlídku",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_e5612887",
+    "default": "Tato nabídka už není dostupná. Napište mi, co hledáte – dám vědět jako prvním.",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_bfde9286",
+    "default": "Rád vám nemovitost ukážu osobně.",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_e82ba952",
+    "default": "Nabídka nemovitostí",
+    "groups": ["Nabídka – vyhledávače"]
+  },
+  {
+    "key": "text_10470775",
+    "default": "Nabídka nemovitostí Petr Pavlát reality pro klienty napříč Českem. Prohlédněte si aktivní, rezervované i prodané nemovitosti.",
+    "groups": ["Nabídka – vyhledávače"]
+  },
+  {
+    "key": "text_647bfe6",
+    "default": "Nemovitosti",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_6a12e45d",
+    "default": "Každou nemovitost osobně znám a rád vám o ní řeknu víc.",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_22c9947",
+    "default": "Vše",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_ad0a8872",
+    "default": "V této kategorii teď nic není.",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_75531294",
+    "default": "O mně – Petr Pavlát",
+    "groups": ["O mně – vyhledávače"]
+  },
+  {
+    "key": "text_f593dcb2",
+    "default": "Petr Pavlát, osobní realitní makléř pro klienty napříč Českem. Lidský přístup, jasné informace a spolupráce na nemovitostech v Egyptě.",
+    "groups": ["O mně – vyhledávače"]
+  },
+  {
+    "key": "text_ecc46a43",
+    "default": "Nejdřív vás vyslechnu.",
+    "groups": ["O mně"]
+  },
+  {
+    "key": "text_4a67fb10",
+    "default": "Každý přichází s jinou představou i jinými starostmi. Chci nejprve rozumět tomu, co je pro vás důležité. Pak spolu projdeme možnosti, cenu i jednotlivé kroky — otevřeně a bez tlaku na rychlé rozhodnutí.",
+    "groups": ["O mně"]
+  },
+  {
+    "key": "text_f2f1ac91",
+    "default": "Mám zázemí v Praze a okolí, ale obrátit se na mě můžete odkudkoli z Česka. Ať prodáváte, hledáte nové bydlení nebo řešíte svůj majetek, začneme obyčejným rozhovorem.",
+    "groups": ["O mně"]
+  },
+  {
+    "key": "text_a5f6f72a",
+    "default": "Ozvěte se mi",
+    "groups": ["O mně"]
+  },
+  {
+    "key": "text_c1dccbdc",
+    "default": "Zásady ochrany osobních údajů",
+    "groups": [
+      "Ochrana osobních údajů – vyhledávače",
+      "Ochrana osobních údajů",
+      "Cookies",
+      "Patička"
+    ]
+  },
+  {
+    "key": "text_ce52d528",
+    "default": "Pracovní verze – před spuštěním nechte text zkontrolovat a doplňte identifikační údaje správce (jméno, IČO, adresu, kontakt).",
+    "groups": ["Ochrana osobních údajů"]
+  },
+  {
+    "key": "text_8cd8906f",
+    "default": "Správce",
+    "groups": ["Ochrana osobních údajů"]
+  },
+  {
+    "key": "text_b07bc14d",
+    "default": ". Identifikační a kontaktní údaje budou doplněny.",
+    "groups": ["Ochrana osobních údajů"]
+  },
+  {
+    "key": "text_6ed46230",
+    "default": "Jaké údaje zpracovávám",
+    "groups": ["Ochrana osobních údajů"]
+  },
+  {
+    "key": "text_8282564",
+    "default": "Jméno, e-mail, telefon a obsah zprávy z kontaktních formulářů; u odhadu ceny také typ, lokalitu a plochu nemovitosti.",
+    "groups": ["Ochrana osobních údajů"]
+  },
+  {
+    "key": "text_3df9fb41",
+    "default": "Účel a právní základ",
+    "groups": ["Ochrana osobních údajů"]
+  },
+  {
+    "key": "text_730267e7",
+    "default": "Vyřízení vašeho dotazu a jednání o smlouvě (čl. 6 odst. 1 písm. b GDPR). Analytické a marketingové cookies pouze na základě souhlasu (čl. 6 odst. 1 písm. a GDPR).",
+    "groups": ["Ochrana osobních údajů"]
+  },
+  {
+    "key": "text_a9f7fb23",
+    "default": "Doba uložení",
+    "groups": ["Ochrana osobních údajů"]
+  },
+  {
+    "key": "text_3d0b047f",
+    "default": "Po dobu nezbytnou k vyřízení dotazu, nejdéle však 3 roky, pokud nevznikne smluvní vztah.",
+    "groups": ["Ochrana osobních údajů"]
+  },
+  {
+    "key": "text_3c61e69f",
+    "default": "Příjemci",
+    "groups": ["Ochrana osobních údajů"]
+  },
+  {
+    "key": "text_59db3560",
+    "default": "Poskytovatel hostingu a databáze. Po udělení souhlasu s marketingovými cookies také Google (Analytics, Ads) a Meta (Facebook, Instagram) pro měření návštěvnosti a reklam.",
+    "groups": ["Ochrana osobních údajů"]
+  },
+  {
+    "key": "text_7d757962",
+    "default": "Vaše práva",
+    "groups": ["Ochrana osobních údajů"]
+  },
+  {
+    "key": "text_220418d7",
+    "default": "Máte právo na přístup, opravu, výmaz, omezení zpracování, přenositelnost, vznesení námitky a odvolání souhlasu. Stížnost můžete podat u Úřadu pro ochranu osobních údajů.",
+    "groups": ["Ochrana osobních údajů"]
+  },
+  {
+    "key": "text_570d780",
+    "default": "Odhad ceny nemovitosti zdarma",
+    "groups": ["Odhad ceny – vyhledávače"]
+  },
+  {
+    "key": "text_eb545245",
+    "default": "Zjistěte reálnou tržní cenu svého bytu, domu nebo pozemku. Nezávazný odhad podle skutečných prodejů v lokalitě.",
+    "groups": ["Odhad ceny – vyhledávače"]
+  },
+  {
+    "key": "text_afdda4ee",
+    "default": "Reference klientů",
+    "groups": ["Reference – vyhledávače"]
+  },
+  {
+    "key": "text_4f25dea3",
+    "default": "Zkušenosti klientů s prodejem, koupí a pronájmem nemovitostí s makléřem Petrem Pavlátem.",
+    "groups": ["Reference – vyhledávače"]
+  },
+  {
+    "key": "text_51d64ce5",
+    "default": "Spokojení klienti jsou moje nejlepší vizitka",
+    "groups": ["Reference"]
+  },
+  {
+    "key": "text_2c05d75f",
+    "default": "Prodané nemovitosti",
+    "groups": ["Reference"]
+  },
+  {
+    "key": "text_1cb9db57",
+    "default": "Služby – prodej, koupě, pronájem, odhad",
+    "groups": ["Služby – vyhledávače"]
+  },
+  {
+    "key": "text_5caea97d",
+    "default": "Kompletní realitní servis: prodej, koupě, pronájem, odhad ceny, homestaging, marketing a právní i hypoteční služby.",
+    "groups": ["Služby – vyhledávače"]
+  },
+  {
+    "key": "text_3827746f",
+    "default": "Služby napříč Českem",
+    "groups": ["Služby"]
+  },
+  {
+    "key": "text_fe58fc18",
+    "default": "Vše kolem vašeho bydlení na jednom místě",
+    "groups": ["Služby"]
+  },
+  {
+    "key": "text_d2d96365",
+    "default": "Ať prodáváte, kupujete, pronajímáte nebo hledáte cestu v náročné životní situaci, nejprve vás vyslechnu. Společně vybereme postup, který dává smysl právě vám.",
+    "groups": ["Služby"]
+  },
+  {
+    "key": "text_be11e776",
+    "default": "Prezentace, která prodává",
+    "groups": ["Služby"]
+  },
+  {
+    "key": "text_ef89c5c0",
+    "default": "Kvalitní fotografie, video a virtuální prohlídka dnes rozhodují o tom, kdo přijde na prohlídku. Proto každou nemovitost připravím tak, aby vynikla – bez přehánění a bez klišé.",
+    "groups": ["Služby"]
+  },
+  {
+    "key": "text_474a5434",
+    "default": "Nezávazný odhad ceny",
+    "groups": ["Služby"]
+  },
+  {
+    "key": "text_39109d5d",
+    "default": "Jak pracuji",
+    "groups": ["Služby"]
+  },
+  {
+    "key": "text_f796213c",
+    "default": "Proces prodeje",
+    "groups": ["Služby"]
+  },
+  {
+    "key": "text_12f36293",
+    "default": "reality",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_10a88c41",
+    "default": "Ve spolupráci s",
+    "groups": ["Partneři", "Egypt"]
+  },
+  {
+    "key": "text_dfa2efb1",
+    "default": "map",
+    "groups": ["Mapy a videa"]
+  },
+  {
+    "key": "text_3ff09346",
+    "default": "Prohlédněte si okolí v Google Mapách",
+    "groups": ["Mapy a videa"]
+  },
+  {
+    "key": "text_99ae89ab",
+    "default": "Mapu poskytuje Google.",
+    "groups": ["Mapy a videa"]
+  },
+  {
+    "key": "text_ea9955b2",
+    "default": "Přehrávač poskytuje externí služba.",
+    "groups": ["Mapy a videa"]
+  },
+  {
+    "key": "text_8ccb8459",
+    "default": "Načte se po povolení marketingových cookies.",
+    "groups": ["Mapy a videa"]
+  },
+  {
+    "key": "text_806e110d",
+    "default": "Upravit souhlas",
+    "groups": ["Mapy a videa"]
+  },
+  {
+    "key": "text_26aba4db",
+    "default": "Údaj zatím není vyplněn",
+    "groups": ["Kontakt"]
+  },
+  {
+    "key": "text_f45fe915",
+    "default": "Telefon – doplnit",
+    "groups": ["Kontakt"]
+  },
+  {
+    "key": "text_743a6e51",
+    "default": "E-mail – doplnit",
+    "groups": ["Kontakt"]
+  },
+  {
+    "key": "text_b1332787",
+    "default": "WhatsApp",
+    "groups": ["Kontakt"]
+  },
+  {
+    "key": "text_43eac566",
+    "default": "WhatsApp – doplnit",
+    "groups": ["Kontakt"]
+  },
+  {
+    "key": "text_c57a0f9c",
+    "default": "(doplnit)",
+    "groups": ["Kontakt"]
+  },
+  {
+    "key": "text_3eec8e82",
+    "default": "I tady mě můžete",
+    "groups": ["Kontakt"]
+  },
+  {
+    "key": "text_82850f23",
+    "default": "kontaktovat",
+    "groups": ["Kontakt"]
+  },
+  {
+    "key": "text_92ef4d3c",
+    "default": "Pomozte mi dělat web užitečnější",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_925ac7ad",
+    "default": "S vaším souhlasem zjistím, které nabídky a informace jsou pro vás užitečné. Nezbytné technologie potřebuji pro správné fungování webu. Analytiku a marketing zapnu až s vaším souhlasem. Volbu můžete kdykoli změnit.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_53d59aae",
+    "default": "Zajišťují správné fungování webu a uložení vaší volby. Jsou vždy aktivní.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_ce76eca",
+    "default": "Pomáhají mi obecně zjistit návštěvnost a zájem o obsah. Zapnou se jen s vaším souhlasem.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_d5421228",
+    "default": "Marketingové a externí obsah",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_8c7b7727",
+    "default": "Umožní načíst Google Mapy, videa YouTube / Vimeo, virtuální prohlídky Matterport a měření reklam Google a Meta. Zapnou se jen s vaším souhlasem.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_33508c48",
+    "default": "Povolit vše",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_c8c34c97",
+    "default": "Jen nezbytné",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_427c3ef1",
+    "default": "Uložit nastavení",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_edb8f946",
+    "default": "Nastavení",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_c8504116",
+    "default": "Více o cookies",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_43d4a68e",
+    "default": "Stručně a srozumitelně: co tyto technologie dělají a co si můžete zvolit.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_6ac3c03a",
+    "default": "Co jsou cookies?",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_794d61e4",
+    "default": "Cookies jsou malé textové soubory nebo obdobné technologie, které web při návštěvě ukládá nebo čte ve vašem zařízení či prohlížeči.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_16456579",
+    "default": "K čemu slouží?",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_97ae2de2",
+    "default": "Pomáhají webu správně fungovat, pamatovat si vaše nastavení, obecně měřit návštěvnost a zájem o obsah a podle uděleného souhlasu vyhodnocovat marketing a reklamy.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_e806fdea",
+    "default": "Jsou potřeba pro fungování webu a uložení vaší volby. Jsou vždy aktivní a nevyžadují souhlas.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_f63c8921",
+    "default": "Pomáhají mi v obecné a anonymní podobě porozumět návštěvnosti a tomu, které informace lidi zajímají. Do udělení souhlasu jsou vypnuté.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_3eb4e4a4",
+    "default": "Pomáhají vyhodnotit účinnost reklam a zobrazovat relevantnější sdělení. Do udělení souhlasu jsou vypnuté.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_3555949a",
+    "default": "Externí nástroje",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_78c80172",
+    "default": "Po vašem souhlasu může web využít Google Analytics, Google Tag Manager, Google Ads nebo Meta Pixel. Marketingový souhlas také umožní načíst Google Mapy, YouTube / Vimeo a virtuální prohlídky Matterport. Jejich poskytovatelé pak mohou související údaje zpracovávat podle svých podmínek. Před souhlasem se tyto nástroje neaktivují.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_592360ae",
+    "default": "Volbu máte pod kontrolou",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_305eb48c",
+    "default": "Souhlas můžete kdykoli změnit nebo odvolat přes odkaz „Nastavení cookies“ v patičce. Zavření tohoto okna vaši volbu nijak nemění.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_610fc62c",
+    "default": "Zavřít informace",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_7f9d3948",
+    "default": "Oficiální logo doplníme",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_eeda464d",
+    "default": "Ilustrační fotografie, ne konkrétní nabídka",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_791d3fc7",
+    "default": "DALŠÍ HORIZONT · EGYPTSKO ČESKÁ REALITY",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_b773a070",
+    "default": "Nemovitosti v Egyptě",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_b0f8d4ec",
+    "default": "Vaše místo",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_a583c3eb",
+    "default": "u Rudého moře.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_fca12a28",
+    "default": "Druhý domov u moře, místo pro vlastní pobyt nebo příležitost ke zhodnocení vašich prostředků.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_f5f4e7aa",
+    "default": "Ve spolupráci s prověřenými partnerskými značkami vám pomáhám se zprostředkováním koupě i pronájmu apartmánu v Egyptě. Pomůžeme vám zorientovat se na místním trhu, prověřit vybranou nemovitost a v případě potřeby zajistit také její dovybavení nebo rekonstrukci podle vašich představ.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_766a8e44",
+    "default": "Celým procesem vás provedeme přehledně v češtině a s dostatkem prostoru pro všechny vaše otázky. Hurghadu dobře známe a chceme, abyste se zde dokázali rychle zorientovat a cítili se jako doma.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_ab0562ff",
+    "default": "Právní podporu máme k dispozici přímo na místě, a to v českém i arabském jazyce.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_2eda435b",
+    "default": "Vy si vyberete. My nemovitost prověříme a pomůžeme vám celý proces bezpečně realizovat.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_bf353012",
+    "default": "Probrat možnosti",
+    "groups": ["Egypt", "Společné sekce"]
+  },
+  {
+    "key": "text_bfb1d53a",
+    "default": "Energetická náročnost",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_671fc9cc",
+    "default": "Vypracováváme pro vás energetickou hodnotu.",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_a74b39dd",
+    "default": "Energetická třída zatím není uvedena.",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_8d0ca1ae",
+    "default": "Do dodání průkazu uvádíme třídu G. Skutečnou energetickou náročnost doplníme po jeho vypracování.",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_a9707473",
+    "default": "Google hodnocení",
+    "groups": ["Reference"]
+  },
+  {
+    "key": "text_9083db65",
+    "default": "Všechny recenze na Google",
+    "groups": ["Reference"]
+  },
+  {
+    "key": "text_8d349e8c",
+    "default": "Odkaz na Google profil doplníme",
+    "groups": ["Reference"]
+  },
+  {
+    "key": "text_356d6d26",
+    "default": "Zpráva úspěšně odeslána",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_39229e9",
+    "default": "Děkuji za vaši zprávu.",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_bf9bb4cb",
+    "default": "Ozvu se vám co nejdříve osobně.",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_f341fdb",
+    "default": "Těším se na společný další krok.",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_4bc65915",
+    "default": "Můžete mě také najít zde",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_b063d907",
+    "default": "Webová stránka",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_dc4c9590",
+    "default": "Jméno a příjmení *",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_9efa9d9c",
+    "default": "Telefon",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_3ddc6c6e",
+    "default": "E-mail *",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_a1e6580",
+    "default": "valuation",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_ce6c3fec",
+    "default": "Typ *",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_df7a92dd",
+    "default": "property_type",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_6c22091e",
+    "default": "Vyberte",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_c5f88540",
+    "default": "Byt",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_53e8301b",
+    "default": "Dům",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_61fb5738",
+    "default": "Pozemek",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_bf0381c9",
+    "default": "Komerční",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_b07b62cd",
+    "default": "Jiné",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_16f7feb2",
+    "default": "Lokalita *",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_b3db38f6",
+    "default": "property_location",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_feb52b2a",
+    "default": "Plocha (m²)",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_4f67504c",
+    "default": "property_size",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_1a684df7",
+    "default": "Souhlasím se zpracováním osobních údajů za účelem vyřízení dotazu dle",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_7447c27d",
+    "default": "zásad ochrany osobních údajů",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_cd345cbd",
+    "default": "consent",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_21918751",
+    "default": "error",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_dc4c1237",
+    "default": "Odeslání se nepovedlo. Zkuste to prosím znovu za chvíli.",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_53542549",
+    "default": "sending",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_9b9a1df1",
+    "default": "Odesílám…",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_608c845b",
+    "default": "Odeslat",
+    "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_cd10f9a8",
+    "default": "Co najdete v okolí",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_b4013e55",
+    "default": "Důležitá místa a vzdálenosti od nemovitosti.",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_81c97f33",
+    "default": "cs-CZ",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_7d605fc6",
+    "default": "Vzdálenosti jsou orientační. U každého místa je uvedeno, zda jde o pěší trasu, nebo vzdálenost vzdušnou čarou.",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_df8a3c78",
+    "default": "Fotografii připravujeme",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_c8d7259a",
+    "default": "Ukázka",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_880a93ac",
+    "default": "Detail nabídky",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_ed900127",
+    "default": "Nové nabídky pro vás právě připravuji. Mezitím mi napište, jakou nemovitost hledáte.",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_b4aab7f6",
+    "default": "Předchozí nemovitost",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_2e709346",
+    "default": "Další nemovitost",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_50e35230",
+    "default": "Ukázková reference",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_f17f90f6",
+    "default": "Reference na videu",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_d7e7eae9",
+    "default": "Slovo mají klienti",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_8532cb1",
+    "default": "Posuňte do strany →",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_459fcb86",
+    "default": "Video doplníme",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_a828a98a",
+    "default": "První krok k dobrému rozhodnutí",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_9487b18",
+    "default": "Chci znát cenu",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_f77f5760",
+    "default": "své nemovitosti.",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_d2491a18",
+    "default": "Pro nové klienty připravím odhad nemovitosti",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_c501ef30",
+    "default": "zdarma.",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_626bf6ab",
+    "default": "Napište mi pár základních údajů. Zjistíme reálnou cenu podle skutečných prodejů v okolí — nezávazně a diskrétně.",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_5d501bac",
+    "default": "Odpověď obvykle do dvou pracovních dnů",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_4c0b2e49",
+    "default": "Bez závazků. Bez nátlaku.",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_56d30349",
+    "default": "Získat odhad nemovitosti zdarma",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_a03d3eee",
+    "default": "O mně",
+    "groups": ["Společné sekce", "Identita"]
+  },
+  {
+    "key": "text_173df481",
+    "default": "Reality jsou pro mě o lidech.",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_e52421b",
+    "default": "Práce s lidmi mě baví a naplňuje. Právě při ní můžu naplno využít své schopnosti a pomáhat s rozhodnutími, která mají v životě skutečnou váhu.",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_3dae21c7",
+    "default": "Největší smysl mi dává, když celý postup dává smysl i vám. Když přinese klid, radost z nového bydlení nebo řešení důležité situace — a posune vás blíž k tomu, co od života chcete. Nemovitost je součást příběhu. Základem je pro mě lidský přístup.",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_bb9bc319",
+    "default": "Více o mně",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_59f62998",
+    "default": "Odhad ceny",
+    "groups": ["Patička"]
+  },
+  {
+    "key": "text_9c40b789",
+    "default": "Nastavení cookies",
+    "groups": ["Patička"]
+  },
+  {
+    "key": "text_b52c1ebc",
+    "default": "Přeskočit na obsah",
+    "groups": ["Navigace"]
+  },
+  {
+    "key": "text_5b1badae",
+    "default": "Odhad zdarma",
+    "groups": ["Navigace"]
+  },
+  {
+    "key": "text_de98c133",
+    "default": "Články pro klienty",
+    "groups": ["Články – vyhledávače"]
+  },
+  {
+    "key": "text_6df2ddaf",
+    "default": "Informace a upozornění pro majitele nemovitostí: daň z nemovitosti, PNB a předání, hypotéky a úrokové sazby, bezpečný převod peněz.",
+    "groups": ["Články – vyhledávače"]
+  },
+  {
+    "key": "text_f15defa8",
+    "default": "Při prodeji, koupi i vlastnictví nemovitosti je potřeba hlídat spoustu povinností. Tady najdete přehledně shrnuté, co se klientů nejčastěji týká — daň z nemovitosti, předání, hypotéky i peníze.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_8f454525",
+    "default": "Číst",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_eeb815cc",
+    "default": "Články mají obecný informační charakter a nenahrazují daňové ani právní poradenství. U konkrétní nemovitosti vždy ověřte aktuální podmínky.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_b98d29",
+    "default": "Tento článek už tu není.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_a7b94aa9",
+    "default": "Zpět na články",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_6846a75a",
+    "default": "Máte dotaz k tomu, co jste si přečetli?",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_a8b8e314",
+    "default": "Rád to s vámi projdu osobně — i u vaší konkrétní nemovitosti. Zavolejte nebo napište.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_915bb29b",
+    "default": "Kontaktovat Petra",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_2fd0bf5a",
+    "default": "Prodej nemovitosti",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_5620ddd9",
+    "default": "Od reálné ceny až po předání klíčů. Srozumitelně, osobně a bez zbytečného tlaku.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_deb843f8",
+    "default": "Společně stanovíme cenu, časový plán a způsob prezentace. Postarám se o zájemce, vyjednávání a koordinaci smluv i předání.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_b90fd83",
+    "default": "Koupě",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_22356612",
+    "default": "Domov, který vám bude sedět. Pomohu s výběrem, prověřením i vyjednáváním.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_2e144c21",
+    "default": "Probereme vaše potřeby a rozpočet, projdeme dostupné možnosti i rizika. Rozhodnutí zůstává vždy na vás, bez tlaku na rychlou koupi.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_2ddc41ab",
+    "default": "Pronájem",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_b6df7237",
+    "default": "Spolehlivý nájemník, jasná smlouva a klidnější správa vašeho majetku.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_8adc5c7b",
+    "default": "Připravím nabídku, koordinuji prohlídky a pomohu prověřit zájemce. Ve spolupráci s právníkem zajistíme smlouvu a předávací protokol.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_d4516fdf",
+    "default": "Odhad a využití majetku",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_89030f2b",
+    "default": "Kolik má nemovitost hodnotu a jaké možnosti vám může otevřít?",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_ea1a5fd8",
+    "default": "Odhad vychází ze skutečných prodejů v konkrétní lokalitě. Probereme prodej, pronájem i další využití majetku, včetně nákladů a rizik, bez slibů zaručeného zhodnocení.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_893f6397",
+    "default": "Prezentace a marketing",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_aeda6c5d",
+    "default": "Fotografie, video a promyšlená příprava. Nemovitost ukážeme pravdivě a kvalitně.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_af3a8ead",
+    "default": "Navrhnu úpravy, které mají smysl. Kvalitní fotografie, virtuální prohlídka a cílená prezentace pomohou oslovit relevantní zájemce.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_8480ee5",
+    "default": "Právní a hypoteční servis",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_b6222f53",
+    "default": "Odborníci, jasné smlouvy a bezpečný postup při zásadním životním rozhodnutí.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_31ff15cd",
+    "default": "Ve spolupráci s advokáty a hypotečními specialisty projdeme financování, úschovu i převod. Podmínky a související náklady si vysvětlíme předem.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_869f5fa0",
+    "default": "Nezávazná schůzka",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_fb8e4ef3",
+    "default": "Poznáme se, prohlédnu nemovitost a probereme vaše představy i časový plán.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_82b5ef37",
+    "default": "Cena a strategie",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_497e31d3",
+    "default": "Připravím analýzu trhu a navrhnu cenu i způsob prodeje, který dává smysl.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_6b5f3601",
+    "default": "Příprava a prezentace",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_aa498825",
+    "default": "Homestaging, fotografie, video a texty. Nemovitost ukážeme v nejlepším světle.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_1efcba93",
+    "default": "Prohlídky a vyjednávání",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_7dfaadd9",
+    "default": "Prověřím zájemce, vedu prohlídky a vyjednám nejlepší podmínky.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_a1e83519",
+    "default": "Smlouvy a předání",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_11a945ad",
+    "default": "Právní servis, úschova kupní ceny, převod na katastru a předání klíčů.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_412ba249",
+    "default": "Jana a Martin",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_78944ef1",
+    "default": "Prodej bytu 3+1, Praha 3",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_96e2816c",
+    "default": "Petr nám vysvětlil každý krok a byl vždy k zastižení. Prodej proběhl rychleji, než jsme čekali, a bez jediného stresu.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_f548022e",
+    "default": "Tomáš K.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_b4891857",
+    "default": "Koupě domu, Praha-západ",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_96fd4394",
+    "default": "Oceňuji, že nám nic netlačil. Upozornil i na věci, které by nám jiný makléř raději zamlčel.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_c150daa2",
+    "default": "Eva S.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_ec97308e",
+    "default": "Pronájem bytu, Praha 7",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_f2842dcd",
+    "default": "Lidský přístup a profesionální výsledek. Nájemníka jsme měli do dvou týdnů.",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_ea663bdb",
+    "default": "Prodej bytu",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_7882a68e",
+    "default": "Koupě domu",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_64b93b5b",
+    "default": "Pronájem bytu",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_d9a26c36",
+    "default": "Klient",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_82d90016",
+    "default": "Odhad nemovitosti",
+    "groups": ["Služby a reference"]
+  },
+  {
+    "key": "text_d7e1af08",
+    "default": "Egypt",
+    "groups": ["Služby a reference", "Identita"]
+  },
+  {
+    "key": "text_6921076f",
+    "default": "Daň z nemovitosti: co by měl každý vlastník vědět",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_6d8a6f29",
+    "default": "Daně",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_e541bf65",
+    "default": "Kdo daň platí, kdy ji řešit a co se v posledních letech změnilo. Přehled povinností, na které majitelé nejčastěji zapomínají.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_fe202f72",
+    "default": "Daň z nemovitostí je místní daň, kterou platí vlastník pozemku, bytu nebo domu. Vzniká dnem, kdy se vlastnictví zapíše do katastru nemovitostí — daň přitom platí ten, kdo vlastníkem byl k 1. lednu daného roku. Pokud tedy nemovitost během roku prodáte, daň za celý rok patří stále prodávajícímu.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_1fe1ab71",
+    "default": "Daň se přiznává na finančním úřadě: daňové přiznání se podává do 31. března a daň se platí do 31. května. Nový vlastník tedy obvykle poprvé řeší daň až v roce následujícím po nákupu.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_c9465293",
+    "default": "Co se změnilo",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_6424f80f",
+    "default": "Od roku 2024 se daň z nemovitostí výrazně zvedla — základní sazba se zvýšila na 1,5násobek a zanikla většina dosavadních slev (například sleva na manžela nebo na vyhrazené technické vybavení domů). Od roku 2025 se pro bytové jednotky a jednotky v rodinných domech používají také nové, zvýšené průměrné ceny, ze kterých se daň počítá.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_73540348",
+    "default": "Na co si dávat pozor",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_48778603",
+    "default": "Stavební úpravy (nová terasa, garáž, nadstandard) zpravidla mění zápočet plochy — je potřeba podat nové přiznání.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_a7952c64",
+    "default": "Zapomenuté přiznání znamená penále. Pokud si nejste jistí, zeptejte se daňového poradce nebo finančního úřadu.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_fa38f252",
+    "default": "Zálohu i konkrétní výši daně si vždy ověřte u příslušného finančního úřadu — v tomto článku nejsou žádná konkrétní čísla, ty se mění.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_4cb667bf",
+    "default": "Jde o obecné informace, nikoli daňové poradenství. U konkrétní nemovitosti vždy doporučuji ověřit výši daně aktuálně.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_ed93d87f",
+    "default": "PNB — protokol o předání a převodu nemovitosti: co nepodcenit",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_562e8d70",
+    "default": "Prodej a předání",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_79e6f27e",
+    "default": "Protokol o předání je dokument, který chrání obě strany. Co má obsahovat a jaké povinnosti má majitel při předání nemovitosti.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_3bd145",
+    "default": "Co je to PNB",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_fc736107",
+    "default": "PNB (protokol o předání a převodu nemovitosti) je dokument, kterým se nemovitost fakticky předává z rukou do rukou. Zapisuje se do něj den předání, stavy měřidel, počet předaných klíčů, stav vybavení i případné dohody o drobných nedostatcích.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_7b35486c",
+    "default": "Pro kupujícího je PNB důkazem, kdy nemovitost převzal a v jakém stavu. Pro prodávajícího zase určuje okamžik, kdy přecházejí nebezpečí náhodné zkázy i povinnosti k dodavatelům energií. Podepisuje se obvykle v den předání, tedy po vstupu kupní ceny do úschovy a po prohlídce.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_efc7e5d2",
+    "default": "Povinnosti majitele před a při předání",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_2bc5c619",
+    "default": "Odhlásit a přepsat energie — elektřinu, plyn i vodu. Dodavatelům je potřeba nahlásit stavy měřidel a ukončení smluv; k tomu se nejlépe vystaví jednoduchá plná moc.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_14deb085",
+    "default": "Připravit stavy měřidel — nasnímat aktuální stavy elektroměrů, plynu i vody přímo k datu předání.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_55472074",
+    "default": "Předat kompletní dokumentaci — prohlašovací dokumenty, povolení ke stavbě a kolaudace, servisní zprávy (krbová kachna, klimatizace, rekuperace), servisní smlouvy a klíče.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_f44f9d81",
+    "default": "V bytě ve společném vlastnictví včas hlásit změnu vlastníka správci domu (SVJ/MD) a řešit úschovu — doporučuji nechat si notářsky potvrzenou schůzi účtů, případně zpracovat ČORECH.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_42f357e9",
+    "default": "Předat nemovitost uklizenou a bez osobních věcí — dohody o tom, co zůstává (osazení, kuchyňská linka, spotřebiče), by měly být v kupní smlouvě, ne jen v jednání.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_53293746",
+    "default": "Nezaplacené energie ani zálohy prodávajícího nezastihnou — přesto energie ihned po předání odhlaste.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_bb3aa464",
+    "default": "Vady, které se zanedbaly v PNB, se pak hůře řeší — proto je v protokolu zmiňovat otevřeně.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_cfaf9ca7",
+    "default": "Den předání je i den přechodu povinností — jasně sjednoťte, od kdy na koho přechází pojistka nemovitosti.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_f9c12023",
+    "default": "PNB je drobný dokument, který ale ušetří spoustu sporů. Připravím ho klientům jako součást kompletního servisní a právního balíčku.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_3e35cd61",
+    "default": "Úrokové sazby a hypotéky: jak se v nich zorientovat",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_19c93ccc",
+    "default": "Hypotéky",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_2a1ac87a",
+    "default": "Jak úroková sazba ovlivňuje vaši splátku, proč se nesčítají jablka a hrušky u fixace a na co si dát pozor před podpisem hypoteční smlouvy.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_85ab71f7",
+    "default": "Sazba a splátka jdou ruku v ruce",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_e1b701aa",
+    "default": "Výše úrokové sazby je jeden z hlavních faktorů, kolik za hypotéku zaplatíte. I malý rozdíl v sazbě se na 30 let úvěru projeví statitisíce korun. Proto se vyplatí hypotéku řešit v momentě, kdy je na to vhodné na trhu — a hlavně když je to řešitelné pro vaši rodinnou situaci.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_33549e7",
+    "default": "Fixace a refinancování",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_3da20c4b",
+    "default": "Fixace je doba, po kterou je sazba zafixovaná — obvykle 3 až 10 let. Před koncem fixace se vyplatí hypotéku řešit s předstihem: přejít k jiné bance nebo si refinancovat sazbu u současné. Banky bývají ochotné vyjít vstříc hlavně tehdy, když klient přichází s konkurenční nabídkou.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_51d7903d",
+    "default": "Nesrovnávejte jen úrokovou sazbu, ale celé RPSN — v něm jsou i poplatky a platební podmínky.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_ece99fa7",
+    "default": "Dávejte si pozor na propagační sazby — často platí jen krátkou dobu nebo za specifických podmínek.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_2bfde9ae",
+    "default": "Mějte v hlavě rezervu — splátka se počítá podle aktuálních sazeb, které se mění. Nejbližší sazbu i podmínky zjistíte u banky nebo u hypotečního poradce.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_b333c102",
+    "default": "Před podpisem se ujistěte, že rozumíte sankcím za předčasnou splatnost — dnes už se to často dá řešit přepočtem nebo překlopením do nové fixace.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_60f5bbff",
+    "default": "Aktuální sazby se neustále mění — v tomto článku nejsou žádná konkrétní čísla, ta vždy ověřte u banky nebo hypotečního poradce. K hypotečnímu poradenství mám dlouholeté zázemí, rád vás nasměruju.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_a8e815ae",
+    "default": "Jak bezpečně převést peníze při prodeji nemovitosti",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_29d665ac",
+    "default": "Hotovost, převod z ruky do ruky, úschova u notáře — jaké riziky nese každá varianta a proč je pro obě strany nejbezpečnější úschova.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_b09cb2cd",
+    "default": "Největší transakce si zaslouží největší péči",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_84d9254c",
+    "default": "Koupě nemovitosti je pro většinu lidí největší finanční transakce v životě. Přesto se stále občas setkávám s pokusy o převod peněz „z ruky do ruky“ nebo o vklad hotovosti, který nemá žádné doklady. I proto doporučuji každou platbu při prodeji nemovitosti jednoznačně zdokumentovat.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_d03ba942",
+    "default": "Úschova — pojistka pro obě strany",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_81b3ab4c",
+    "default": "Nejbezpečnější variantou je úschova kupní ceny u notáře, advokáta nebo v bance. Peníze se z úschovy uvolní až po splnění sjednaných podmínek — typicky po vkladu vlastnického práva do katastru. Kupující tak není vystaven riziku, že peníze pošle, ale nemovitost nedostane. Prodávající má jistotu, že peníze jsou zajištěné a dostane je hned po zapsání do katastru.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_f719e07",
+    "default": "Hotovost — nikdy nepřenášejte bez dokladů. Počítejte s tím, že banky mohou u neobvyklých transakcí klást otázky, a občané mají povinnost doložit původ peněz.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_7e967031",
+    "default": "Kupní cena musí být v smlouvě zapsaná pravdivě — umělé snížení ceny kvůli dani přináší problémy oběma stranám.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_e3c0810b",
+    "default": "Zjištěné dluhy — nechte prověřit, zda na nemovitosti nevisí exekuce, věcná břemena — katastr je veřejný a dá se dohledat.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_a2e22def",
+    "default": "Prodej s čerpáním hypotéky — sjednejte termíny tak, aby peníze z banky a z vlastních zdrojů přicházely k datu vkladu.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_41ec593f",
+    "default": "Energetický štítek: povinnost, která se při prodeji řeší",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_2b04caea",
+    "default": "Vlastnictví",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_bbe2315a",
+    "default": "Energetický štítek se při prodeji i pronájmu vyžaduje. Kdo ho musí mít, kolik stojí a jaké sankce za chybějící dokument hrozí.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_6cb556a2",
+    "default": "Kdy je štítek potřeba",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_72d7c0bb",
+    "default": "Při prodeji nebo pronájmu bytu, domu či nebytového prostoru je prodávající či pronajímatel povinen předat zájemci energetický štítek a uvést energetickou třídu v inzerátu. V praxi to znamená, že štítek potřebujete dřív, než vydáte inzerát — ne až po podpisu smlouvy.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_376d4192",
+    "default": "Povinnost doložit štítek se týká i starších domů — věk stavby neosvobozuje.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_a09628b7",
+    "default": "V inzerátu i v smlouvě musí být uvedená energetická třída — zvláště u pronájmů se na to kontrola stavebních úřadů často zaměřuje.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_46524c0d",
+    "default": "Penále za chybějící štítek sahá až k částkám v řádech statisíců korun — vždy se konkrétní výše a podmínky ověřte.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_5249604b",
+    "default": "Kvalitní štítek nechte zpracovat odborníkem — levné „papírové“ štítky bez prohlídky nemovitosti mohou být nesprávné.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_add6d896",
+    "default": "Energetický štítek vypracovává energetický specialista na základě prohlídky nebo dokumentace. Doporučuji ho řešit v úvodu prodeje, ne až na poslední chvíli.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_c8f9b370",
+    "default": "Petr Pavlát reality",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_ca3b48a4",
+    "default": "Bydlení v pohodě. U nás i u moře.",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_30deb718",
+    "default": "Petr Pavlát",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_2e383e4",
+    "default": "Celé Česko · zázemí v Praze a okolí",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_a34daaf1",
+    "default": "Zázemí v Česku a Egyptě, se sídlem v Praze a Hurghadě",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_ad4ecaa4",
+    "default": "STELAR reality",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_9a8bd13f",
+    "default": "STELAR Advisory",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_d310e30a",
+    "default": "Egyptsko-Česká Reality",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_216c339d",
+    "default": "Mimořádně úsporná",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_3ed0f17b",
+    "default": "Velmi úsporná",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_73c0b3c2",
+    "default": "Úsporná",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_6dba65f1",
+    "default": "Méně úsporná",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_e5c861b",
+    "default": "Nehospodárná",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_84d292e0",
+    "default": "Velmi nehospodárná",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_e43fb7ea",
+    "default": "Mimořádně nehospodárná",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_578155da",
+    "default": "Škola",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_7f81f6c7",
+    "default": "Školka",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_1436fd25",
+    "default": "Potraviny",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_7c4f7ecc",
+    "default": "Pošta",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_b49388a1",
+    "default": "Lékař",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_bd83d141",
+    "default": "Lékárna",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_e54e30d0",
+    "default": "Zastávka",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_ca5938d9",
+    "default": "Park",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_2cd122c2",
+    "default": "Další místo",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_bf14c487",
+    "default": "pěšky",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_18e69149",
+    "default": "vzdušnou čarou",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_50d4349d",
+    "default": "Aktivní",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_a9976168",
+    "default": "Rezervováno",
+    "groups": ["Nabídka"]
+  }
+]

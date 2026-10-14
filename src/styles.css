@@ -1,0 +1,1181 @@
+@import "tailwindcss" source(none);
+@import "tw-animate-css";
+@import "@fontsource/dm-serif-display/latin-ext-400.css";
+@import "@fontsource/manrope/latin-ext-400.css";
+@import "@fontsource/manrope/latin-ext-500.css";
+@import "@fontsource/manrope/latin-ext-600.css";
+@import "@fontsource/manrope/latin-ext-700.css";
+@import "@fontsource/dm-serif-display/latin-400.css";
+@import "@fontsource/manrope/latin-400.css";
+@import "@fontsource/manrope/latin-500.css";
+@import "@fontsource/manrope/latin-600.css";
+@import "@fontsource/manrope/latin-700.css";
+@source "../src";
+
+@custom-variant dark (&:is(.dark *));
+.brand-media-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  background: var(--surface);
+  color: var(--muted-foreground);
+  border: 1px dashed var(--border);
+  font: 11px var(--font-sans);
+  text-align: center;
+}
+.brand-media-placeholder.brand-mark {
+  font: 20px var(--font-display);
+  border-radius: 50%;
+}
+.home-hero .hero-photo {
+  border-radius: 2px 2px 80px 2px;
+  box-shadow: 0 20px 55px -35px #253f3750;
+}
+.home-hero .hero-copy {
+  padding-block: clamp(0px, 2vw, 24px);
+}
+.home-hero .hero-title {
+  letter-spacing: -0.04em;
+}
+.property-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  box-shadow: 0 3px 12px -10px color-mix(in oklab, var(--ink) 25%, transparent);
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+.property-card:hover,
+.property-card:focus-within {
+  border-color: color-mix(in oklab, var(--accent) 40%, var(--border));
+  box-shadow: 0 8px 22px -16px color-mix(in oklab, var(--ink) 30%, transparent);
+}
+.property-info {
+  background: linear-gradient(
+    180deg,
+    var(--card),
+    color-mix(in oklab, var(--secondary) 35%, var(--card))
+  );
+}
+.property-card > a:focus-visible {
+  outline-offset: 4px;
+  border-radius: var(--radius);
+}
+.property-detail-arrow {
+  transition: transform 0.25s;
+}
+.property-card:hover .property-detail-arrow {
+  transform: translate(2px, -2px);
+}
+@media (max-width: 640px) {
+  .home-hero .hero-photo {
+    border-bottom-right-radius: 45px;
+  }
+}
+
+@theme inline {
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-status-active: var(--status-active);
+  --color-status-reserved: var(--status-reserved);
+  --color-status-sold: var(--status-sold);
+  --color-placeholder: var(--placeholder);
+  --color-sea: var(--sea);
+  --color-sea-surface: var(--sea-surface);
+  --color-valuation: var(--valuation);
+  --color-valuation-foreground: var(--valuation-foreground);
+  --color-valuation-surface: var(--valuation-surface);
+  --color-valuation-ink: var(--valuation-ink);
+}
+
+:root {
+  --radius: 0.375rem;
+  --background: oklch(0.99 0.001 85);
+  --foreground: oklch(0.22 0.015 165);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.015 165);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.015 165);
+  --primary: oklch(0.82 0.041 74);
+  --primary-foreground: oklch(0.25 0.018 60);
+  --secondary: oklch(0.955 0.01 85);
+  --secondary-foreground: oklch(0.22 0.015 165);
+  --muted: oklch(0.955 0.01 85);
+  --muted-foreground: oklch(0.5 0.015 165);
+  --accent: oklch(0.52 0.047 65);
+  --accent-foreground: oklch(0.2 0.02 60);
+  --destructive: oklch(0.55 0.2 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.9 0.01 85);
+  --input: oklch(0.86 0.012 85);
+  --ring: oklch(0.52 0.047 65);
+  --surface: oklch(0.97 0.003 165);
+  --sea: oklch(0.4 0.065 205);
+  --sea-surface: oklch(0.96 0.015 205);
+  --valuation: oklch(0.8 0.046 72);
+  --valuation-foreground: oklch(0.25 0.018 60);
+  --valuation-ink: oklch(0.43 0.05 65);
+  --valuation-surface: oklch(0.965 0.014 175);
+  --shadow-valuation: 0 5px 14px -7px color-mix(in oklab, var(--ink) 24%, transparent);
+  --ink: oklch(0.2 0.02 165);
+  --ink-foreground: oklch(0.96 0.008 85);
+  --status-active: oklch(0.5 0.09 160);
+  --status-reserved: oklch(0.62 0.12 70);
+  --status-sold: oklch(0.45 0.01 165);
+  --placeholder: oklch(0.93 0.06 90);
+  --shadow-soft: 0 20px 50px -25px color-mix(in oklab, var(--ink) 30%, transparent);
+  --connector-line: color-mix(in oklab, var(--accent) 65%, var(--background));
+  --connector-guide: color-mix(in oklab, var(--accent) 15%, var(--background));
+  --connector-sea: color-mix(in oklab, var(--sea) 65%, var(--background));
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.18;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+    /* Keep the requested slow changes in light intensity, without moving the icons.
+       This exception shares the layer of the global motion reset. */
+    .contact-attention-active::before {
+      animation: contact-halo 5s 1s ease-in-out 1 !important;
+    }
+    .social-attention a.social-icon {
+      animation: social-glow 5s 1s ease-in-out 1 !important;
+    }
+  }
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: 82rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) {
+    padding-inline: 2.5rem;
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.6rem;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition:
+    background-color 0.25s,
+    color 0.25s,
+    transform 0.25s,
+    border-color 0.25s;
+  &:hover {
+    transform: translateY(-1px);
+  }
+  &:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+@utility btn-primary {
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  &:hover {
+    background: color-mix(in oklab, var(--color-primary) 85%, var(--color-accent));
+  }
+}
+@utility btn-outline {
+  border: 1px solid color-mix(in oklab, var(--color-foreground) 25%, transparent);
+  color: var(--color-foreground);
+  &:hover {
+    border-color: var(--color-foreground);
+  }
+}
+@utility btn-light {
+  background: var(--color-ink-foreground);
+  color: var(--color-ink);
+  &:hover {
+    background: var(--color-card);
+  }
+}
+
+@utility field {
+  width: 100%;
+  background: var(--color-card);
+  border: 1px solid var(--color-input);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  color: var(--color-foreground);
+  transition: border-color 0.2s;
+  &:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-accent) 20%, transparent);
+  }
+  &[aria-invalid="true"] {
+    border-color: var(--color-destructive);
+  }
+}
+
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+@utility reveal {
+  animation: reveal-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility img-zoom {
+  transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.brand-lockup {
+  position: relative;
+}
+.brand-mark {
+  animation: brand-arrive 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.brand-name {
+  animation: brand-name-arrive 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.brand-claim {
+  animation: reveal-up 0.35s 0.45s both;
+}
+.brand-compact .brand-mark {
+  width: 1.75rem;
+  height: 1.75rem;
+  animation: none;
+}
+.brand-compact .font-display {
+  font-size: 1rem;
+}
+.brand-compact .brand-name {
+  animation: none;
+}
+.cta-arrive {
+  animation: cta-arrive 0.4s 1.35s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.valuation-cta {
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-valuation);
+  border: 1px solid color-mix(in oklab, var(--valuation-ink) 20%, transparent);
+}
+.valuation-cta:hover svg {
+  transform: translate(2px, -2px);
+}
+.valuation-cta svg {
+  transition: transform 0.25s;
+}
+.social-icon {
+  border: 1px solid color-mix(in oklab, currentColor 18%, transparent);
+  border-radius: 50%;
+}
+.hero-contact-hint {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.hero-contact-hint::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  left: -12px;
+  top: 50%;
+  width: 224px;
+  height: 80px;
+  transform: translateY(-50%);
+  background: radial-gradient(
+    ellipse,
+    color-mix(in oklab, var(--primary) 55%, transparent),
+    transparent 72%
+  );
+  opacity: 0;
+}
+.hero-contact-hint .social-icon {
+  width: 44px;
+  height: 44px;
+}
+.social-note {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  line-height: 1.5;
+}
+.social-note svg {
+  width: 64px;
+  height: 44px;
+  flex-shrink: 0;
+}
+.social-note span {
+  white-space: nowrap;
+}
+.contact-attention-active::before {
+  animation: contact-halo 5s 1s ease-in-out 1;
+}
+.social-attention a.social-icon {
+  /* Let the page settle for one second, then breathe three times over five seconds. */
+  animation: social-glow 5s 1s ease-in-out 1;
+}
+.contact-attention-active .social-note svg {
+  animation: contact-arrow-hint 5s 1s ease-in-out 1;
+}
+.contact-attention-active .social-note path {
+  stroke-dasharray: 1;
+  animation: contact-arrow-draw 0.8s 1s ease-out both;
+}
+.social-attention a:hover,
+.social-attention a:focus-visible {
+  background: var(--secondary);
+}
+@keyframes social-glow {
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+    background-color: transparent;
+    border-color: color-mix(in oklab, currentColor 18%, transparent);
+  }
+  16%,
+  48%,
+  80% {
+    background-color: color-mix(in oklab, var(--primary) 78%, var(--card));
+    border-color: var(--accent);
+    box-shadow:
+      0 0 0 5px color-mix(in oklab, var(--primary) 45%, transparent),
+      0 0 32px 6px color-mix(in oklab, var(--primary) 70%, transparent);
+  }
+  0%,
+  32%,
+  64%,
+  96% {
+    background-color: color-mix(in oklab, var(--primary) 18%, var(--card));
+    border-color: color-mix(in oklab, var(--accent) 55%, var(--border));
+    box-shadow: 0 0 10px 1px color-mix(in oklab, var(--primary) 20%, transparent);
+  }
+}
+@keyframes contact-halo {
+  16%,
+  48%,
+  80% {
+    opacity: 0.9;
+  }
+  0%,
+  32%,
+  64%,
+  96% {
+    opacity: 0.18;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes contact-arrow-hint {
+  0%,
+  30%,
+  60%,
+  100% {
+    transform: translateX(0);
+  }
+  12%,
+  42%,
+  74% {
+    transform: translateX(-5px);
+  }
+}
+@keyframes contact-arrow-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@media (max-width: 419px) {
+  .hero-contact-hint {
+    gap: 0.5rem;
+  }
+  .hero-contact-hint .social-icon {
+    width: 38px;
+    height: 38px;
+  }
+  .hero-contact-hint ul {
+    gap: 6px;
+  }
+  .hero-contact-hint::before {
+    width: 190px;
+  }
+  .social-note {
+    font-size: 0.7rem;
+  }
+  .social-note svg {
+    width: 32px;
+  }
+}
+.lead-success {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 360px;
+  padding: clamp(28px, 4vw, 48px);
+  border: 1px solid color-mix(in oklab, var(--accent) 24%, var(--border));
+  border-radius: 20px;
+  background:
+    radial-gradient(
+      ellipse at 50% 12%,
+      color-mix(in oklab, var(--primary) 12%, transparent),
+      transparent 65%
+    ),
+    linear-gradient(145deg, var(--surface), var(--card));
+  box-shadow: 0 16px 44px -32px color-mix(in oklab, var(--ink) 28%, transparent);
+  animation: reveal-up 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.lead-success-content {
+  width: 100%;
+  max-width: 30rem;
+  text-align: center;
+}
+.lead-success-title {
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+  line-height: 1.2;
+}
+.lead-success-copy {
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+.lead-success-social {
+  position: relative;
+  margin-top: 28px;
+  padding-top: 28px;
+}
+.lead-success-social::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 80px;
+  height: 1px;
+  transform: translateX(-50%);
+  background: color-mix(in oklab, var(--accent) 30%, var(--border));
+}
+.lead-success .social-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--card);
+}
+.success-seal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-inline: auto;
+  border-radius: 50%;
+  border: 1px solid color-mix(in oklab, var(--status-active) 18%, transparent);
+  color: var(--status-active);
+  background: color-mix(in oklab, var(--status-active) 10%, var(--card));
+  box-shadow: 0 0 0 7px color-mix(in oklab, var(--status-active) 4%, transparent);
+  animation: success-arrive 0.55s 0.1s both;
+}
+@keyframes success-arrive {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.energy-A {
+  --energy-color: #19713b;
+  --energy-text: #fff;
+}
+.energy-B {
+  --energy-color: #397a2d;
+  --energy-text: #fff;
+}
+.energy-C {
+  --energy-color: #b4ca46;
+  --energy-text: #26310a;
+}
+.energy-D {
+  --energy-color: #f4d64c;
+  --energy-text: #463900;
+}
+.energy-E {
+  --energy-color: #ef9f38;
+  --energy-text: #402705;
+}
+.energy-F {
+  --energy-color: #b94b1f;
+  --energy-text: #fff;
+}
+.energy-G {
+  --energy-color: #b93030;
+  --energy-text: #fff;
+}
+.energy-pending {
+  --energy-color: var(--secondary);
+  --energy-text: var(--accent);
+}
+.energy-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  background: var(--energy-color);
+  color: var(--energy-text);
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+.energy-scale {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+.energy-scale span {
+  padding: 7px 0;
+  text-align: center;
+  border-radius: 3px;
+  background: var(--energy-color);
+  color: var(--energy-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.energy-scale .energy-selected {
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+}
+.hero-photo {
+  position: relative;
+  animation: photo-reveal 0.55s 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.hero-photo img {
+  animation: photo-settle 0.55s 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 45%;
+  height: 2px;
+  background: var(--accent);
+  transform-origin: left;
+}
+.hero-stage,
+.hero-title {
+  animation: brand-name-arrive 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.hero-slogan,
+.hero-description {
+  animation: editorial-enter 0.35s 0.45s both;
+}
+.hero-actions {
+  animation: editorial-enter 0.4s 1.35s both;
+}
+.hero-social {
+  opacity: 1;
+}
+.home-hero .cta-arrive {
+  animation: none;
+}
+.hero-trust {
+  animation: editorial-enter 0.3s 1.75s both;
+}
+.partner-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.75rem, 2vw, 1.75rem);
+  max-width: 740px;
+  margin-inline: auto;
+}
+.partner-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  text-align: center;
+}
+.partner-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  line-height: 1.45;
+}
+.partner-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  max-width: 100%;
+  height: 96px;
+  margin-top: 8px;
+}
+.partner-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.partner-logo-compact {
+  width: 132px;
+  height: 76px;
+}
+.partner-logo-egypt {
+  overflow: hidden;
+}
+.partner-logo-egypt img {
+  /* Balance the original's transparent margins with STELAR's tightly framed artwork. */
+  transform: scale(1.3);
+}
+.hero-trust .partner-grid {
+  font-size: 0.75rem;
+}
+@media (max-width: 639px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-trust {
+    margin-top: 1rem;
+  }
+  .hero-description {
+    margin-top: 1rem;
+  }
+  .hero-social {
+    margin-top: 1rem;
+  }
+}
+.egypt-band {
+  background: var(--sea-surface);
+}
+.egypt-band .eyebrow {
+  color: var(--sea);
+}
+.motion-ready {
+  transition:
+    opacity 0.8s ease,
+    transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1),
+    clip-path 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.motion-ready:not(.motion-visible) {
+  opacity: 0;
+}
+.motion-ready[data-motion="rise"]:not(.motion-visible) {
+  transform: translateY(38px);
+}
+.motion-ready[data-motion="slide"]:not(.motion-visible) {
+  transform: translateX(-24px);
+}
+.motion-ready[data-motion="mask"]:not(.motion-visible) {
+  clip-path: inset(0 0 12% 0);
+  transform: translateY(24px);
+}
+.motion-ready[data-motion="mask"].motion-visible {
+  clip-path: inset(0);
+}
+.motion-ready[data-motion="line"] {
+  position: relative;
+}
+.motion-ready[data-motion="line"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.motion-ready[data-motion="line"].motion-visible::before {
+  transform: scaleX(1);
+}
+.motion-ready.motion-visible .service-detail,
+.motion-ready.motion-visible figure,
+.motion-ready.motion-visible ol > li {
+  animation: reveal-up 0.85s both;
+}
+.motion-ready.motion-visible :is(.service-detail, figure, ol > li):nth-child(2) {
+  animation-delay: 0.12s;
+}
+.motion-ready.motion-visible :is(.service-detail, figure, ol > li):nth-child(3) {
+  animation-delay: 0.24s;
+}
+.motion-ready.motion-visible :is(.service-detail, figure, ol > li):nth-child(4) {
+  animation-delay: 0.36s;
+}
+.motion-ready.motion-visible :is(.service-detail, figure, ol > li):nth-child(5) {
+  animation-delay: 0.48s;
+}
+.motion-ready.motion-visible :is(.service-detail, figure, ol > li):nth-child(6) {
+  animation-delay: 0.6s;
+}
+.valuation-section.motion-visible .valuation-copy {
+  animation: reveal-up 1s both;
+}
+.valuation-section.motion-visible .valuation-form {
+  animation: reveal-up 1s 0.2s both;
+}
+.motion-visible {
+  opacity: 1;
+  transform: none;
+}
+.service-detail summary {
+  list-style: none;
+  cursor: pointer;
+}
+.service-detail summary::-webkit-details-marker {
+  display: none;
+}
+.service-detail[open] .service-plus {
+  transform: rotate(45deg);
+}
+.service-plus {
+  transition: transform 0.25s;
+}
+@keyframes brand-arrive {
+  from {
+    clip-path: inset(100% 0 0 0);
+    transform: translateY(8px) scale(0.9);
+  }
+  to {
+    clip-path: inset(0);
+    transform: none;
+  }
+}
+@keyframes brand-name-arrive {
+  from {
+    clip-path: inset(0 100% 0 0);
+    transform: translateX(10px);
+  }
+  to {
+    clip-path: inset(0);
+    transform: none;
+  }
+}
+@keyframes photo-reveal {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes photo-settle {
+  from {
+    transform: scale(1.025);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes editorial-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes cta-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes line-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+    .egypt-band .egypt-coast-image {
+      animation: coast-drift linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+  }
+}
+@keyframes coast-drift {
+  from {
+    transform: scale(1.04) translateY(-1%);
+  }
+  to {
+    transform: scale(1.04) translateY(1%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .motion-ready:not(.motion-visible) {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+  }
+  .motion-ready::before {
+    transition: none;
+    transform: none;
+  }
+  .valuation-cta::after {
+    display: none;
+  }
+}
+
+/* A quiet architectural thread between homepage chapters, outside their content. */
+.section-connector {
+  height: 100px;
+  color: var(--connector-line);
+  pointer-events: none;
+  overflow: clip;
+}
+.connector-horizon {
+  color: var(--connector-sea);
+}
+.connector-canvas {
+  position: relative;
+  height: 100%;
+}
+.connector-route {
+  width: 100%;
+  height: 100%;
+}
+.connector-route path,
+.connector-motif path {
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1;
+}
+.connector-guide {
+  stroke: var(--connector-guide);
+}
+.connector-ink,
+.connector-detail,
+.connector-secondary {
+  stroke: currentColor;
+}
+.connector-motif {
+  position: absolute;
+  width: 100px;
+  height: 80px;
+  top: 10px;
+  left: calc(50% - 50px);
+}
+.connector-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.connector-logo-outline,
+.connector-logo-fill {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+}
+.connector-logo-fill {
+  background: currentColor;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  opacity: 0.65;
+}
+.connector-sun-fill {
+  fill: #ddb165;
+  stroke: none;
+  opacity: 0.75;
+  filter: drop-shadow(0 0 7px #e8be7880);
+}
+.connector-sun-rays {
+  stroke: #b99251;
+  opacity: 0.8;
+}
+.connector-secondary {
+  opacity: 0.5;
+  stroke-dasharray: 1;
+}
+.motion-ready[data-motion="connector"] {
+  opacity: 1;
+  transform: none;
+}
+.connector-ink,
+.connector-detail,
+.connector-secondary {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+.motion-ready .connector-ink,
+.motion-ready .connector-detail,
+.motion-ready .connector-secondary,
+.motion-ready .connector-sun-rays {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.motion-ready .connector-logo-fill,
+.motion-ready .connector-sun-fill,
+.motion-ready .connector-sun-rays {
+  opacity: 0;
+}
+.motion-ready.motion-visible .connector-incoming {
+  animation: connector-draw 2.6s cubic-bezier(0.65, 0.05, 0.36, 1) both;
+}
+.motion-ready.motion-visible .connector-outgoing {
+  animation: connector-draw 2.6s 3.2s cubic-bezier(0.65, 0.05, 0.36, 1) both;
+}
+.motion-ready.motion-visible .connector-detail {
+  animation: connector-draw 2.8s 1.5s cubic-bezier(0.22, 0.68, 0.25, 1) both;
+}
+.motion-ready.motion-visible .connector-secondary {
+  animation: connector-draw 2s 2.5s ease both;
+}
+.motion-ready.motion-visible .connector-logo-fill {
+  animation: connector-logo-fill 1.4s 3.2s ease both;
+}
+.motion-ready.motion-visible .connector-sun-fill {
+  animation: connector-sun-glow 1.2s 5.8s ease-out both;
+}
+.motion-ready.motion-visible .connector-sun-rays {
+  animation: connector-sun-rays 1.2s 5.8s ease-out both;
+}
+.motion-ready .connector-motif {
+  opacity: 0;
+}
+.motion-ready.motion-visible .connector-motif {
+  animation: connector-settle 0.8s 1s ease both;
+}
+@supports (view-timeline-name: --connector-progress) and (animation-timeline: --connector-progress) and (animation-range: cover 0% cover 100%) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* Every stage shares the divider's timeline, including its absolute-positioned motif.
+       Scroll down to draw/fill; scroll back up to retrace. Timed rules above are the fallback. */
+    .section-connector {
+      view-timeline-name: --connector-progress;
+      view-timeline-axis: block;
+    }
+    .section-connector[data-reveal="connector"] .connector-incoming {
+      animation: connector-draw 1s linear both;
+      animation-range: cover 0% cover 28%;
+    }
+    .section-connector[data-reveal="connector"] .connector-motif {
+      animation: connector-settle 1s linear both;
+      animation-range: cover 8% cover 20%;
+    }
+    .section-connector[data-reveal="connector"] .connector-detail {
+      animation: connector-draw 1s linear both;
+      animation-range: cover 18% cover 48%;
+    }
+    .section-connector[data-reveal="connector"] .connector-secondary {
+      animation: connector-draw 1s linear both;
+      animation-range: cover 32% cover 58%;
+    }
+    .section-connector[data-reveal="connector"] .connector-logo-fill {
+      animation: connector-logo-fill 1s linear both;
+      animation-range: cover 42% cover 68%;
+    }
+    .section-connector[data-reveal="connector"] .connector-outgoing {
+      animation: connector-draw 1s linear both;
+      animation-range: cover 48% cover 70%;
+    }
+    .section-connector[data-reveal="connector"] .connector-sun-fill {
+      animation: connector-sun-glow 1s linear both;
+      animation-range: cover 70% cover 82%;
+    }
+    .section-connector[data-reveal="connector"] .connector-sun-rays {
+      animation: connector-sun-rays 1s linear both;
+      animation-range: cover 70% cover 82%;
+    }
+    .section-connector[data-reveal="connector"] :is(
+      .connector-incoming,
+      .connector-outgoing,
+      .connector-motif,
+      .connector-detail,
+      .connector-secondary,
+      .connector-logo-fill,
+      .connector-sun-fill,
+      .connector-sun-rays
+    ) {
+      /* The animation shorthand resets the timeline, so keep this after all stages. */
+      animation-timeline: --connector-progress;
+    }
+  }
+}
+@keyframes connector-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes connector-settle {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes connector-logo-fill {
+  from {
+    opacity: 0;
+    clip-path: inset(100% 0 0);
+  }
+  to {
+    opacity: 0.65;
+    clip-path: inset(0);
+  }
+}
+@keyframes connector-sun-glow {
+  from {
+    opacity: 0;
+    clip-path: inset(100% 0 0);
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  to {
+    opacity: 0.75;
+    clip-path: inset(0);
+    filter: drop-shadow(0 0 7px #e8be7880);
+  }
+}
+@keyframes connector-sun-rays {
+  from {
+    opacity: 0;
+    stroke-dashoffset: 1;
+  }
+  to {
+    opacity: 0.8;
+    stroke-dashoffset: 0;
+  }
+}
+@media (max-width: 639px) {
+  .section-connector {
+    height: 72px;
+  }
+  .connector-motif {
+    width: 80px;
+    height: 64px;
+    top: 4px;
+    left: calc(50% - 40px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-connector .connector-ink,
+  .section-connector .connector-detail,
+  .section-connector .connector-secondary,
+  .section-connector .connector-sun-rays {
+    stroke-dashoffset: 0;
+  }
+  .section-connector .connector-motif {
+    opacity: 1;
+    transform: none;
+  }
+  .section-connector .connector-logo-fill {
+    opacity: 0.65;
+    clip-path: none;
+  }
+  .section-connector .connector-sun-fill {
+    opacity: 0.75;
+    clip-path: none;
+  }
+  .section-connector .connector-sun-rays {
+    opacity: 0.8;
+  }
+  .section-connector .connector-canvas {
+    transform: none;
+  }
+}
