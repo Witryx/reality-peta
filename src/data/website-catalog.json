@@ -970,6 +970,16 @@
     "groups": ["Časté dotazy"]
   },
   {
+    "key": "text_828a98de",
+    "default": "Zobrazit méně dotazů",
+    "groups": ["Časté dotazy"]
+  },
+  {
+    "key": "text_b8febf2",
+    "default": "Zobrazit další dotazy",
+    "groups": ["Časté dotazy"]
+  },
+  {
     "key": "text_1f597cb5",
     "default": "Nenašli jste svou odpověď?",
     "groups": ["Časté dotazy"]
@@ -1347,6 +1357,16 @@
   {
     "key": "text_acc7581d",
     "default": "Cena nevychází z pocitu ani z přání získat zakázku za každou cenu. Pracuji s daty, srovnatelnými prodeji, konkurencí na trhu a skutečnou poptávkou. Společně nastavíme cenu i realistická očekávání ohledně délky prodeje. Nemovitost nechci jen nabrat do nabídky. Chci ji skutečně prodat.",
+    "groups": ["Časté dotazy"]
+  },
+  {
+    "key": "text_3f8e04e0",
+    "default": "Jaká je cena za úspěšný prodej?",
+    "groups": ["Časté dotazy"]
+  },
+  {
+    "key": "text_38fc4916",
+    "default": "Odměnu za prodej domlouváme individuálně podle typu nemovitosti a rozsahu služeb. Přesnou výši provize, co zahrnuje a podmínky její úhrady si jasně odsouhlasíme ještě před začátkem spolupráce. Na úvodní konzultaci vám rád připravím konkrétní návrh.",
     "groups": ["Časté dotazy"]
   },
   {

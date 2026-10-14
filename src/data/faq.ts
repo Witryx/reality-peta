@@ -7,6 +7,12 @@ export const frequentlyAskedQuestions = [
       "Cena nevychází z pocitu ani z přání získat zakázku za každou cenu. Pracuji s daty, srovnatelnými prodeji, konkurencí na trhu a skutečnou poptávkou. Společně nastavíme cenu i realistická očekávání ohledně délky prodeje. Nemovitost nechci jen nabrat do nabídky. Chci ji skutečně prodat.",
   },
   {
+    slug: "cena-prodeje",
+    question: "Jaká je cena za úspěšný prodej?",
+    answer:
+      "Odměnu za prodej domlouváme individuálně podle typu nemovitosti a rozsahu služeb. Přesnou výši provize, co zahrnuje a podmínky její úhrady si jasně odsouhlasíme ještě před začátkem spolupráce. Na úvodní konzultaci vám rád připravím konkrétní návrh.",
+  },
+  {
     slug: "prezentace",
     question: "Jak připravíte nemovitost a oslovíte správné zájemce?",
     answer:
