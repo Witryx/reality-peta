@@ -830,6 +830,21 @@
 .service-plus {
   transition: transform 0.25s;
 }
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item[open] .faq-plus {
+  transform: rotate(45deg);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .faq-plus {
+    transition: transform 0.2s;
+  }
+}
 @keyframes brand-arrive {
   from {
     clip-path: inset(100% 0 0 0);

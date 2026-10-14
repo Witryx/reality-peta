@@ -2,6 +2,7 @@
 import ts from "typescript";
 import { readFile, writeFile, readdir } from "node:fs/promises";
 const groups = {
+  "FaqSection.tsx": "Časté dotazy",
   "index.tsx": "Úvodní stránka",
   "sluzby.tsx": "Služby",
   "egypt.tsx": "Egypt",
@@ -201,6 +202,7 @@ for (const filename of files) {
   await writeFile(filename, source);
 }
 for (const [filename, group] of [
+  ["src/data/faq.ts", "Časté dotazy"],
   ["src/data/content.ts", "Služby a reference"],
   ["src/config/site.ts", "Identita"],
   ["src/data/energy.ts", "Energetická třída"],

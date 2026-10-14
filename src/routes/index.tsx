@@ -22,6 +22,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowUpRight, Clock } from "lucide-react";
 import { CollaborationStrip } from "@/components/CollaborationStrip";
 import { SectionConnector } from "@/components/SectionConnector";
+import { FaqSection } from "@/components/FaqSection";
 
 export const Route = createFileRoute("/")({
   loader: async () => ({
@@ -225,6 +226,8 @@ function Home() {
           <PropertyCarousel properties={egypt} />
         </div>
       </section>
+
+      <FaqSection />
 
       <section className="bg-ink py-20 text-ink-foreground md:py-28">
         <div className="container-page [&_.eyebrow]:text-ink-foreground/60 [&_p]:text-ink-foreground/75">
