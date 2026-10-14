@@ -40,14 +40,23 @@ export function hasDatabase() {
 }
 export function getDatabase(): Promise<Database> {
   if (!runtime.__realtyDatabase)
-    runtime.__realtyDatabase = connect().catch((error) => {
+    runtime.__realtyDatabase = connect(configuredDatabaseUrl()).catch((error) => {
       delete runtime.__realtyDatabase;
       throw error;
     });
   return runtime.__realtyDatabase;
 }
-async function connect(): Promise<Database> {
-  const url = configuredDatabaseUrl();
+export function migrationDatabaseUrl(env: NodeJS.ProcessEnv = process.env): string | undefined {
+  if (env["DATABASE_URL"]) return env["DATABASE_URL"];
+  if (env["LOCAL_DATABASE"] === "1" && env["NODE_ENV"] !== "production") return undefined;
+  throw new Error(
+    "Pro aktualizaci databáze je potřeba DATABASE_URL s migračním účtem. APP_DATABASE_URL slouží pouze běžícímu webu.",
+  );
+}
+export function getMigrationDatabase(): Promise<Database> {
+  return connect(migrationDatabaseUrl());
+}
+async function connect(url: string | undefined): Promise<Database> {
   if (!url) {
     if (process.env["LOCAL_DATABASE"] !== "1" || process.env["NODE_ENV"] === "production") {
       throw new Error(

@@ -36,7 +36,8 @@ Staré proměnné Supabase se již nepoužívají.
 npm run db:migrate
 ```
 
-Po aktualizaci aplikace spusťte migraci i na existující databázi (migračním účtem).
+Na Vercelu ji produkční `npm run build` spouští automaticky přes migrační `DATABASE_URL`.
+Preview a lokální buildy databázi nemění. Na vlastním serveru spusťte migraci i na existující databázi (migračním účtem).
 Přidá tabulku `articles` a práva stávajícího `realty_app`, jednorázově převede dosavadní
 články včetně textových úprav. Opakované migrace články nepřepisují ani neobnovují smazané články.
 Články pak spravujete v `/admin` → Články; fotografie sekcí v `/admin` → Fotky webu.
@@ -146,7 +147,7 @@ omezení pohybu zůstává tato pomalá změna světla, šipka a oddělovače js
 
 Po přihlášení otevřete **Texty webu**. Vyberte stránku nebo společnou sekci, případně
 hledejte podle části původního textu. Upravíte nadpisy, odstavce, tlačítka, texty služeb,
-průběh spolupráce, reference, obsah stávajících článků, poděkování formulářů i právní
+průběh spolupráce, reference, poděkování formulářů i právní
 stránky. Opakující se části jsou ve skupinách Společné sekce a Služby a reference.
 Jednou upravený společný text se zobrazí na všech místech, kde se používá.
 
@@ -163,7 +164,8 @@ v editoru. Před odchodem nebo odhlášením administrace upozorní na neuložen
 
 Text rozdělený zalomením nebo zvýrazněním má samostatná pole. Editor přijímá prostý
 text; zachovává rozložení, navigační URL, fotografie, pravidla formulářů a měření.
-Přidávání nových stránek, článků, změny uspořádání a programových funkcí patří do kódu.
+Blogové články přidáváte a upravujete v části Články, fotografie sekcí v části Fotky webu.
+Přidávání nových stránek, změny uspořádání a programových funkcí patří do kódu.
 Nemovitosti a jejich fotografie se dál upravují v části Nemovitosti.
 
 Tato verze jednorázově vyžaduje migraci `website-content-v1` (`npm run db:migrate`;
@@ -180,7 +182,12 @@ fráze určují stabilní klíče textů; při jejich změně převeďte také u
 ## Vercel
 
 Projekt má v `vercel.json` nastavený framework **TanStack Start**, instalaci `npm ci`
-a build `npm run build`; používá Node.js 22. Nitro automaticky rozpozná Vercel a
+a build `npm run build`; používá Node.js 22. Produkční build nejprve provede idempotentní
+aktualizaci schématu přes `DATABASE_URL` s migračním účtem. Běžící web nadále používá
+výhradně omezené `APP_DATABASE_URL`; preview ani lokální buildy migraci nespouštějí.
+Při chybě migrace se nové nasazení zastaví a běžící verze zůstane dostupná.
+Stávající články a fotografie se dají číst i před aktualizací schématu.
+Nitro automaticky rozpozná Vercel a
 vytvoří `.vercel/output` se statickými soubory a serverovou funkcí. Mimo Vercel
 zůstává výchozí build pro vlastní Node server (`.output/server/index.mjs`).
 Ve Vercel projektu odstraňte případné vlastní nastavení Output Directory na `dist`

@@ -1,5 +1,5 @@
-import { getDatabase, migrate, provisionAppRole } from "../src/server/database.server";
-const db = await getDatabase();
+import { getMigrationDatabase, migrate, provisionAppRole } from "../src/server/database.server";
+const db = await getMigrationDatabase();
 try {
   await migrate(db);
   await provisionAppRole(db, process.env["APP_DB_PASSWORD"] || "");

@@ -76,7 +76,7 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
     const db = suppliedDb ?? (await getDatabase());
     if (url.pathname === "/api/health" && request.method === "GET") {
       await db.query("SELECT 1 FROM schema_migrations WHERE version='selfhost-v1'");
-      return json({ ok: true });
+      return json({ ok: true, articlesReady: await hasArticleTable(db) });
     }
     if (url.pathname.startsWith("/uploads/") && ["GET", "HEAD"].includes(request.method)) {
       const filename = url.pathname.slice("/uploads/".length);
