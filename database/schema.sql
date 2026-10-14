@@ -52,6 +52,16 @@ CREATE TABLE IF NOT EXISTS media (
   width integer NOT NULL, height integer NOT NULL, bytes integer NOT NULL,
   created_at timestamptz NOT NULL DEFAULT now()
 );
+-- Durable hosted uploads. Self-hosted installations may continue using local files.
+CREATE TABLE IF NOT EXISTS media_files (
+  media_id uuid PRIMARY KEY REFERENCES media(id) ON DELETE CASCADE,
+  content bytea NOT NULL CHECK (octet_length(content) <= 4000000)
+);
+DO $$ BEGIN
+  IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname='realty_app') THEN
+    GRANT SELECT,INSERT,UPDATE,DELETE ON media_files TO realty_app;
+  END IF;
+END $$;
 CREATE TABLE IF NOT EXISTS audit_log (
   id uuid PRIMARY KEY, admin_id uuid REFERENCES admins(id) ON DELETE SET NULL,
   action text NOT NULL, entity_id text, created_at timestamptz NOT NULL DEFAULT now()

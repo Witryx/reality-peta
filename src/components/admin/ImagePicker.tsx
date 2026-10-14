@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { ImagePlus, Loader2, X } from "lucide-react";
 import type { Media } from "@/data/admin";
-import { api } from "@/lib/api";
+import { uploadImage } from "@/lib/upload-image";
 import { errorMessage, Notice } from "./AdminPanel";
 import { useDialogFocus } from "./useDialogFocus";
 
@@ -33,14 +33,7 @@ export function ImagePicker({
     onBusy?.(true);
     setError("");
     try {
-      const result = await api<Media & { src: string }>(
-        `/api/admin/media?name=${encodeURIComponent(file.name)}`,
-        {
-          method: "POST",
-          body: file,
-          headers: { "Content-Type": file.type || "application/octet-stream" },
-        },
-      );
+      const result = await uploadImage(file);
       onSelect(result.src);
       await onMediaChange();
     } catch (cause) {

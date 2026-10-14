@@ -133,7 +133,7 @@ export async function provisionAppRole(db: Database, password: string) {
     );
     await tx.exec(`GRANT USAGE ON SCHEMA public TO realty_app;
       GRANT SELECT ON schema_migrations TO realty_app;
-      GRANT SELECT,INSERT,UPDATE,DELETE ON admins,admin_sessions,properties,articles,leads,media,audit_log,rate_limits,website_content TO realty_app;
+      GRANT SELECT,INSERT,UPDATE,DELETE ON admins,admin_sessions,properties,articles,leads,media,media_files,audit_log,rate_limits,website_content TO realty_app;
       GRANT realty_anon TO realty_app;
       DROP POLICY IF EXISTS realty_lead_admin ON leads;
       CREATE POLICY realty_lead_admin ON leads FOR ALL TO realty_app USING (true) WITH CHECK (true);`);

@@ -1,4 +1,5 @@
-import { getMigrationDatabase, migrate } from "../src/server/database.server";
+import { getDatabase, getMigrationDatabase, migrate } from "../src/server/database.server";
+import { verifyHostedMedia } from "./verify-media";
 import { migrateProductionDeployment } from "../src/server/deployment.server";
 import {
   resetAdminFromDeployment,
@@ -15,6 +16,13 @@ try {
         if (error instanceof RecoveryAccountSelection)
           console.log(`Admin recovery accounts: ${JSON.stringify(error.emails)}`);
         throw error;
+      }
+      const appDb = await getDatabase();
+      try {
+        await verifyHostedMedia(appDb);
+        console.log("Hosted media storage verified with the runtime database role.");
+      } finally {
+        await appDb.close();
       }
     })
   )

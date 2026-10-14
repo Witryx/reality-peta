@@ -1,6 +1,6 @@
 # Petr Pavlát reality — vlastní web a administrace
 
-React 19 / TanStack Start, SSR na Node.js 22, PostgreSQL a fotografie na vlastním disku.
+React 19 / TanStack Start, SSR na Node.js 22, PostgreSQL a fotografie v databázi na Vercelu nebo na vlastním disku.
 Provoz aplikace nepotřebuje Lovable ani Supabase. Původní git historii nepřepisujte;
 případná synchronizace zdrojových souborů s Lovable může pokračovat.
 
@@ -11,7 +11,8 @@ případná synchronizace zdrojových souborů s Lovable může pokračovat.
 - Koncept, zveřejnění (i budoucí datum), archiv; aktivní, rezervovaná a prodaná nabídka.
 - Cena, plocha, dispozice, lokalita, parametry, popis, vybavení, video a Matterport.
 - Galerie, titulní fotografie, změna pořadí, popisky a opakované použití knihovny.
-- Nahrávání JPG/PNG/WebP/AVIF: do 12 MB / 40 Mpx, převod na WebP do 2400 px, odstranění původních metadat.
+- Nahrávání JPG/PNG/WebP/AVIF: zdroj do 12 MB / 40 Mpx, velké soubory se zmenší před přenosem, převod na WebP do 2400 px, odstranění původních metadat.
+- Na Vercelu jsou fotky trvale v PostgreSQL v oddělené tabulce `media_files`; na vlastním serveru zůstává výchozí disk. Všude stejné chráněné URL `/uploads/…`.
 - Náhled nabídky před uložením, vyhledávání, filtry, doporučené nabídky první na úvodu.
 - Kontaktní formulář, odhad i dotaz k nabídce skutečně zapisují do tabulky `leads`.
 - Správa poptávek: stavy, interní poznámky, kontakty, výmaz a CSV export.
@@ -225,10 +226,17 @@ samostatné `APP_DATABASE_URL` s rolí `realty_app`. Doplňte `APP_URL` na přes
 URL nasazení a `VITE_SITE_URL` na kanonické URL. `LOCAL_DATABASE` v produkci
 nezapínejte a lokální `.env` ani lokální databázi na Vercel nekopírujte.
 
-Současné nahrávání fotografií potřebuje trvalý zapisovatelný disk (`UPLOAD_DIR`),
-který Vercel Functions neposkytují. Nastavení `/tmp` není trvalé úložiště a může
-vést ke ztrátě fotografií. Pro plnou administraci na Vercelu je proto nutné nejprve
-přidat objektové úložiště; současná kompletní varianta je připravená pro VPS níže.
+Na Vercelu se WebP fotografie ukládají do PostgreSQL tabulky `media_files`, atomicky
+spolu s metadaty v `media`. Účet `realty_app` dostane práva při automatické migraci.
+Produkční sestavení ověří zápis, načtení a smazání testovací fotky přes tento účet
+v jediné transakci; v knihovně nezůstane žádný testovací záznam.
+Není potřeba zapisovat do souborového systému funkce ani nastavovat další službu.
+Tabulka má cizí klíč s kaskádovým smazáním; privátní a zveřejněné fotky mají stejnou
+kontrolu přístupu jako dříve. Větší zdrojové fotky se před odesláním zmenší na nejvýše
+3,5 MB kvůli limitu přenosu Vercelu. Do databáze se ukládá výsledný WebP do 4 MB.
+Fotografie jsou součástí databázové zálohy, JSON export obsahuje jen jejich metadata.
+Na vlastním VPS zůstává výchozí `UPLOAD_DIR`; databázové ukládání lze zapnout přes
+`MEDIA_STORAGE=database`. Staré fotografie z disku se dál čtou.
 
 Dokumentace: [TanStack Start na Vercelu](https://vercel.com/docs/frameworks/full-stack/tanstack-start)
 a [souborový systém Vercel Functions](https://vercel.com/docs/functions/runtimes#file-system-support).

@@ -27,6 +27,7 @@ import {
   X,
 } from "lucide-react";
 import { api, ApiError } from "@/lib/api";
+import { uploadImage } from "@/lib/upload-image";
 import { today } from "@/lib/dates";
 import { site } from "@/config/site";
 import { BrandLockup } from "@/components/BrandLockup";
@@ -1106,12 +1107,8 @@ export async function uploadImages(
 ): Promise<PropertyImage[]> {
   const images: PropertyImage[] = [];
   for (const [index, file] of Array.from(files).entries()) {
-    if (file.size > 12 * 1024 * 1024) throw new Error(`${file.name}: maximální velikost je 12 MB.`);
     onProgress?.(`Nahrávám ${index + 1} z ${files.length}…`);
-    const result = await api<{ src: string }>(
-      `/api/admin/media?name=${encodeURIComponent(file.name)}`,
-      { method: "POST", body: file, headers: { "Content-Type": "application/octet-stream" } },
-    );
+    const result = await uploadImage(file);
     images.push({ src: result.src, alt: file.name.replace(/\.[^.]+$/, ""), position: index });
   }
   return images;

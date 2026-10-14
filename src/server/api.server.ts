@@ -1,6 +1,4 @@
 import { randomBytes, randomUUID } from "node:crypto";
-import { mkdir, readFile, writeFile, unlink } from "node:fs/promises";
-import path from "node:path";
 import sharp from "sharp";
 import { z } from "zod";
 import { getDatabase, hasDatabase, type Database } from "./database.server";
@@ -20,13 +18,19 @@ import { adminProperty, audit, saveProperty } from "./properties.server";
 import { leadSchema } from "./validation";
 import { loadWebsiteContent, saveWebsiteContent } from "./website.server";
 import { adminArticle, saveArticle, hasArticleTable, type ArticleRow } from "./articles.server";
+import {
+  imageStorage,
+  readStoredImage,
+  writeImageFile,
+  removeImageFile,
+  storedImageLimit,
+} from "./media-storage.server";
 
 const json = (data: unknown, status = 200, headers: Record<string, string> = {}) =>
   Response.json(data, {
     status,
     headers: { "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff", ...headers },
   });
-const uploads = () => path.resolve(process.env["UPLOAD_DIR"] || "uploads");
 async function bodyBytes(request: Request, limit: number) {
   if (Number(request.headers.get("content-length") || 0) > limit)
     throw new HttpError(413, "Soubor nebo požadavek je příliš velký.");
@@ -82,7 +86,7 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
       const filename = url.pathname.slice("/uploads/".length);
       if (!/^[a-f0-9-]{36}\.webp$/.test(filename))
         throw new HttpError(404, "Fotografie nenalezena.");
-      const [media] = await db.query("SELECT filename FROM media WHERE filename=$1", [filename]);
+      const [media] = await db.query("SELECT id,filename FROM media WHERE filename=$1", [filename]);
       if (!media) throw new HttpError(404, "Fotografie nenalezena.");
       const articleReferences = await hasArticleTable(db);
       const [published] = await db.query(
@@ -96,18 +100,15 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
         [url.pathname],
       );
       if (!published) await requireAdmin(db, request);
-      try {
-        const bytes = await readFile(path.join(uploads(), filename));
-        return new Response(request.method === "HEAD" ? null : bytes, {
-          headers: {
-            "Content-Type": "image/webp",
-            "Cache-Control": "private, max-age=300",
-            "X-Content-Type-Options": "nosniff",
-          },
-        });
-      } catch {
-        throw new HttpError(404, "Fotografie nenalezena.");
-      }
+      const bytes = await readStoredImage(db, media["id"], filename);
+      if (!bytes) throw new HttpError(404, "Fotografie nenalezena.");
+      return new Response(request.method === "HEAD" ? null : bytes, {
+        headers: {
+          "Content-Type": "image/webp",
+          "Cache-Control": "private, max-age=300",
+          "X-Content-Type-Options": "nosniff",
+        },
+      });
     }
     if (url.pathname === "/api/leads" && request.method === "POST") {
       await rateLimit(db, `lead:${ip(request)}`, 10, 600);
@@ -321,16 +322,30 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
         const id = randomUUID();
         const filename = `${id}.webp`;
         const originalName = (url.searchParams.get("name") || "Fotografie").slice(0, 200);
-        await mkdir(uploads(), { recursive: true });
-        await writeFile(path.join(uploads(), filename), image);
-        try {
-          const [record] = await db.query(
-            "INSERT INTO media(id,filename,original_name,width,height,bytes) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *",
-            [id, filename, originalName, width, height, image.length],
+        const storage = imageStorage();
+        if (storage === "database" && image.length > storedImageLimit)
+          throw new HttpError(
+            413,
+            "Fotografie je po zpracování příliš velká. Zmenšete ji a nahrajte znovu.",
           );
+        if (storage === "disk") await writeImageFile(filename, image);
+        try {
+          const record = await db.transaction(async (tx) => {
+            const [record] = await tx.query(
+              "INSERT INTO media(id,filename,original_name,width,height,bytes) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *",
+              [id, filename, originalName, width, height, image.length],
+            );
+            if (storage === "database")
+              await tx.query("INSERT INTO media_files(media_id,content) VALUES ($1,$2::bytea)", [
+                id,
+                image,
+              ]);
+            await audit(tx, admin.id, "media.upload", id);
+            return record;
+          });
           return json({ ...record, src: `/uploads/${filename}` }, 201);
         } catch (e) {
-          await unlink(path.join(uploads(), filename));
+          if (storage === "disk") await removeImageFile(filename);
           throw e;
         }
       }
@@ -356,7 +371,7 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
           await audit(tx, admin.id, "media.delete", id);
           return record;
         });
-        await unlink(path.join(uploads(), media["filename"])).catch(() => {});
+        await removeImageFile(media["filename"]);
         return json({ ok: true });
       }
     }

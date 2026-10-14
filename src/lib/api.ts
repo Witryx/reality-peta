@@ -15,8 +15,16 @@ export async function api<T>(url: string, options?: RequestInit): Promise<T> {
       ...options?.headers,
     },
   });
-  const result = await response.json();
+  const result = await response.json().catch(() => null);
   if (!response.ok)
-    throw new ApiError(result.error || "Požadavek se nepodařilo dokončit.", response.status);
+    throw new ApiError(
+      result?.error ||
+        (response.status === 413
+          ? "Fotografie je příliš velká pro odeslání. Zmenšete ji a zkuste to znovu."
+          : "Požadavek se nepodařilo dokončit."),
+      response.status,
+    );
+  if (result === null)
+    throw new ApiError("Server vrátil neplatnou odpověď. Zkuste to znovu.", response.status);
   return result as T;
 }
