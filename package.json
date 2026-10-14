@@ -14,6 +14,8 @@
     "db:migrate": "node --env-file-if-exists=.env --import tsx scripts/migrate.ts",
     "db:setup": "node --env-file-if-exists=.env --import tsx scripts/provision.ts",
     "admin:create": "node --env-file-if-exists=.env --import tsx scripts/admin.ts",
+    "admin:reset": "node --env-file-if-exists=.env --import tsx scripts/reset-admin.ts",
+    "admin:reset:vercel": "node --import tsx scripts/reset-admin-vercel.ts",
     "assets:import": "node --env-file-if-exists=.env scripts/import-assets.mjs",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",

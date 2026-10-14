@@ -79,6 +79,29 @@ v ignorovaném `.local/admin-access.txt`; patří pouze k tomuto počítači a n
 Další správce vznikne stejným příkazem s jiným e-mailem. Existující e-mail obnoví
 heslo a odhlásí jeho relace. Veřejná registrace ani výchozí produkční heslo neexistují.
 
+Pro reset existujícího produkčního účtu použijte `npm run admin:reset`. Potřebuje
+externí `APP_DATABASE_URL` nebo `DATABASE_URL`; lokální databázi záměrně nepoužije.
+Zachová e-mail i jméno, zneplatní relace vybraného účtu a zapíše reset do auditu.
+Pokud existuje jediný správce, vybere ho automaticky; při více účtech vyžádá e-mail.
+Nové heslo v PowerShellu zadáte skrytě:
+
+```powershell
+$taskAdminPassword = Read-Host 'Nové heslo (12–200 znaků)' -AsSecureString
+$env:ADMIN_PASSWORD = [System.Net.NetworkCredential]::new('', $taskAdminPassword).Password
+try { npm.cmd run admin:reset } finally { Remove-Item Env:ADMIN_PASSWORD -ErrorAction SilentlyContinue }
+```
+
+Pro ostrý projekt reality-peta na Vercelu použijte ve stejném PowerShell bloku
+`npm.cmd run admin:reset:vercel` místo `npm.cmd run admin:reset`. Nejdříve se přihlaste
+pomocí `npx.cmd vercel login` a propojte existující projekt pomocí `npx.cmd vercel link`.
+Tento příkaz odešle pouze scrypt hash jako dočasnou produkční Secret proměnnou a spustí
+nasazení. Reset proběhne uvnitř Vercelu s jeho databázovým připojením, ověří se běžným
+přihlášením a dočasná proměnná se odstraní. Heslo se nevypisuje ani neposílá přes CLI
+argumenty. Audit zabraňuje opakovanému resetu v dalších nasazeních; nevyužitý požadavek
+platí hodinu a je svázaný s konkrétním ID projektu. Nevybírá automaticky mezi více účty.
+Citlivé proměnné Vercelu nelze stahovat přes `env pull` / `env run`, proto je tento
+postup nepotřebuje zpřístupnit lokálně. Pro více účtů nastavte `ADMIN_EMAIL`.
+
 Bez nastavené databáze se ve vývoji ukazují původní demo nabídky; formuláře v tomto
 režimu nevypisují falešné potvrzení. Připojená prázdná databáze začíná bez nemovitostí.
 Demo nabídky se do produkce automaticky nekopírují.

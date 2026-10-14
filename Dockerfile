@@ -15,7 +15,7 @@ RUN npm ci --omit=dev --no-audit --no-fund && mkdir -p /app/uploads && chown nod
 COPY --from=build /app/.output ./.output
 COPY database ./database
 COPY scripts ./scripts
-COPY src/server/database.server.ts src/server/security.server.ts src/server/article-seed.server.ts ./src/server/
+COPY src/server/database.server.ts src/server/security.server.ts src/server/article-seed.server.ts src/server/admin-recovery.server.ts ./src/server/
 COPY src/data/articles.defaults.ts src/data/article-types.ts ./src/data/
 COPY src/lib/site-copy.ts ./src/lib/
 USER node
