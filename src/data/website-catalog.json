@@ -440,11 +440,6 @@
     "groups": ["Detail nemovitosti"]
   },
   {
-    "key": "text_9f6ff109",
-    "default": "Video / Matterport URL – doplnit v administraci",
-    "groups": ["Detail nemovitosti"]
-  },
-  {
     "key": "text_54ed8dff",
     "default": "Hledáte podobnou nemovitost?",
     "groups": ["Detail nemovitosti"]

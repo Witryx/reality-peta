@@ -238,19 +238,16 @@ function Detail() {
           </h2>
           <PropertyMap p={p} />
 
-          <h2 className="mt-14 text-3xl">
-            <SiteText>{"Video a virtuální prohlídka"}</SiteText>
-          </h2>
-          {video && <ConsentEmbed src={video} title={`Video – ${p.title}`} />}
-          {p.matterportUrl && (
-            <ConsentEmbed src={p.matterportUrl} title={`Virtuální prohlídka – ${p.title}`} />
-          )}
-          {!p.matterportUrl && !video && (
-            <p className="mt-4">
-              <Placeholder>
-                <SiteText>{"Video / Matterport URL – doplnit v administraci"}</SiteText>
-              </Placeholder>
-            </p>
+          {(video || p.matterportUrl) && (
+            <>
+              <h2 className="mt-14 text-3xl">
+                <SiteText>{"Video a virtuální prohlídka"}</SiteText>
+              </h2>
+              {video && <ConsentEmbed src={video} title={`Video – ${p.title}`} />}
+              {p.matterportUrl && (
+                <ConsentEmbed src={p.matterportUrl} title={`Virtuální prohlídka – ${p.title}`} />
+              )}
+            </>
           )}
         </div>
 
