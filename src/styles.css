@@ -713,6 +713,13 @@
 .partner-logo-egypt {
   overflow: hidden;
 }
+.partner-logo-advisory {
+  overflow: hidden;
+}
+.partner-logo-advisory img {
+  /* Balance the supplied original's margins without changing the artwork. */
+  transform: scale(1.4);
+}
 .partner-logo-egypt img {
   /* Balance the original's transparent margins with STELAR's tightly framed artwork. */
   transform: scale(1.3);

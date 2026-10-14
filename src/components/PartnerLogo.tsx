@@ -1,10 +1,11 @@
 import { useSiteConfig } from "@/lib/website-context";
 import stelar from "@/assets/stelar-reality-logo.png.asset.json";
+import advisory from "@/assets/stelar-advisory-logo.png.asset.json";
 import egypt from "@/assets/egyptskoceska-reality-logo.png.asset.json";
 import { SiteText } from "./SiteText";
 
 // Stable partner positions match site.partners, whose displayed names remain editable.
-const logos = [stelar, null, egypt];
+const logos = [stelar, advisory, egypt];
 
 export function PartnerLogo({
   index,
@@ -26,14 +27,14 @@ export function PartnerLogo({
   }
   const content = (
     <div
-      className={`partner-logo ${compact ? "partner-logo-compact" : ""} ${index === 2 ? "partner-logo-egypt" : ""}`}
+      className={`partner-logo ${compact ? "partner-logo-compact" : ""} ${index === 1 ? "partner-logo-advisory" : ""} ${index === 2 ? "partner-logo-egypt" : ""}`}
     >
       <img
         className="partner-logo-image"
         src={asset.url}
         alt=""
-        width={index === 0 ? 946 : 642}
-        height={index === 0 ? 264 : 389}
+        width={index === 0 ? 946 : index === 1 ? 1448 : 642}
+        height={index === 0 ? 264 : index === 1 ? 736 : 389}
         loading="lazy"
         decoding="async"
       />
