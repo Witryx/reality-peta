@@ -52,7 +52,8 @@ export default defineConfig({
     tsconfigPaths(),
     tailwindcss(),
     tanstackStart({ server: { entry: "server" } }),
-    nitro({ preset: "node-server" }),
+    // Detect Vercel during hosted builds; keep the Node server for self-hosting.
+    nitro({ defaultPreset: "node-server" }),
     react(),
   ],
   server: { host: "127.0.0.1", port: 3000 },

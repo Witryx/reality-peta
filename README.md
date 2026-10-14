@@ -170,6 +170,30 @@ serverová validace je v `src/server/website.server.ts`. Katalog lze po přidán
 veřejných textů aktualizovat příkazem `node scripts/extract-site-copy.mjs`. Výchozí
 fráze určují stabilní klíče textů; při jejich změně převeďte také uložené přepisy.
 
+## Vercel
+
+Projekt má v `vercel.json` nastavený framework **TanStack Start**, instalaci `npm ci`
+a build `npm run build`; používá Node.js 22. Nitro automaticky rozpozná Vercel a
+vytvoří `.vercel/output` se statickými soubory a serverovou funkcí. Mimo Vercel
+zůstává výchozí build pro vlastní Node server (`.output/server/index.mjs`).
+Ve Vercel projektu odstraňte případné vlastní nastavení Output Directory na `dist`
+nebo `.output/public`; serverový výstup obsluhuje Nitro přes Build Output API.
+
+Úspěšný build sám o sobě nepřipojí databázi ani fotografie. Pro běh veřejných
+nabídek, formulářů a administrace nastavte `DATABASE_URL` na externí PostgreSQL
+s připraveným `database/schema.sql` a omezenou rolí `realty_app` (příprava pomocí
+`npm run db:setup` s oddělenými migračními údaji). Doplňte `APP_URL` na přesné HTTPS
+URL nasazení a `VITE_SITE_URL` na kanonické URL. `LOCAL_DATABASE` v produkci
+nezapínejte a lokální `.env` ani lokální databázi na Vercel nekopírujte.
+
+Současné nahrávání fotografií potřebuje trvalý zapisovatelný disk (`UPLOAD_DIR`),
+který Vercel Functions neposkytují. Nastavení `/tmp` není trvalé úložiště a může
+vést ke ztrátě fotografií. Pro plnou administraci na Vercelu je proto nutné nejprve
+přidat objektové úložiště; současná kompletní varianta je připravená pro VPS níže.
+
+Dokumentace: [TanStack Start na Vercelu](https://vercel.com/docs/frameworks/full-stack/tanstack-start)
+a [souborový systém Vercel Functions](https://vercel.com/docs/functions/runtimes#file-system-support).
+
 ## Nasazení na vlastní VPS
 
 Doporučení: Hetzner Cloud v Německu, x86 VPS přibližně 4 vCPU / 8 GB RAM,
