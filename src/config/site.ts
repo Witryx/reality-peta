@@ -23,8 +23,8 @@ export const site = {
   },
   social: {
     instagram: "https://www.instagram.com/petr.pavlat_reality/",
-    facebook: "",
-    linkedin: "",
+    facebook: "https://www.facebook.com/petrpavlatreality/",
+    linkedin: "https://www.linkedin.com/in/petr-pavlat-reality/",
   },
   googleReviews: { rating: "4,7", profileUrl: "https://share.google/3ERvci4sNYmAwJnEp" },
   partnerUrls: ["", "", "https://www.egyptskoceskareality.cz/"],
