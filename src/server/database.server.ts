@@ -3,8 +3,7 @@ import path from "node:path";
 import postgres from "postgres";
 import type { PGlite } from "@electric-sql/pglite";
 import { randomUUID } from "node:crypto";
-import { defaultArticles } from "../data/articles.defaults";
-import { resolveCopy } from "../lib/site-copy";
+import { originalArticles } from "./article-seed.server";
 
 type Row = Record<string, any>;
 export interface Database {
@@ -79,23 +78,7 @@ export async function migrate(db: Database) {
       "SELECT version FROM schema_migrations WHERE version='articles-seed-v1'",
     );
     if (!seeded) {
-      const [website] = await tx.query<{ data: Record<string, string> }>(
-        "SELECT data FROM website_content WHERE id='main'",
-      );
-      const copy = (text: string) => resolveCopy(website?.data ?? {}, text);
-      for (const article of defaultArticles) {
-        const data = {
-          ...article,
-          title: copy(article.title),
-          category: copy(article.category),
-          excerpt: copy(article.excerpt),
-          sections: article.sections.map((section) => ({
-            ...section,
-            ...(section.heading ? { heading: copy(section.heading) } : {}),
-            ...(section.paragraphs ? { paragraphs: section.paragraphs.map(copy) } : {}),
-            ...(section.bullets ? { bullets: section.bullets.map(copy) } : {}),
-          })),
-        };
+      for (const data of await originalArticles(tx)) {
         await tx.query(
           "INSERT INTO articles(id,slug,publication,data) VALUES ($1,$2,'published',$3::jsonb) ON CONFLICT (slug) DO NOTHING",
           [randomUUID(), data.slug, JSON.stringify(data)],

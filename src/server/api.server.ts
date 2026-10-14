@@ -19,7 +19,7 @@ import {
 import { adminProperty, audit, saveProperty } from "./properties.server";
 import { leadSchema } from "./validation";
 import { loadWebsiteContent, saveWebsiteContent } from "./website.server";
-import { adminArticle, saveArticle, type ArticleRow } from "./articles.server";
+import { adminArticle, saveArticle, hasArticleTable, type ArticleRow } from "./articles.server";
 
 const json = (data: unknown, status = 200, headers: Record<string, string> = {}) =>
   Response.json(data, {
@@ -84,11 +84,12 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
         throw new HttpError(404, "Fotografie nenalezena.");
       const [media] = await db.query("SELECT filename FROM media WHERE filename=$1", [filename]);
       if (!media) throw new HttpError(404, "Fotografie nenalezena.");
+      const articleReferences = await hasArticleTable(db);
       const [published] = await db.query(
         `SELECT id FROM properties WHERE publication='published'
         AND (data->>'publishedAt')::date <= (now() AT TIME ZONE 'Europe/Prague')::date AND EXISTS
         (SELECT 1 FROM jsonb_array_elements(data->'images') image WHERE image->>'src'=$1)
-        UNION ALL SELECT id FROM articles WHERE publication='published' AND data->'image'->>'src'=$1
+        ${articleReferences ? "UNION ALL SELECT id FROM articles WHERE publication='published' AND data->'image'->>'src'=$1" : ""}
         UNION ALL SELECT NULL::uuid FROM website_content WHERE EXISTS
         (SELECT 1 FROM jsonb_each_text(data) entry WHERE entry.key LIKE 'image.%' AND entry.key NOT LIKE '%.alt' AND entry.value=$1)
         LIMIT 1`,
@@ -179,6 +180,11 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
     }
     if (route[0] === "session" && request.method === "GET") return json({ admin });
     if (route[0] === "articles") {
+      if (!(await hasArticleTable(db)))
+        throw new HttpError(
+          503,
+          "Správa článků čeká na aktualizaci databáze při nasazení. Stávající články zůstávají na webu dostupné.",
+        );
       if (request.method === "GET" && !route[1])
         return json({
           items: (
@@ -333,9 +339,10 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
         const media = await db.transaction(async (tx) => {
           const [record] = await tx.query("SELECT * FROM media WHERE id=$1 FOR UPDATE", [id]);
           if (!record) throw new HttpError(404, "Fotografie nenalezena.");
+          const articleReferences = await hasArticleTable(tx);
           const [used] = await tx.query(
             `SELECT id FROM properties WHERE EXISTS (SELECT 1 FROM jsonb_array_elements(data->'images') image WHERE image->>'src'=$1)
-            UNION ALL SELECT id FROM articles WHERE data->'image'->>'src'=$1
+            ${articleReferences ? "UNION ALL SELECT id FROM articles WHERE data->'image'->>'src'=$1" : ""}
             UNION ALL SELECT NULL::uuid FROM website_content WHERE EXISTS
             (SELECT 1 FROM jsonb_each_text(data) entry WHERE entry.key LIKE 'image.%' AND entry.key NOT LIKE '%.alt' AND entry.value=$1) LIMIT 1`,
             [`/uploads/${record["filename"]}`],
@@ -358,7 +365,9 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
         {
           exportedAt: new Date().toISOString(),
           properties: (await db.query("SELECT * FROM properties")).map(adminProperty),
-          articles: (await db.query<ArticleRow>("SELECT * FROM articles")).map(adminArticle),
+          articles: (await hasArticleTable(db))
+            ? (await db.query<ArticleRow>("SELECT * FROM articles")).map(adminArticle)
+            : [],
           leads: await db.query("SELECT * FROM leads"),
           media: await db.query("SELECT * FROM media"),
           websiteContent: await loadWebsiteContent(db),

@@ -5,6 +5,7 @@ import type { Database } from "./database.server";
 import { HttpError } from "./security.server";
 import { audit } from "./properties.server";
 import { uploadImagePattern } from "@/data/website-images";
+import { originalArticles } from "./article-seed.server";
 
 const date = z
   .string()
@@ -51,7 +52,14 @@ const articleSchema = z
   })
   .strict();
 
+export async function hasArticleTable(db: Database): Promise<boolean> {
+  const [row] = await db.query<{ table_name: string | null }>(
+    "SELECT to_regclass('public.articles')::text AS table_name",
+  );
+  return !!row?.table_name;
+}
 export async function publicArticles(db: Database): Promise<Article[]> {
+  if (!(await hasArticleTable(db))) return originalArticles(db);
   const rows = await db.query<{ data: Article }>(
     "SELECT data FROM articles WHERE publication='published' ORDER BY data->>'updatedAt' DESC, created_at DESC",
   );
