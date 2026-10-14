@@ -166,6 +166,11 @@
   html {
     scroll-behavior: smooth;
   }
+  html,
+  body {
+    overflow-x: clip;
+    overscroll-behavior-x: none;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -276,7 +281,7 @@
   border: 1px solid var(--color-input);
   border-radius: var(--radius);
   padding: 0.85rem 1rem;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--color-foreground);
   transition: border-color 0.2s;
   &:focus {
@@ -684,6 +689,12 @@
   min-width: 0;
   text-align: center;
 }
+.partner-item > a {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+}
 .partner-name {
   display: flex;
   align-items: center;
@@ -728,6 +739,22 @@
   font-size: 0.75rem;
 }
 @media (max-width: 639px) {
+  .partner-name {
+    min-height: 2.5rem;
+    font-size: clamp(0.65rem, 2.7vw, 0.8rem);
+    overflow-wrap: anywhere;
+  }
+  .partner-logo {
+    width: 100%;
+    max-width: 144px;
+    height: clamp(48px, 16vw, 68px);
+    margin-top: 4px;
+    padding-inline: 6px;
+  }
+  .partner-logo-compact {
+    max-width: 112px;
+    height: 54px;
+  }
   .hero-title {
     font-size: 2.5rem;
   }

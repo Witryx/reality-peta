@@ -1210,6 +1210,16 @@
     "groups": ["Společné sekce"]
   },
   {
+    "key": "text_698ac23d",
+    "default": "Předchozí reference",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_761ddf6d",
+    "default": "Další reference",
+    "groups": ["Společné sekce"]
+  },
+  {
     "key": "text_a828a98a",
     "default": "První krok k dobrému rozhodnutí",
     "groups": ["Společné sekce"]

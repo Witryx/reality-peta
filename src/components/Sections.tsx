@@ -1,5 +1,6 @@
 import { SiteText } from "@/components/SiteText";
 import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { processSteps, services, testimonials } from "@/data/content";
 import { Star } from "lucide-react";
 import { LeadForm } from "./LeadForm";
@@ -11,6 +12,13 @@ import { BrandImage } from "./BrandImage";
 import { Plus, ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { GoogleRating } from "./GoogleRating";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "./ui/carousel";
 
 export function SectionHead({
   eyebrow,
@@ -92,45 +100,81 @@ export function ProcessList() {
 }
 
 export function Testimonials() {
+  const [reducedMotion, setReducedMotion] = useState(false);
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
   return (
     <>
       <GoogleRating />
-      <div className="mt-10 grid gap-8 md:grid-cols-3">
-        {testimonials.map((t) => (
-          <figure key={t.name} className="flex flex-col rounded-lg bg-card p-8 shadow-soft">
-            <div className="mb-4 flex items-center gap-2" aria-label="Hodnocení 5 z 5">
-              <span className="flex text-review-star" aria-hidden="true">
-                {
-                  <SiteText>
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-current" />
-                    ))}
-                  </SiteText>
-                }
-              </span>
-              <span className="text-sm font-semibold">5/5</span>
-            </div>
-            <blockquote className="font-display text-xl leading-snug">
-              „<SiteText>{t.text}</SiteText>“
-            </blockquote>
-            <figcaption className="mt-auto pt-6 text-sm">
-              <span className="font-semibold">
-                <SiteText>{t.name}</SiteText>
-              </span>
-              <span className="block text-muted-foreground">
-                <SiteText>{t.context}</SiteText>
-              </span>
-              {t.isDemo && (
-                <span className="mt-2 inline-block">
-                  <Placeholder>
-                    <SiteText>{"Ukázková reference"}</SiteText>
-                  </Placeholder>
-                </span>
-              )}
-            </figcaption>
-          </figure>
-        ))}
-      </div>
+      <Carousel
+        className="testimonials-carousel mt-10 min-w-0"
+        aria-label="Reference klientů"
+        opts={{
+          align: "start",
+          duration: reducedMotion ? 0 : 25,
+          breakpoints: { "(min-width: 768px)": { active: false } },
+        }}
+      >
+        <CarouselContent className="md:ml-0 md:grid md:grid-cols-3 md:gap-8">
+          {testimonials.map((t, index) => (
+            <CarouselItem
+              key={t.name}
+              className="md:pl-0"
+              aria-label={`${index + 1} z ${testimonials.length}`}
+            >
+              <figure className="flex h-full flex-col rounded-lg bg-card p-6 shadow-soft sm:p-8">
+                <div className="mb-4 flex items-center gap-2" aria-label="Hodnocení 5 z 5">
+                  <span className="flex text-review-star" aria-hidden="true">
+                    {
+                      <SiteText>
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-current" />
+                        ))}
+                      </SiteText>
+                    }
+                  </span>
+                  <span className="text-sm font-semibold">5/5</span>
+                </div>
+                <blockquote className="font-display text-xl leading-snug">
+                  „<SiteText>{t.text}</SiteText>“
+                </blockquote>
+                <figcaption className="mt-auto pt-6 text-sm">
+                  <span className="font-semibold">
+                    <SiteText>{t.name}</SiteText>
+                  </span>
+                  <span className="block text-muted-foreground">
+                    <SiteText>{t.context}</SiteText>
+                  </span>
+                  {t.isDemo && (
+                    <span className="mt-2 inline-block">
+                      <Placeholder>
+                        <SiteText>{"Ukázková reference"}</SiteText>
+                      </Placeholder>
+                    </span>
+                  )}
+                </figcaption>
+              </figure>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <div className="mt-5 flex justify-end gap-2 md:hidden">
+          <CarouselPrevious
+            className="static size-11 translate-y-0 bg-card"
+            aria-label="Předchozí reference"
+            title="Předchozí reference"
+          />
+          <CarouselNext
+            className="static size-11 translate-y-0 bg-card"
+            aria-label="Další reference"
+            title="Další reference"
+          />
+        </div>
+      </Carousel>
     </>
   );
 }
