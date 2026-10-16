@@ -54,21 +54,90 @@
   box-shadow: 0 8px 22px -16px color-mix(in oklab, var(--ink) 30%, transparent);
 }
 .property-info {
-  background: linear-gradient(
-    180deg,
-    var(--card),
-    color-mix(in oklab, var(--secondary) 35%, var(--card))
-  );
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 22px;
+  background: var(--card);
+}
+.property-card-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted-foreground);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.property-card-location svg {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+.property-card .property-card-title {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.025em;
+}
+.property-card-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 15px;
+}
+.property-card-facts > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 9px;
+  border-radius: 5px;
+  background: var(--surface);
+  color: var(--muted-foreground);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.property-card-footer {
+  margin-top: auto;
+  padding-top: 22px;
+}
+.property-card-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-top: 1px solid color-mix(in oklab, var(--border) 65%, transparent);
+  padding-top: 17px;
+}
+.property-card-price {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.025em;
+  overflow-wrap: anywhere;
 }
 .property-card > a:focus-visible {
   outline-offset: 4px;
   border-radius: var(--radius);
 }
 .property-detail-arrow {
-  transition: transform 0.25s;
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--accent);
+  transition:
+    transform 0.25s,
+    background-color 0.25s,
+    color 0.25s;
 }
-.property-card:hover .property-detail-arrow {
+.property-card:hover .property-detail-arrow,
+.property-card:focus-within .property-detail-arrow {
   transform: translate(2px, -2px);
+  background: var(--ink);
+  color: var(--ink-foreground);
 }
 .property-title {
   font-family: var(--font-sans);
@@ -119,6 +188,10 @@
   overflow-wrap: anywhere;
 }
 .property-card-price-note {
+  margin-top: 5px;
+  color: var(--muted-foreground);
+  font-size: 12px;
+  line-height: 1.6;
   overflow-wrap: anywhere;
 }
 .property-parameter-list > div {

@@ -1,6 +1,6 @@
 import { SiteText } from "@/components/SiteText";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, MapPin, Ruler } from "lucide-react";
 import { formatPrice, statusLabel, type Property } from "@/data/types";
 
 export function StatusBadge({
@@ -50,29 +50,29 @@ export function PropertyCard({ p, eager = false }: { p: Property; eager?: boolea
             )}
           </div>
         </div>
-        <div className="property-info flex flex-1 flex-col p-5">
-          <p className="text-xs text-muted-foreground">
+        <div className="property-info">
+          <p className="property-card-location">
+            <MapPin size={14} aria-hidden="true" />
             {[p.location.city, p.location.district].filter(Boolean).join(" · ")}
           </p>
-          <h3 className="property-title mt-2 text-xl leading-snug [overflow-wrap:anywhere] group-hover:underline decoration-1 underline-offset-4 md:text-2xl">
-            {p.title}
-          </h3>
-          <p className="mt-2 text-sm text-muted-foreground">
-            {[p.disposition, `${p.area} m²`, p.landArea ? `pozemek ${p.landArea} m²` : ""]
-              .filter(Boolean)
-              .join(" · ")}
-          </p>
-          {p.priceNote && (
-            <p className="property-card-price-note mt-3 text-xs leading-relaxed text-muted-foreground">
-              {p.priceNote}
-            </p>
-          )}
-          <div className="mt-auto pt-4">
-            <div className="flex items-center justify-between gap-3 border-t border-border/60 pt-3">
-              <p className="text-base font-semibold leading-snug">
-                {p.status === "sold" ? "Prodáno" : formatPrice(p)}
-              </p>
-              <span className="property-detail-arrow flex size-8 shrink-0 items-center justify-center rounded-full bg-surface text-accent">
+          <h3 className="property-title property-card-title">{p.title}</h3>
+          <div className="property-card-facts">
+            {p.disposition && <span>{p.disposition}</span>}
+            <span>
+              <Ruler size={14} aria-hidden="true" />
+              {`${p.area} m²`}
+            </span>
+            {Boolean(p.landArea) && <span>{`pozemek ${p.landArea} m²`}</span>}
+          </div>
+          <div className="property-card-footer">
+            <div className="property-card-price-row">
+              <div className="min-w-0">
+                <p className="property-card-price">
+                  {p.status === "sold" ? "Prodáno" : formatPrice(p)}
+                </p>
+                {p.priceNote && <p className="property-card-price-note">{p.priceNote}</p>}
+              </div>
+              <span className="property-detail-arrow">
                 <span className="sr-only">
                   <SiteText>{"Detail nabídky"}</SiteText>
                 </span>
