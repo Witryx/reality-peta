@@ -4,6 +4,7 @@ import { Phone, Mail, MessageCircle, Facebook, Instagram, Linkedin } from "lucid
 import { site } from "@/config/site";
 import { track } from "@/lib/analytics";
 import { Button } from "./ui/button";
+import { ElasticContactArrow } from "./ElasticContactArrow";
 
 export function Placeholder({ children }: { children: React.ReactNode }) {
   return (
@@ -196,16 +197,7 @@ export function HeroContactHint() {
     <div className="hero-contact-hint contact-attention-active">
       <SocialIcons attention />
       <p className="social-note text-sm text-accent">
-        <svg viewBox="0 0 78 44" fill="none" aria-hidden="true">
-          <path
-            pathLength="1"
-            d="M74 8 C48 2 62 38 14 28 C9 27 5 24 3 22 M3 22 L13 21 M3 22 L9 31"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <ElasticContactArrow />
         <span>
           <SiteText>{"I tady mě můžete"}</SiteText>
           <br />
