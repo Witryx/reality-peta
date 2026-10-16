@@ -67,7 +67,7 @@ export function SiteFooter() {
       <div className="border-t border-ink-foreground/15">
         <div className="container-page flex flex-col gap-3 py-6 text-xs opacity-70 md:flex-row md:justify-between">
           <p>
-            © <SiteText>{new Date().getFullYear()}</SiteText> <SiteText>{site.name}</SiteText>
+            © <SiteText>{2023}</SiteText> <SiteText>{site.name}</SiteText>
             <SiteText>{site.contact.ico ? ` · IČO ${site.contact.ico}` : ""}</SiteText>
           </p>
           <ul className="flex flex-wrap gap-5">
