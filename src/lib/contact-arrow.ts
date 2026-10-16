@@ -1,13 +1,22 @@
-export const contactArrowDuration = 2.7;
+export const contactArrowRepeats = 3;
+// Three pulls span the same five seconds as the social icon glow.
+export const contactArrowDuration = 5 / contactArrowRepeats;
 
 type Point = readonly [number, number];
 
 /** A gentle pull back toward the text, with a damped return and a fixed right anchor. */
 export function contactArrowPath(time: number) {
+  const settle = Math.max(0, Math.min(1, (contactArrowDuration - time) / 0.3));
   const bend =
     time <= 0 || time >= contactArrowDuration
       ? 0
-      : 9 * (1 - Math.exp(-12 * time)) * Math.exp(-2.4 * time) * Math.sin(7.4 * time);
+      : 9 *
+        (1 - Math.exp(-12 * time)) *
+        Math.exp(-2.4 * time) *
+        Math.sin(7.4 * time) *
+        settle *
+        settle *
+        (3 - 2 * settle);
   const point = (x: number, y: number): Point => {
     const flex = bend * ((74 - x) / 71) ** 1.4;
     return [x + flex * 1.35, y - flex * 0.35];

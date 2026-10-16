@@ -136,7 +136,9 @@ sekundu po načtení, i po refreshi. Síla záře plynule třikrát zesílí a z
 během dalších pěti sekund; potom zhasne. Ikony se nepohybují ani nezvětšují. Při zapnutém
 omezení pohybu zůstává tato pomalá změna světla, šipka a oddělovače jsou statické.
 Šipka u kontaktů se jemně stáhne dozadu směrem k textu a pružně vrátí do původního
-tvaru s postupným dozníváním. Konec u textu zůstává pevný a hrot sleduje křivku.
+tvaru s postupným dozníváním. Pruží třikrát během stejných pěti sekund jako záře
+sociálních ikon; obě animace začínají po jedné sekundě. Konec u textu zůstává pevný
+a hrot sleduje křivku.
 Nativní SVG animace se při omezení pohybu vůbec nespouští a při změně této předvolby
 se zastaví; celé SVG se neposouvá ani neroztahuje.
 

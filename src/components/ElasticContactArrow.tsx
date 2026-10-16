@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { contactArrowDuration, contactArrowFrames } from "@/lib/contact-arrow";
+import { contactArrowDuration, contactArrowFrames, contactArrowRepeats } from "@/lib/contact-arrow";
 
 export function ElasticContactArrow() {
   const [motionAllowed, setMotionAllowed] = useState(false);
@@ -36,7 +36,7 @@ export function ElasticContactArrow() {
             calcMode="linear"
             begin="indefinite"
             dur={`${contactArrowDuration}s`}
-            repeatCount="1"
+            repeatCount={contactArrowRepeats}
             fill="remove"
           />
         )}
