@@ -1,22 +1,20 @@
-export const contactArrowRepeats = 3;
-// Three pulls span the same five seconds as the social icon glow.
-export const contactArrowDuration = 5 / contactArrowRepeats;
+const contactArrowCycles = 3;
+export const contactArrowDuration = 5;
 
 type Point = readonly [number, number];
 
-/** A gentle pull back toward the text, with a damped return and a fixed right anchor. */
+function smoothstep(value: number) {
+  const t = Math.max(0, Math.min(1, value));
+  return t * t * (3 - 2 * t);
+}
+
+/** Continuous back-and-forth flexing; only the beginning and end fade, never the cycle joins. */
 export function contactArrowPath(time: number) {
-  const settle = Math.max(0, Math.min(1, (contactArrowDuration - time) / 0.3));
+  const envelope = smoothstep(time / 0.3) * smoothstep((contactArrowDuration - time) / 0.45);
   const bend =
     time <= 0 || time >= contactArrowDuration
       ? 0
-      : 9 *
-        (1 - Math.exp(-12 * time)) *
-        Math.exp(-2.4 * time) *
-        Math.sin(7.4 * time) *
-        settle *
-        settle *
-        (3 - 2 * settle);
+      : 4.2 * envelope * Math.sin((2 * Math.PI * contactArrowCycles * time) / contactArrowDuration);
   const point = (x: number, y: number): Point => {
     const flex = bend * ((74 - x) / 71) ** 1.4;
     return [x + flex * 1.35, y - flex * 0.35];
@@ -34,6 +32,6 @@ export function contactArrowPath(time: number) {
 }
 
 // Equally spaced samples interpolate smoothly in SVG, without per-frame JavaScript.
-export const contactArrowFrames = Array.from({ length: 82 }, (_, index) =>
-  contactArrowPath((contactArrowDuration * index) / 81),
+export const contactArrowFrames = Array.from({ length: 181 }, (_, index) =>
+  contactArrowPath((contactArrowDuration * index) / 180),
 );
