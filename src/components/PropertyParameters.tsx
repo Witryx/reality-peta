@@ -15,6 +15,7 @@ export function PropertyParameters({ p }: { p: Property }) {
     ["Vlastnictví", p.ownership],
     ["Stav", p.condition],
     ["Stavba", p.building],
+    ["Termín nastěhování", p.availableFrom],
   ];
   const additional =
     p.additionalParameters?.filter((item) => item.label.trim() && item.value.trim()) ?? [];

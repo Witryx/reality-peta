@@ -1,6 +1,6 @@
 import { SiteText } from "@/components/SiteText";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, MapPin, Ruler } from "lucide-react";
+import { ArrowUpRight, CalendarDays, MapPin, Ruler } from "lucide-react";
 import { formatPrice, statusLabel, type Property } from "@/data/types";
 
 export function StatusBadge({
@@ -22,6 +22,7 @@ export function StatusBadge({
 
 export function PropertyCard({ p, eager = false }: { p: Property; eager?: boolean }) {
   const img = [...p.images].sort((a, b) => a.position - b.position)[0];
+  const features = [...new Set(p.features.map((feature) => feature.trim()).filter(Boolean))];
   return (
     <article className="property-card group h-full">
       <Link to="/nabidka/$slug" params={{ slug: p.slug }} className="flex h-full flex-col">
@@ -63,7 +64,18 @@ export function PropertyCard({ p, eager = false }: { p: Property; eager?: boolea
               {`${p.area} m²`}
             </span>
             {Boolean(p.landArea) && <span>{`pozemek ${p.landArea} m²`}</span>}
+            {features.map((feature) => (
+              <span key={feature}>{feature}</span>
+            ))}
           </div>
+          {p.availableFrom?.trim() && (
+            <p className="property-card-availability">
+              <CalendarDays size={15} aria-hidden="true" />
+              <span>
+                <SiteText>{"Nastěhování:"}</SiteText> {p.availableFrom}
+              </span>
+            </p>
+          )}
           <div className="property-card-footer">
             <div className="property-card-price-row">
               <div className="min-w-0">

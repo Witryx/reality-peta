@@ -1175,6 +1175,11 @@
     "groups": ["Nabídka"]
   },
   {
+    "key": "text_ecabacd1",
+    "default": "Nastěhování:",
+    "groups": ["Nabídka"]
+  },
+  {
     "key": "text_880a93ac",
     "default": "Detail nabídky",
     "groups": ["Nabídka"]
@@ -1247,6 +1252,11 @@
   {
     "key": "text_d7c76e24",
     "default": "Stavba",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_e5e5252e",
+    "default": "Termín nastěhování",
     "groups": ["Detail nemovitosti"]
   },
   {

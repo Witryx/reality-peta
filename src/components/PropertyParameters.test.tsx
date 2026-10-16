@@ -23,6 +23,7 @@ const p: Property = {
   perex: "Úvod nabídky",
   description: [],
   features: ["Balkon"],
+  availableFrom: "Dohodou",
   additionalParameters: [{ label: "Infrastruktura", value: "Vodovod, kanalizace" }],
   images: [],
   featured: false,
@@ -50,5 +51,7 @@ describe("Property parameters", () => {
     expect(screen.getByText("Balkon")).toBeInTheDocument();
     expect(screen.getByText("Infrastruktura")).toBeInTheDocument();
     expect(screen.getByText("Vodovod, kanalizace")).toBeInTheDocument();
+    expect(screen.getByText("Termín nastěhování")).toBeInTheDocument();
+    expect(screen.getByText("Dohodou")).toBeInTheDocument();
   });
 });

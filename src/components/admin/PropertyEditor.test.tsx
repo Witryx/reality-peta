@@ -61,6 +61,9 @@ describe("Property editor workflow", () => {
     fireEvent.change(screen.getByLabelText("Hodnota parametru 1"), {
       target: { value: "Vodovod, kanalizace" },
     });
+    fireEvent.change(screen.getByLabelText("Termín nastěhování"), {
+      target: { value: "Od 1. 12. 2026" },
+    });
     fireEvent.click(screen.getByRole("button", { name: "Uložit změny" }));
     await waitFor(() => expect(saved).toHaveBeenCalledOnce());
     const payload = JSON.parse(vi.mocked(api).mock.calls[0]![1]!.body as string);
@@ -68,6 +71,7 @@ describe("Property editor workflow", () => {
       slug: "novy-byt-v-karline",
       autoSlug: true,
       additionalParameters: [{ label: "Infrastruktura", value: "Vodovod, kanalizace" }],
+      availableFrom: "Od 1. 12. 2026",
     });
     expect(payload.images).toEqual([
       { ...initial.images[1], position: 0 },

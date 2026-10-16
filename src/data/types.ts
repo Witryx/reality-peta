@@ -51,6 +51,8 @@ export interface Property {
   condition: string;
   energyClass: string; // A–G, "pending" = G do dodání průkazu, "—" = neuvedeno
   building?: string;
+  /** Majitelem zadaný termín, např. „Ihned“, „Od 1. 12. 2026“ nebo „Dohodou“. */
+  availableFrom?: string;
   perex: string;
   description: string[]; // odstavce
   features: string[];

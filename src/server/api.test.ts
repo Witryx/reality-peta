@@ -40,6 +40,7 @@ describe("Self-hosted admin and public API", () => {
     perex: "Světlý byt s balkonem.",
     description: ["Podrobný popis testovací nemovitosti."],
     features: ["Balkon"],
+    availableFrom: "Ihned",
     priceNote: "+ poplatky 1 000 Kč",
     additionalParameters: [{ label: "Infrastruktura", value: "Vodovod, kanalizace" }],
     images: [{ src: "https://example.com/photo.jpg", alt: "Interiér", position: 0 }],
@@ -209,6 +210,7 @@ describe("Self-hosted admin and public API", () => {
       draft.additionalParameters,
     );
     expect((await publicProperties(db))[0]?.priceNote).toBe(draft.priceNote);
+    expect((await publicProperties(db))[0]?.availableFrom).toBe(draft.availableFrom);
     expect(
       (await request(`/api/admin/properties/${propertyId}`, "PUT", { ...draft, version: 1 }, true))
         .status,

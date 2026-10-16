@@ -59,6 +59,7 @@ export const propertySchema = z
     condition: text(200),
     energyClass: text(20),
     building: text(200).optional(),
+    availableFrom: text(200).optional(),
     perex: text(700),
     description: z.array(text(10000)).max(30),
     features: z.array(text(200)).max(50),

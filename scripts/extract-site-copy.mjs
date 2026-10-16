@@ -158,6 +158,7 @@ for (const filename of files) {
       const propertyData =
         /\bp\.|\bimg\.|\bim\./.test(expression) ||
         /Property(?:Gallery|Parameters)\.tsx$/.test(filename) ||
+        (filename.endsWith("PropertyCard.tsx") && /^features?\b/.test(expression)) ||
         (filename.includes("/clanky/") && /\b(?:article|a|s)\.|^[pb]$/.test(expression)) ||
         (filename === "src/routes/index.tsx" && /\ba\./.test(expression)) ||
         (filename.endsWith("nabidka.$slug.tsx") && /^[dv]$/.test(expression));

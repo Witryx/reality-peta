@@ -55,6 +55,7 @@ const blank = (): AdminProperty => ({
   perex: "",
   description: [],
   features: [],
+  availableFrom: "",
   images: [],
   featured: false,
   sortOrder: 0,
@@ -190,6 +191,7 @@ export function PropertyEditor({
       | "ownership"
       | "condition"
       | "building"
+      | "availableFrom"
       | "videoUrl"
       | "matterportUrl",
     label: string,
@@ -469,6 +471,7 @@ export function PropertyEditor({
                 </select>,
               )}
               {input("building", "Stavba", "Cihlový dům")}
+              {input("availableFrom", "Termín nastěhování", "Ihned / Od 1. 12. 2026 / Dohodou")}
             </div>
             <EnergyRating value={value.energyClass} />
             <h3 className="admin-subheading">Další parametry</h3>
@@ -483,7 +486,7 @@ export function PropertyEditor({
               />,
             )}
             <p className="admin-description">
-              Přidejte vlastní řádky, například infrastrukturu, vybavenost nebo termín nastěhování.
+              Přidejte vlastní řádky, například infrastrukturu nebo vybavenost.
             </p>
             {(value.additionalParameters ?? []).map((parameter, i) => (
               <div className="admin-parameter-row" key={i}>
