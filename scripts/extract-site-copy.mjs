@@ -179,6 +179,14 @@ for (const filename of files) {
       }
     }
     if (ts.isStringLiteral(node)) {
+      // Gallery view names are state values, not owner-editable public labels.
+      if (
+        filename.endsWith("PropertyGallery.tsx") &&
+        ((ts.isBinaryExpression(node.parent) && node.parent.left.getText(ast) === "dialogView") ||
+          (ts.isCallExpression(node.parent) &&
+            node.parent.expression.getText(ast) === "setDialogView"))
+      )
+        return;
       if (
         filename.endsWith("PropertyParameters.tsx") &&
         ts.isArrayLiteralExpression(node.parent) &&

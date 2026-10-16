@@ -1215,6 +1215,21 @@
     "groups": ["Detail nemovitosti"]
   },
   {
+    "key": "text_5764e2ef",
+    "default": "Fotografie",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_cb523042",
+    "default": "Zobrazit všechny",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_f23f85ee",
+    "default": "Přehled fotografií",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
     "key": "text_b80eabe0",
     "default": "Cena",
     "groups": ["Detail nemovitosti"]

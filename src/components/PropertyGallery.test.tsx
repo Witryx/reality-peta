@@ -58,4 +58,32 @@ describe("Property gallery", () => {
     expect(screen.getByText("Fotografii se nepodařilo načíst.")).toBeInTheDocument();
     expect(screen.queryByRole("status")).not.toBeInTheDocument();
   });
+  it("opens all photos in an overview and returns to the selected full photograph", () => {
+    const images = Array.from({ length: 10 }, (_, i) => ({
+      src: `/assets/photo-${i + 1}.jpg`,
+      alt: `Fotografie ${i + 1}`,
+      position: i,
+    }));
+    render(<PropertyGallery p={{ ...p, images }} />);
+    fireEvent.click(screen.getByRole("button", { name: "Zobrazit všechny" }));
+    const dialog = screen.getByRole("dialog", { name: p.title });
+    expect(within(dialog).getAllByRole("button", { name: /^Otevřít fotografii/ })).toHaveLength(10);
+    fireEvent.click(within(dialog).getByRole("button", { name: "Otevřít fotografii 10" }));
+    expect(within(dialog).getByRole("img", { name: "Fotografie 10" })).toHaveAttribute(
+      "src",
+      "/assets/photo-10.jpg",
+    );
+    fireEvent.click(within(dialog).getByRole("button", { name: "Přehled fotografií" }));
+    expect(within(dialog).getByRole("button", { name: "Otevřít fotografii 10" })).toHaveAttribute(
+      "aria-current",
+      "true",
+    );
+    fireEvent.click(within(dialog).getByRole("button", { name: "Otevřít fotografii 1" }));
+    fireEvent.click(within(dialog).getByRole("button", { name: "Zavřít fotogalerii" }));
+    expect(screen.getByRole("button", { name: "Zobrazit fotografii 1" })).toHaveAttribute(
+      "aria-current",
+      "true",
+    );
+    expect(screen.queryByText("Fotografie 1")).not.toBeInTheDocument();
+  });
 });

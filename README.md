@@ -153,8 +153,10 @@ omezení pohybu zůstává tato pomalá změna světla, šipka a oddělovače js
   vyplnit volitelný **Termín nastěhování**, například „Ihned“, „Od 1. 12. 2026“
   nebo „Dohodou“. Ukáže se na kartě i v detailu; prázdná hodnota se nezobrazuje.
 - Poznámka k ceně se zobrazuje na přehledové kartě, pod popisem detailu i v tabulce
-  parametrů. Detail má kompaktní galerii s náhledy, klávesovými šipkami, dotykovým
-  listováním a volitelným zvětšením. Animace respektují omezení pohybu.
+  parametrů. Detail má hlavní celou fotografii s ovládáním pod ní, na počítači
+  přehled náhledů vedle fotografie a na mobilu vodorovný pás. **Zobrazit všechny**
+  otevře mřížku všech snímků; vybranou fotografii lze zvětšit a vrátit se do přehledu.
+  Galerie podporuje klávesové šipky, dotykové listování i omezení pohybu.
 
 ## Energie, YouTube a Google Mapy v nabídce
 
