@@ -42,6 +42,7 @@ describe("Self-hosted admin and public API", () => {
     features: ["Balkon"],
     availableFrom: "Ihned",
     priceNote: "+ poplatky 1 000 Kč",
+    advancePayments: "3 500 Kč měsíčně za služby a energie",
     additionalParameters: [{ label: "Infrastruktura", value: "Vodovod, kanalizace" }],
     images: [{ src: "https://example.com/photo.jpg", alt: "Interiér", position: 0 }],
     featured: true,
@@ -210,6 +211,7 @@ describe("Self-hosted admin and public API", () => {
       draft.additionalParameters,
     );
     expect((await publicProperties(db))[0]?.priceNote).toBe(draft.priceNote);
+    expect((await publicProperties(db))[0]?.advancePayments).toBe(draft.advancePayments);
     expect((await publicProperties(db))[0]?.availableFrom).toBe(draft.availableFrom);
     expect(
       (await request(`/api/admin/properties/${propertyId}`, "PUT", { ...draft, version: 1 }, true))

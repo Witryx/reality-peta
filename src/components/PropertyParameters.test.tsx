@@ -16,6 +16,7 @@ const p: Property = {
   location: { city: "Praha", district: "Karlín" },
   price: 23000,
   priceNote: "+ poplatky 1 000 Kč",
+  advancePayments: "3 500 Kč měsíčně za služby a energie",
   area: 50,
   ownership: "Osobní",
   condition: "Dobrý",
@@ -48,6 +49,8 @@ describe("Property parameters", () => {
     expect(screen.getByRole("heading", { name: "Podrobnosti" })).toBeInTheDocument();
     expect(screen.queryByRole("heading", { name: "Vybavení" })).not.toBeInTheDocument();
     expect(screen.getByText(p.priceNote!)).toBeInTheDocument();
+    expect(screen.getByText("Zálohy")).toBeInTheDocument();
+    expect(screen.getByText(p.advancePayments!)).toBeInTheDocument();
     expect(screen.getByText("Balkon")).toBeInTheDocument();
     expect(screen.getByText("Infrastruktura")).toBeInTheDocument();
     expect(screen.getByText("Vodovod, kanalizace")).toBeInTheDocument();

@@ -1240,6 +1240,11 @@
     "groups": ["Detail nemovitosti"]
   },
   {
+    "key": "text_4fea323a",
+    "default": "Zálohy",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
     "key": "text_8a802a53",
     "default": "Dispozice",
     "groups": ["Detail nemovitosti"]

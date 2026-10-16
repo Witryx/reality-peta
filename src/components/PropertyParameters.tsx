@@ -8,6 +8,7 @@ export function PropertyParameters({ p }: { p: Property }) {
   const params: [string, ReactNode][] = [
     ["Cena", formatPrice(p)],
     ["Poznámka k ceně", p.priceNote],
+    ["Zálohy", p.advancePayments],
     ["Dispozice", p.disposition],
     ["Užitná plocha", p.area ? `${p.area} m²` : undefined],
     ["Pozemek", p.landArea ? `${p.landArea} m²` : undefined],

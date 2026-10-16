@@ -153,6 +153,10 @@ omezení pohybu zůstává tato pomalá změna světla, šipka a oddělovače js
   neopakujících se výhod v uloženém pořadí; detail zachová celý seznam. V Parametrech
   nemovitosti můžete vyplnit volitelný **Termín nastěhování**, například „Ihned“, „Od 1. 12. 2026“
   nebo „Dohodou“. Ukáže se na kartě i v detailu; prázdná hodnota se nezobrazuje.
+- V **Parametrech nemovitosti** je také volitelné textové pole **Zálohy**, například
+  „3 500 Kč měsíčně za služby a energie“. Vyplněná hodnota se zobrazí v parametrech
+  veřejného detailu i náhledu nabídky; prázdná se vynechá. Ukládá se spolu s nabídkou
+  do JSONB a nevyžaduje novou databázovou migraci.
 - Poznámka k ceně se zobrazuje na přehledové kartě, pod popisem detailu i v tabulce
   parametrů. Detail má hlavní celou fotografii s ovládáním pod ní, na počítači
   přehled náhledů vedle fotografie a na mobilu vodorovný pás. **Zobrazit všechny**

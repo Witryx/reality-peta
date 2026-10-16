@@ -44,6 +44,8 @@ export interface Property {
   market?: "cz" | "egypt";
   price: number | null; // null = cena na vyžádání
   priceNote?: string;
+  /** Volitelný popis záloh, např. měsíčních služeb a energií u pronájmu. */
+  advancePayments?: string;
   area: number; // m² užitné plochy
   landArea?: number;
   floor?: string;

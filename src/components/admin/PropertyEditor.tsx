@@ -48,6 +48,7 @@ const blank = (): AdminProperty => ({
   location: { city: "", district: "", street: "" },
   price: null,
   priceNote: "",
+  advancePayments: "",
   area: 0,
   ownership: "Osobní",
   condition: "",
@@ -187,6 +188,7 @@ export function PropertyEditor({
       | "slug"
       | "disposition"
       | "priceNote"
+      | "advancePayments"
       | "floor"
       | "ownership"
       | "condition"
@@ -208,7 +210,7 @@ export function PropertyEditor({
             ? 200
             : key === "videoUrl" || key === "matterportUrl"
               ? 2048
-              : key === "priceNote"
+              : key === "priceNote" || key === "advancePayments"
                 ? 500
                 : key === "disposition"
                   ? 80
@@ -472,6 +474,7 @@ export function PropertyEditor({
               )}
               {input("building", "Stavba", "Cihlový dům")}
               {input("availableFrom", "Termín nastěhování", "Ihned / Od 1. 12. 2026 / Dohodou")}
+              {input("advancePayments", "Zálohy", "Např. 3 500 Kč měsíčně za služby a energie")}
             </div>
             <EnergyRating value={value.energyClass} />
             <h3 className="admin-subheading">Další parametry</h3>
