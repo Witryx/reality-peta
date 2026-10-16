@@ -105,16 +105,9 @@
   background: currentColor;
 }
 .property-status-prominent {
-  padding: 10px 17px;
-  font-size: 14px;
-  color: white;
-  background: var(--status-color);
-  border-color: var(--status-color);
-  box-shadow: 0 3px 12px #00000030;
-}
-.property-status-prominent .property-status-dot {
-  width: 10px;
-  height: 10px;
+  color: #00c853;
+  background: var(--card);
+  border-color: var(--border);
 }
 .property-price-note {
   border-left: 3px solid var(--accent);
