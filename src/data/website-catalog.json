@@ -420,16 +420,6 @@
     "groups": ["Detail nemovitosti", "Nabídka"]
   },
   {
-    "key": "text_2314f19e",
-    "default": "Parametry",
-    "groups": ["Detail nemovitosti"]
-  },
-  {
-    "key": "text_59ed3179",
-    "default": "Vybavení",
-    "groups": ["Detail nemovitosti"]
-  },
-  {
     "key": "text_df0edc4",
     "default": "Lokalita",
     "groups": ["Detail nemovitosti"]
@@ -1082,7 +1072,7 @@
   {
     "key": "text_61fb5738",
     "default": "Pozemek",
-    "groups": ["Formuláře"]
+    "groups": ["Formuláře", "Detail nemovitosti"]
   },
   {
     "key": "text_bf0381c9",
@@ -1177,7 +1167,7 @@
   {
     "key": "text_df8a3c78",
     "default": "Fotografii připravujeme",
-    "groups": ["Nabídka"]
+    "groups": ["Nabídka", "Detail nemovitosti"]
   },
   {
     "key": "text_c8d7259a",
@@ -1203,6 +1193,81 @@
     "key": "text_2e709346",
     "default": "Další nemovitost",
     "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_dfab331c",
+    "default": "Načítám fotografii…",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_6c40c2e9",
+    "default": "Fotografii se nepodařilo načíst.",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_7826658",
+    "default": "Zvětšit",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_b1815080",
+    "default": "Fotogalerie",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_b80eabe0",
+    "default": "Cena",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_e413ce0a",
+    "default": "Poznámka k ceně",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_8a802a53",
+    "default": "Dispozice",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_e66fa983",
+    "default": "Užitná plocha",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_684141ce",
+    "default": "Podlaží",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_2b04caea",
+    "default": "Vlastnictví",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_556781dd",
+    "default": "Stav",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_d7c76e24",
+    "default": "Stavba",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_2314f19e",
+    "default": "Parametry",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_c181dd35",
+    "default": "Další parametry",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_fb79d1ed",
+    "default": "Příslušenství",
+    "groups": ["Detail nemovitosti"]
   },
   {
     "key": "text_50e35230",

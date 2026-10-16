@@ -24,6 +24,8 @@ const groups = {
   "GoogleRating.tsx": "Reference",
   "PropertyCarousel.tsx": "Nabídka",
   "PropertyCard.tsx": "Nabídka",
+  "PropertyGallery.tsx": "Detail nemovitosti",
+  "PropertyParameters.tsx": "Detail nemovitosti",
   "CollaborationStrip.tsx": "Partneři",
   "BrandLockup.tsx": "Identita",
   "ConsentEmbed.tsx": "Mapy a videa",
@@ -155,6 +157,7 @@ for (const filename of files) {
       const expression = node.expression.getText(ast);
       const propertyData =
         /\bp\.|\bimg\.|\bim\./.test(expression) ||
+        /Property(?:Gallery|Parameters)\.tsx$/.test(filename) ||
         (filename.includes("/clanky/") && /\b(?:article|a|s)\.|^[pb]$/.test(expression)) ||
         (filename === "src/routes/index.tsx" && /\ba\./.test(expression)) ||
         (filename.endsWith("nabidka.$slug.tsx") && /^[dv]$/.test(expression));
@@ -175,6 +178,12 @@ for (const filename of files) {
       }
     }
     if (ts.isStringLiteral(node)) {
+      if (
+        filename.endsWith("PropertyParameters.tsx") &&
+        ts.isArrayLiteralExpression(node.parent) &&
+        node.parent.elements[0] === node
+      )
+        register(node.text, group);
       if (
         ts.isJsxAttribute(node.parent) &&
         ["title", "eyebrow", "intro", "label", "submitLabel"].includes(

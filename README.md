@@ -136,6 +136,22 @@ sekundu po načtení, i po refreshi. Síla záře plynule třikrát zesílí a z
 během dalších pěti sekund; potom zhasne. Ikony se nepohybují ani nezvětšují. Při zapnutém
 omezení pohybu zůstává tato pomalá změna světla, šipka a oddělovače jsou statické.
 
+## Fotografie, URL a parametry nabídky
+
+- Fotografie v editoru přesuňte za úchyt **Přesunout** myší nebo dotykem. Cílová
+  pozice se zvýrazní; při tažení k okraji okna se stránka posouvá. Pořadí lze změnit
+  také přímým výběrem pozice nebo šipkami. První fotografie je vždy titulní.
+- U nových nabídek a konceptů včetně duplikátů se při přejmenování vytváří URL podle
+  názvu. Shodné automatické URL dostanou při uložení číselnou příponu. Ruční změna
+  URL vypne automatiku v otevřeném editoru; tlačítko **Vytvořit URL z názvu** ji
+  zapne znovu. Přejmenování zveřejněné nabídky její URL automaticky nemění.
+- V části **Parametry nemovitosti → Další parametry** upravíte původní příslušenství
+  a výhody a přidáte až 20 vlastních řádků s názvem a hodnotou. Stávající vybavení
+  se zachová. Vlastní parametry se ukládají do JSONB bez nové databázové migrace.
+- Poznámka k ceně se zobrazuje na přehledové kartě, pod popisem detailu i v tabulce
+  parametrů. Detail má kompaktní galerii s náhledy, klávesovými šipkami, dotykovým
+  listováním a volitelným zvětšením. Animace respektují omezení pohybu.
+
 ## Energie, YouTube a Google Mapy v nabídce
 
 - V administraci v části Parametry vyberte barevnou třídu A–G. Volba

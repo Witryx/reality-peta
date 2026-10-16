@@ -40,6 +40,8 @@ describe("Self-hosted admin and public API", () => {
     perex: "Světlý byt s balkonem.",
     description: ["Podrobný popis testovací nemovitosti."],
     features: ["Balkon"],
+    priceNote: "+ poplatky 1 000 Kč",
+    additionalParameters: [{ label: "Infrastruktura", value: "Vodovod, kanalizace" }],
     images: [{ src: "https://example.com/photo.jpg", alt: "Interiér", position: 0 }],
     featured: true,
     sortOrder: 1,
@@ -203,10 +205,47 @@ describe("Self-hosted admin and public API", () => {
     expect((await response.json()).version).toBe(2);
     expect((await publicProperties(db))[0]?.id).toBe(propertyId);
     expect((await publicProperties(db))[0]?.nearbyPlaces).toEqual(draft.nearbyPlaces);
+    expect((await publicProperties(db))[0]?.additionalParameters).toEqual(
+      draft.additionalParameters,
+    );
+    expect((await publicProperties(db))[0]?.priceNote).toBe(draft.priceNote);
     expect(
       (await request(`/api/admin/properties/${propertyId}`, "PUT", { ...draft, version: 1 }, true))
         .status,
     ).toBe(409);
+  });
+  it("allocates unique automatic URLs when renaming duplicate drafts, but rejects manual collisions", async () => {
+    const created = await request(
+      "/api/admin/properties",
+      "POST",
+      { ...draft, autoSlug: true },
+      true,
+    );
+    expect(created.status).toBe(201);
+    const copy = await created.json();
+    expect(copy.slug).toBe(`${draft.slug}-2`);
+    expect(copy.autoSlug).toBeUndefined();
+    const renamed = await request(
+      `/api/admin/properties/${copy.id}`,
+      "PUT",
+      {
+        ...copy,
+        slug: draft.slug,
+        autoSlug: true,
+      },
+      true,
+    );
+    expect(renamed.status).toBe(200);
+    expect((await renamed.json()).slug).toBe(`${draft.slug}-2`);
+    const secondCopy = await request(
+      "/api/admin/properties",
+      "POST",
+      { ...draft, autoSlug: true },
+      true,
+    );
+    expect(secondCopy.status).toBe(201);
+    expect((await secondCopy.json()).slug).toBe(`${draft.slug}-3`);
+    expect((await request("/api/admin/properties", "POST", draft, true)).status).toBe(409);
   });
   it("keeps future and Egypt offers out of the current Czech public list", async () => {
     expect(

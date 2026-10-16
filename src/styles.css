@@ -70,6 +70,346 @@
 .property-card:hover .property-detail-arrow {
   transform: translate(2px, -2px);
 }
+.property-title {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+}
+.property-status {
+  --status-color: var(--status-active);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border: 1px solid color-mix(in oklab, var(--status-color) 30%, var(--card));
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--status-color) 12%, var(--card));
+  color: color-mix(in oklab, var(--status-color) 80%, var(--ink));
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 2px 8px #0000000a;
+}
+.property-status-reserved {
+  --status-color: var(--status-reserved);
+}
+.property-status-sold {
+  --status-color: var(--status-sold);
+}
+.property-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.property-status-prominent {
+  padding: 9px 17px;
+  font-size: 14px;
+  color: white;
+  background: var(--status-color);
+  border-color: var(--status-color);
+}
+.property-price-note {
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  background: var(--surface);
+  padding: 14px 18px;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.property-card-price-note {
+  overflow-wrap: anywhere;
+}
+.property-parameter-list > div {
+  display: grid;
+  grid-template-columns: minmax(0, 155px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.property-parameter-list > div:first-child {
+  border-top: 1px solid var(--border);
+}
+.property-parameter-list dt {
+  color: var(--muted-foreground);
+}
+.property-parameter-list dd {
+  font-weight: 500;
+}
+.property-parameter-list dt,
+.property-parameter-list dd {
+  overflow-wrap: anywhere;
+}
+.property-parameters-subtitle {
+  font: 600 18px/1.4 var(--font-sans);
+}
+.property-feature {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  padding: 4px 10px;
+  font-size: 13px;
+}
+.property-gallery {
+  min-width: 0;
+}
+.property-gallery-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: clamp(240px, 43vw, 480px);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  touch-action: pan-y pinch-zoom;
+}
+.property-gallery-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: property-photo-enter 240ms ease-out;
+}
+.property-gallery-image[data-direction="-1"] {
+  --photo-entry: -12px;
+}
+@keyframes property-photo-enter {
+  from {
+    opacity: 0.35;
+    transform: translateX(var(--photo-entry, 12px));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.property-gallery-arrow {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-top: -23px;
+  border: 1px solid color-mix(in oklab, var(--border) 65%, transparent);
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--foreground);
+  box-shadow: 0 3px 14px #00000020;
+  cursor: pointer;
+  transition:
+    transform 150ms,
+    background 150ms,
+    color 150ms;
+}
+.property-gallery-arrow.previous {
+  left: 16px;
+}
+.property-gallery-arrow.next {
+  right: 16px;
+}
+.property-gallery-arrow:hover {
+  background: var(--ink);
+  color: var(--ink-foreground);
+}
+.property-gallery-arrow:active {
+  transform: scale(0.88);
+}
+.property-gallery-expand,
+.property-gallery-count {
+  position: absolute;
+  bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 7px;
+  background: var(--card);
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px #00000015;
+}
+.property-gallery-expand {
+  left: 16px;
+  cursor: pointer;
+}
+.property-gallery-count {
+  right: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.property-gallery-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 2px;
+  color: var(--muted-foreground);
+  font-size: 12px;
+}
+.property-gallery-caption > span:last-child {
+  flex-shrink: 0;
+}
+.property-gallery-thumbnails {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 4px 3px 10px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.property-gallery-thumbnails button {
+  position: relative;
+  flex: 0 0 108px;
+  height: 72px;
+  border: 2px solid transparent;
+  border-radius: 7px;
+  overflow: hidden;
+  opacity: 0.6;
+  cursor: pointer;
+  transition:
+    opacity 150ms,
+    border-color 150ms;
+}
+.property-gallery-thumbnails button:hover {
+  opacity: 1;
+}
+.property-gallery-thumbnails button[aria-current="true"] {
+  opacity: 1;
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 2px var(--background),
+    0 0 0 3px var(--accent);
+}
+.property-gallery-thumbnails img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.property-gallery-thumbnails button > span {
+  position: absolute;
+  right: 4px;
+  bottom: 3px;
+  border-radius: 3px;
+  padding: 1px 5px;
+  background: #152720bd;
+  color: white;
+  font-size: 10px;
+}
+.property-gallery-loading {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--card);
+  box-shadow: 0 2px 10px #00000015;
+  pointer-events: none;
+}
+.property-gallery-error,
+.property-gallery-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px;
+  background: var(--surface);
+  color: var(--muted-foreground);
+}
+.property-gallery-error {
+  position: absolute;
+  inset: 0;
+}
+.property-gallery-empty {
+  min-height: 240px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+}
+.property-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: #101914eb;
+}
+.property-lightbox {
+  position: fixed;
+  inset: 24px;
+  z-index: 61;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  color: white;
+}
+.property-lightbox-stage {
+  position: relative;
+  min-height: 0;
+  flex: 1;
+  padding: 36px 60px 0;
+}
+.property-lightbox-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #ffffff50;
+  border-radius: 50%;
+  background: #152720;
+  cursor: pointer;
+}
+.property-lightbox-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-inline: 60px;
+  font-size: 14px;
+}
+@media (max-width: 640px) {
+  .property-parameter-list > div {
+    grid-template-columns: minmax(0, 110px) minmax(0, 1fr);
+    gap: 12px;
+    font-size: 13px;
+  }
+  .property-gallery-stage {
+    height: clamp(240px, 67vw, 360px);
+  }
+  .property-gallery-arrow {
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+  }
+  .property-gallery-arrow.previous {
+    left: 8px;
+  }
+  .property-gallery-arrow.next {
+    right: 8px;
+  }
+  .property-gallery-thumbnails button {
+    flex-basis: 84px;
+    height: 58px;
+  }
+  .property-lightbox {
+    inset: 12px;
+  }
+  .property-lightbox-stage {
+    padding: 54px 0 0;
+  }
+  .property-lightbox-caption {
+    padding-inline: 4px;
+    font-size: 12px;
+  }
+}
 @media (max-width: 640px) {
   .home-hero .hero-photo {
     border-bottom-right-radius: 45px;
@@ -1089,7 +1429,8 @@
 .motion-ready.motion-visible .connector-motif {
   animation: connector-settle 0.8s 1s ease both;
 }
-@supports (view-timeline-name: --connector-progress) and (animation-timeline: --connector-progress) and (animation-range: cover 0% cover 100%) {
+@supports (view-timeline-name: --connector-progress) and (animation-timeline: --connector-progress)
+  and (animation-range: cover 0% cover 100%) {
   @media (prefers-reduced-motion: no-preference) {
     /* Every stage shares the divider's timeline, including its absolute-positioned motif.
        Scroll down to draw/fill; scroll back up to retrace. Timed rules above are the fallback. */
@@ -1129,16 +1470,17 @@
       animation: connector-sun-rays 1s linear both;
       animation-range: cover 70% cover 82%;
     }
-    .section-connector[data-reveal="connector"] :is(
-      .connector-incoming,
-      .connector-outgoing,
-      .connector-motif,
-      .connector-detail,
-      .connector-secondary,
-      .connector-logo-fill,
-      .connector-sun-fill,
-      .connector-sun-rays
-    ) {
+    .section-connector[data-reveal="connector"]
+      :is(
+        .connector-incoming,
+        .connector-outgoing,
+        .connector-motif,
+        .connector-detail,
+        .connector-secondary,
+        .connector-logo-fill,
+        .connector-sun-fill,
+        .connector-sun-rays
+      ) {
       /* The animation shorthand resets the timeline, so keep this after all stages. */
       animation-timeline: --connector-progress;
     }

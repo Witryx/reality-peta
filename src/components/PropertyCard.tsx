@@ -3,15 +3,18 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { formatPrice, statusLabel, type Property } from "@/data/types";
 
-export function StatusBadge({ status }: { status: Property["status"] }) {
-  const cls = {
-    active: "bg-status-active",
-    reserved: "bg-status-reserved",
-    sold: "bg-status-sold",
-  }[status];
+export function StatusBadge({
+  status,
+  prominent = false,
+}: {
+  status: Property["status"];
+  prominent?: boolean;
+}) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full bg-card/95 px-3 py-1 text-xs font-semibold text-foreground backdrop-blur">
-      <span className={`size-1.5 rounded-full ${cls}`} aria-hidden />
+    <span
+      className={`property-status property-status-${status} ${prominent ? "property-status-prominent" : ""}`}
+    >
+      <span className="property-status-dot" aria-hidden />
       <SiteText>{statusLabel[status]}</SiteText>
     </span>
   );
@@ -51,7 +54,7 @@ export function PropertyCard({ p, eager = false }: { p: Property; eager?: boolea
           <p className="text-xs text-muted-foreground">
             {[p.location.city, p.location.district].filter(Boolean).join(" · ")}
           </p>
-          <h3 className="mt-2 text-xl leading-snug [overflow-wrap:anywhere] group-hover:underline decoration-1 underline-offset-4 md:text-2xl">
+          <h3 className="property-title mt-2 text-xl leading-snug [overflow-wrap:anywhere] group-hover:underline decoration-1 underline-offset-4 md:text-2xl">
             {p.title}
           </h3>
           <p className="mt-2 text-sm text-muted-foreground">
@@ -59,6 +62,11 @@ export function PropertyCard({ p, eager = false }: { p: Property; eager?: boolea
               .filter(Boolean)
               .join(" · ")}
           </p>
+          {p.priceNote && (
+            <p className="property-card-price-note mt-3 text-xs leading-relaxed text-muted-foreground">
+              {p.priceNote}
+            </p>
+          )}
           <div className="mt-auto pt-4">
             <div className="flex items-center justify-between gap-3 border-t border-border/60 pt-3">
               <p className="text-base font-semibold leading-snug">

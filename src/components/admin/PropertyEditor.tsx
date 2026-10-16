@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
-  ArrowDown,
   ArrowLeft,
-  ArrowUp,
   Building2,
   Check,
   ExternalLink,
@@ -15,7 +13,7 @@ import {
   X,
 } from "lucide-react";
 import { api } from "@/lib/api";
-import { formatPrice, type PropertyImage } from "@/data/types";
+import { formatPrice } from "@/data/types";
 import { publicationLabel, type AdminProperty, type Media, type Publication } from "@/data/admin";
 import { propertySchema } from "@/server/validation";
 import { today } from "@/lib/dates";
@@ -26,6 +24,8 @@ import { EnergyRating } from "@/components/EnergyRating";
 import { propertyMap } from "@/lib/property-media";
 import { NearbyPlacesEditor } from "./NearbyPlacesEditor";
 import { NearbyPlaces } from "@/components/NearbyPlaces";
+import { PropertyImagesEditor } from "./PropertyImagesEditor";
+import { PropertyParameters } from "@/components/PropertyParameters";
 
 const slugify = (s: string) =>
   s
@@ -33,8 +33,8 @@ const slugify = (s: string) =>
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "")
-    .slice(0, 200);
+    .slice(0, 200)
+    .replace(/^-|-$/g, "");
 const blank = (): AdminProperty => ({
   id: "",
   title: "",
@@ -87,6 +87,7 @@ export function PropertyEditor({
   const [uploading, setUploading] = useState("");
   const [library, setLibrary] = useState(false);
   const [preview, setPreview] = useState(false);
+  const [automaticSlug, setAutomaticSlug] = useState(!initial || initial.publication === "draft");
   const original = useRef(JSON.stringify(value));
   const dirty = original.current !== JSON.stringify(value);
   useDialogFocus(library || preview, () => {
@@ -112,7 +113,7 @@ export function PropertyEditor({
   async function save(publication = value.publication) {
     setError("");
     setFieldErrors({});
-    const candidate = { ...value, publication };
+    const candidate = { ...value, publication, autoSlug: automaticSlug };
     const parsed = propertySchema.safeParse(candidate);
     if (!parsed.success) {
       const errors: Record<string, string> = {};
@@ -160,16 +161,6 @@ export function PropertyEditor({
       setUploading("");
       await onMediaChange();
     }
-  }
-  function reorder(i: number, direction: number) {
-    const images = [...value.images];
-    const target = i + direction;
-    if (target < 0 || target >= images.length) return;
-    [images[i], images[target]] = [images[target]!, images[i]!];
-    update(
-      "images",
-      images.map((image, position) => ({ ...image, position })),
-    );
   }
   function addFromLibrary(m: Media) {
     if (value.images.some((im) => im.src === `/uploads/${m.filename}`)) return;
@@ -221,7 +212,10 @@ export function PropertyEditor({
                   ? 80
                   : 200
         }
-        onChange={(e) => update(key, e.target.value)}
+        onChange={(e) => {
+          if (key === "slug") setAutomaticSlug(false);
+          update(key, e.target.value);
+        }}
       />,
     );
   return (
@@ -272,15 +266,29 @@ export function PropertyEditor({
                   setValue((p) => ({
                     ...p,
                     title,
-                    slug:
-                      !initial && (p.slug === slugify(p.title) || !p.slug)
-                        ? slugify(title)
-                        : p.slug,
+                    slug: automaticSlug ? slugify(title) : p.slug,
                   }));
                 }}
               />,
             )}
             {input("slug", "Adresa nabídky (URL) *", "byt-3kk-praha-vinohrady")}
+            <div className="admin-slug-help">
+              <p className="admin-description">
+                {automaticSlug
+                  ? "URL se mění podle názvu. Při shodě s jinou nabídkou se při uložení doplní číslo."
+                  : "URL je nastavená ručně. Změna názvu ji nepřepíše."}
+              </p>
+              <button
+                type="button"
+                className="admin-text-button"
+                onClick={() => {
+                  update("slug", slugify(value.title));
+                  setAutomaticSlug(true);
+                }}
+              >
+                Vytvořit URL z názvu
+              </button>
+            </div>
             <div className="admin-field-grid">
               {field(
                 "offerType",
@@ -463,6 +471,88 @@ export function PropertyEditor({
               {input("building", "Stavba", "Cihlový dům")}
             </div>
             <EnergyRating value={value.energyClass} />
+            <h3 className="admin-subheading">Další parametry</h3>
+            {field(
+              "features",
+              "Příslušenství a výhody (jedna položka na řádek)",
+              <textarea
+                value={value.features.join("\n")}
+                rows={4}
+                onChange={(e) => update("features", e.target.value.split("\n"))}
+                placeholder={"Balkon\nVýtah\nSklep"}
+              />,
+            )}
+            <p className="admin-description">
+              Přidejte vlastní řádky, například infrastrukturu, vybavenost nebo termín nastěhování.
+            </p>
+            {(value.additionalParameters ?? []).map((parameter, i) => (
+              <div className="admin-parameter-row" key={i}>
+                {field(
+                  `additionalParameters.${i}.label`,
+                  `Název parametru ${i + 1}`,
+                  <input
+                    value={parameter.label}
+                    maxLength={100}
+                    placeholder="Např. Infrastruktura"
+                    onChange={(e) =>
+                      update(
+                        "additionalParameters",
+                        value.additionalParameters!.map((item, index) =>
+                          index === i ? { ...item, label: e.target.value } : item,
+                        ),
+                      )
+                    }
+                  />,
+                )}
+                {field(
+                  `additionalParameters.${i}.value`,
+                  `Hodnota parametru ${i + 1}`,
+                  <textarea
+                    value={parameter.value}
+                    maxLength={1000}
+                    rows={2}
+                    placeholder="Např. Vodovod, kanalizace, plyn"
+                    onChange={(e) =>
+                      update(
+                        "additionalParameters",
+                        value.additionalParameters!.map((item, index) =>
+                          index === i ? { ...item, value: e.target.value } : item,
+                        ),
+                      )
+                    }
+                  />,
+                )}
+                <button
+                  type="button"
+                  className="admin-icon-button"
+                  aria-label={`Odebrat parametr ${i + 1}`}
+                  onClick={() =>
+                    update(
+                      "additionalParameters",
+                      value.additionalParameters!.filter((_, index) => index !== i),
+                    )
+                  }
+                >
+                  <Trash2 size={17} />
+                </button>
+              </div>
+            ))}
+            {fieldErrors["additionalParameters"] && (
+              <Notice>{fieldErrors["additionalParameters"]}</Notice>
+            )}
+            <button
+              type="button"
+              className="admin-btn"
+              disabled={(value.additionalParameters?.length ?? 0) >= 20}
+              onClick={() =>
+                update("additionalParameters", [
+                  ...(value.additionalParameters ?? []),
+                  { label: "", value: "" },
+                ])
+              }
+            >
+              Přidat parametr
+            </button>
           </section>
           <section className="admin-card admin-form-card">
             <h2>
@@ -490,23 +580,14 @@ export function PropertyEditor({
                 placeholder="Jednotlivé odstavce oddělte prázdným řádkem."
               />,
             )}
-            {field(
-              "features",
-              "Vybavení a výhody (jedna položka na řádek)",
-              <textarea
-                value={value.features.join("\n")}
-                rows={4}
-                onChange={(e) => update("features", e.target.value.split("\n"))}
-                placeholder={"Balkon\nVýtah\nSklep"}
-              />,
-            )}
           </section>
           <section className="admin-card admin-form-card">
             <h2>
               <span>05</span> Fotografie a prohlídky
             </h2>
             <p className="admin-description">
-              První fotografie je titulní. Pořadí upravte šipkami. Maximálně 50 fotografií.
+              První fotografie je titulní. Fotografie přetáhněte za úchyt nebo vyberte jejich
+              pozici. Maximálně 50 fotografií.
             </p>
             {fieldErrors["images"] && <Notice>{fieldErrors["images"]}</Notice>}
             <div className="admin-upload-zone">
@@ -532,62 +613,10 @@ export function PropertyEditor({
                 </button>
               </div>
             </div>
-            <div className="admin-gallery-grid">
-              {value.images.map((im, i) => (
-                <div className="admin-gallery-item" key={`${im.src}-${i}`}>
-                  <div>
-                    <img src={im.src} alt={im.alt} />
-                    {i === 0 && <span className="admin-cover-label">Titulní fotografie</span>}
-                  </div>
-                  <input
-                    aria-label={`Popis fotografie ${i + 1}`}
-                    value={im.alt}
-                    maxLength={300}
-                    onChange={(e) =>
-                      update(
-                        "images",
-                        value.images.map((image, index) =>
-                          index === i ? { ...image, alt: e.target.value } : image,
-                        ),
-                      )
-                    }
-                  />
-                  <div className="admin-image-actions">
-                    <span>{i + 1}. fotografie</span>
-                    <button
-                      type="button"
-                      disabled={i === 0}
-                      onClick={() => reorder(i, -1)}
-                      aria-label="Posunout fotografii dopředu"
-                    >
-                      <ArrowUp size={15} />
-                    </button>
-                    <button
-                      type="button"
-                      disabled={i === value.images.length - 1}
-                      onClick={() => reorder(i, 1)}
-                      aria-label="Posunout fotografii dozadu"
-                    >
-                      <ArrowDown size={15} />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        update(
-                          "images",
-                          value.images
-                            .filter((_, index) => index !== i)
-                            .map((image, position) => ({ ...image, position })),
-                        )
-                      }
-                      aria-label="Odebrat fotografii z galerie"
-                    >
-                      <Trash2 size={15} />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PropertyImagesEditor
+              images={value.images}
+              onChange={(images) => update("images", images)}
+            />
             <div className="admin-field-grid">
               {input(
                 "videoUrl",
@@ -784,11 +813,8 @@ export function PropertyEditor({
             {value.description.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
-            <div className="admin-preview-features">
-              {value.features.filter(Boolean).map((f, i) => (
-                <span key={i}>{f}</span>
-              ))}
-            </div>
+            {value.priceNote && <p className="property-price-note">{value.priceNote}</p>}
+            <PropertyParameters p={value} />
             <NearbyPlaces
               p={{
                 ...value,

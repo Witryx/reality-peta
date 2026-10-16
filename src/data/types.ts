@@ -54,6 +54,8 @@ export interface Property {
   perex: string;
   description: string[]; // odstavce
   features: string[];
+  /** Vlastní pojmenované řádky v podsekci Další parametry. */
+  additionalParameters?: { label: string; value: string }[];
   images: PropertyImage[];
   videoUrl?: string;
   matterportUrl?: string;

@@ -1,16 +1,16 @@
 import { SiteText } from "@/components/SiteText";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState } from "react";
-import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { getProperty } from "@/data/properties";
-import { formatPrice, type Property } from "@/data/types";
+import { formatPrice } from "@/data/types";
 import { pageHead, websiteValues } from "@/lib/seo";
 import { site } from "@/config/site";
 import { StatusBadge } from "@/components/PropertyCard";
 import { LeadForm } from "@/components/LeadForm";
 import { ContactLinks, Placeholder } from "@/components/ContactLinks";
 import { ConsentEmbed } from "@/components/ConsentEmbed";
-import { EnergyRating } from "@/components/EnergyRating";
+import { PropertyParameters } from "@/components/PropertyParameters";
+import { PropertyGallery } from "@/components/PropertyGallery";
 import { PropertyMap } from "@/components/PropertyMap";
 import { normalizeVideoUrl } from "@/lib/property-media";
 
@@ -83,83 +83,8 @@ export const Route = createFileRoute("/nabidka/$slug")({
   component: Detail,
 });
 
-function Gallery({ p }: { p: Property }) {
-  const imgs = [...p.images].sort((a, b) => a.position - b.position);
-  const [i, setI] = useState(0);
-  const go = (d: number) => setI((i + d + imgs.length) % imgs.length);
-  return (
-    <div>
-      <div
-        className="relative overflow-hidden rounded-lg bg-muted"
-        onKeyDown={(e) => {
-          if (e.key === "ArrowLeft") go(-1);
-          if (e.key === "ArrowRight") go(1);
-        }}
-      >
-        <img
-          src={imgs[i]?.src}
-          alt={imgs[i]?.alt ?? ""}
-          width={1600}
-          height={1066}
-          className="aspect-[3/2] w-full object-cover"
-        />
-        {imgs.length > 1 && (
-          <>
-            <button
-              onClick={() => go(-1)}
-              aria-label="Předchozí fotografie"
-              className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-card/90 p-2"
-            >
-              <ChevronLeft />
-            </button>
-            <button
-              onClick={() => go(1)}
-              aria-label="Další fotografie"
-              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-card/90 p-2"
-            >
-              <ChevronRight />
-            </button>
-            <span className="absolute bottom-3 right-3 rounded-full bg-card/90 px-3 py-1 text-xs">
-              {i + 1} / <SiteText>{imgs.length}</SiteText>
-            </span>
-          </>
-        )}
-      </div>
-      <div className="mt-3 grid grid-cols-4 gap-3 sm:grid-cols-6">
-        {imgs.map((im, idx) => (
-          <button
-            key={idx}
-            onClick={() => setI(idx)}
-            aria-label={`Zobrazit fotografii ${idx + 1}`}
-            aria-current={idx === i}
-            className={`overflow-hidden rounded ${idx === i ? "ring-2 ring-accent" : "opacity-70 hover:opacity-100"}`}
-          >
-            <img
-              src={im.src}
-              alt=""
-              loading="lazy"
-              width={300}
-              height={200}
-              className="aspect-[3/2] w-full object-cover"
-            />
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function Detail() {
   const p = Route.useLoaderData();
-  const params: [string, string | undefined][] = [
-    ["Dispozice", p.disposition],
-    ["Užitná plocha", `${p.area} m²`],
-    ["Pozemek", p.landArea ? `${p.landArea} m²` : undefined],
-    ["Podlaží", p.floor],
-    ["Vlastnictví", p.ownership],
-    ["Stav", p.condition],
-    ["Stavba", p.building],
-  ];
   const closed = p.status !== "active";
   const video = normalizeVideoUrl(p.videoUrl || "");
   return (
@@ -171,32 +96,32 @@ function Detail() {
         {<SiteText> </SiteText>}
         <span aria-hidden>/</span> <span>{p.title}</span>
       </nav>
-      <header className="mt-6 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <header className="mt-6 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <div className="flex gap-2">
-            <StatusBadge status={p.status} />
+            <StatusBadge status={p.status} prominent />
             {p.isDemo && (
               <Placeholder>
                 <SiteText>{"Ukázková nabídka"}</SiteText>
               </Placeholder>
             )}
           </div>
-          <h1 className="mt-4 max-w-3xl text-4xl md:text-6xl">{p.title}</h1>
+          <h1 className="property-title mt-4 max-w-3xl text-3xl md:text-[2.75rem]">{p.title}</h1>
           <p className="mt-3 flex items-center gap-2 text-muted-foreground">
             <MapPin className="size-4" aria-hidden />
             {[p.location.street, p.location.district, p.location.city].filter(Boolean).join(", ")}
           </p>
         </div>
-        <p className="font-display text-3xl md:text-4xl">
+        <p className="shrink-0 text-2xl font-bold md:text-3xl">
           {p.status === "sold" ? "Prodáno" : formatPrice(p)}
         </p>
       </header>
 
       <div className="mt-10">
-        <Gallery p={p} />
+        <PropertyGallery key={p.id} p={p} />
       </div>
 
-      <div className="mt-14 grid gap-14 lg:grid-cols-[1.5fr_1fr]">
+      <div className="mt-10 grid min-w-0 gap-10 lg:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)] lg:gap-14">
         <div>
           <p className="font-display text-2xl leading-snug">{p.perex}</p>
           <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
@@ -205,33 +130,8 @@ function Detail() {
             ))}
           </div>
 
-          <h2 className="mt-14 text-3xl">
-            <SiteText>{"Parametry"}</SiteText>
-          </h2>
-          <dl className="mt-6 grid grid-cols-1 sm:grid-cols-2">
-            {params
-              .filter(([, v]) => v)
-              .map(([k, v]) => (
-                <div key={k} className="flex justify-between border-b py-3 sm:mr-8">
-                  <dt className="text-muted-foreground">
-                    <SiteText>{k}</SiteText>
-                  </dt>
-                  <dd className="font-medium">{v}</dd>
-                </div>
-              ))}
-          </dl>
-          <EnergyRating value={p.energyClass} />
-
-          <h2 className="mt-14 text-3xl">
-            <SiteText>{"Vybavení"}</SiteText>
-          </h2>
-          <ul className="mt-6 flex flex-wrap gap-2">
-            {p.features.map((f) => (
-              <li key={f} className="rounded-full border px-4 py-1.5 text-sm">
-                <SiteText>{f}</SiteText>
-              </li>
-            ))}
-          </ul>
+          {p.priceNote && <p className="property-price-note mt-6">{p.priceNote}</p>}
+          <PropertyParameters p={p} />
 
           <h2 className="mt-14 text-3xl">
             <SiteText>{"Lokalita"}</SiteText>

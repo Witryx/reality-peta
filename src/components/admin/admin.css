@@ -903,6 +903,134 @@
   border: 1px solid var(--border);
   border-radius: 6px;
   overflow: hidden;
+  transition:
+    border-color 150ms,
+    box-shadow 150ms,
+    opacity 150ms;
+}
+.admin-gallery-item.is-dragging {
+  opacity: 0.4;
+}
+.admin-gallery-item.is-drop-target {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 35%, transparent);
+}
+.admin-gallery-grid.is-sorting {
+  user-select: none;
+}
+.admin-photo-grip {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 36px;
+  padding: 6px 9px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--foreground);
+  touch-action: none;
+  cursor: grab !important;
+  box-shadow: 0 2px 8px #00000020;
+  font-size: 10px;
+}
+.admin-photo-grip:active {
+  cursor: grabbing !important;
+}
+.admin-photo-drop-label {
+  position: absolute;
+  inset: auto 8px 8px;
+  padding: 7px;
+  background: var(--accent);
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 11px;
+}
+.admin-photo-drag-preview {
+  position: fixed;
+  z-index: 80;
+  width: 140px;
+  pointer-events: none;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--card);
+  box-shadow: 0 8px 28px #00000035;
+  transform: rotate(3deg);
+}
+.admin-photo-drag-preview img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+}
+.admin-photo-drag-preview span {
+  display: block;
+  padding: 7px;
+  text-align: center;
+  font-size: 11px;
+}
+.admin-root .admin-image-actions select {
+  width: auto;
+  flex: 1;
+  min-width: 0;
+  min-height: 34px;
+  padding: 5px;
+  font-size: 11px;
+}
+.admin-image-actions button {
+  min-width: 30px;
+  min-height: 34px;
+  display: grid;
+  place-items: center;
+}
+.admin-subheading {
+  margin: 26px 0 14px;
+  font: 600 16px/1.4 var(--font-sans);
+}
+.admin-parameter-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr) auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.admin-parameter-row label {
+  margin-top: 0;
+}
+.admin-parameter-row button {
+  margin-top: 20px;
+}
+.admin-slug-help {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.admin-slug-help p {
+  flex: 1 1 260px;
+}
+@media (max-width: 640px) {
+  .admin-parameter-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .admin-parameter-row label:nth-child(2) {
+    grid-row: 2;
+  }
+  .admin-parameter-row button {
+    grid-column: 2;
+    grid-row: 1 / 3;
+  }
+  .admin-image-actions {
+    gap: 3px;
+    padding: 5px;
+  }
+  .admin-photo-grip span {
+    display: none;
+  }
 }
 .admin-gallery-item > div:first-child {
   position: relative;
@@ -920,7 +1048,7 @@
   border-radius: 3px;
   font-size: 9px;
   padding: 3px 6px;
-  color: var(--foreground);
+  color: var(--ink-foreground);
 }
 .admin-root .admin-gallery-item > input {
   border: 0;

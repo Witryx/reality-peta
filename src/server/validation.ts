@@ -37,6 +37,7 @@ export const propertySchema = z
       .max(200)
       .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "URL smí obsahovat malá písmena, čísla a pomlčky."),
     publication: z.enum(["draft", "published", "archived"]),
+    autoSlug: z.boolean().optional(),
     status: z.enum(["active", "reserved", "sold"]),
     offerType: z.enum(["sale", "rent"]),
     propertyType: z.enum(["byt", "dům", "pozemek", "komerční"]),
@@ -61,6 +62,15 @@ export const propertySchema = z
     perex: text(700),
     description: z.array(text(10000)).max(30),
     features: z.array(text(200)).max(50),
+    additionalParameters: z
+      .array(
+        z.object({
+          label: text(100).min(1, "Vyplňte název parametru."),
+          value: text(1000).min(1, "Vyplňte hodnotu parametru."),
+        }),
+      )
+      .max(20, "Lze přidat nejvýše 20 dalších parametrů.")
+      .optional(),
     images: z
       .array(
         z.object({ src: imageSource, alt: text(300), position: z.number().int().min(0).max(99) }),

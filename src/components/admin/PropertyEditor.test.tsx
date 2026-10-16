@@ -37,6 +37,75 @@ const initial: AdminProperty = {
 };
 afterEach(() => vi.clearAllMocks());
 describe("Property editor workflow", () => {
+  it("regenerates a duplicated draft URL on rename and saves custom parameters and photo positions", async () => {
+    vi.mocked(api).mockResolvedValue({});
+    const saved = vi.fn().mockResolvedValue(undefined);
+    render(
+      <PropertyEditor
+        initial={{ ...initial, title: `${initial.title} – kopie`, slug: "svetly-byt-kopie-123456" }}
+        media={[]}
+        onCancel={vi.fn()}
+        onSaved={saved}
+        onMediaChange={vi.fn()}
+      />,
+    );
+    fireEvent.change(screen.getByLabelText("Název nemovitosti *"), {
+      target: { value: "Nový byt v Karlíně" },
+    });
+    expect(screen.getByLabelText("Adresa nabídky (URL) *")).toHaveValue("novy-byt-v-karline");
+    fireEvent.change(screen.getByLabelText("Pozice fotografie 2"), { target: { value: "0" } });
+    fireEvent.click(screen.getByRole("button", { name: "Přidat parametr" }));
+    fireEvent.change(screen.getByLabelText("Název parametru 1"), {
+      target: { value: "Infrastruktura" },
+    });
+    fireEvent.change(screen.getByLabelText("Hodnota parametru 1"), {
+      target: { value: "Vodovod, kanalizace" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Uložit změny" }));
+    await waitFor(() => expect(saved).toHaveBeenCalledOnce());
+    const payload = JSON.parse(vi.mocked(api).mock.calls[0]![1]!.body as string);
+    expect(payload).toMatchObject({
+      slug: "novy-byt-v-karline",
+      autoSlug: true,
+      additionalParameters: [{ label: "Infrastruktura", value: "Vodovod, kanalizace" }],
+    });
+    expect(payload.images).toEqual([
+      { ...initial.images[1], position: 0 },
+      { ...initial.images[0], position: 1 },
+    ]);
+  });
+  it("keeps manually entered and published URLs stable when the title changes", () => {
+    const { unmount } = render(
+      <PropertyEditor
+        initial={initial}
+        media={[]}
+        onCancel={vi.fn()}
+        onSaved={vi.fn()}
+        onMediaChange={vi.fn()}
+      />,
+    );
+    fireEvent.change(screen.getByLabelText("Adresa nabídky (URL) *"), {
+      target: { value: "moje-vlastni-url" },
+    });
+    fireEvent.change(screen.getByLabelText("Název nemovitosti *"), {
+      target: { value: "Jiný název bytu" },
+    });
+    expect(screen.getByLabelText("Adresa nabídky (URL) *")).toHaveValue("moje-vlastni-url");
+    unmount();
+    render(
+      <PropertyEditor
+        initial={{ ...initial, publication: "published" }}
+        media={[]}
+        onCancel={vi.fn()}
+        onSaved={vi.fn()}
+        onMediaChange={vi.fn()}
+      />,
+    );
+    fireEvent.change(screen.getByLabelText("Název nemovitosti *"), {
+      target: { value: "Jiný název bytu" },
+    });
+    expect(screen.getByLabelText("Adresa nabídky (URL) *")).toHaveValue(initial.slug);
+  });
   it("requires distances and saves reordered nearby places, including removals", async () => {
     vi.mocked(api).mockResolvedValue({});
     const saved = vi.fn().mockResolvedValue(undefined);
