@@ -22,7 +22,10 @@ export function StatusBadge({
 
 export function PropertyCard({ p, eager = false }: { p: Property; eager?: boolean }) {
   const img = [...p.images].sort((a, b) => a.position - b.position)[0];
-  const features = [...new Set(p.features.map((feature) => feature.trim()).filter(Boolean))];
+  const features = [...new Set(p.features.map((feature) => feature.trim()).filter(Boolean))].slice(
+    0,
+    5,
+  );
   return (
     <article className="property-card group h-full">
       <Link to="/nabidka/$slug" params={{ slug: p.slug }} className="flex h-full flex-col">

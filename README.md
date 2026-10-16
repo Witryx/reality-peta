@@ -149,8 +149,9 @@ omezení pohybu zůstává tato pomalá změna světla, šipka a oddělovače js
   a výhody a přidáte až 20 vlastních řádků s názvem a hodnotou. Stávající vybavení
   se zachová. Vlastní parametry se ukládají do JSONB bez nové databázové migrace.
 - Příslušenství a výhody (balkon, terasa apod.) se zobrazují také ve štítcích na
-  přehledových kartách vedle dispozice a plochy. V Parametrech nemovitosti můžete
-  vyplnit volitelný **Termín nastěhování**, například „Ihned“, „Od 1. 12. 2026“
+  přehledových kartách vedle dispozice a plochy. Karta ukáže prvních pět neprázdných,
+  neopakujících se výhod v uloženém pořadí; detail zachová celý seznam. V Parametrech
+  nemovitosti můžete vyplnit volitelný **Termín nastěhování**, například „Ihned“, „Od 1. 12. 2026“
   nebo „Dohodou“. Ukáže se na kartě i v detailu; prázdná hodnota se nezobrazuje.
 - Poznámka k ceně se zobrazuje na přehledové kartě, pod popisem detailu i v tabulce
   parametrů. Detail má hlavní celou fotografii s ovládáním pod ní, na počítači
