@@ -169,12 +169,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: clamp(240px, 43vw, 480px);
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
   overflow: hidden;
   touch-action: pan-y pinch-zoom;
 }
 .property-gallery-stage > .property-gallery-image {
-  object-fit: cover;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: min(65svh, 560px);
+  object-fit: contain;
 }
 .property-gallery-image {
   display: block;
@@ -369,8 +375,8 @@
     gap: 12px;
     font-size: 13px;
   }
-  .property-gallery-stage {
-    height: clamp(240px, 67vw, 360px);
+  .property-gallery-stage > .property-gallery-image {
+    max-height: min(65svh, 360px);
   }
   .property-gallery-arrow {
     width: 40px;
