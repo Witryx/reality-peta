@@ -982,6 +982,8 @@
   width: 64px;
   height: 44px;
   flex-shrink: 0;
+  overflow: visible;
+  transform-origin: 95% 18%;
 }
 .social-note span {
   white-space: nowrap;
@@ -994,11 +996,21 @@
   animation: social-glow 5s 1s ease-in-out 1;
 }
 .contact-attention-active .social-note svg {
-  animation: contact-arrow-hint 5s 1s ease-in-out 1;
+  animation: contact-arrow-spring 5s 1s ease-out 1;
 }
 .contact-attention-active .social-note path {
   stroke-dasharray: 1;
   animation: contact-arrow-draw 0.8s 1s ease-out both;
+}
+@supports (d: path("M0 0 L1 1")) {
+  .contact-attention-active .social-note svg {
+    animation: none;
+  }
+  .contact-attention-active .social-note path {
+    animation:
+      contact-arrow-draw 0.8s 1s ease-out both,
+      contact-arrow-flex 5s 1s ease-out 1;
+  }
 }
 .social-attention a:hover,
 .social-attention a:focus-visible {
@@ -1044,17 +1056,52 @@
     opacity: 0;
   }
 }
-@keyframes contact-arrow-hint {
+@keyframes contact-arrow-spring {
   0%,
-  30%,
+  28%,
   60%,
+  92%,
   100% {
-    transform: translateX(0);
+    transform: scale(1) rotate(0deg);
   }
-  12%,
+  10%,
   42%,
   74% {
-    transform: translateX(-5px);
+    transform: scale(1.08, 0.94) rotate(-2deg);
+  }
+  16%,
+  48%,
+  80% {
+    transform: scale(0.96, 1.03) rotate(0.9deg);
+  }
+  22%,
+  54%,
+  86% {
+    transform: scale(1.02, 0.99) rotate(-0.35deg);
+  }
+}
+@keyframes contact-arrow-flex {
+  0%,
+  28%,
+  60%,
+  92%,
+  100% {
+    d: path("M74 8 C48 2 62 38 14 28 C9 27 5 24 3 22 M3 22 L13 21 M3 22 L9 31");
+  }
+  10%,
+  42%,
+  74% {
+    d: path("M74 8 C44 0 64 46 10 31 C5 30 0 25 -2 23 M-2 23 L8 22 M-2 23 L4 32");
+  }
+  16%,
+  48%,
+  80% {
+    d: path("M74 8 C52 4 59 34 18 26 C12 25 9 23 7 21 M7 21 L17 20 M7 21 L13 30");
+  }
+  22%,
+  54%,
+  86% {
+    d: path("M74 8 C46 1 64 40 12 29 C7 28 3 24 1 22.5 M1 22.5 L11 21.5 M1 22.5 L7 31.5");
   }
 }
 @keyframes contact-arrow-draw {
