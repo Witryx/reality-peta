@@ -75,7 +75,7 @@
 .property-card .property-card-title {
   margin-top: 10px;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.45;
   letter-spacing: -0.025em;
 }
@@ -159,7 +159,7 @@
 }
 .property-title {
   font-family: var(--font-sans);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.025em;
   text-wrap: pretty;
