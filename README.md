@@ -135,10 +135,10 @@ Kontakty na úvodu jsou viditelné okamžitě. Aktivní sociální ikony se rozz
 sekundu po načtení, i po refreshi. Síla záře plynule třikrát zesílí a zeslábne
 během dalších pěti sekund; potom zhasne. Ikony se nepohybují ani nezvětšují. Při zapnutém
 omezení pohybu zůstává tato pomalá změna světla, šipka a oddělovače jsou statické.
-Šipka u kontaktů zachovává původní tvar a jednou se jemně prohne s postupným
-dozníváním; konec u textu zůstává pevný a hrot sleduje křivku. Nativní SVG animace
-se při omezení pohybu vůbec
-nespouští a při změně této předvolby se zastaví; celé SVG se neposouvá ani neroztahuje.
+Šipka u kontaktů se jemně stáhne dozadu směrem k textu a pružně vrátí do původního
+tvaru s postupným dozníváním. Konec u textu zůstává pevný a hrot sleduje křivku.
+Nativní SVG animace se při omezení pohybu vůbec nespouští a při změně této předvolby
+se zastaví; celé SVG se neposouvá ani neroztahuje.
 
 ## Fotografie, URL a parametry nabídky
 

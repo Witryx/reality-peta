@@ -2,13 +2,16 @@ export const contactArrowDuration = 2.7;
 
 type Point = readonly [number, number];
 
-/** A single damped bend, keeping the original curve and the end beside the text fixed. */
+/** A gentle pull back toward the text, with a damped return and a fixed right anchor. */
 export function contactArrowPath(time: number) {
   const bend =
     time <= 0 || time >= contactArrowDuration
       ? 0
       : 9 * (1 - Math.exp(-12 * time)) * Math.exp(-2.4 * time) * Math.sin(7.4 * time);
-  const point = (x: number, y: number): Point => [x, y + bend * ((74 - x) / 71) ** 1.4];
+  const point = (x: number, y: number): Point => {
+    const flex = bend * ((74 - x) / 71) ** 1.4;
+    return [x + flex * 1.35, y - flex * 0.35];
+  };
   const control = point(5, 24);
   const tip = point(3, 22);
   const angle = Math.atan2(tip[1] - control[1], tip[0] - control[0]) - Math.atan2(-2, -2);
