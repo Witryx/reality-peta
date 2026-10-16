@@ -105,11 +105,16 @@
   background: currentColor;
 }
 .property-status-prominent {
-  padding: 9px 17px;
+  padding: 10px 17px;
   font-size: 14px;
   color: white;
   background: var(--status-color);
   border-color: var(--status-color);
+  box-shadow: 0 3px 12px #00000030;
+}
+.property-status-prominent .property-status-dot {
+  width: 10px;
+  height: 10px;
 }
 .property-price-note {
   border-left: 3px solid var(--accent);
@@ -166,10 +171,10 @@
   justify-content: center;
   height: clamp(240px, 43vw, 480px);
   overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--surface);
   touch-action: pan-y pinch-zoom;
+}
+.property-gallery-stage > .property-gallery-image {
+  object-fit: cover;
 }
 .property-gallery-image {
   display: block;
@@ -245,23 +250,13 @@
   right: 16px;
   font-variant-numeric: tabular-nums;
 }
-.property-gallery-caption {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 12px 2px;
-  color: var(--muted-foreground);
-  font-size: 12px;
-}
-.property-gallery-caption > span:last-child {
-  flex-shrink: 0;
-}
 .property-gallery-thumbnails {
   position: relative;
   display: flex;
   gap: 10px;
   overflow-x: auto;
-  padding: 4px 3px 10px;
+  margin-top: 12px;
+  padding-bottom: 10px;
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
 }
@@ -269,24 +264,17 @@
   position: relative;
   flex: 0 0 108px;
   height: 72px;
-  border: 2px solid transparent;
-  border-radius: 7px;
+  border-radius: 4px;
   overflow: hidden;
   opacity: 0.6;
   cursor: pointer;
-  transition:
-    opacity 150ms,
-    border-color 150ms;
+  transition: opacity 150ms;
 }
 .property-gallery-thumbnails button:hover {
   opacity: 1;
 }
 .property-gallery-thumbnails button[aria-current="true"] {
   opacity: 1;
-  border-color: var(--accent);
-  box-shadow:
-    0 0 0 2px var(--background),
-    0 0 0 3px var(--accent);
 }
 .property-gallery-thumbnails img {
   width: 100%;
@@ -370,7 +358,7 @@
 }
 .property-lightbox-caption {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 20px;
   padding-inline: 60px;
   font-size: 14px;

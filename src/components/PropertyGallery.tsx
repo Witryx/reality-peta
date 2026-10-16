@@ -140,12 +140,6 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
             {index + 1} / {images.length}
           </span>
         </div>
-        <div className="property-gallery-caption">
-          <span>{image.alt}</span>
-          <span>
-            <SiteText>{"Fotogalerie"}</SiteText>
-          </span>
-        </div>
         {images.length > 1 && (
           <div ref={rail} className="property-gallery-thumbnails">
             {images.map((item, i) => (
@@ -187,7 +181,6 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
             {arrows}
           </div>
           <p className="property-lightbox-caption">
-            <span>{image.alt}</span>
             <span aria-live="polite">
               {index + 1} / {images.length}
             </span>

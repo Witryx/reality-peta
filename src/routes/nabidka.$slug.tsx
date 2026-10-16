@@ -99,7 +99,7 @@ function Detail() {
       <header className="mt-6 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <div className="flex gap-2">
-            <StatusBadge status={p.status} prominent />
+            <StatusBadge status={p.status} />
             {p.isDemo && (
               <Placeholder>
                 <SiteText>{"Ukázková nabídka"}</SiteText>
@@ -123,7 +123,7 @@ function Detail() {
 
       <div className="mt-10 grid min-w-0 gap-10 lg:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)] lg:gap-14">
         <div>
-          <p className="font-display text-2xl leading-snug">{p.perex}</p>
+          <p className="font-sans text-xl leading-relaxed md:text-[1.375rem]">{p.perex}</p>
           <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
             {p.description.map((d, i) => (
               <p key={i}>{d}</p>

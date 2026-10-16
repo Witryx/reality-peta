@@ -42,7 +42,7 @@ export function PropertyCard({ p, eager = false }: { p: Property; eager?: boolea
             </div>
           )}
           <div className="absolute left-3 top-3 flex gap-2">
-            <StatusBadge status={p.status} />
+            <StatusBadge status={p.status} prominent={p.status === "active"} />
             {p.isDemo && (
               <span className="rounded-full bg-placeholder px-3 py-1 text-xs font-medium text-accent-foreground">
                 <SiteText>{"Ukázka"}</SiteText>

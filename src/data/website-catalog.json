@@ -1210,11 +1210,6 @@
     "groups": ["Detail nemovitosti"]
   },
   {
-    "key": "text_b1815080",
-    "default": "Fotogalerie",
-    "groups": ["Detail nemovitosti"]
-  },
-  {
     "key": "text_b80eabe0",
     "default": "Cena",
     "groups": ["Detail nemovitosti"]
