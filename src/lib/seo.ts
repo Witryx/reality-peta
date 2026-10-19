@@ -1,6 +1,22 @@
 import { site, resolveSiteConfig } from "@/config/site";
 import { resolveCopy } from "./site-copy";
 
+// A public, absolute JPEG URL lets crawlers use our own card before running JavaScript.
+export function socialImageMeta(values: Record<string, string> = {}) {
+  const current = resolveSiteConfig(values);
+  const image = new URL("/social-preview-v1.jpg", site.url || `https://${site.domain}`).href;
+  const alt = `${current.agentName} reality – ${current.claim}`;
+  return [
+    { property: "og:image", content: image },
+    { property: "og:image:type", content: "image/jpeg" },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:image:alt", content: alt },
+    { name: "twitter:image", content: image },
+    { name: "twitter:image:alt", content: alt },
+  ];
+}
+
 export function websiteValues(
   matches: readonly { id: string; loaderData?: unknown }[],
 ): Record<string, string> {

@@ -6,7 +6,6 @@ import { SectionHead } from "@/components/Sections";
 import { LeadForm } from "@/components/LeadForm";
 import { ContactLinks, SocialLinks } from "@/components/ContactLinks";
 import portrait from "@/assets/petr-pavlat-portrait.png.asset.json";
-import { site } from "@/config/site";
 import { BrandImage } from "@/components/BrandImage";
 
 export const Route = createFileRoute("/kontakt")({
@@ -27,21 +26,22 @@ function Page() {
   const site = useSiteConfig();
 
   return (
-    <div className="container-page grid gap-14 py-16 md:py-24 lg:grid-cols-[1fr_1.2fr]">
+    <div className="container-page grid items-start gap-14 py-16 md:py-24 lg:grid-cols-[1fr_1.2fr]">
       <div>
         <SectionHead
           eyebrow="Kontakt"
           title="Napište mi, nebo rovnou zavolejte"
           intro="Odpovídám osobně, obvykle ještě týž den."
         />
-        <div className="mt-8 flex items-center gap-5">
-          <div className="size-24 shrink-0 overflow-hidden rounded-full bg-surface">
+        <div className="mt-8 grid grid-cols-[7rem_minmax(0,1fr)] items-center gap-5 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6">
+          <div className="flex aspect-[4/5] items-end justify-center overflow-hidden rounded-lg bg-surface">
             <BrandImage
               asset={portrait}
-              alt="Petr Pavlát"
-              width={96}
-              height={96}
-              className="size-full object-cover object-top"
+              imageKey="image.portrait"
+              alt="Petr Pavlát, realitní makléř"
+              width={1439}
+              height={1825}
+              className="h-[95%] w-full object-contain object-bottom"
             />
           </div>
           <div>

@@ -77,6 +77,11 @@ export const statusLabel: Record<PropertyStatus, string> = {
   sold: "Prodáno",
 };
 
+export const marketLabel: Record<NonNullable<Property["market"]>, string> = {
+  cz: "Česko",
+  egypt: "Egypt",
+};
+
 export function formatPrice(p: Property) {
   if (p.price === null) return "Cena na vyžádání";
   const v = new Intl.NumberFormat("cs-CZ").format(p.price) + " Kč";

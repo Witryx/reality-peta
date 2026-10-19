@@ -24,7 +24,7 @@ export const websiteImages = [
   {
     key: "image.portrait",
     label: "Portrét – detail",
-    groups: ["Úvodní stránka"],
+    groups: ["Úvodní stránka", "Kontakt"],
     path: "/",
     alt: "Petr Pavlát, realitní makléř",
   },

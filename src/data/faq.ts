@@ -54,4 +54,10 @@ export const frequentlyAskedQuestions = [
     answer:
       "Vaším hlavním kontaktem budu já. Víte, komu voláte a kdo koordinuje další kroky od prvního rozhovoru až po předání. Odborníky zapojuji tam, kde je potřebujeme, ale souvislosti a průběh obchodu hlídám osobně. Vy řešíte své věci, já držím obchod pohromadě.",
   },
+  {
+    slug: "cena-sluzeb",
+    question: "Kolik zaplatíte za služby?",
+    answer:
+      "Cena se odvíjí od vaší situace, typu nemovitosti a rozsahu služeb. Konkrétní odměnu, co zahrnuje a případné další náklady si domluvíme předem, ještě před začátkem spolupráce. Budete tak vědět, kolik zaplatíte a za co.",
+  },
 ];

@@ -16,7 +16,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CookieConsent } from "@/components/CookieConsent";
 import { TrackingScripts } from "@/components/TrackingScripts";
-import { agentJsonLd } from "@/lib/seo";
+import { agentJsonLd, socialImageMeta } from "@/lib/seo";
 import { site, resolveSiteConfig } from "@/config/site";
 import { PageMotion } from "@/components/PageMotion";
 import { readWebsiteContent } from "@/data/website";
@@ -78,6 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { property: "og:locale", content: "cs_CZ" },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
+        ...socialImageMeta(loaderData?.values ?? {}),
         { name: "theme-color", content: "#f9f7f2" },
       ],
       links: [

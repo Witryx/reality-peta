@@ -470,6 +470,11 @@
     "groups": ["Nabídka"]
   },
   {
+    "key": "text_e740960e",
+    "default": "Všechny země",
+    "groups": ["Nabídka"]
+  },
+  {
     "key": "text_22c9947",
     "default": "Vše",
     "groups": ["Nabídka"]
@@ -1540,6 +1545,16 @@
     "groups": ["Časté dotazy"]
   },
   {
+    "key": "text_ee55ee14",
+    "default": "Kolik zaplatíte za služby?",
+    "groups": ["Časté dotazy"]
+  },
+  {
+    "key": "text_909b4950",
+    "default": "Cena se odvíjí od vaší situace, typu nemovitosti a rozsahu služeb. Konkrétní odměnu, co zahrnuje a případné další náklady si domluvíme předem, ještě před začátkem spolupráce. Budete tak vědět, kolik zaplatíte a za co.",
+    "groups": ["Časté dotazy"]
+  },
+  {
     "key": "text_2fd0bf5a",
     "default": "Prodej nemovitosti",
     "groups": ["Služby a reference"]
@@ -1767,7 +1782,7 @@
   {
     "key": "text_d7e1af08",
     "default": "Egypt",
-    "groups": ["Identita"]
+    "groups": ["Identita", "Nabídka"]
   },
   {
     "key": "text_216c339d",
@@ -1867,6 +1882,11 @@
   {
     "key": "text_a9976168",
     "default": "Rezervováno",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_f752208d",
+    "default": "Česko",
     "groups": ["Nabídka"]
   }
 ]

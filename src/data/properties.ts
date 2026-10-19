@@ -412,6 +412,11 @@ const readProperties = createServerFn({ method: "GET" }).handler(async (): Promi
 
 const sorted = async () => (await readProperties()).sort((a, b) => a.sortOrder - b.sortOrder);
 
+/** Všechny publikované nabídky z Česka i Egypta pro společný přehled. */
+export async function listAllProperties(): Promise<Property[]> {
+  return sorted();
+}
+
 export async function listProperties(status?: PropertyStatus): Promise<Property[]> {
   return (await sorted()).filter((p) => (p.market ?? "cz") === "cz").filter((p) => !status || p.status === status);
 }

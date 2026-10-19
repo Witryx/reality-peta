@@ -125,6 +125,11 @@ Pokud originál chybí, zobrazí se výslovný placeholder. Po výměně sestavt
 (vyžaduje `ASSET_ORIGIN`); nynější lokální originály jej nepotřebují.
 Fonty už se servírují přímo z aplikace, bez Google Fonts.
 
+Náhled sdílených odkazů používá veřejný obrázek `public/social-preview-v1.jpg`
+(1200 × 630 px) a Open Graph / Twitter metadata v kořenové routě. Po výměně
+originálů jej znovu vytvořte příkazem `node scripts/generate-social-preview.mjs`.
+Při změně grafiky změňte také verzi názvu souboru a odkaz v `src/lib/seo.ts`.
+
 Oddělovač na úvodu kreslí obrys původního loga a potom ho vyplňuje maskou originálního
 PNG. Při výměně loga spusťte také `node scripts/trace-brand-logo.mjs`, který z něj
 znovu odvodí obrys v `src/assets/petr-pavlat-logo-outline.json`. V podporovaných
