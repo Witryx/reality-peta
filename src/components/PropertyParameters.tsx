@@ -6,7 +6,17 @@ import { EnergyRating } from "./EnergyRating";
 
 export function PropertyParameters({ p }: { p: Property }) {
   const params: [string, ReactNode][] = [
-    ["Cena", formatPrice(p)],
+    [
+      "Cena",
+      <>
+        {formatPrice(p)}
+        {p.price !== null && p.status !== "sold" && (
+          <span className="mt-1 block text-sm text-muted-foreground">
+            <SiteText>{"Cena včetně provize RK."}</SiteText>
+          </span>
+        )}
+      </>,
+    ],
     ["Poznámka k ceně", p.priceNote],
     ["Zálohy", p.advancePayments],
     ["Dispozice", p.disposition],

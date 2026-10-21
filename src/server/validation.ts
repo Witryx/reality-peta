@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { normalizeVideoUrl } from "@/lib/property-media";
 import { nearbyCategories } from "@/data/nearby";
+import { propertyTypes } from "@/data/types";
 const text = (max: number) => z.string().trim().max(max);
 const imageSource = z
   .string()
@@ -40,7 +41,7 @@ export const propertySchema = z
     autoSlug: z.boolean().optional(),
     status: z.enum(["active", "reserved", "sold"]),
     offerType: z.enum(["sale", "rent"]),
-    propertyType: z.enum(["byt", "dům", "pozemek", "komerční"]),
+    propertyType: z.enum(propertyTypes),
     market: z.enum(["cz", "egypt"]).default("cz"),
     disposition: text(80),
     location: z.object({

@@ -13,7 +13,7 @@ import {
   X,
 } from "lucide-react";
 import { api } from "@/lib/api";
-import { formatPrice } from "@/data/types";
+import { formatPrice, propertyTypes } from "@/data/types";
 import { publicationLabel, type AdminProperty, type Media, type Publication } from "@/data/admin";
 import { propertySchema } from "@/server/validation";
 import { today } from "@/lib/dates";
@@ -316,7 +316,7 @@ export function PropertyEditor({
                     update("propertyType", e.target.value as AdminProperty["propertyType"])
                   }
                 >
-                  {["byt", "dům", "pozemek", "komerční"].map((v) => (
+                  {propertyTypes.map((v) => (
                     <option key={v}>{v}</option>
                   ))}
                 </select>,

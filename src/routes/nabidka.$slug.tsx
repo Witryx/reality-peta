@@ -112,9 +112,16 @@ function Detail() {
             {[p.location.street, p.location.district, p.location.city].filter(Boolean).join(", ")}
           </p>
         </div>
-        <p className="shrink-0 text-2xl font-bold md:text-3xl">
-          {p.status === "sold" ? "Prodáno" : formatPrice(p)}
-        </p>
+        <div className="shrink-0">
+          <p className="text-2xl font-bold md:text-3xl">
+            {p.status === "sold" ? "Prodáno" : formatPrice(p)}
+          </p>
+          {p.price !== null && p.status !== "sold" && (
+            <p className="mt-1 text-sm text-muted-foreground">
+              <SiteText>{"Cena včetně provize RK."}</SiteText>
+            </p>
+          )}
+        </div>
       </header>
 
       <div className="mt-10">

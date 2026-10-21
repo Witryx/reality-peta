@@ -420,6 +420,11 @@
     "groups": ["Detail nemovitosti", "Nabídka"]
   },
   {
+    "key": "text_85376d9f",
+    "default": "Cena včetně provize RK.",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
     "key": "text_df0edc4",
     "default": "Lokalita",
     "groups": ["Detail nemovitosti"]

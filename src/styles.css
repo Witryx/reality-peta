@@ -274,6 +274,11 @@
   margin-inline: auto;
   overflow: hidden;
   touch-action: pan-y pinch-zoom;
+  cursor: zoom-in;
+}
+.property-gallery-stage:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 4px;
 }
 .property-gallery-stage > .property-gallery-image {
   width: auto;

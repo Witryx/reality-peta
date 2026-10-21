@@ -1,4 +1,11 @@
-import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type MouseEvent,
+  type PointerEvent,
+} from "react";
 import { ChevronLeft, ChevronRight, Expand, Grid2X2, ImageOff, Loader2, X } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
 import type { Property } from "@/data/types";
@@ -16,6 +23,8 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
   const viewer = useRef<HTMLDivElement>(null);
   const overview = useRef<HTMLDivElement>(null);
   const gesture = useRef<{ x: number; y: number } | null>(null);
+  const suppressClick = useRef(false);
+  const opener = useRef<HTMLButtonElement | null>(null);
   const index = Math.min(selected, Math.max(0, images.length - 1));
   const image = images[index];
   const loading = Boolean(image && loaded !== image.src && failed !== image.src);
@@ -55,10 +64,16 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
     const dx = event.clientX - gesture.current.x;
     const dy = event.clientY - gesture.current.y;
     gesture.current = null;
+    suppressClick.current = Math.abs(dx) > 10 || Math.abs(dy) > 10;
     if (images.length > 1 && Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) {
       const step = dx < 0 ? 1 : -1;
       select(index + step, step);
     }
+  }
+  function openPhoto(event: MouseEvent<HTMLButtonElement>) {
+    opener.current = event.currentTarget;
+    setDialogView("photo");
+    setExpanded(true);
   }
   const arrows = images.length > 1 && (
     <>
@@ -105,10 +120,10 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
         </span>
       )}
       {failed === image?.src && (
-        <div className="property-gallery-error">
+        <span className="property-gallery-error">
           <ImageOff aria-hidden />
           <SiteText>{"Fotografii se nepodařilo načíst."}</SiteText>
-        </div>
+        </span>
       )}
     </>
   );
@@ -131,22 +146,33 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
         <div className={`property-gallery-layout ${images.length === 1 ? "is-single" : ""}`}>
           <div className="property-gallery-main">
             <div className="property-gallery-photo-area">
-              <div
+              <button
+                type="button"
                 className="property-gallery-stage"
+                aria-label={`Zvětšit fotografii ${index + 1}`}
+                aria-haspopup="dialog"
                 aria-busy={loading}
+                onClick={(event) => {
+                  if (suppressClick.current) {
+                    suppressClick.current = false;
+                    return;
+                  }
+                  openPhoto(event);
+                }}
                 onPointerDown={(event) => {
-                  if (event.target instanceof Element && event.target.closest("button")) return;
+                  suppressClick.current = false;
                   gesture.current = { x: event.clientX, y: event.clientY };
                   event.currentTarget.setPointerCapture(event.pointerId);
                 }}
                 onPointerUp={swipe}
                 onPointerCancel={() => {
                   gesture.current = null;
+                  suppressClick.current = true;
                 }}
               >
                 {photo}
                 {feedback}
-              </div>
+              </button>
             </div>
             <div className="property-gallery-toolbar">
               <div className="property-gallery-navigation">
@@ -155,16 +181,10 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
                   {index + 1} / {images.length}
                 </span>
               </div>
-              <Dialog.Trigger asChild>
-                <button
-                  type="button"
-                  className="property-gallery-expand"
-                  onClick={() => setDialogView("photo")}
-                >
-                  <Expand size={16} />
-                  <SiteText>{"Zvětšit"}</SiteText>
-                </button>
-              </Dialog.Trigger>
+              <button type="button" className="property-gallery-expand" onClick={openPhoto}>
+                <Expand size={16} />
+                <SiteText>{"Zvětšit"}</SiteText>
+              </button>
             </div>
           </div>
           {images.length > 1 && (
@@ -176,7 +196,8 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
                 <button
                   type="button"
                   className="property-gallery-overview-button"
-                  onClick={() => {
+                  onClick={(event) => {
+                    opener.current = event.currentTarget;
                     setDialogView("overview");
                     setExpanded(true);
                   }}
@@ -191,7 +212,10 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
                     type="button"
                     key={`${item.src}-${i}`}
                     data-thumbnail={i}
-                    onClick={() => select(i)}
+                    onClick={(event) => {
+                      select(i);
+                      openPhoto(event);
+                    }}
                     aria-label={`Zobrazit fotografii ${i + 1}`}
                     aria-current={i === index ? "true" : undefined}
                   >
@@ -217,6 +241,12 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
           className="property-lightbox"
           onKeyDown={dialogView === "photo" ? keyboard : undefined}
           aria-describedby={undefined}
+          onCloseAutoFocus={(event) => {
+            if (opener.current?.isConnected) {
+              event.preventDefault();
+              opener.current.focus({ preventScroll: true });
+            }
+          }}
         >
           <div className="property-lightbox-header">
             <Dialog.Title>{p.title}</Dialog.Title>

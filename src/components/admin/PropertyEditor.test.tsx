@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { PropertyEditor } from "./PropertyEditor";
 import type { AdminProperty } from "@/data/admin";
 import { api } from "@/lib/api";
+import { propertySchema } from "@/server/validation";
 vi.mock("@/lib/api", () => ({ api: vi.fn(), ApiError: class extends Error {} }));
 const initial: AdminProperty = {
   id: "2ab58016-58e4-4260-94bd-cb60d2395400",
@@ -52,6 +53,11 @@ describe("Property editor workflow", () => {
     fireEvent.change(screen.getByLabelText("Název nemovitosti *"), {
       target: { value: "Nový byt v Karlíně" },
     });
+    for (const type of ["chata", "chalupa", "garáž", "atypický", "usedlost", "statek", "ostatní"]) {
+      expect(screen.getByRole("option", { name: type })).toHaveValue(type);
+      expect(propertySchema.parse({ ...initial, propertyType: type }).propertyType).toBe(type);
+    }
+    fireEvent.change(screen.getByLabelText("Typ nemovitosti"), { target: { value: "chata" } });
     expect(screen.getByLabelText("Adresa nabídky (URL) *")).toHaveValue("novy-byt-v-karline");
     fireEvent.change(screen.getByLabelText("Pozice fotografie 2"), { target: { value: "0" } });
     fireEvent.click(screen.getByRole("button", { name: "Přidat parametr" }));
@@ -72,6 +78,7 @@ describe("Property editor workflow", () => {
     const payload = JSON.parse(vi.mocked(api).mock.calls[0]![1]!.body as string);
     expect(payload).toMatchObject({
       slug: "novy-byt-v-karline",
+      propertyType: "chata",
       autoSlug: true,
       additionalParameters: [{ label: "Infrastruktura", value: "Vodovod, kanalizace" }],
       availableFrom: "Od 1. 12. 2026",

@@ -49,6 +49,7 @@ describe("Property parameters", () => {
     expect(screen.getByRole("heading", { name: "Podrobnosti" })).toBeInTheDocument();
     expect(screen.queryByRole("heading", { name: "Vybavení" })).not.toBeInTheDocument();
     expect(screen.getByText(p.priceNote!)).toBeInTheDocument();
+    expect(screen.getByText("Cena včetně provize RK.")).toBeInTheDocument();
     expect(screen.getByText("Zálohy")).toBeInTheDocument();
     expect(screen.getByText(p.advancePayments!)).toBeInTheDocument();
     expect(screen.getByText("Balkon")).toBeInTheDocument();

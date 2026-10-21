@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { PropertyGallery } from "./PropertyGallery";
 
@@ -40,6 +40,8 @@ describe("Property gallery", () => {
     fireEvent.click(screen.getByRole("button", { name: "Předchozí fotografie" }));
     expect(screen.getByRole("img", { name: "Druhá fotografie" })).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Zobrazit fotografii 1" }));
+    expect(screen.getByRole("dialog", { name: p.title })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Zavřít fotogalerii" }));
     fireEvent.click(screen.getByRole("button", { name: "Zvětšit" }));
     const dialog = screen.getByRole("dialog", { name: p.title });
     expect(within(dialog).getByRole("img", { name: "První fotografie" })).toBeInTheDocument();
@@ -47,6 +49,35 @@ describe("Property gallery", () => {
     expect(within(dialog).getByRole("img", { name: "Druhá fotografie" })).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Zavřít fotogalerii" }));
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  });
+  it("opens the clicked photograph and restores focus when closed", async () => {
+    render(<PropertyGallery p={p} />);
+    fireEvent.click(screen.getByRole("img", { name: "První fotografie" }));
+    const dialog = screen.getByRole("dialog", { name: p.title });
+    expect(within(dialog).getByRole("img", { name: "První fotografie" })).toBeInTheDocument();
+    fireEvent.click(within(dialog).getByRole("button", { name: "Zavřít fotogalerii" }));
+    await waitFor(() =>
+      expect(screen.getByRole("button", { name: "Zvětšit fotografii 1" })).toHaveFocus(),
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Zobrazit fotografii 2" }));
+    expect(
+      within(screen.getByRole("dialog")).getByRole("img", { name: "Druhá fotografie" }),
+    ).toBeInTheDocument();
+  });
+  it("changes photos on swipe without opening the lightbox and still opens on the next tap", () => {
+    render(<PropertyGallery p={p} />);
+    const stage = screen.getByRole("button", { name: "Zvětšit fotografii 1" });
+    stage.setPointerCapture = vi.fn();
+    // jsdom has no PointerEvent constructor; a MouseEvent supplies the gesture coordinates.
+    fireEvent(stage, new MouseEvent("pointerdown", { bubbles: true, clientX: 200, clientY: 80 }));
+    fireEvent(stage, new MouseEvent("pointerup", { bubbles: true, clientX: 100, clientY: 80 }));
+    fireEvent.click(stage);
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(screen.getByRole("img", { name: "Druhá fotografie" })).toBeInTheDocument();
+    fireEvent(stage, new MouseEvent("pointerdown", { bubbles: true, clientX: 100, clientY: 80 }));
+    fireEvent(stage, new MouseEvent("pointerup", { bubbles: true, clientX: 100, clientY: 80 }));
+    fireEvent.click(stage);
+    expect(screen.getByRole("dialog", { name: p.title })).toBeInTheDocument();
   });
   it("handles empty galleries, a single photograph and failed loads", () => {
     const { rerender } = render(<PropertyGallery p={{ ...p, images: [] }} />);

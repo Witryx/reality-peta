@@ -5,6 +5,20 @@
  */
 export type PropertyStatus = "active" | "reserved" | "sold";
 export type OfferType = "sale" | "rent";
+export const propertyTypes = [
+  "byt",
+  "dům",
+  "pozemek",
+  "komerční",
+  "chata",
+  "chalupa",
+  "garáž",
+  "atypický",
+  "usedlost",
+  "statek",
+  "ostatní",
+] as const;
+export type PropertyType = (typeof propertyTypes)[number];
 
 export interface NearbyPlace {
   category:
@@ -37,7 +51,7 @@ export interface Property {
   title: string;
   status: PropertyStatus;
   offerType: OfferType;
-  propertyType: "byt" | "dům" | "pozemek" | "komerční";
+  propertyType: PropertyType;
   disposition: string; // např. "3+kk"
   location: { city: string; district: string; street?: string; lat?: number; lng?: number };
   /** Trh: cz = Česko (výchozí), egypt = nemovitosti v Egyptě */
