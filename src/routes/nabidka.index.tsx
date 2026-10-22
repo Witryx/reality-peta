@@ -5,6 +5,7 @@ import { listAllProperties } from "@/data/properties";
 import { marketLabel, statusLabel, type Property, type PropertyStatus } from "@/data/types";
 import { pageHead, websiteValues } from "@/lib/seo";
 import { PropertyCard } from "@/components/PropertyCard";
+import { PropertyContactCta } from "@/components/PropertyContactCta";
 import { SectionHead } from "@/components/Sections";
 
 const search = z.object({
@@ -101,6 +102,7 @@ function Listing() {
           <SiteText>{"V této kategorii teď nic není."}</SiteText>
         </p>
       )}
+      <PropertyContactCta />
     </div>
   );
 }

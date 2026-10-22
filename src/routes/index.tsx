@@ -7,6 +7,7 @@ import { listArticles } from "@/data/articles";
 import { pageHead, websiteValues } from "@/lib/seo";
 import { site } from "@/config/site";
 import { PropertyCarousel } from "@/components/PropertyCarousel";
+import { PropertyContactCta } from "@/components/PropertyContactCta";
 import {
   AboutTeaser,
   ProcessList,
@@ -188,6 +189,7 @@ function Home() {
             </Button>
           </div>
           <PropertyCarousel properties={featured} />
+          <PropertyContactCta />
         </div>
       </section>
 
@@ -224,6 +226,7 @@ function Home() {
             </div>
           </div>
           <PropertyCarousel properties={egypt} />
+          <PropertyContactCta />
         </div>
       </section>
 

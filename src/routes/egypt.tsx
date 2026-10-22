@@ -7,6 +7,7 @@ import { SectionHead } from "@/components/Sections";
 import { LeadForm } from "@/components/LeadForm";
 import { ContactLinks } from "@/components/ContactLinks";
 import { PropertyCarousel } from "@/components/PropertyCarousel";
+import { PropertyContactCta } from "@/components/PropertyContactCta";
 import { listEgypt } from "@/data/properties";
 import { site } from "@/config/site";
 import { track } from "@/lib/analytics";
@@ -78,6 +79,7 @@ function Page() {
             }
           </SiteText>
         </p>
+        <PropertyContactCta />
       </section>
       <section id="egypt-kontakt" className="scroll-mt-24 bg-surface py-16 md:py-24">
         <div className="container-page grid gap-12 lg:grid-cols-2">

@@ -585,16 +585,6 @@
     "groups": ["Detail nemovitosti"]
   },
   {
-    "key": "text_81dd2f44",
-    "default": "Líbí se vám tato prezentace a uvažujete i o prodeji vaší nemovitosti?",
-    "groups": ["Detail nemovitosti"]
-  },
-  {
-    "key": "text_538c536d",
-    "default": "Kontaktujte mě:",
-    "groups": ["Detail nemovitosti"]
-  },
-  {
     "key": "text_e82ba952",
     "default": "Nabídka nemovitostí",
     "groups": ["Nabídka – vyhledávače"]
@@ -1348,6 +1338,16 @@
     "key": "text_2e709346",
     "default": "Další nemovitost",
     "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_81dd2f44",
+    "default": "Líbí se vám tato prezentace a uvažujete i o prodeji vaší nemovitosti?",
+    "groups": ["Kontakt u nabídek"]
+  },
+  {
+    "key": "text_538c536d",
+    "default": "Kontaktujte mě:",
+    "groups": ["Kontakt u nabídek"]
   },
   {
     "key": "text_dfab331c",

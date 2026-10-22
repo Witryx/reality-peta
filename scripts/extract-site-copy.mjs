@@ -24,6 +24,7 @@ const groups = {
   "CookieConsent.tsx": "Cookies",
   "GoogleRating.tsx": "Reference",
   "PropertyCarousel.tsx": "Nabídka",
+  "PropertyContactCta.tsx": "Kontakt u nabídek",
   "PropertyCard.tsx": "Nabídka",
   "PropertyGallery.tsx": "Detail nemovitosti",
   "PropertyParameters.tsx": "Detail nemovitosti",
