@@ -13,6 +13,37 @@ beforeEach(() => {
   HTMLElement.prototype.scrollTo = vi.fn();
 });
 describe("Property gallery", () => {
+  it("recognizes cached portrait images without leaving loading feedback over the photo", () => {
+    const complete = vi.spyOn(HTMLImageElement.prototype, "complete", "get").mockReturnValue(true);
+    const width = vi.spyOn(HTMLImageElement.prototype, "naturalWidth", "get").mockReturnValue(900);
+    const height = vi
+      .spyOn(HTMLImageElement.prototype, "naturalHeight", "get")
+      .mockReturnValue(1200);
+    try {
+      render(<PropertyGallery p={p} />);
+      expect(screen.queryByRole("status")).not.toBeInTheDocument();
+      expect(screen.getByRole("img", { name: "První fotografie" })).toHaveAttribute(
+        "data-orientation",
+        "portrait",
+      );
+    } finally {
+      complete.mockRestore();
+      width.mockRestore();
+      height.mockRestore();
+    }
+  });
+  it("opens a large side preview and returns focus to the selected photo when closed", async () => {
+    render(<PropertyGallery p={p} />);
+    const preview = screen.getByRole("button", { name: "Otevřít fotografii 2" });
+    fireEvent.click(preview);
+    expect(
+      within(screen.getByRole("dialog")).getByRole("img", { name: "Druhá fotografie" }),
+    ).toHaveAttribute("src", "/assets/second.jpg");
+    fireEvent.click(screen.getByRole("button", { name: "Zavřít fotogalerii" }));
+    await waitFor(() =>
+      expect(screen.getByRole("button", { name: "Zvětšit fotografii 2" })).toHaveFocus(),
+    );
+  });
   it("sorts photographs, shows loading feedback and switches by arrows, thumbnails and keyboard", () => {
     render(<PropertyGallery p={p} />);
     const gallery = screen.getByRole("region", { name: "Fotografie nemovitosti" });

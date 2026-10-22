@@ -1,4 +1,5 @@
 import {
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -25,9 +26,22 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
   const gesture = useRef<{ x: number; y: number } | null>(null);
   const suppressClick = useRef(false);
   const opener = useRef<HTMLButtonElement | null>(null);
+  const stage = useRef<HTMLButtonElement>(null);
   const index = Math.min(selected, Math.max(0, images.length - 1));
   const image = images[index];
+  const previews = images
+    .map((item, i) => ({ item, i }))
+    .filter(({ i }) => i !== index)
+    .slice(0, 2);
   const loading = Boolean(image && loaded !== image.src && failed !== image.src);
+  const imageReady = useCallback((node: HTMLImageElement | null) => {
+    if (node?.complete && node.naturalWidth > 0) {
+      node.dataset["orientation"] =
+        node.naturalHeight > node.naturalWidth ? "portrait" : "landscape";
+      setLoaded(node.getAttribute("src") ?? "");
+      setFailed("");
+    }
+  }, []);
 
   useEffect(() => {
     const thumbnail = rail.current?.querySelector<HTMLElement>(`[data-thumbnail="${index}"]`);
@@ -102,10 +116,16 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
       alt={image.alt}
       width={1600}
       height={1066}
+      ref={imageReady}
+      fetchPriority="high"
       draggable={false}
       className="property-gallery-image"
       data-direction={direction}
-      onLoad={() => setLoaded(image.src)}
+      onLoad={(event) => {
+        imageReady(event.currentTarget);
+        setLoaded(image.src);
+        setFailed("");
+      }}
       onError={() => setFailed(image.src)}
     />
   );
@@ -143,12 +163,15 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
         aria-label="Fotografie nemovitosti"
         onKeyDown={keyboard}
       >
-        <div className={`property-gallery-layout ${images.length === 1 ? "is-single" : ""}`}>
+        <div
+          className={`property-gallery-media ${images.length === 1 ? "is-single" : ""} ${images.length === 2 ? "has-two" : ""}`}
+        >
           <div className="property-gallery-main">
             <div className="property-gallery-photo-area">
               <button
                 type="button"
                 className="property-gallery-stage"
+                ref={stage}
                 aria-label={`Zvětšit fotografii ${index + 1}`}
                 aria-haspopup="dialog"
                 aria-busy={loading}
@@ -173,67 +196,95 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
                 {photo}
                 {feedback}
               </button>
-            </div>
-            <div className="property-gallery-toolbar">
-              <div className="property-gallery-navigation">
-                {arrows}
-                <span className="property-gallery-count" aria-live="polite" aria-atomic="true">
-                  {index + 1} / {images.length}
-                </span>
-              </div>
-              <button type="button" className="property-gallery-expand" onClick={openPhoto}>
-                <Expand size={16} />
-                <SiteText>{"Zvětšit"}</SiteText>
-              </button>
+              {arrows}
             </div>
           </div>
           {images.length > 1 && (
-            <aside className="property-gallery-sidebar" aria-label="Náhledy fotografií">
-              <div className="property-gallery-sidebar-heading">
-                <p>
-                  <SiteText>{"Fotografie"}</SiteText>
-                </p>
+            <aside className="property-gallery-previews" aria-label="Další pohledy na nemovitost">
+              {previews.map(({ item, i }) => (
                 <button
                   type="button"
-                  className="property-gallery-overview-button"
+                  key={`${item.src}-${i}`}
                   onClick={(event) => {
-                    opener.current = event.currentTarget;
-                    setDialogView("overview");
-                    setExpanded(true);
+                    select(i);
+                    openPhoto(event);
                   }}
+                  aria-label={`Otevřít fotografii ${i + 1}`}
+                  aria-haspopup="dialog"
                 >
-                  <Grid2X2 size={15} aria-hidden="true" />
-                  <SiteText>{"Zobrazit všechny"}</SiteText>
+                  <img src={item.src} alt="" loading="lazy" width={640} height={420} />
+                  <span className="property-gallery-preview-expand" aria-hidden="true">
+                    <Expand size={18} />
+                  </span>
                 </button>
-              </div>
-              <div ref={rail} className="property-gallery-thumbnails">
-                {images.map((item, i) => (
-                  <button
-                    type="button"
-                    key={`${item.src}-${i}`}
-                    data-thumbnail={i}
-                    onClick={(event) => {
-                      select(i);
-                      openPhoto(event);
-                    }}
-                    aria-label={`Zobrazit fotografii ${i + 1}`}
-                    aria-current={i === index ? "true" : undefined}
-                  >
-                    <img
-                      src={item.src}
-                      alt=""
-                      loading="lazy"
-                      width={160}
-                      height={110}
-                      draggable={false}
-                    />
-                    <span>{i + 1}</span>
-                  </button>
-                ))}
-              </div>
+              ))}
             </aside>
           )}
         </div>
+        <div className="property-gallery-toolbar">
+          <div className="property-gallery-navigation">
+            <p className="property-gallery-label">
+              <SiteText>{"Fotografie"}</SiteText>
+            </p>
+            <span className="property-gallery-count" aria-live="polite" aria-atomic="true">
+              {index + 1} / {images.length}
+            </span>
+          </div>
+          <div className="property-gallery-actions">
+            <button
+              type="button"
+              className="property-gallery-expand"
+              onClick={openPhoto}
+              aria-haspopup="dialog"
+            >
+              <Expand size={16} aria-hidden="true" />
+              <SiteText>{"Zvětšit"}</SiteText>
+            </button>
+            {images.length > 1 && (
+              <button
+                type="button"
+                className="property-gallery-overview-button"
+                aria-haspopup="dialog"
+                onClick={(event) => {
+                  opener.current = event.currentTarget;
+                  setDialogView("overview");
+                  setExpanded(true);
+                }}
+              >
+                <Grid2X2 size={15} aria-hidden="true" />
+                <SiteText>{"Zobrazit všechny"}</SiteText>
+              </button>
+            )}
+          </div>
+        </div>
+        {images.length > 1 && (
+          <div ref={rail} className="property-gallery-thumbnails" aria-label="Náhledy fotografií">
+            {images.map((item, i) => (
+              <button
+                type="button"
+                key={`${item.src}-${i}`}
+                data-thumbnail={i}
+                onClick={(event) => {
+                  select(i);
+                  openPhoto(event);
+                }}
+                aria-label={`Zobrazit fotografii ${i + 1}`}
+                aria-haspopup="dialog"
+                aria-current={i === index ? "true" : undefined}
+              >
+                <img
+                  src={item.src}
+                  alt=""
+                  loading="lazy"
+                  width={160}
+                  height={110}
+                  draggable={false}
+                />
+                <span>{i + 1}</span>
+              </button>
+            ))}
+          </div>
+        )}
       </section>
       <Dialog.Portal>
         <Dialog.Overlay className="property-lightbox-overlay" />
@@ -242,9 +293,10 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
           onKeyDown={dialogView === "photo" ? keyboard : undefined}
           aria-describedby={undefined}
           onCloseAutoFocus={(event) => {
-            if (opener.current?.isConnected) {
+            const target = opener.current?.isConnected ? opener.current : stage.current;
+            if (target) {
               event.preventDefault();
-              opener.current.focus({ preventScroll: true });
+              target.focus({ preventScroll: true });
             }
           }}
         >
@@ -302,6 +354,7 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
                 {arrows}
               </div>
               <p className="property-lightbox-caption">
+                <span className="property-lightbox-description">{image.alt}</span>
                 <span aria-live="polite">
                   {index + 1} / {images.length}
                 </span>

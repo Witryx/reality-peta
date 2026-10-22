@@ -1360,13 +1360,13 @@
     "groups": ["Detail nemovitosti"]
   },
   {
-    "key": "text_7826658",
-    "default": "Zvětšit",
+    "key": "text_5764e2ef",
+    "default": "Fotografie",
     "groups": ["Detail nemovitosti"]
   },
   {
-    "key": "text_5764e2ef",
-    "default": "Fotografie",
+    "key": "text_7826658",
+    "default": "Zvětšit",
     "groups": ["Detail nemovitosti"]
   },
   {
