@@ -2,6 +2,8 @@ import { SiteImage } from "@/components/SiteImage";
 import { SiteText } from "@/components/SiteText";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import hero from "@/assets/hero.jpg";
+import portrait from "@/assets/petr-pavlat-portrait.png.asset.json";
+import { BrandImage } from "@/components/BrandImage";
 import { listEgypt, listProperties } from "@/data/properties";
 import { listArticles } from "@/data/articles";
 import { pageHead, websiteValues } from "@/lib/seo";
@@ -92,15 +94,25 @@ function Home() {
             </div>
             <CollaborationStrip className="hero-trust mt-6 border-t pt-4" />
           </div>
-          <div className="hero-photo relative overflow-hidden">
+          <div className="hero-photo relative aspect-[4/5] overflow-hidden bg-surface sm:aspect-[4/3] lg:aspect-auto lg:min-h-[32rem]">
             <SiteImage
               imageKey="image.home"
               src={hero}
               alt="Světlý pražský byt s výhledem na Pražský hrad"
               width={1600}
               height={1072}
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-cover object-left"
+            />
+            <div className="absolute inset-0 bg-ink/10" aria-hidden="true" />
+            <BrandImage
+              asset={portrait}
+              imageKey="image.portrait"
+              alt="Petr Pavlát, realitní makléř"
+              width={1439}
+              height={1825}
               fetchPriority="high"
-              className="aspect-[16/9] w-full object-cover lg:absolute lg:inset-0 lg:h-full lg:aspect-auto"
+              className="absolute inset-x-0 bottom-0 h-[90%] w-full object-contain object-bottom"
             />
           </div>
         </div>
