@@ -58,12 +58,12 @@ export function PropertyCarousel({ properties }: { properties: Property[] }) {
           {properties.length > 1 && (
             <div className="mt-6 flex items-center justify-end gap-2">
               <CarouselPrevious
-                className="static left-auto top-auto size-11 translate-y-0 bg-card disabled:opacity-40"
+                className="property-carousel-arrow static left-auto top-auto size-12 translate-y-0 disabled:opacity-40"
                 aria-label="Předchozí nemovitost"
                 title="Předchozí nemovitost"
               />
               <CarouselNext
-                className="static right-auto top-auto size-11 translate-y-0 bg-card disabled:opacity-40"
+                className="property-carousel-arrow static right-auto top-auto size-12 translate-y-0 disabled:opacity-40"
                 aria-label="Další nemovitost"
                 title="Další nemovitost"
               />

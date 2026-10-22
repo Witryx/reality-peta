@@ -184,6 +184,21 @@ function Detail() {
           </div>
         </aside>
       </div>
+      <section className="mt-14 rounded-lg border bg-surface p-6 md:mt-20 md:p-10">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)] lg:items-center lg:gap-14">
+          <div>
+            <h2 className="max-w-2xl text-3xl leading-tight md:text-4xl">
+              <SiteText>
+                {"Líbí se vám tato prezentace a uvažujete i o prodeji vaší nemovitosti?"}
+              </SiteText>
+            </h2>
+            <p className="mt-5 text-lg font-medium">
+              <SiteText>{"Kontaktujte mě:"}</SiteText>
+            </p>
+          </div>
+          <ContactLinks />
+        </div>
+      </section>
     </article>
   );
 }

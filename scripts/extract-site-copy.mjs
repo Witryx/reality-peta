@@ -5,6 +5,7 @@ const groups = {
   "FaqSection.tsx": "Časté dotazy",
   "index.tsx": "Úvodní stránka",
   "sluzby.tsx": "Služby",
+  "nabidka-spoluprace.tsx": "Nabídka spolupráce",
   "egypt.tsx": "Egypt",
   "o-mne.tsx": "O mně",
   "reference.tsx": "Reference",

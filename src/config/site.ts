@@ -55,6 +55,7 @@ export const nav = [
   { to: "/o-mne", label: "O mně" },
   { to: "/reference", label: "Reference" },
   { to: "/clanky", label: "Články" },
+  { to: "/nabidka-spoluprace", label: "Nabídka spolupráce" },
   { to: "/kontakt", label: "Kontakt" },
 ] as const;
 

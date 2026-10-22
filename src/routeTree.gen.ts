@@ -14,6 +14,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as EgyptRouteImport } from './routes/egypt'
 import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as NabidkaSpolupraceRouteImport } from './routes/nabidka-spoluprace'
 import { Route as OMneRouteImport } from './routes/o-mne'
 import { Route as OchranaOsobnichUdajuRouteImport } from './routes/ochrana-osobnich-udaju'
 import { Route as OdhadCenyRouteImport } from './routes/odhad-ceny'
@@ -47,6 +48,11 @@ const EgyptRoute = EgyptRouteImport.update({
 const KontaktRoute = KontaktRouteImport.update({
   id: '/kontakt',
   path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NabidkaSpolupraceRoute = NabidkaSpolupraceRouteImport.update({
+  id: '/nabidka-spoluprace',
+  path: '/nabidka-spoluprace',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OMneRoute = OMneRouteImport.update({
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/cookies': typeof CookiesRoute
   '/egypt': typeof EgyptRoute
   '/kontakt': typeof KontaktRoute
+  '/nabidka-spoluprace': typeof NabidkaSpolupraceRoute
   '/o-mne': typeof OMneRoute
   '/ochrana-osobnich-udaju': typeof OchranaOsobnichUdajuRoute
   '/odhad-ceny': typeof OdhadCenyRoute
@@ -117,6 +124,7 @@ export interface FileRoutesByTo {
   '/cookies': typeof CookiesRoute
   '/egypt': typeof EgyptRoute
   '/kontakt': typeof KontaktRoute
+  '/nabidka-spoluprace': typeof NabidkaSpolupraceRoute
   '/o-mne': typeof OMneRoute
   '/ochrana-osobnich-udaju': typeof OchranaOsobnichUdajuRoute
   '/odhad-ceny': typeof OdhadCenyRoute
@@ -134,6 +142,7 @@ export interface FileRoutesById {
   '/cookies': typeof CookiesRoute
   '/egypt': typeof EgyptRoute
   '/kontakt': typeof KontaktRoute
+  '/nabidka-spoluprace': typeof NabidkaSpolupraceRoute
   '/o-mne': typeof OMneRoute
   '/ochrana-osobnich-udaju': typeof OchranaOsobnichUdajuRoute
   '/odhad-ceny': typeof OdhadCenyRoute
@@ -152,6 +161,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/egypt'
     | '/kontakt'
+    | '/nabidka-spoluprace'
     | '/o-mne'
     | '/ochrana-osobnich-udaju'
     | '/odhad-ceny'
@@ -168,6 +178,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/egypt'
     | '/kontakt'
+    | '/nabidka-spoluprace'
     | '/o-mne'
     | '/ochrana-osobnich-udaju'
     | '/odhad-ceny'
@@ -184,6 +195,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/egypt'
     | '/kontakt'
+    | '/nabidka-spoluprace'
     | '/o-mne'
     | '/ochrana-osobnich-udaju'
     | '/odhad-ceny'
@@ -201,6 +213,7 @@ export interface RootRouteChildren {
   CookiesRoute: typeof CookiesRoute
   EgyptRoute: typeof EgyptRoute
   KontaktRoute: typeof KontaktRoute
+  NabidkaSpolupraceRoute: typeof NabidkaSpolupraceRoute
   OMneRoute: typeof OMneRoute
   OchranaOsobnichUdajuRoute: typeof OchranaOsobnichUdajuRoute
   OdhadCenyRoute: typeof OdhadCenyRoute
@@ -247,6 +260,13 @@ declare module '@tanstack/react-router' {
       path: '/kontakt'
       fullPath: '/kontakt'
       preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nabidka-spoluprace': {
+      id: '/nabidka-spoluprace'
+      path: '/nabidka-spoluprace'
+      fullPath: '/nabidka-spoluprace'
+      preLoaderRoute: typeof NabidkaSpolupraceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/o-mne': {
@@ -321,6 +341,7 @@ const rootRouteChildren: RootRouteChildren = {
   CookiesRoute: CookiesRoute,
   EgyptRoute: EgyptRoute,
   KontaktRoute: KontaktRoute,
+  NabidkaSpolupraceRoute: NabidkaSpolupraceRoute,
   OMneRoute: OMneRoute,
   OchranaOsobnichUdajuRoute: OchranaOsobnichUdajuRoute,
   OdhadCenyRoute: OdhadCenyRoute,

@@ -16,7 +16,7 @@ export function SiteHeader() {
       >
         <SiteText>{"Přeskočit na obsah"}</SiteText>
       </a>
-      <div className="container-page grid h-20 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 lg:flex lg:justify-between">
+      <div className="container-page grid h-20 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 xl:flex xl:justify-between">
         <Link
           to="/"
           className="flex items-center gap-3 leading-none"
@@ -24,12 +24,12 @@ export function SiteHeader() {
         >
           <BrandLockup />
         </Link>
-        <nav aria-label="Hlavní navigace" className="hidden items-center gap-5 lg:flex">
+        <nav aria-label="Hlavní navigace" className="hidden shrink-0 items-center gap-4 xl:flex">
           {nav.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="whitespace-nowrap text-sm text-muted-foreground transition-colors hover:text-foreground"
               activeProps={{ className: "!text-foreground" }}
             >
               <SiteText>{n.label}</SiteText>
@@ -44,7 +44,7 @@ export function SiteHeader() {
         <Button
           variant="ghost"
           size="icon"
-          className="lg:hidden shrink-0"
+          className="xl:hidden shrink-0"
           aria-label={open ? "Zavřít menu" : "Otevřít menu"}
           aria-expanded={open}
           onClick={() => setOpen(!open)}
@@ -55,7 +55,7 @@ export function SiteHeader() {
       {open && (
         <nav
           aria-label="Mobilní navigace"
-          className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t bg-background lg:hidden"
+          className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t bg-background xl:hidden"
         >
           <ul className="container-page py-4">
             {nav.map((n) => (

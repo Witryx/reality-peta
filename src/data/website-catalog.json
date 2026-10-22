@@ -390,6 +390,136 @@
     "groups": ["Kontakt"]
   },
   {
+    "key": "text_90eeacd5",
+    "default": "Nabídka spolupráce",
+    "groups": ["Nabídka spolupráce – vyhledávače", "Nabídka spolupráce", "Identita"]
+  },
+  {
+    "key": "text_78b5c18",
+    "default": "Doporučte služby Petra Pavláta a získejte po úspěšném prodeji dohodnutou odměnu. Přečtěte si, jak doporučení funguje a jaké jsou další možnosti spolupráce.",
+    "groups": ["Nabídka spolupráce – vyhledávače"]
+  },
+  {
+    "key": "text_6674c9b3",
+    "default": "Doporučení, které má hodnotu",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_7e297a51",
+    "default": "Víte o někom, kdo zvažuje prodej nemovitosti? Propojte nás. Vaše doporučení může pomoci majiteli najít spolehlivého partnera pro prodej a vám přinést odměnu za úspěšně dokončený obchod.",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_f005e097",
+    "default": "Chci se domluvit na spolupráci",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_66863fb9",
+    "default": "Vy doporučíte. Já se postarám o prodej.",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_3d63b193",
+    "default": "Výši odměny i podmínky jejího vyplacení si domluvíme individuálně předem. Odměna je navázaná na úspěšné dokončení prodeje podle naší dohody.",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_ceb32034",
+    "default": "Jak získat odměnu za doporučení",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_5abddf39",
+    "default": "Nemusíte být z realitního oboru. Stačí znát někoho, kdo chce prodávat byt, dům, pozemek nebo jinou nemovitost, a doporučit mu mé služby. Celým prodejem pak majitele provedu osobně.",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_33f62bad",
+    "default": "1. Ozvěte se mi s doporučením",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_cd75af98",
+    "default": "Zavolejte nebo napište, že víte o někom, kdo uvažuje o prodeji. Nejjednodušší je předat můj kontakt přímo majiteli. Pokud nás chcete propojit sami, nejprve se s ním domluvte, že mi můžete jeho kontakt předat.",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_d2661be0",
+    "default": "2. Domluvíme si podmínky",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_beca3742",
+    "default": "Společně si předem potvrdíme, ke které nemovitosti se doporučení vztahuje, jaká bude vaše odměna a za jakých podmínek ji získáte. Ať obě strany od začátku vědí, na čem jsou.",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_fbf3bbdf",
+    "default": "3. Převezmu péči o prodej",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_b7346eb1",
+    "default": "S majitelem proberu jeho situaci a možnosti prodeje. Pokud se dohodneme na zastoupení, zajistím přípravu nemovitosti, prezentaci, komunikaci se zájemci i koordinaci dalších kroků. Vy nemusíte organizovat prohlídky ani vyjednávat.",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_5d0ef17b",
+    "default": "4. Po úspěšném prodeji získáte odměnu",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_d3c1d1de",
+    "default": "Když se doporučený prodej úspěšně dokončí a splní se předem domluvené podmínky, vyplatím vám sjednanou odměnu. Samotné předání kontaktu ještě nárok na odměnu nezakládá.",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_3bea904f",
+    "default": "Další možnosti spolupráce",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_e1063de1",
+    "default": "Pravidelná doporučení",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_924b4a56",
+    "default": "Setkáváte se ve svém okolí nebo při své práci s lidmi, kteří řeší prodej nemovitosti? Můžeme se domluvit na dlouhodobé spolupráci. Nastavíme si způsob předávání doporučení, komunikaci i odměňování za úspěšné obchody.",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_935c2b02",
+    "default": "Propojení služeb a společné projekty",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_e10ec8ad",
+    "default": "Působíte v oboru, který s bydlením souvisí, nebo máte nápad na společný projekt? Rád si vyslechnu, co děláte a kde by se naše služby mohly doplňovat. Konkrétní podobu spolupráce vybereme podle toho, co přinese užitek klientům i nám oběma.",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_561aef0c",
+    "default": "Pojďme se propojit",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_fa33a339",
+    "default": "Máte tip nebo nápad na spolupráci?",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_2afae909",
+    "default": "Napište mi pár slov o tom, jakou spolupráci si představujete. Ozvu se vám osobně a společně probereme další postup.",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
+    "key": "text_9b2110df",
+    "default": "Probrat spolupráci",
+    "groups": ["Nabídka spolupráce"]
+  },
+  {
     "key": "text_64f41cce",
     "default": "Tato nemovitost už není v nabídce.",
     "groups": ["Detail nemovitosti"]
@@ -452,6 +582,16 @@
   {
     "key": "text_bfde9286",
     "default": "Rád vám nemovitost ukážu osobně.",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_81dd2f44",
+    "default": "Líbí se vám tato prezentace a uvažujete i o prodeji vaší nemovitosti?",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_538c536d",
+    "default": "Kontaktujte mě:",
     "groups": ["Detail nemovitosti"]
   },
   {

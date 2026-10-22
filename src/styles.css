@@ -157,6 +157,39 @@
   background: var(--ink);
   color: var(--ink-foreground);
 }
+.property-carousel-arrow {
+  border-color: var(--accent);
+  background: var(--surface);
+  color: var(--foreground);
+}
+.property-carousel-arrow svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.25;
+}
+.property-carousel-arrow:not(:disabled):hover,
+.property-carousel-arrow:not(:disabled):focus-visible {
+  background: var(--ink);
+  color: var(--ink-foreground);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .property-carousel-arrow:not(:disabled) {
+    animation: property-carousel-pulse 2.6s ease-in-out infinite;
+  }
+  .property-carousel-arrow:hover,
+  .property-carousel-arrow:focus-visible {
+    animation-play-state: paused;
+  }
+}
+@keyframes property-carousel-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 25%, transparent);
+  }
+  65% {
+    box-shadow: 0 0 0 9px transparent;
+  }
+}
 .property-title {
   font-family: var(--font-sans);
   font-weight: 700;
