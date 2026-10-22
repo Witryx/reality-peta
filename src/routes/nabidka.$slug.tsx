@@ -185,7 +185,7 @@ function Detail() {
           </div>
         </aside>
       </div>
-      <PropertyContactCta className="mt-14 md:mt-20" />
+      <PropertyContactCta className="mt-14 md:mt-20 [&_h2]:text-2xl md:[&_h2]:text-3xl [&_p]:text-base" />
     </article>
   );
 }
