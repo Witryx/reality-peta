@@ -1455,11 +1455,6 @@
     "groups": ["Detail nemovitosti"]
   },
   {
-    "key": "text_50e35230",
-    "default": "Ukázková reference",
-    "groups": ["Společné sekce"]
-  },
-  {
     "key": "text_698ac23d",
     "default": "Předchozí reference",
     "groups": ["Společné sekce"]

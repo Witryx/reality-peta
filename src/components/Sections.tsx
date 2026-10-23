@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { processSteps, services, testimonials } from "@/data/content";
 import { Star } from "lucide-react";
 import { LeadForm } from "./LeadForm";
-import { Placeholder } from "./ContactLinks";
 import portrait from "@/assets/petr-pavlat-portrait.png.asset.json";
 import fullPortrait from "@/assets/petr-pavlat-full.png.asset.json";
 import signature from "@/assets/petr-pavlat-signature.png.asset.json";
@@ -151,13 +150,6 @@ export function Testimonials() {
                   <span className="block text-muted-foreground">
                     <SiteText>{t.context}</SiteText>
                   </span>
-                  {t.isDemo && (
-                    <span className="mt-2 inline-block">
-                      <Placeholder>
-                        <SiteText>{"Ukázková reference"}</SiteText>
-                      </Placeholder>
-                    </span>
-                  )}
                 </figcaption>
               </figure>
             </CarouselItem>
