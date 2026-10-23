@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, expect, it, vi } from "vitest";
 import { WebsiteImagesEditor } from "./WebsiteImagesEditor";
 import { api } from "@/lib/api";
@@ -48,7 +48,7 @@ it("replaces a website image, preserves text, updates the shared cache and resto
     target: { value: "Nový pohled" },
   });
   fireEvent.click(screen.getByRole("button", { name: "Uložit fotografie" }));
-  await screen.findByText("Fotografie jsou uložené a zobrazují se na webu.");
+  await screen.findByText("Změny fotografií jsou uložené na webu.");
   const write = vi.mocked(api).mock.calls.find(([, options]) => options?.method === "PUT")!;
   expect(JSON.parse(write[1]!.body as string)).toEqual({
     values: {
@@ -67,6 +67,52 @@ it("replaces a website image, preserves text, updates the shared cache and resto
   expect(screen.getAllByLabelText("Popis fotografie")[0]).toHaveValue(
     "Světlý pražský byt s výhledem na Pražský hrad",
   );
+});
+it("removes an original photograph, persists its empty override and can restore it", async () => {
+  vi.mocked(api).mockImplementation(async (_path, options) => {
+    if (options?.method === "PUT") {
+      const draft = JSON.parse(options.body as string);
+      return { ...draft, version: draft.version + 1 };
+    }
+    return { values: { "site.agentName": "Vlastní jméno" }, version: 4 };
+  });
+  const client = setup();
+  const remove = await screen.findByRole("button", {
+    name: "Odebrat fotografii: Úvodní fotografie",
+  });
+  const card = within(remove.closest("section")!);
+  fireEvent.click(remove);
+  expect(card.queryByRole("img")).not.toBeInTheDocument();
+  expect(remove).toBeDisabled();
+  expect(card.getByLabelText("Popis fotografie")).toBeDisabled();
+  expect(card.getByRole("button", { name: "Původní fotografie" })).toBeEnabled();
+  fireEvent.click(screen.getByRole("button", { name: "Uložit fotografie" }));
+  await screen.findByText("Změny fotografií jsou uložené na webu.");
+  expect(client.getQueryData(["admin-website"])).toEqual({
+    values: { "site.agentName": "Vlastní jméno", "image.home": "" },
+    version: 5,
+  });
+  fireEvent.click(card.getByRole("button", { name: "Původní fotografie" }));
+  expect(card.getByRole("img")).toHaveAttribute("src", "/original.jpg");
+  fireEvent.click(screen.getByRole("button", { name: "Uložit fotografie" }));
+  await screen.findByText("Změny fotografií jsou uložené na webu.");
+  expect(client.getQueryData(["admin-website"])).toEqual({
+    values: { "site.agentName": "Vlastní jméno" },
+    version: 6,
+  });
+});
+it("keeps a saved removal after loading and allows replacing it from the library", async () => {
+  vi.mocked(api).mockResolvedValue({ values: { "image.home": "" }, version: 3 });
+  setup();
+  const remove = await screen.findByRole("button", {
+    name: "Odebrat fotografii: Úvodní fotografie",
+  });
+  const card = within(remove.closest("section")!);
+  expect(card.queryByRole("img")).not.toBeInTheDocument();
+  fireEvent.click(card.getByRole("button", { name: "Vybrat z knihovny" }));
+  fireEvent.click(screen.getByRole("button", { name: "Nová fotografie Nová fotografie" }));
+  expect(card.getByRole("img")).toHaveAttribute("src", "/uploads/test.webp");
+  expect(remove).toBeEnabled();
 });
 it("preserves a selected photograph after a failed save", async () => {
   vi.mocked(api).mockImplementation(async (_path, options) => {

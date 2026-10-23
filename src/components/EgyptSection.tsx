@@ -1,5 +1,5 @@
 import { SiteImage } from "@/components/SiteImage";
-import { useSiteConfig } from "@/lib/website-context";
+import { useSiteConfig, useWebsiteImageHidden } from "@/lib/website-context";
 import { SiteText } from "@/components/SiteText";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
@@ -29,23 +29,28 @@ export function Partners() {
   );
 }
 export function EgyptSection({ detail = false }: { detail?: boolean }) {
+  const hidden = useWebsiteImageHidden("image.egypt");
   return (
     <section className="egypt-band py-20 md:py-24" data-reveal="slide">
-      <div className="container-page grid gap-10 md:grid-cols-2 md:items-stretch">
-        <div className="relative overflow-hidden">
-          <SiteImage
-            imageKey="image.egypt"
-            src={coast}
-            width={1440}
-            height={1024}
-            loading="lazy"
-            alt="Ilustrační pohled na bydlení u Rudého moře v Egyptě"
-            className="egypt-coast-image aspect-[4/3] w-full object-cover md:absolute md:inset-0 md:aspect-auto md:h-full md:w-full"
-          />
-          <span className="absolute bottom-3 left-3 bg-card px-2 py-1 text-xs text-card-foreground">
-            <SiteText>{"Ilustrační fotografie, ne konkrétní nabídka"}</SiteText>
-          </span>
-        </div>
+      <div
+        className={`container-page grid gap-10 ${hidden ? "" : "md:grid-cols-2"} md:items-stretch`}
+      >
+        {!hidden && (
+          <div className="relative overflow-hidden">
+            <SiteImage
+              imageKey="image.egypt"
+              src={coast}
+              width={1440}
+              height={1024}
+              loading="lazy"
+              alt="Ilustrační pohled na bydlení u Rudého moře v Egyptě"
+              className="egypt-coast-image aspect-[4/3] w-full object-cover md:absolute md:inset-0 md:aspect-auto md:h-full md:w-full"
+            />
+            <span className="absolute bottom-3 left-3 bg-card px-2 py-1 text-xs text-card-foreground">
+              <SiteText>{"Ilustrační fotografie, ne konkrétní nabídka"}</SiteText>
+            </span>
+          </div>
+        )}
         <div>
           <p className="eyebrow">
             <SiteText>{"DALŠÍ HORIZONT · EGYPTSKO ČESKÁ REALITY"}</SiteText>

@@ -1,4 +1,4 @@
-import { useSiteConfig } from "@/lib/website-context";
+import { useSiteConfig, useWebsiteImageHidden } from "@/lib/website-context";
 import { SiteText } from "@/components/SiteText";
 import { createFileRoute } from "@tanstack/react-router";
 import { pageHead, websiteValues } from "@/lib/seo";
@@ -24,6 +24,7 @@ export const Route = createFileRoute("/kontakt")({
 
 function Page() {
   const site = useSiteConfig();
+  const hidden = useWebsiteImageHidden("image.portrait");
 
   return (
     <div className="container-page grid items-start gap-14 py-16 md:py-24 lg:grid-cols-[1fr_1.2fr]">
@@ -33,17 +34,21 @@ function Page() {
           title="Napište mi, nebo rovnou zavolejte"
           intro="Odpovídám osobně, obvykle ještě týž den."
         />
-        <div className="mt-8 grid grid-cols-[7rem_minmax(0,1fr)] items-center gap-5 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6">
-          <div className="flex aspect-[4/5] items-end justify-center overflow-hidden rounded-lg bg-surface">
-            <BrandImage
-              asset={portrait}
-              imageKey="image.portrait"
-              alt="Petr Pavlát, realitní makléř"
-              width={1439}
-              height={1825}
-              className="h-[95%] w-full object-contain object-bottom"
-            />
-          </div>
+        <div
+          className={`mt-8 grid items-center gap-5 sm:gap-6 ${hidden ? "" : "grid-cols-[7rem_minmax(0,1fr)] sm:grid-cols-[9rem_minmax(0,1fr)]"}`}
+        >
+          {!hidden && (
+            <div className="flex aspect-[4/5] items-end justify-center overflow-hidden rounded-lg bg-surface">
+              <BrandImage
+                asset={portrait}
+                imageKey="image.portrait"
+                alt="Petr Pavlát, realitní makléř"
+                width={1439}
+                height={1825}
+                className="h-[95%] w-full object-contain object-bottom"
+              />
+            </div>
+          )}
           <div>
             <p className="font-display text-2xl">
               <SiteText>{site.agentName}</SiteText>

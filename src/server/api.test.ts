@@ -567,11 +567,12 @@ describe("Self-hosted admin and public API", () => {
     expect((await request(media.src)).status).toBe(200);
     expect((await request(`/api/admin/media/${media.id}`, "DELETE", {}, true)).status).toBe(409);
     expect((await request("/api/admin/website", "PUT", input, true)).status).toBe(409);
-    const { ["image.home"]: _photo, ...values } = input.values;
+    const values = { ...input.values, "image.home": "" };
     expect(
       (await request("/api/admin/website", "PUT", { values, version: website.version + 1 }, true))
         .status,
     ).toBe(200);
+    expect((await loadWebsiteContent(db)).values).toEqual(values);
     expect((await request(media.src)).status).toBe(401);
     const article = {
       title: "Blog s fotkou",

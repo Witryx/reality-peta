@@ -33,7 +33,8 @@ export async function saveWebsiteContent(db: Database, adminId: string, input: u
     throw new HttpError(422, "Obsahuje neznámé pole.");
   for (const image of websiteImages) {
     const src = parsed.data.values[image.key];
-    if (src !== undefined && !uploadImagePattern.test(src))
+    // An empty override explicitly removes the photograph; an absent key restores the original.
+    if (src !== undefined && src !== "" && !uploadImagePattern.test(src))
       throw new HttpError(422, "Fotografii vyberte z knihovny nebo nahrajte nový obrázek.");
     const alt = parsed.data.values[`${image.key}.alt`];
     if (alt !== undefined && (!alt.trim() || alt.length > 500))

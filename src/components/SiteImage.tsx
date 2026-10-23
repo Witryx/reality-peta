@@ -9,5 +9,6 @@ export function SiteImage({
 }: ImgHTMLAttributes<HTMLImageElement> & { imageKey: WebsiteImageKey }) {
   const image = useWebsiteImage(imageKey, src ?? "");
   const alt = useWebsiteImageAlt(imageKey, props.alt ?? "");
+  if (!image) return null;
   return <img {...props} src={image} alt={alt} />;
 }

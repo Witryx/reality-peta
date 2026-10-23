@@ -1,5 +1,6 @@
 import { SiteImage } from "@/components/SiteImage";
 import { SiteText } from "@/components/SiteText";
+import { useWebsiteImageHidden } from "@/lib/website-context";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import hero from "@/assets/hero.jpg";
 import portrait from "@/assets/petr-pavlat-portrait.png.asset.json";
@@ -48,10 +49,15 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   const { featured, egypt, articles } = Route.useLoaderData();
+  const homeHidden = useWebsiteImageHidden("image.home");
+  const portraitHidden = useWebsiteImageHidden("image.portrait");
+  const photoHidden = homeHidden && portraitHidden;
   return (
     <>
       <section className="home-hero relative">
-        <div className="container-page grid gap-8 pt-8 pb-10 md:pt-12 lg:grid-cols-[1.1fr_1fr] lg:items-stretch lg:gap-12 lg:pb-14">
+        <div
+          className={`container-page grid gap-8 pt-8 pb-10 md:pt-12 ${photoHidden ? "" : "lg:grid-cols-[1.1fr_1fr]"} lg:items-stretch lg:gap-12 lg:pb-14`}
+        >
           <div className="hero-copy">
             <p className="eyebrow hero-stage">
               <SiteText>{"Prodej · Koupě · Pronájem"}</SiteText>
@@ -94,27 +100,29 @@ function Home() {
             </div>
             <CollaborationStrip className="hero-trust mt-6 border-t pt-4" />
           </div>
-          <div className="hero-photo relative aspect-[4/5] overflow-hidden bg-surface sm:aspect-[4/3] lg:aspect-auto lg:min-h-[32rem]">
-            <SiteImage
-              imageKey="image.home"
-              src={hero}
-              alt="Světlý pražský byt s výhledem na Pražský hrad"
-              width={1600}
-              height={1072}
-              aria-hidden="true"
-              className="absolute inset-0 h-full w-full object-cover object-left"
-            />
-            <div className="absolute inset-0 bg-ink/10" aria-hidden="true" />
-            <BrandImage
-              asset={portrait}
-              imageKey="image.portrait"
-              alt="Petr Pavlát, realitní makléř"
-              width={1439}
-              height={1825}
-              fetchPriority="high"
-              className="absolute inset-x-0 bottom-0 h-[90%] w-full object-contain object-bottom"
-            />
-          </div>
+          {!photoHidden && (
+            <div className="hero-photo relative aspect-[4/5] overflow-hidden bg-surface sm:aspect-[4/3] lg:aspect-auto lg:min-h-[32rem]">
+              <SiteImage
+                imageKey="image.home"
+                src={hero}
+                alt="Světlý pražský byt s výhledem na Pražský hrad"
+                width={1600}
+                height={1072}
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full object-cover object-left"
+              />
+              {!homeHidden && <div className="absolute inset-0 bg-ink/10" aria-hidden="true" />}
+              <BrandImage
+                asset={portrait}
+                imageKey="image.portrait"
+                alt="Petr Pavlát, realitní makléř"
+                width={1439}
+                height={1825}
+                fetchPriority="high"
+                className="absolute inset-x-0 bottom-0 h-[90%] w-full object-contain object-bottom"
+              />
+            </div>
+          )}
         </div>
       </section>
 

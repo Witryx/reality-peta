@@ -24,3 +24,10 @@ export function useWebsiteImageAlt(
   const values = useContext(WebsiteContentContext);
   return key ? (values[`${key}.alt`] ?? fallback) : fallback;
 }
+
+export function useWebsiteImageHidden(
+  key: import("@/data/website-images").WebsiteImageKey | undefined,
+) {
+  const values = useContext(WebsiteContentContext);
+  return key !== undefined && values[key] === "";
+}

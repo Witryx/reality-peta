@@ -1,4 +1,5 @@
 import { SiteText } from "@/components/SiteText";
+import { useWebsiteImageHidden } from "@/lib/website-context";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { processSteps, services, testimonials } from "@/data/content";
@@ -229,19 +230,22 @@ export function ValuationSection({ standalone = false }: { standalone?: boolean 
 
 export function AboutTeaser({ full = false }: { full?: boolean }) {
   const Heading = full ? "h1" : "h2";
+  const hidden = useWebsiteImageHidden(full ? "image.fullPortrait" : "image.portrait");
   return (
-    <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-center">
-      <div className="flex aspect-[4/5] items-end justify-center overflow-hidden bg-surface">
-        <BrandImage
-          asset={full ? fullPortrait : portrait}
-          imageKey={full ? "image.fullPortrait" : "image.portrait"}
-          alt="Petr Pavlát, realitní makléř"
-          width={full ? 585 : 1439}
-          height={full ? 1355 : 1825}
-          loading="lazy"
-          className="h-[95%] w-full object-contain object-bottom"
-        />
-      </div>
+    <div className={`grid gap-10 ${hidden ? "" : "md:grid-cols-[0.8fr_1.2fr]"} md:items-center`}>
+      {!hidden && (
+        <div className="flex aspect-[4/5] items-end justify-center overflow-hidden bg-surface">
+          <BrandImage
+            asset={full ? fullPortrait : portrait}
+            imageKey={full ? "image.fullPortrait" : "image.portrait"}
+            alt="Petr Pavlát, realitní makléř"
+            width={full ? 585 : 1439}
+            height={full ? 1355 : 1825}
+            loading="lazy"
+            className="h-[95%] w-full object-contain object-bottom"
+          />
+        </div>
+      )}
       <div>
         <p className="eyebrow">
           <SiteText>{"O mně"}</SiteText>

@@ -1,5 +1,6 @@
 import { SiteImage } from "@/components/SiteImage";
 import { SiteText } from "@/components/SiteText";
+import { useWebsiteImageHidden } from "@/lib/website-context";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import kitchen from "@/assets/prop-kitchen.jpg";
 import { pageHead, websiteValues } from "@/lib/seo";
@@ -21,6 +22,7 @@ export const Route = createFileRoute("/sluzby")({
 });
 
 function Page() {
+  const hidden = useWebsiteImageHidden("image.services");
   return (
     <>
       <section className="container-page py-16 md:py-24">
@@ -32,7 +34,9 @@ function Page() {
         <ServicesGrid />
       </section>
       <EgyptSection />
-      <section className="container-page grid gap-10 pb-20 md:grid-cols-2 md:items-center">
+      <section
+        className={`container-page grid gap-10 pb-20 ${hidden ? "" : "md:grid-cols-2"} md:items-center`}
+      >
         <SiteImage
           imageKey="image.services"
           src={kitchen}

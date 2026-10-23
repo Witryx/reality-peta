@@ -1,5 +1,5 @@
 import type { ImgHTMLAttributes } from "react";
-import { useWebsiteImage, useWebsiteImageAlt } from "@/lib/website-context";
+import { useWebsiteImage, useWebsiteImageAlt, useWebsiteImageHidden } from "@/lib/website-context";
 import type { WebsiteImageKey } from "@/data/website-images";
 export function BrandImage({
   asset,
@@ -11,6 +11,8 @@ export function BrandImage({
 }) {
   const src = useWebsiteImage(imageKey, asset.url);
   const alt = useWebsiteImageAlt(imageKey, props.alt ?? "");
+  const hidden = useWebsiteImageHidden(imageKey);
+  if (hidden) return null;
   if (src) return <img {...props} src={src} alt={alt} />;
   return (
     <span

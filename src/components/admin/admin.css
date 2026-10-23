@@ -1543,6 +1543,15 @@
   margin: 8px 0 16px;
   font-size: 12px;
 }
+.admin-site-image .admin-image-actions button {
+  display: inline-flex;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+}
+.admin-site-image .admin-image-actions .admin-btn {
+  padding: 8px 12px;
+}
 .admin-site-image-preview {
   display: block;
   width: 100%;

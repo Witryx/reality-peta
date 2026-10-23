@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
-import { Loader2, RotateCcw, Save } from "lucide-react";
+import { Loader2, RotateCcw, Save, Trash2 } from "lucide-react";
 import { websiteImages } from "@/data/website-images";
 import { websiteImageDefaults } from "@/data/website-image-defaults";
 import type { Media } from "@/data/admin";
@@ -69,7 +69,7 @@ export function WebsiteImagesEditor({
       setDraft(saved);
       client.setQueryData(["admin-website"], saved);
       client.setQueryData(["admin-website-images"], saved);
-      setMessage("Fotografie jsou uložené a zobrazují se na webu.");
+      setMessage("Změny fotografií jsou uložené na webu.");
       await router.invalidate();
     } catch (cause) {
       setError(errorMessage(cause));
@@ -96,14 +96,16 @@ export function WebsiteImagesEditor({
     }
   }
   function edit(key: string, src?: string) {
-    if (!draft) return;
-    const values = { ...draft.values };
-    if (src) values[key] = src;
-    else {
-      delete values[key];
-      delete values[`${key}.alt`];
-    }
-    setDraft({ ...draft, values });
+    setDraft((current) => {
+      if (!current) return current;
+      const values = { ...current.values };
+      if (src !== undefined) values[key] = src;
+      else {
+        delete values[key];
+        delete values[`${key}.alt`];
+      }
+      return { ...current, values };
+    });
     setMessage("");
   }
   if (!draft)
@@ -128,8 +130,9 @@ export function WebsiteImagesEditor({
         </button>
       </div>
       <p className="admin-description">
-        Vyberte místo na webu a nahraďte fotografii. Stejný obrázek použitý na více stránkách se
-        změní všude. Fotografie nemovitostí upravíte v Nemovitostech, fotografie článků v Článcích.
+        Vyberte místo na webu a nahraďte nebo odeberte fotografii. Změny potvrďte tlačítkem Uložit
+        fotografie. Stejný obrázek použitý na více stránkách se změní všude. Fotografie nemovitostí
+        upravíte v Nemovitostech, fotografie článků v Článcích.
       </p>
       {error && (
         <Notice>
@@ -161,7 +164,11 @@ export function WebsiteImagesEditor({
                 {src ? (
                   <img className="admin-site-image-preview" src={src} alt={entry.label} />
                 ) : (
-                  <div className="admin-empty">Původní portrét není k dispozici.</div>
+                  <div className="admin-empty">
+                    {draft.values[entry.key] === ""
+                      ? "Fotografie je odebraná a po uložení se na webu nezobrazí."
+                      : "Původní fotografie není k dispozici."}
+                  </div>
                 )}
                 <label>
                   Popis fotografie
@@ -169,7 +176,7 @@ export function WebsiteImagesEditor({
                     value={draft.values[`${entry.key}.alt`] ?? entry.alt}
                     maxLength={500}
                     required
-                    disabled={busy || uploading}
+                    disabled={busy || uploading || !src}
                     onChange={(event) => {
                       const values = { ...draft.values };
                       if (event.target.value === entry.alt) delete values[`${entry.key}.alt`];
@@ -189,12 +196,22 @@ export function WebsiteImagesEditor({
                 <div className="admin-image-actions">
                   <button
                     type="button"
+                    className="admin-btn danger"
+                    onClick={() => edit(entry.key, "")}
+                    disabled={busy || uploading || !src}
+                    aria-label={`Odebrat fotografii: ${entry.label}`}
+                  >
+                    <Trash2 size={16} /> Odebrat fotografii
+                  </button>
+                  <button
+                    type="button"
                     className="admin-text-button"
                     onClick={() => edit(entry.key)}
                     disabled={
                       busy ||
                       uploading ||
-                      (!draft.values[entry.key] && !draft.values[`${entry.key}.alt`])
+                      (draft.values[entry.key] === undefined &&
+                        draft.values[`${entry.key}.alt`] === undefined)
                     }
                   >
                     <RotateCcw size={14} /> Původní fotografie
