@@ -405,8 +405,8 @@
     "groups": ["Nabídka spolupráce"]
   },
   {
-    "key": "text_7e297a51",
-    "default": "Víte o někom, kdo zvažuje prodej nemovitosti? Propojte nás. Vaše doporučení může pomoci majiteli najít spolehlivého partnera pro prodej a vám přinést odměnu za úspěšně dokončený obchod.",
+    "key": "text_e1c91790",
+    "default": "Znáte někoho, kdo řeší nemovitost? Nebo na toto téma narazíte při rozhovoru s přáteli, kolegy či klienty? Vzpomeňte si na mě a propojte nás. O další komunikaci a realitní servis se postarám já, vy můžete získat odměnu za doporučení.",
     "groups": ["Nabídka spolupráce"]
   },
   {
@@ -415,13 +415,13 @@
     "groups": ["Nabídka spolupráce"]
   },
   {
-    "key": "text_66863fb9",
-    "default": "Vy doporučíte. Já se postarám o prodej.",
+    "key": "text_9dfa4cc5",
+    "default": "Za doporučení kontaktu můžete získat až 100 000 Kč",
     "groups": ["Nabídka spolupráce"]
   },
   {
-    "key": "text_3d63b193",
-    "default": "Výši odměny i podmínky jejího vyplacení si domluvíme individuálně předem. Odměna je navázaná na úspěšné dokončení prodeje podle naší dohody.",
+    "key": "text_31046141",
+    "default": "Konkrétní výši odměny a podmínky jejího vyplacení si domluvíme předem.",
     "groups": ["Nabídka spolupráce"]
   },
   {
@@ -1055,9 +1055,19 @@
     "groups": ["Egypt"]
   },
   {
+    "key": "text_f6010c64",
+    "default": "Chcete vědět o nemovitostech v Egyptě více?",
+    "groups": ["Egypt"]
+  },
+  {
     "key": "text_bf353012",
     "default": "Probrat možnosti",
     "groups": ["Egypt", "Společné sekce"]
+  },
+  {
+    "key": "text_b4b1fd9b",
+    "default": "Jak pracujeme v Egyptě",
+    "groups": ["Egypt"]
   },
   {
     "key": "text_bfb1d53a",

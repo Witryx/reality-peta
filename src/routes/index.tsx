@@ -221,7 +221,7 @@ function Home() {
       </section>
 
       <SectionConnector variant="horizon" />
-      <EgyptSection />
+      <EgyptSection compact />
 
       <section className="py-20 md:py-28">
         <div className="container-page">

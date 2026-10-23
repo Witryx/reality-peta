@@ -28,10 +28,19 @@ export function Partners() {
     </div>
   );
 }
-export function EgyptSection({ detail = false }: { detail?: boolean }) {
+export function EgyptSection({
+  detail = false,
+  compact = false,
+}: {
+  detail?: boolean;
+  compact?: boolean;
+}) {
   const hidden = useWebsiteImageHidden("image.egypt");
   return (
-    <section className="egypt-band py-20 md:py-24" data-reveal="slide">
+    <section
+      className={`egypt-band ${compact ? "py-12 md:py-16" : "py-20 md:py-24"}`}
+      data-reveal="slide"
+    >
       <div
         className={`container-page grid gap-10 ${hidden ? "" : "md:grid-cols-2"} md:items-stretch`}
       >
@@ -72,33 +81,40 @@ export function EgyptSection({ detail = false }: { detail?: boolean }) {
                 "Druhý domov u moře, místo pro vlastní pobyt nebo příležitost ke zhodnocení vašich prostředků."
               }
             </SiteText>
-            <br />
-            <br />
-            <SiteText>
-              {
-                "Ve spolupráci s prověřenými partnerskými značkami vám pomáhám se zprostředkováním koupě i pronájmu apartmánu v Egyptě. Pomůžeme vám zorientovat se na místním trhu, prověřit vybranou nemovitost a v případě potřeby zajistit také její dovybavení nebo rekonstrukci podle vašich představ."
-              }
-            </SiteText>
-            <br />
-            <br />
-            <SiteText>
-              {
-                "Celým procesem vás provedeme přehledně v češtině a s dostatkem prostoru pro všechny vaše otázky. Hurghadu dobře známe a chceme, abyste se zde dokázali rychle zorientovat a cítili se jako doma."
-              }
-            </SiteText>
-            <br />
-            <br />
-            <SiteText>
-              {"Právní podporu máme k dispozici přímo na místě, a to v českém i arabském jazyce."}
-            </SiteText>
-            <br />
-            <br />
-            <SiteText>
-              {
-                "Vy si vyberete. My nemovitost prověříme a pomůžeme vám celý proces bezpečně realizovat."
-              }
-            </SiteText>
           </p>
+          {!compact && (
+            <p className="mt-5 leading-relaxed text-muted-foreground">
+              <SiteText>
+                {
+                  "Ve spolupráci s prověřenými partnerskými značkami vám pomáhám se zprostředkováním koupě i pronájmu apartmánu v Egyptě. Pomůžeme vám zorientovat se na místním trhu, prověřit vybranou nemovitost a v případě potřeby zajistit také její dovybavení nebo rekonstrukci podle vašich představ."
+                }
+              </SiteText>
+              <br />
+              <br />
+              <SiteText>
+                {
+                  "Celým procesem vás provedeme přehledně v češtině a s dostatkem prostoru pro všechny vaše otázky. Hurghadu dobře známe a chceme, abyste se zde dokázali rychle zorientovat a cítili se jako doma."
+                }
+              </SiteText>
+              <br />
+              <br />
+              <SiteText>
+                {"Právní podporu máme k dispozici přímo na místě, a to v českém i arabském jazyce."}
+              </SiteText>
+              <br />
+              <br />
+              <SiteText>
+                {
+                  "Vy si vyberete. My nemovitost prověříme a pomůžeme vám celý proces bezpečně realizovat."
+                }
+              </SiteText>
+            </p>
+          )}
+          {compact && (
+            <p className="mt-5 leading-relaxed">
+              <SiteText>{"Chcete vědět o nemovitostech v Egyptě více?"}</SiteText>
+            </p>
+          )}
           {detail ? (
             <Button asChild className="btn btn-primary mt-7 h-auto whitespace-normal">
               <a href="#egypt-kontakt">
@@ -109,12 +125,16 @@ export function EgyptSection({ detail = false }: { detail?: boolean }) {
           ) : (
             <Button asChild className="btn btn-primary mt-7 h-auto whitespace-normal">
               <Link to="/egypt">
-                <SiteText>{"Nemovitosti v Egyptě "}</SiteText>
+                {compact ? (
+                  <SiteText>{"Jak pracujeme v Egyptě "}</SiteText>
+                ) : (
+                  <SiteText>{"Nemovitosti v Egyptě "}</SiteText>
+                )}
                 <ArrowUpRight className="size-4" />
               </Link>
             </Button>
           )}
-          <Partners />
+          {!compact && <Partners />}
         </div>
       </div>
     </section>

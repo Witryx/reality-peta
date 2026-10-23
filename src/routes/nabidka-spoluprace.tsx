@@ -34,7 +34,7 @@ function Page() {
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               <SiteText>
                 {
-                  "Víte o někom, kdo zvažuje prodej nemovitosti? Propojte nás. Vaše doporučení může pomoci majiteli najít spolehlivého partnera pro prodej a vám přinést odměnu za úspěšně dokončený obchod."
+                  "Znáte někoho, kdo řeší nemovitost? Nebo na toto téma narazíte při rozhovoru s přáteli, kolegy či klienty? Vzpomeňte si na mě a propojte nás. O další komunikaci a realitní servis se postarám já, vy můžete získat odměnu za doporučení."
                 }
               </SiteText>
             </p>
@@ -46,13 +46,11 @@ function Page() {
           <aside className="rounded-lg border bg-surface p-7 md:p-10">
             <Handshake className="size-9 text-accent" strokeWidth={1.5} aria-hidden />
             <h2 className="mt-6 text-3xl">
-              <SiteText>{"Vy doporučíte. Já se postarám o prodej."}</SiteText>
+              <SiteText>{"Za doporučení kontaktu můžete získat až 100 000 Kč"}</SiteText>
             </h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
               <SiteText>
-                {
-                  "Výši odměny i podmínky jejího vyplacení si domluvíme individuálně předem. Odměna je navázaná na úspěšné dokončení prodeje podle naší dohody."
-                }
+                {"Konkrétní výši odměny a podmínky jejího vyplacení si domluvíme předem."}
               </SiteText>
             </p>
           </aside>
