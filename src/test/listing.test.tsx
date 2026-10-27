@@ -97,14 +97,16 @@ describe("Property listing filters", () => {
     await waitFor(() => expect(screen.getAllByRole("article")).toHaveLength(2));
     expect(screen.queryByRole("heading", { name: "Český byt" })).not.toBeInTheDocument();
 
-    fireEvent.click(statuses.getByRole("link", { name: "Rezervováno (1)" }));
+    expect(statuses.queryByRole("link", { name: /Rezervováno|Prodáno/ })).not.toBeInTheDocument();
+    fireEvent.click(statuses.getByRole("link", { name: "Aktivní (1)" }));
     await waitFor(() => expect(screen.getAllByRole("article")).toHaveLength(1));
-    expect(screen.getByRole("heading", { name: "Rezervovaná vila" })).toBeInTheDocument();
-    expect(router.state.location.search).toEqual({ zeme: "egypt", stav: "reserved" });
+    expect(screen.getByRole("heading", { name: "Egyptský apartmán" })).toBeInTheDocument();
+    expect(router.state.location.search).toEqual({ zeme: "egypt", stav: "active" });
 
-    fireEvent.click(countries.getByRole("link", { name: "Česko (0)" }));
-    await screen.findByText("V této kategorii teď nic není.");
-    expect(router.state.location.search).toEqual({ zeme: "cz", stav: "reserved" });
+    fireEvent.click(countries.getByRole("link", { name: "Česko (1)" }));
+    await screen.findByRole("heading", { name: "Český byt" });
+    expect(screen.queryByRole("heading", { name: "Egyptský apartmán" })).not.toBeInTheDocument();
+    expect(router.state.location.search).toEqual({ zeme: "cz", stav: "active" });
 
     fireEvent.click(statuses.getByRole("link", { name: "Vše (2)" }));
     await waitFor(() => expect(screen.getAllByRole("article")).toHaveLength(2));

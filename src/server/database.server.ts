@@ -4,7 +4,7 @@ import postgres from "postgres";
 import type { PGlite } from "@electric-sql/pglite";
 import { randomUUID } from "node:crypto";
 import { originalArticles } from "./article-seed.server";
-import { migrateReferralCopy } from "./website-copy-migration.server";
+import { migrateAboutCopy, migrateReferralCopy } from "./website-copy-migration.server";
 
 type Row = Record<string, any>;
 // Postgres.js serializes inferred jsonb parameters itself. Passing serialized JSON
@@ -111,6 +111,7 @@ export async function migrate(db: Database) {
       "INSERT INTO schema_migrations(version) VALUES ('jsonb-encoding-v1') ON CONFLICT DO NOTHING",
     );
     await migrateReferralCopy(tx);
+    await migrateAboutCopy(tx);
     const [seeded] = await tx.query(
       "SELECT version FROM schema_migrations WHERE version='articles-seed-v1'",
     );

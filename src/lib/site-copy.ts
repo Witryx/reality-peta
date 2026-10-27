@@ -1,3 +1,5 @@
+import { formalAddress } from "./formal-address";
+
 export type WebsiteContent = { values: Record<string, string>; version: number };
 export const copyKey = (text: string) => {
   let hash = 2166136261;
@@ -7,6 +9,8 @@ export const copyKey = (text: string) => {
 };
 export function resolveCopy(values: Record<string, string>, text: string): string {
   const replacement = values[copyKey(text)];
-  if (replacement === undefined) return text;
-  return (text.match(/^\s*/)?.[0] ?? "") + replacement + (text.match(/\s*$/)?.[0] ?? "");
+  if (replacement === undefined) return formalAddress(text);
+  return formalAddress(
+    (text.match(/^\s*/)?.[0] ?? "") + replacement + (text.match(/\s*$/)?.[0] ?? ""),
+  );
 }

@@ -7,6 +7,7 @@ import egyptVilla from "@/assets/egypt-villa.jpg";
 import egyptResort from "@/assets/egypt-resort.jpg";
 import type { Property, PropertyStatus } from "./types";
 import { createServerFn } from "@tanstack/react-start";
+import { formalAddress } from "@/lib/formal-address";
 
 /**
  * Vývojová ukázková data pouze při chybějící databázi.
@@ -36,7 +37,15 @@ const demo: Property[] = [
       "Rekonstrukce proběhla s respektem k původnímu charakteru domu – zachovány byly štukové prvky a kastlová okna, rozvody, koupelna i kuchyně jsou nové.",
       "V docházkové vzdálenosti je náměstí Míru, parky Riegrovy sady a Havlíčkovy sady, metro A i tramvajové spoje.",
     ],
-    features: ["Balkon", "Výtah", "Sklepní kóje", "Nová kuchyň", "Původní parkety", "Kastlová okna", "Videotelefon"],
+    features: [
+      "Balkon",
+      "Výtah",
+      "Sklepní kóje",
+      "Nová kuchyň",
+      "Původní parkety",
+      "Kastlová okna",
+      "Videotelefon",
+    ],
     images: [
       { src: hero, alt: "Obývací pokoj s balkonem a výhledem na Pražský hrad", position: 0 },
       { src: kitchen, alt: "Kuchyň s ostrůvkem a dubovými skříňkami", position: 1 },
@@ -356,7 +365,12 @@ const egyptDemo: Property[] = [
       "El Gouna je plánované město s marinou, školou, nemocnicí a golfovým hřištěm. Apartmán stojí v první linii u laguny.",
       "Součástí je společný bazén, zahrada a správa nemovitosti včetně možnosti pronájmu.",
     ],
-    features: ["Terasa u laguny", "Bazén v komunitě", "Správa nemovitosti", "Golf a marina v okolí"],
+    features: [
+      "Terasa u laguny",
+      "Bazén v komunitě",
+      "Správa nemovitosti",
+      "Golf a marina v okolí",
+    ],
     images: [
       { ...egyptImages.apartment, position: 0 },
       { ...egyptImages.villa, position: 1 },
@@ -388,7 +402,12 @@ const egyptDemo: Property[] = [
       "Duplex s obývací částí a kuchyní v přízemí, ložnicemi a koupelnou v patře. Z pokoje vede balkon s výhledem na moře.",
       "Rezort má několik bazénů, restauraci a přímý vstup na pláž. Právní režim projdeme předem s partnerem na místě.",
     ],
-    features: ["Balkon s výhledem", "Bazény rezortu", "Přímý přístup k pláži", "Restaurace v rezortu"],
+    features: [
+      "Balkon s výhledem",
+      "Bazény rezortu",
+      "Přímý přístup k pláži",
+      "Restaurace v rezortu",
+    ],
     images: [
       { ...egyptImages.resort, position: 0 },
       { ...egyptImages.apartment, position: 1 },
@@ -406,11 +425,35 @@ const readProperties = createServerFn({ method: "GET" }).handler(async (): Promi
     const { publicProperties } = await import("@/server/properties.server");
     return publicProperties();
   }
-  if (process.env["NODE_ENV"] === "production") throw new Error("Chybí databáze pro produkční nabídky.");
+  if (process.env["NODE_ENV"] === "production")
+    throw new Error("Chybí databáze pro produkční nabídky.");
   return [...demo, ...egyptDemo];
 });
 
-const sorted = async () => (await readProperties()).sort((a, b) => a.sortOrder - b.sortOrder);
+function publicCopy(property: Property): Property {
+  return {
+    ...property,
+    title: formalAddress(property.title),
+    perex: formalAddress(property.perex),
+    description: property.description.map(formalAddress),
+    features: property.features.map(formalAddress),
+    ...(property.priceNote !== undefined && { priceNote: formalAddress(property.priceNote) }),
+    ...(property.advancePayments !== undefined && {
+      advancePayments: formalAddress(property.advancePayments),
+    }),
+    ...(property.availableFrom !== undefined && {
+      availableFrom: formalAddress(property.availableFrom),
+    }),
+    ...(property.additionalParameters && {
+      additionalParameters: property.additionalParameters.map((parameter) => ({
+        label: formalAddress(parameter.label),
+        value: formalAddress(parameter.value),
+      })),
+    }),
+  };
+}
+const sorted = async () =>
+  (await readProperties()).map(publicCopy).sort((a, b) => a.sortOrder - b.sortOrder);
 
 /** Všechny publikované nabídky z Česka i Egypta pro společný přehled. */
 export async function listAllProperties(): Promise<Property[]> {
@@ -418,15 +461,19 @@ export async function listAllProperties(): Promise<Property[]> {
 }
 
 export async function listProperties(status?: PropertyStatus): Promise<Property[]> {
-  return (await sorted()).filter((p) => (p.market ?? "cz") === "cz").filter((p) => !status || p.status === status);
+  return (await sorted())
+    .filter((p) => (p.market ?? "cz") === "cz")
+    .filter((p) => !status || p.status === status);
 }
 
 export async function getProperty(slug: string): Promise<Property | null> {
-  return (await readProperties()).find((p) => p.slug === slug) ?? null;
+  return (await sorted()).find((p) => p.slug === slug) ?? null;
 }
 
 export async function listFeatured(): Promise<Property[]> {
-  return (await sorted()).filter((p) => (p.market ?? "cz") === "cz" && p.featured && p.status !== "sold").slice(0, 6);
+  return (await sorted())
+    .filter((p) => (p.market ?? "cz") === "cz" && p.featured && p.status !== "sold")
+    .slice(0, 6);
 }
 
 /** Publikované egyptské nabídky pro sekci Egypt. */

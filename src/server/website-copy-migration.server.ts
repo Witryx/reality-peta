@@ -1,5 +1,31 @@
 import { copyKey } from "../lib/site-copy";
 import type { Database } from "./database.server";
+import { aboutDescription } from "../data/about-copy";
+
+// The owner requested a replacement of both old paragraphs, including existing overrides.
+export async function migrateAboutCopy(db: Database) {
+  const [applied] = await db.query(
+    "SELECT version FROM schema_migrations WHERE version='about-copy-v2'",
+  );
+  if (applied) return;
+  const [row] = await db.query<{ data: Record<string, string> }>(
+    "SELECT data FROM website_content WHERE id='main' FOR UPDATE",
+  );
+  const legacy = [
+    "Práce s lidmi mě baví a naplňuje. Právě při ní můžu naplno využít své schopnosti a pomáhat s rozhodnutími, která mají v životě skutečnou váhu.",
+    "Největší smysl mi dává, když celý postup dává smysl i vám. Když přinese klid, radost z nového bydlení nebo řešení důležité situace — a posune vás blíž k tomu, co od života chcete. Nemovitost je součást příběhu. Základem je pro mě lidský přístup.",
+  ].map(copyKey);
+  if (row && legacy.some((key) => row.data[key] !== undefined)) {
+    const values = { ...row.data };
+    for (const key of legacy) delete values[key];
+    values[copyKey(aboutDescription)] ??= aboutDescription;
+    await db.query(
+      "UPDATE website_content SET data=$1::jsonb,version=version+1,updated_at=now() WHERE id='main'",
+      [JSON.stringify(values)],
+    );
+  }
+  await db.query("INSERT INTO schema_migrations(version) VALUES ('about-copy-v2')");
+}
 
 // Preserve owner-edited values when the referral page's source copy changes.
 const replacements = [

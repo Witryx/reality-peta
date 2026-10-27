@@ -7,6 +7,7 @@ export type WebsiteField = {
   label?: string;
   kind?: string;
   max?: number;
+  role?: string;
 };
 const configurationDefaults = new Set(
   editableSiteFields.map((field) => field.default).filter(Boolean),

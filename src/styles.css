@@ -1518,6 +1518,37 @@
   opacity: 1;
   transform: none;
 }
+.service-detail {
+  background: var(--surface);
+  border-radius: var(--radius);
+  min-width: 0;
+}
+.service-detail:nth-child(2n) {
+  background: color-mix(in oklab, var(--accent) 9%, var(--background));
+}
+.service-icon {
+  width: 64px;
+  height: 64px;
+  color: var(--accent);
+}
+.service-plus {
+  color: var(--accent);
+  margin-top: 4px;
+}
+.service-description {
+  color: var(--foreground);
+  line-height: 1.65;
+}
+.service-detail:hover,
+.service-detail:focus-within,
+.service-detail[open] {
+  background: color-mix(in oklab, var(--accent) 16%, var(--background));
+}
+.service-detail summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 8px;
+  border-radius: 2px;
+}
 .service-detail summary {
   list-style: none;
   cursor: pointer;

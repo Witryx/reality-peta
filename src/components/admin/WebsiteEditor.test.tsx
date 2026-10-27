@@ -62,3 +62,27 @@ it("retains unsaved text after a failed save", async () => {
   expect(await screen.findByRole("alert")).toHaveTextContent("Texty mezitím upravil jiný správce");
   expect(field).toHaveValue("Můj neuložený nadpis");
 });
+
+it("finds shared section headings on the homepage and saves them through the heading filter", async () => {
+  vi.mocked(api).mockImplementation(async (_path, options) => {
+    if (options?.method === "PUT") {
+      const draft = JSON.parse(options.body as string);
+      return { ...draft, version: draft.version + 1 };
+    }
+    return { values: {}, version: 4 };
+  });
+  setup();
+  await screen.findByLabelText("Jen nadpisy");
+  fireEvent.click(screen.getByLabelText("Jen nadpisy"));
+  expect(screen.getByLabelText("S čím Vám pomohu")).toBeInTheDocument();
+  fireEvent.change(screen.getByLabelText("Najít text"), { target: { value: "Reality jsou" } });
+  const heading = screen.getByLabelText("Reality jsou pro mě o lidech.");
+  fireEvent.change(heading, { target: { value: "Reality s osobním přístupem" } });
+  fireEvent.click(screen.getByRole("button", { name: "Uložit texty" }));
+  await screen.findByRole("status");
+  const write = vi.mocked(api).mock.calls.find(([, options]) => options?.method === "PUT")!;
+  expect(JSON.parse(write[1]!.body as string)).toEqual({
+    values: { [copyKey("Reality jsou pro mě o lidech.")]: "Reality s osobním přístupem" },
+    version: 4,
+  });
+});

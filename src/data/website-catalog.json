@@ -17,12 +17,14 @@
   {
     "key": "text_58f3dcc4",
     "default": "Cookies",
-    "groups": ["Cookies", "Patička"]
+    "groups": ["Cookies", "Patička"],
+    "role": "heading"
   },
   {
     "key": "text_3194b3b0",
     "default": "Nezbytné",
-    "groups": ["Cookies"]
+    "groups": ["Cookies"],
+    "role": "heading"
   },
   {
     "key": "text_1fbb6499",
@@ -37,7 +39,8 @@
   {
     "key": "text_c7cac61e",
     "default": "Analytické",
-    "groups": ["Cookies"]
+    "groups": ["Cookies"],
+    "role": "heading"
   },
   {
     "key": "text_d81c0c30",
@@ -47,7 +50,8 @@
   {
     "key": "text_3b10b7d1",
     "default": "Marketingové",
-    "groups": ["Cookies"]
+    "groups": ["Cookies"],
+    "role": "heading"
   },
   {
     "key": "text_f8fb3597",
@@ -62,7 +66,8 @@
   {
     "key": "text_af4782f0",
     "default": "Změna souhlasu",
-    "groups": ["Cookies"]
+    "groups": ["Cookies"],
+    "role": "heading"
   },
   {
     "key": "text_f647b71f",
@@ -92,7 +97,8 @@
   {
     "key": "text_e9ad6159",
     "default": "Nejdřív otázky. Potom rozhodnutí.",
-    "groups": ["Egypt"]
+    "groups": ["Egypt"],
+    "role": "heading"
   },
   {
     "key": "text_53fe14fd",
@@ -102,7 +108,8 @@
   {
     "key": "text_592aa94",
     "default": "Druhý domov",
-    "groups": ["Egypt"]
+    "groups": ["Egypt"],
+    "role": "heading"
   },
   {
     "key": "text_eba53b85",
@@ -112,7 +119,8 @@
   {
     "key": "text_6e6c9cfc",
     "default": "Využití majetku",
-    "groups": ["Egypt"]
+    "groups": ["Egypt"],
+    "role": "heading"
   },
   {
     "key": "text_596eb72d",
@@ -122,7 +130,8 @@
   {
     "key": "text_7a25e21b",
     "default": "Jasný postup",
-    "groups": ["Egypt"]
+    "groups": ["Egypt"],
+    "role": "heading"
   },
   {
     "key": "text_e69c3600",
@@ -137,7 +146,8 @@
   {
     "key": "text_7d5b8cb2",
     "default": "Nemovitosti u Rudého moře",
-    "groups": ["Egypt"]
+    "groups": ["Egypt"],
+    "role": "heading"
   },
   {
     "key": "text_b27db081",
@@ -157,7 +167,8 @@
   {
     "key": "text_a253e3a6",
     "default": "Co vás láká k moři?",
-    "groups": ["Egypt"]
+    "groups": ["Egypt"],
+    "role": "heading"
   },
   {
     "key": "text_457358a",
@@ -192,12 +203,14 @@
   {
     "key": "text_5b6a42a7",
     "default": "Co bude váš",
-    "groups": ["Úvodní stránka"]
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
   },
   {
     "key": "text_eefea666",
     "default": "další domov?",
-    "groups": ["Úvodní stránka"]
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
   },
   {
     "key": "text_1837dbc1",
@@ -217,12 +230,14 @@
   {
     "key": "text_ba8ae35",
     "default": "Reality šité na",
-    "groups": ["Úvodní stránka"]
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
   },
   {
     "key": "text_7dcdd54f",
     "default": "míru vaší situace.",
-    "groups": ["Úvodní stránka"]
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
   },
   {
     "key": "text_a192d499",
@@ -272,7 +287,8 @@
   {
     "key": "text_3d45d8b1",
     "default": "Nemovitosti v Česku, které právě hledají nové majitele",
-    "groups": ["Úvodní stránka"]
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
   },
   {
     "key": "text_ec6d2622",
@@ -287,7 +303,8 @@
   {
     "key": "text_dad88553",
     "default": "S čím vám pomohu",
-    "groups": ["Úvodní stránka"]
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
   },
   {
     "key": "text_ab0f73af",
@@ -297,7 +314,8 @@
   {
     "key": "text_3482be80",
     "default": "Nemovitosti v Hurghádě přímo u Rudého moře",
-    "groups": ["Úvodní stránka"]
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
   },
   {
     "key": "text_1d649e4f",
@@ -317,7 +335,8 @@
   {
     "key": "text_1df6b932",
     "default": "Prodej v pěti klidných krocích",
-    "groups": ["Úvodní stránka"]
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
   },
   {
     "key": "text_adc8c33a",
@@ -327,7 +346,8 @@
   {
     "key": "text_c6bf9c85",
     "default": "Co na spolupráci říkají klienti",
-    "groups": ["Úvodní stránka"]
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
   },
   {
     "key": "text_2de4e34a",
@@ -337,7 +357,8 @@
   {
     "key": "text_6077bc96",
     "default": "Informace, na které si dát pozor",
-    "groups": ["Úvodní stránka", "Články"]
+    "groups": ["Úvodní stránka", "Články"],
+    "role": "heading"
   },
   {
     "key": "text_d7a8c795",
@@ -357,7 +378,8 @@
   {
     "key": "text_8abcf143",
     "default": "Pojďme si promluvit",
-    "groups": ["Úvodní stránka"]
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
   },
   {
     "key": "text_9c2d016e",
@@ -377,7 +399,8 @@
   {
     "key": "text_213778a0",
     "default": "Napište mi, nebo rovnou zavolejte",
-    "groups": ["Kontakt"]
+    "groups": ["Kontakt"],
+    "role": "heading"
   },
   {
     "key": "text_4dbb9b13",
@@ -392,7 +415,8 @@
   {
     "key": "text_90eeacd5",
     "default": "Nabídka spolupráce",
-    "groups": ["Nabídka spolupráce – vyhledávače", "Nabídka spolupráce", "Identita"]
+    "groups": ["Nabídka spolupráce – vyhledávače", "Nabídka spolupráce", "Identita"],
+    "role": "heading"
   },
   {
     "key": "text_78b5c18",
@@ -417,7 +441,8 @@
   {
     "key": "text_9dfa4cc5",
     "default": "Za doporučení kontaktu můžete získat až 100 000 Kč",
-    "groups": ["Nabídka spolupráce"]
+    "groups": ["Nabídka spolupráce"],
+    "role": "heading"
   },
   {
     "key": "text_31046141",
@@ -427,7 +452,8 @@
   {
     "key": "text_ceb32034",
     "default": "Jak získat odměnu za doporučení",
-    "groups": ["Nabídka spolupráce"]
+    "groups": ["Nabídka spolupráce"],
+    "role": "heading"
   },
   {
     "key": "text_5abddf39",
@@ -437,7 +463,8 @@
   {
     "key": "text_33f62bad",
     "default": "1. Ozvěte se mi s doporučením",
-    "groups": ["Nabídka spolupráce"]
+    "groups": ["Nabídka spolupráce"],
+    "role": "heading"
   },
   {
     "key": "text_cd75af98",
@@ -447,7 +474,8 @@
   {
     "key": "text_d2661be0",
     "default": "2. Domluvíme si podmínky",
-    "groups": ["Nabídka spolupráce"]
+    "groups": ["Nabídka spolupráce"],
+    "role": "heading"
   },
   {
     "key": "text_beca3742",
@@ -457,7 +485,8 @@
   {
     "key": "text_fbf3bbdf",
     "default": "3. Převezmu péči o prodej",
-    "groups": ["Nabídka spolupráce"]
+    "groups": ["Nabídka spolupráce"],
+    "role": "heading"
   },
   {
     "key": "text_b7346eb1",
@@ -467,7 +496,8 @@
   {
     "key": "text_5d0ef17b",
     "default": "4. Po úspěšném prodeji získáte odměnu",
-    "groups": ["Nabídka spolupráce"]
+    "groups": ["Nabídka spolupráce"],
+    "role": "heading"
   },
   {
     "key": "text_d3c1d1de",
@@ -477,12 +507,14 @@
   {
     "key": "text_3bea904f",
     "default": "Další možnosti spolupráce",
-    "groups": ["Nabídka spolupráce"]
+    "groups": ["Nabídka spolupráce"],
+    "role": "heading"
   },
   {
     "key": "text_e1063de1",
     "default": "Pravidelná doporučení",
-    "groups": ["Nabídka spolupráce"]
+    "groups": ["Nabídka spolupráce"],
+    "role": "heading"
   },
   {
     "key": "text_924b4a56",
@@ -492,7 +524,8 @@
   {
     "key": "text_935c2b02",
     "default": "Propojení služeb a společné projekty",
-    "groups": ["Nabídka spolupráce"]
+    "groups": ["Nabídka spolupráce"],
+    "role": "heading"
   },
   {
     "key": "text_e10ec8ad",
@@ -507,7 +540,8 @@
   {
     "key": "text_fa33a339",
     "default": "Máte tip nebo nápad na spolupráci?",
-    "groups": ["Nabídka spolupráce"]
+    "groups": ["Nabídka spolupráce"],
+    "role": "heading"
   },
   {
     "key": "text_2afae909",
@@ -522,7 +556,8 @@
   {
     "key": "text_64f41cce",
     "default": "Tato nemovitost už není v nabídce.",
-    "groups": ["Detail nemovitosti"]
+    "groups": ["Detail nemovitosti"],
+    "role": "heading"
   },
   {
     "key": "text_1b6e3349",
@@ -557,22 +592,26 @@
   {
     "key": "text_df0edc4",
     "default": "Lokalita",
-    "groups": ["Detail nemovitosti"]
+    "groups": ["Detail nemovitosti"],
+    "role": "heading"
   },
   {
     "key": "text_145c9367",
     "default": "Video a virtuální prohlídka",
-    "groups": ["Detail nemovitosti"]
+    "groups": ["Detail nemovitosti"],
+    "role": "heading"
   },
   {
     "key": "text_54ed8dff",
     "default": "Hledáte podobnou nemovitost?",
-    "groups": ["Detail nemovitosti"]
+    "groups": ["Detail nemovitosti"],
+    "role": "heading"
   },
   {
     "key": "text_53ab002d",
     "default": "Domluvit prohlídku",
-    "groups": ["Detail nemovitosti"]
+    "groups": ["Detail nemovitosti"],
+    "role": "heading"
   },
   {
     "key": "text_e5612887",
@@ -597,7 +636,8 @@
   {
     "key": "text_647bfe6",
     "default": "Nemovitosti",
-    "groups": ["Nabídka"]
+    "groups": ["Nabídka"],
+    "role": "heading"
   },
   {
     "key": "text_6a12e45d",
@@ -632,7 +672,8 @@
   {
     "key": "text_ecc46a43",
     "default": "Nejdřív vás vyslechnu.",
-    "groups": ["O mně"]
+    "groups": ["O mně"],
+    "role": "heading"
   },
   {
     "key": "text_4a67fb10",
@@ -657,7 +698,8 @@
       "Ochrana osobních údajů",
       "Cookies",
       "Patička"
-    ]
+    ],
+    "role": "heading"
   },
   {
     "key": "text_ce52d528",
@@ -667,7 +709,8 @@
   {
     "key": "text_8cd8906f",
     "default": "Správce",
-    "groups": ["Ochrana osobních údajů"]
+    "groups": ["Ochrana osobních údajů"],
+    "role": "heading"
   },
   {
     "key": "text_b07bc14d",
@@ -677,7 +720,8 @@
   {
     "key": "text_6ed46230",
     "default": "Jaké údaje zpracovávám",
-    "groups": ["Ochrana osobních údajů"]
+    "groups": ["Ochrana osobních údajů"],
+    "role": "heading"
   },
   {
     "key": "text_8282564",
@@ -687,7 +731,8 @@
   {
     "key": "text_3df9fb41",
     "default": "Účel a právní základ",
-    "groups": ["Ochrana osobních údajů"]
+    "groups": ["Ochrana osobních údajů"],
+    "role": "heading"
   },
   {
     "key": "text_730267e7",
@@ -697,7 +742,8 @@
   {
     "key": "text_a9f7fb23",
     "default": "Doba uložení",
-    "groups": ["Ochrana osobních údajů"]
+    "groups": ["Ochrana osobních údajů"],
+    "role": "heading"
   },
   {
     "key": "text_3d0b047f",
@@ -707,7 +753,8 @@
   {
     "key": "text_3c61e69f",
     "default": "Příjemci",
-    "groups": ["Ochrana osobních údajů"]
+    "groups": ["Ochrana osobních údajů"],
+    "role": "heading"
   },
   {
     "key": "text_59db3560",
@@ -717,7 +764,8 @@
   {
     "key": "text_7d757962",
     "default": "Vaše práva",
-    "groups": ["Ochrana osobních údajů"]
+    "groups": ["Ochrana osobních údajů"],
+    "role": "heading"
   },
   {
     "key": "text_220418d7",
@@ -747,7 +795,8 @@
   {
     "key": "text_51d64ce5",
     "default": "Spokojení klienti jsou moje nejlepší vizitka",
-    "groups": ["Reference"]
+    "groups": ["Reference"],
+    "role": "heading"
   },
   {
     "key": "text_2c05d75f",
@@ -772,7 +821,8 @@
   {
     "key": "text_fe58fc18",
     "default": "Vše kolem vašeho bydlení na jednom místě",
-    "groups": ["Služby"]
+    "groups": ["Služby"],
+    "role": "heading"
   },
   {
     "key": "text_d2d96365",
@@ -782,7 +832,8 @@
   {
     "key": "text_be11e776",
     "default": "Prezentace, která prodává",
-    "groups": ["Služby"]
+    "groups": ["Služby"],
+    "role": "heading"
   },
   {
     "key": "text_ef89c5c0",
@@ -802,7 +853,8 @@
   {
     "key": "text_f796213c",
     "default": "Proces prodeje",
-    "groups": ["Služby"]
+    "groups": ["Služby"],
+    "role": "heading"
   },
   {
     "key": "text_12f36293",
@@ -887,7 +939,8 @@
   {
     "key": "text_92ef4d3c",
     "default": "Pomozte mi dělat web užitečnější",
-    "groups": ["Cookies"]
+    "groups": ["Cookies"],
+    "role": "heading"
   },
   {
     "key": "text_925ac7ad",
@@ -947,7 +1000,8 @@
   {
     "key": "text_6ac3c03a",
     "default": "Co jsou cookies?",
-    "groups": ["Cookies"]
+    "groups": ["Cookies"],
+    "role": "heading"
   },
   {
     "key": "text_794d61e4",
@@ -957,7 +1011,8 @@
   {
     "key": "text_16456579",
     "default": "K čemu slouží?",
-    "groups": ["Cookies"]
+    "groups": ["Cookies"],
+    "role": "heading"
   },
   {
     "key": "text_97ae2de2",
@@ -982,7 +1037,8 @@
   {
     "key": "text_3555949a",
     "default": "Externí nástroje",
-    "groups": ["Cookies"]
+    "groups": ["Cookies"],
+    "role": "heading"
   },
   {
     "key": "text_78c80172",
@@ -992,7 +1048,8 @@
   {
     "key": "text_592360ae",
     "default": "Volbu máte pod kontrolou",
-    "groups": ["Cookies"]
+    "groups": ["Cookies"],
+    "role": "heading"
   },
   {
     "key": "text_305eb48c",
@@ -1017,17 +1074,20 @@
   {
     "key": "text_b773a070",
     "default": "Nemovitosti v Egyptě",
-    "groups": ["Egypt"]
+    "groups": ["Egypt"],
+    "role": "heading"
   },
   {
     "key": "text_b0f8d4ec",
     "default": "Vaše místo",
-    "groups": ["Egypt"]
+    "groups": ["Egypt"],
+    "role": "heading"
   },
   {
     "key": "text_a583c3eb",
     "default": "u Rudého moře.",
-    "groups": ["Egypt"]
+    "groups": ["Egypt"],
+    "role": "heading"
   },
   {
     "key": "text_fca12a28",
@@ -1062,7 +1122,7 @@
   {
     "key": "text_bf353012",
     "default": "Probrat možnosti",
-    "groups": ["Egypt", "Společné sekce"]
+    "groups": ["Egypt", "Společné sekce", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_b4b1fd9b",
@@ -1097,7 +1157,8 @@
   {
     "key": "text_7ef543e4",
     "default": "Vaše nejčastější dotazy",
-    "groups": ["Časté dotazy"]
+    "groups": ["Časté dotazy"],
+    "role": "heading"
   },
   {
     "key": "text_9a585d7f",
@@ -1152,7 +1213,8 @@
   {
     "key": "text_39229e9",
     "default": "Děkuji za vaši zprávu.",
-    "groups": ["Formuláře"]
+    "groups": ["Formuláře"],
+    "role": "heading"
   },
   {
     "key": "text_bf9bb4cb",
@@ -1297,7 +1359,8 @@
   {
     "key": "text_cd10f9a8",
     "default": "Co najdete v okolí",
-    "groups": ["Okolí nemovitosti"]
+    "groups": ["Okolí nemovitosti"],
+    "role": "heading"
   },
   {
     "key": "text_b4013e55",
@@ -1352,7 +1415,8 @@
   {
     "key": "text_81dd2f44",
     "default": "Líbí se vám tato prezentace a uvažujete i o prodeji vaší nemovitosti?",
-    "groups": ["Kontakt u nabídek"]
+    "groups": ["Kontakt u nabídek"],
+    "role": "heading"
   },
   {
     "key": "text_538c536d",
@@ -1442,12 +1506,14 @@
   {
     "key": "text_2314f19e",
     "default": "Parametry",
-    "groups": ["Detail nemovitosti"]
+    "groups": ["Detail nemovitosti"],
+    "role": "heading"
   },
   {
     "key": "text_c181dd35",
     "default": "Další parametry",
-    "groups": ["Detail nemovitosti"]
+    "groups": ["Detail nemovitosti"],
+    "role": "heading"
   },
   {
     "key": "text_fb79d1ed",
@@ -1457,82 +1523,75 @@
   {
     "key": "text_698ac23d",
     "default": "Předchozí reference",
-    "groups": ["Společné sekce"]
+    "groups": ["Společné sekce", "Úvodní stránka", "Reference"]
   },
   {
     "key": "text_761ddf6d",
     "default": "Další reference",
-    "groups": ["Společné sekce"]
+    "groups": ["Společné sekce", "Úvodní stránka", "Reference"]
   },
   {
     "key": "text_a828a98a",
     "default": "První krok k dobrému rozhodnutí",
-    "groups": ["Společné sekce"]
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
     "key": "text_9487b18",
     "default": "Chci znát cenu",
-    "groups": ["Společné sekce"]
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"],
+    "role": "heading"
   },
   {
     "key": "text_f77f5760",
     "default": "své nemovitosti.",
-    "groups": ["Společné sekce"]
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"],
+    "role": "heading"
   },
   {
     "key": "text_d2491a18",
     "default": "Pro nové klienty připravím odhad nemovitosti",
-    "groups": ["Společné sekce"]
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
     "key": "text_c501ef30",
     "default": "zdarma.",
-    "groups": ["Společné sekce"]
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
     "key": "text_626bf6ab",
     "default": "Napište mi pár základních údajů. Zjistíme reálnou cenu podle skutečných prodejů v okolí — nezávazně a diskrétně.",
-    "groups": ["Společné sekce"]
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
     "key": "text_5d501bac",
     "default": "Odpověď obvykle do dvou pracovních dnů",
-    "groups": ["Společné sekce"]
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
     "key": "text_4c0b2e49",
     "default": "Bez závazků. Bez nátlaku.",
-    "groups": ["Společné sekce"]
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
     "key": "text_56d30349",
     "default": "Získat odhad nemovitosti zdarma",
-    "groups": ["Společné sekce"]
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
     "key": "text_a03d3eee",
     "default": "O mně",
-    "groups": ["Společné sekce", "Identita"]
+    "groups": ["Společné sekce", "Úvodní stránka", "O mně", "Identita"]
   },
   {
     "key": "text_173df481",
     "default": "Reality jsou pro mě o lidech.",
-    "groups": ["Společné sekce"]
-  },
-  {
-    "key": "text_e52421b",
-    "default": "Práce s lidmi mě baví a naplňuje. Právě při ní můžu naplno využít své schopnosti a pomáhat s rozhodnutími, která mají v životě skutečnou váhu.",
-    "groups": ["Společné sekce"]
-  },
-  {
-    "key": "text_3dae21c7",
-    "default": "Největší smysl mi dává, když celý postup dává smysl i vám. Když přinese klid, radost z nového bydlení nebo řešení důležité situace — a posune vás blíž k tomu, co od života chcete. Nemovitost je součást příběhu. Základem je pro mě lidský přístup.",
-    "groups": ["Společné sekce"]
+    "groups": ["Společné sekce", "Úvodní stránka", "O mně"],
+    "role": "heading"
   },
   {
     "key": "text_bb9bc319",
     "default": "Více o mně",
-    "groups": ["Společné sekce"]
+    "groups": ["Společné sekce", "Úvodní stránka", "O mně"]
   },
   {
     "key": "text_59f62998",
@@ -1582,7 +1641,8 @@
   {
     "key": "text_b98d29",
     "default": "Tento článek už tu není.",
-    "groups": ["Články"]
+    "groups": ["Články"],
+    "role": "heading"
   },
   {
     "key": "text_a7b94aa9",
@@ -1592,7 +1652,8 @@
   {
     "key": "text_6846a75a",
     "default": "Máte dotaz k tomu, co jste si přečetli?",
-    "groups": ["Články"]
+    "groups": ["Články"],
+    "role": "heading"
   },
   {
     "key": "text_a8b8e314",
@@ -1707,187 +1768,203 @@
   {
     "key": "text_2fd0bf5a",
     "default": "Prodej nemovitosti",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"],
+    "role": "heading"
   },
   {
     "key": "text_5620ddd9",
     "default": "Od reálné ceny až po předání klíčů. Srozumitelně, osobně a bez zbytečného tlaku.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_deb843f8",
     "default": "Společně stanovíme cenu, časový plán a způsob prezentace. Postarám se o zájemce, vyjednávání a koordinaci smluv i předání.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_b90fd83",
     "default": "Koupě",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"],
+    "role": "heading"
   },
   {
     "key": "text_22356612",
     "default": "Domov, který vám bude sedět. Pomohu s výběrem, prověřením i vyjednáváním.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_2e144c21",
     "default": "Probereme vaše potřeby a rozpočet, projdeme dostupné možnosti i rizika. Rozhodnutí zůstává vždy na vás, bez tlaku na rychlou koupi.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_2ddc41ab",
     "default": "Pronájem",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"],
+    "role": "heading"
   },
   {
     "key": "text_b6df7237",
     "default": "Spolehlivý nájemník, jasná smlouva a klidnější správa vašeho majetku.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_8adc5c7b",
     "default": "Připravím nabídku, koordinuji prohlídky a pomohu prověřit zájemce. Ve spolupráci s právníkem zajistíme smlouvu a předávací protokol.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_d4516fdf",
     "default": "Odhad a využití majetku",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"],
+    "role": "heading"
   },
   {
     "key": "text_89030f2b",
     "default": "Kolik má nemovitost hodnotu a jaké možnosti vám může otevřít?",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_ea1a5fd8",
     "default": "Odhad vychází ze skutečných prodejů v konkrétní lokalitě. Probereme prodej, pronájem i další využití majetku, včetně nákladů a rizik, bez slibů zaručeného zhodnocení.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_893f6397",
     "default": "Prezentace a marketing",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"],
+    "role": "heading"
   },
   {
     "key": "text_aeda6c5d",
     "default": "Fotografie, video a promyšlená příprava. Nemovitost ukážeme pravdivě a kvalitně.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_af3a8ead",
     "default": "Navrhnu úpravy, které mají smysl. Kvalitní fotografie, virtuální prohlídka a cílená prezentace pomohou oslovit relevantní zájemce.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_8480ee5",
     "default": "Právní a hypoteční servis",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"],
+    "role": "heading"
   },
   {
     "key": "text_b6222f53",
     "default": "Odborníci, jasné smlouvy a bezpečný postup při zásadním životním rozhodnutí.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_31ff15cd",
     "default": "Ve spolupráci s advokáty a hypotečními specialisty projdeme financování, úschovu i převod. Podmínky a související náklady si vysvětlíme předem.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_869f5fa0",
     "default": "Nezávazná schůzka",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"],
+    "role": "heading"
   },
   {
     "key": "text_fb8e4ef3",
     "default": "Poznáme se, prohlédnu nemovitost a probereme vaše představy i časový plán.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_82b5ef37",
     "default": "Cena a strategie",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"],
+    "role": "heading"
   },
   {
     "key": "text_497e31d3",
     "default": "Připravím analýzu trhu a navrhnu cenu i způsob prodeje, který dává smysl.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_6b5f3601",
     "default": "Příprava a prezentace",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"],
+    "role": "heading"
   },
   {
     "key": "text_aa498825",
     "default": "Homestaging, fotografie, video a texty. Nemovitost ukážeme v nejlepším světle.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_1efcba93",
     "default": "Prohlídky a vyjednávání",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"],
+    "role": "heading"
   },
   {
     "key": "text_7dfaadd9",
     "default": "Prověřím zájemce, vedu prohlídky a vyjednám nejlepší podmínky.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_a1e83519",
     "default": "Smlouvy a předání",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"],
+    "role": "heading"
   },
   {
     "key": "text_11a945ad",
     "default": "Právní servis, úschova kupní ceny, převod na katastru a předání klíčů.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
     "key": "text_412ba249",
     "default": "Jana a Martin",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
   },
   {
     "key": "text_78944ef1",
     "default": "Prodej bytu 3+1, Praha 3",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
   },
   {
     "key": "text_96e2816c",
     "default": "Petr nám vysvětlil každý krok a byl vždy k zastižení. Prodej proběhl rychleji, než jsme čekali, a bez jediného stresu.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
   },
   {
     "key": "text_f548022e",
     "default": "Tomáš K.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
   },
   {
     "key": "text_b4891857",
     "default": "Koupě domu, Praha-západ",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
   },
   {
     "key": "text_96fd4394",
     "default": "Oceňuji, že nám nic netlačil. Upozornil i na věci, které by nám jiný makléř raději zamlčel.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
   },
   {
     "key": "text_c150daa2",
     "default": "Eva S.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
   },
   {
     "key": "text_ec97308e",
     "default": "Pronájem bytu, Praha 7",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
   },
   {
     "key": "text_f2842dcd",
     "default": "Lidský přístup a profesionální výsledek. Nájemníka jsme měli do dvou týdnů.",
-    "groups": ["Služby a reference"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
+  },
+  {
+    "key": "text_69632327",
+    "default": "Věřím, že dobře odvedená práce začíná pochopením toho, na čem Vám skutečně záleží. Proto svou práci stavím na osobním přístupu, otevřené komunikaci a pečlivé přípravě. Chci, abyste rozuměli každému kroku, měli se o koho opřít a došli k výsledku, který Vám přinese jistotu a posune Vás blíž k životu, jaký si přejete. Právě v tom vidím hodnotu své práce a důvod, proč ji dělám tak, jak ji dělám.",
+    "groups": ["Společné sekce", "Úvodní stránka", "O mně"]
   },
   {
     "key": "text_c8f9b370",

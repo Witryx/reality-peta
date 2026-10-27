@@ -5,6 +5,7 @@ import { ExternalLink, Loader2, RotateCcw, Save, Search } from "lucide-react";
 import { websiteFields as catalog } from "@/data/website-fields";
 import { api } from "@/lib/api";
 import type { WebsiteContent } from "@/lib/site-copy";
+import { formalAddress } from "@/lib/formal-address";
 import { Notice, errorMessage } from "./AdminPanel";
 
 const paths: Record<string, string> = {
@@ -40,6 +41,7 @@ export function WebsiteEditor({ onDirty }: { onDirty: (value: boolean) => void }
   const [group, setGroup] = useState("Úvodní stránka");
   const [search, setSearch] = useState("");
   const [onlyChanged, setOnlyChanged] = useState(false);
+  const [onlyHeadings, setOnlyHeadings] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
@@ -109,7 +111,7 @@ export function WebsiteEditor({ onDirty }: { onDirty: (value: boolean) => void }
   function edit(key: string, value: string | undefined) {
     if (!draft) return;
     const values = { ...draft.values };
-    const original = catalog.find((entry) => entry.key === key)?.default;
+    const original = formalAddress(catalog.find((entry) => entry.key === key)?.default ?? "");
     if (value === undefined || value === original) delete values[key];
     else values[key] = value;
     setDraft({ ...draft, values });
@@ -132,6 +134,7 @@ export function WebsiteEditor({ onDirty }: { onDirty: (value: boolean) => void }
     (entry) =>
       (!group || entry.groups.includes(group)) &&
       (!onlyChanged || draft.values[entry.key] !== undefined) &&
+      (!onlyHeadings || entry.role === "heading") &&
       (!needle ||
         searchText(
           `${entry.label ?? ""} ${entry.default} ${draft.values[entry.key] ?? ""}`,
@@ -154,9 +157,10 @@ export function WebsiteEditor({ onDirty }: { onDirty: (value: boolean) => void }
         </a>
       </div>
       <p className="admin-description">
-        Vyberte stránku, přepište text a uložte změny. Fotografie upravíte v sekci Fotky webu.
-        Rozložení a funkce webu zůstanou zachované. Text rozdělený zalomením nebo zvýrazněním má
-        samostatná pole. Stejný text použitý vícekrát se upraví na všech těchto místech.
+        Vyberte stránku, upravte nadpisy sekcí nebo texty a uložte změny. Pro rychlou úpravu nadpisů
+        zapněte „Jen nadpisy“. Fotografie upravíte v sekci Fotky webu. Rozložení a funkce webu
+        zůstanou zachované. Text rozdělený zalomením nebo zvýrazněním má samostatná pole. Stejný
+        text použitý vícekrát se upraví na všech těchto místech.
       </p>
       {error && (
         <Notice>
@@ -192,6 +196,14 @@ export function WebsiteEditor({ onDirty }: { onDirty: (value: boolean) => void }
         <label className="admin-checkbox">
           <input
             type="checkbox"
+            checked={onlyHeadings}
+            onChange={(event) => setOnlyHeadings(event.target.checked)}
+          />{" "}
+          Jen nadpisy
+        </label>
+        <label className="admin-checkbox">
+          <input
+            type="checkbox"
             checked={onlyChanged}
             onChange={(event) => setOnlyChanged(event.target.checked)}
           />{" "}
@@ -207,13 +219,14 @@ export function WebsiteEditor({ onDirty }: { onDirty: (value: boolean) => void }
       </div>
       <div className="admin-website-fields">
         {visible.map((entry, index) => {
-          const value = draft.values[entry.key] ?? entry.default;
+          const value = draft.values[entry.key] ?? formalAddress(entry.default);
           const changed = draft.values[entry.key] !== undefined;
           return (
             <section className="admin-card admin-website-field" key={entry.key}>
               <div className="admin-website-field-heading">
                 <span>
                   {entry.groups.join(" · ")}
+                  {entry.role === "heading" && <b>Nadpis</b>}
                   {changed && <b>Upraveno</b>}
                 </span>
                 <button
@@ -228,7 +241,9 @@ export function WebsiteEditor({ onDirty }: { onDirty: (value: boolean) => void }
               </div>
               <label htmlFor={entry.key}>
                 {entry.label ??
-                  (entry.default.length > 100 ? `${entry.default.slice(0, 97)}…` : entry.default)}
+                  formalAddress(
+                    entry.default.length > 100 ? `${entry.default.slice(0, 97)}…` : entry.default,
+                  )}
               </label>
               {entry.kind ? (
                 <input

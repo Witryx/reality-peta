@@ -3,7 +3,16 @@ import { useWebsiteImageHidden } from "@/lib/website-context";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { processSteps, services, testimonials } from "@/data/content";
-import { Star } from "lucide-react";
+import { aboutDescription } from "@/data/about-copy";
+import {
+  Camera,
+  ChartNoAxesCombined,
+  House,
+  KeyRound,
+  Search,
+  ShieldCheck,
+  Star,
+} from "lucide-react";
 import { LeadForm } from "./LeadForm";
 import portrait from "@/assets/petr-pavlat-portrait.png.asset.json";
 import fullPortrait from "@/assets/petr-pavlat-full.png.asset.json";
@@ -46,37 +55,46 @@ export function SectionHead({
   );
 }
 
+const serviceIcons = {
+  prodej: House,
+  koupe: Search,
+  pronajem: KeyRound,
+  odhad: ChartNoAxesCombined,
+  homestaging: Camera,
+  "pravni-hypoteka": ShieldCheck,
+} as const;
+
 export function ServicesGrid() {
   return (
-    <div className="mt-14 grid gap-px overflow-hidden rounded-lg border bg-border sm:grid-cols-2 lg:grid-cols-3">
-      {services.map((s, i) => (
-        <details
-          key={s.slug}
-          className="service-detail bg-background p-8 transition-colors hover:bg-surface"
-        >
-          <summary className="focus-visible:outline-ring">
-            <span className="flex justify-between gap-4">
-              <span className="font-display text-sm text-accent">0{i + 1}</span>
-              <Plus className="service-plus size-4 shrink-0 text-accent" aria-hidden />
-            </span>
-            <h3 className="mt-6 text-2xl">
-              <SiteText>{s.title}</SiteText>
-            </h3>
-            <p className="mt-3 text-muted-foreground">
-              <SiteText>{s.text}</SiteText>
+    <div className="services-grid mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((s) => {
+        const Icon = serviceIcons[s.slug as keyof typeof serviceIcons];
+        return (
+          <details key={s.slug} className="service-detail p-6 sm:p-8">
+            <summary className="focus-visible:outline-ring">
+              <span className="flex items-start justify-between gap-4">
+                <Icon className="service-icon" strokeWidth={1.35} aria-hidden="true" />
+                <Plus className="service-plus size-5 shrink-0" aria-hidden />
+              </span>
+              <h3 className="mt-6 text-2xl">
+                <SiteText>{s.title}</SiteText>
+              </h3>
+              <p className="service-description mt-3">
+                <SiteText>{s.text}</SiteText>
+              </p>
+            </summary>
+            <p className="mt-5 border-t pt-5 text-sm leading-relaxed text-muted-foreground">
+              <SiteText>{s.detail}</SiteText>
             </p>
-          </summary>
-          <p className="mt-5 border-t pt-5 text-sm leading-relaxed text-muted-foreground">
-            <SiteText>{s.detail}</SiteText>
-          </p>
-          <Button asChild variant="link" className="mt-3 h-auto p-0">
-            <Link to="/kontakt">
-              <SiteText>{"Probrat možnosti "}</SiteText>
-              <ArrowUpRight className="size-4" />
-            </Link>
-          </Button>
-        </details>
-      ))}
+            <Button asChild variant="link" className="mt-3 h-auto p-0">
+              <Link to="/kontakt">
+                <SiteText>{"Probrat možnosti "}</SiteText>
+                <ArrowUpRight className="size-4" />
+              </Link>
+            </Button>
+          </details>
+        );
+      })}
     </div>
   );
 }
@@ -225,19 +243,23 @@ export function AboutTeaser({ full = false }: { full?: boolean }) {
   const hidden = useWebsiteImageHidden(full ? "image.fullPortrait" : "image.portrait");
   return (
     <div className={`grid gap-10 ${hidden ? "" : "md:grid-cols-[0.8fr_1.2fr]"} md:items-center`}>
-      {!hidden && (
-        <div className="flex aspect-[4/5] items-end justify-center overflow-hidden bg-surface">
-          <BrandImage
-            asset={full ? fullPortrait : portrait}
-            imageKey={full ? "image.fullPortrait" : "image.portrait"}
-            alt="Petr Pavlát, realitní makléř"
-            width={full ? 585 : 1439}
-            height={full ? 1355 : 1825}
-            loading="lazy"
-            className="h-[95%] w-full object-contain object-bottom"
-          />
-        </div>
-      )}
+      {
+        <SiteText>
+          {!hidden && (
+            <div className="flex aspect-[4/5] items-end justify-center overflow-hidden bg-surface">
+              <BrandImage
+                asset={full ? fullPortrait : portrait}
+                imageKey={full ? "image.fullPortrait" : "image.portrait"}
+                alt="Petr Pavlát, realitní makléř"
+                width={full ? 585 : 1439}
+                height={full ? 1355 : 1825}
+                loading="lazy"
+                className="h-[95%] w-full object-contain object-bottom"
+              />
+            </div>
+          )}
+        </SiteText>
+      }
       <div>
         <p className="eyebrow">
           <SiteText>{"O mně"}</SiteText>
@@ -246,18 +268,7 @@ export function AboutTeaser({ full = false }: { full?: boolean }) {
           <SiteText>{"Reality jsou pro mě o lidech."}</SiteText>
         </Heading>
         <p className="mt-6 text-lg text-muted-foreground">
-          <SiteText>
-            {
-              "Práce s lidmi mě baví a naplňuje. Právě při ní můžu naplno využít své schopnosti a pomáhat s rozhodnutími, která mají v životě skutečnou váhu."
-            }
-          </SiteText>
-        </p>
-        <p className="mt-4 leading-relaxed text-muted-foreground">
-          <SiteText>
-            {
-              "Největší smysl mi dává, když celý postup dává smysl i vám. Když přinese klid, radost z nového bydlení nebo řešení důležité situace — a posune vás blíž k tomu, co od života chcete. Nemovitost je součást příběhu. Základem je pro mě lidský přístup."
-            }
-          </SiteText>
+          <SiteText>{aboutDescription}</SiteText>
         </p>
         <BrandImage
           asset={signature}

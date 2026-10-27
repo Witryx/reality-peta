@@ -45,13 +45,32 @@ const files = [
   "src/routes/clanky/$slug.tsx",
 ];
 const catalog = new Map();
+const catalogOnly = process.argv.includes("--catalog-only");
+const sectionPages = {
+  AboutTeaser: ["Úvodní stránka", "O mně"],
+  ServicesGrid: ["Úvodní stránka", "Služby"],
+  ProcessList: ["Úvodní stránka", "Služby"],
+  Testimonials: ["Úvodní stránka", "Reference"],
+  ValuationSection: ["Úvodní stránka", "Odhad ceny"],
+  services: ["Úvodní stránka", "Služby"],
+  processSteps: ["Úvodní stránka", "Služby"],
+  testimonials: ["Úvodní stránka", "Reference"],
+  aboutDescription: ["Úvodní stránka", "O mně"],
+};
+function pagesFor(node, ast) {
+  for (let parent = node.parent; parent; parent = parent.parent) {
+    if ((ts.isFunctionDeclaration(parent) || ts.isVariableDeclaration(parent)) && parent.name)
+      return sectionPages[parent.name.getText(ast)] ?? [];
+  }
+  return [];
+}
 function key(text) {
   let hash = 2166136261;
   for (const c of text.trim().replace(/\s+/g, " "))
     hash = Math.imul(hash ^ c.charCodeAt(0), 16777619);
   return `text_${(hash >>> 0).toString(16)}`;
 }
-function register(value, group) {
+function register(value, group, heading = false, pages = []) {
   const text = value.trim().replace(/\s+/g, " ");
   if (!/[a-zA-ZÀ-ž]{2}/.test(text) || /^[/#]|https?:|@|^[a-z-]+:[a-z-]+/.test(text)) return;
   const id = key(text);
@@ -60,6 +79,27 @@ function register(value, group) {
   if (old) {
     if (!old.groups.includes(group)) old.groups.push(group);
   } else catalog.set(id, { key: id, default: text, groups: [group] });
+  const entry = catalog.get(id);
+  for (const page of pages) {
+    if (!entry.groups.includes(page)) entry.groups.push(page);
+  }
+  if (heading) entry.role = "heading";
+}
+function isHeading(node, ast) {
+  for (let parent = node.parent; parent; parent = parent.parent) {
+    if (ts.isPropertyAssignment(parent) && parent.name.getText(ast) === "title") return true;
+    if (
+      ts.isJsxElement(parent) &&
+      /^(h[1-6]|Heading)$/.test(parent.openingElement.tagName.getText(ast))
+    )
+      return true;
+    if (ts.isJsxAttribute(parent))
+      return (
+        parent.name.getText(ast) === "title" &&
+        parent.parent.parent.tagName.getText(ast) === "SectionHead"
+      );
+  }
+  return false;
 }
 function jsxText(raw) {
   const lines = raw.replace(/\r/g, "").split("\n");
@@ -138,7 +178,7 @@ for (const filename of files) {
     if (ts.isJsxText(node)) {
       const text = jsxText(node.text);
       if (/[a-zA-ZÀ-ž]{2}/.test(text)) {
-        register(text, group);
+        register(text, group, isHeading(node, ast), pagesFor(node, ast));
         if (!inText(node)) {
           edits.push({
             start: node.pos,
@@ -194,19 +234,19 @@ for (const filename of files) {
         ts.isArrayLiteralExpression(node.parent) &&
         node.parent.elements[0] === node
       )
-        register(node.text, group);
+        register(node.text, group, isHeading(node, ast), pagesFor(node, ast));
       if (
         ts.isJsxAttribute(node.parent) &&
         ["title", "eyebrow", "intro", "label", "submitLabel"].includes(
           node.parent.name.getText(ast),
         )
       )
-        register(node.text, group);
+        register(node.text, group, isHeading(node, ast), pagesFor(node, ast));
       else {
         for (let p = node.parent; p; p = p.parent) {
           if (ts.isJsxAttribute(p)) break;
           if (ts.isJsxExpression(p) && (ts.isJsxElement(p.parent) || ts.isJsxFragment(p.parent))) {
-            register(node.text, group);
+            register(node.text, group, isHeading(node, ast), pagesFor(node, ast));
             break;
           }
         }
@@ -219,11 +259,12 @@ for (const filename of files) {
     source = source.slice(0, edit.start) + edit.value + source.slice(edit.end);
   if (bindings && !source.includes("import { SiteText }"))
     source = 'import { SiteText } from "@/components/SiteText";\n' + source;
-  await writeFile(filename, source);
+  if (!catalogOnly) await writeFile(filename, source);
 }
 for (const [filename, group] of [
   ["src/data/faq.ts", "Časté dotazy"],
   ["src/data/content.ts", "Služby a reference"],
+  ["src/data/about-copy.ts", "Společné sekce"],
   ["src/config/site.ts", "Identita"],
   ["src/data/energy.ts", "Energetická třída"],
   ["src/data/nearby.ts", "Okolí nemovitosti"],
@@ -233,6 +274,8 @@ for (const [filename, group] of [
   const ast = ts.createSourceFile(filename, source, ts.ScriptTarget.Latest, true);
   function visit(node) {
     if (ts.isStringLiteral(node)) {
+      if (filename === "src/data/about-copy.ts")
+        register(node.text, group, false, pagesFor(node, ast));
       if (filename === "src/config/site.ts") {
         let declaration = node.parent;
         while (declaration && !ts.isVariableDeclaration(declaration))
@@ -257,7 +300,7 @@ for (const [filename, group] of [
           "egyptWhatsapp",
         ].includes(parent.name.getText(ast))
       )
-        register(node.text, group);
+        register(node.text, group, parent.name.getText(ast) === "title", pagesFor(node, ast));
     }
     ts.forEachChild(node, visit);
   }
