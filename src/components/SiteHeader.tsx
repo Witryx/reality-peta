@@ -20,7 +20,13 @@ export function SiteHeader() {
         <Link
           to="/"
           className="flex items-center gap-3 leading-none"
-          onClick={() => setOpen(false)}
+          aria-label="Petr Pavlát reality – zpět na úvod"
+          onClick={() => {
+            setOpen(false);
+            // Always land at the very top, also when already on the home page.
+            const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+          }}
         >
           <BrandLockup />
         </Link>
