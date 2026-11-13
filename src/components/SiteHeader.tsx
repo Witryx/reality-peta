@@ -1,5 +1,6 @@
 import { SiteText } from "@/components/SiteText";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouter } from "@tanstack/react-router";
+import { scrollToTop } from "@/lib/scroll-to-top";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { nav, site } from "@/config/site";
@@ -8,6 +9,7 @@ import { Button } from "./ui/button";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
   return (
     <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur">
       <a
@@ -23,9 +25,7 @@ export function SiteHeader() {
           aria-label="Petr Pavlát reality – zpět na úvod"
           onClick={() => {
             setOpen(false);
-            // Always land at the very top, also when already on the home page.
-            const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-            window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+            scrollToTop(router);
           }}
         >
           <BrandLockup />

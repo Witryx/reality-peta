@@ -1943,8 +1943,9 @@
   --stelar-orange: #f7a600;
   --stelar-yellow: #fbba00;
   --stelar-soft: #fdca5d;
-  --stelar-gradient: linear-gradient(90deg, var(--stelar-yellow), var(--stelar-orange), var(--stelar-brown));
-  --stelar-star: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none' stroke='%23fdca5d' stroke-width='0.6'><line x1='5.0' y1='100.0' x2='195.0' y2='100.0'/><line x1='12.2' y1='63.6' x2='187.8' y2='136.4'/><line x1='32.8' y1='32.8' x2='167.2' y2='167.2'/><line x1='63.6' y1='12.2' x2='136.4' y2='187.8'/><line x1='100.0' y1='5.0' x2='100.0' y2='195.0'/><line x1='136.4' y1='12.2' x2='63.6' y2='187.8'/><line x1='167.2' y1='32.8' x2='32.8' y2='167.2'/><line x1='187.8' y1='63.6' x2='12.2' y2='136.4'/></svg>");
+  /* Brandbook: gradient runs from the lightest tone (top right) to the darkest (bottom left). */
+  --stelar-gradient: linear-gradient(90deg, var(--stelar-brown), var(--stelar-orange), var(--stelar-yellow));
+  --stelar-footer: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2400 120'><defs><linearGradient id='h' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='2400' y2='0'><stop offset='.25' stop-color='%23fdca5d' stop-opacity='0'/><stop offset='.5' stop-color='%23fdca5d' stop-opacity='.5'/><stop offset='.75' stop-color='%23fdca5d' stop-opacity='0'/></linearGradient><radialGradient id='r' gradientUnits='userSpaceOnUse' cx='1200' cy='120' r='118'><stop offset='0' stop-color='%23fdca5d' stop-opacity='.7'/><stop offset='1' stop-color='%23fdca5d' stop-opacity='0'/></radialGradient><radialGradient id='s' gradientUnits='userSpaceOnUse' cx='1200' cy='120' r='118'><stop offset='0' stop-color='%23fdca5d' stop-opacity='.16'/><stop offset='1' stop-color='%23bd5c17' stop-opacity='0'/></radialGradient></defs><path d='M1200 120 L1200 2 L1283 37 Z' fill='url(%23s)'/><rect x='0' y='119' width='2400' height='1' fill='url(%23h)'/><path d='M1200 120 V2 M1200 120 L1117 37 M1200 120 L1283 37' stroke='url(%23r)' stroke-width='1' fill='none'/></svg>");
   --klin: var(--stelar-brown);
 }
 /* Klín: tapering wedge in front of small section headings. */
@@ -1961,15 +1962,87 @@
 .egypt-band {
   --klin: var(--sea);
 }
-/* Thin brand gradient on top and a soft line star in the corner, as background layers. */
-.valuation-section,
+/* Footer: the brandbook line star as a small sunrise on a fading horizon,
+   in its own band above the content so it never runs behind text or buttons. */
 .site-footer {
-  background-image: var(--stelar-gradient), var(--stelar-star);
+  padding-top: 80px;
+  background-image: var(--stelar-gradient), var(--stelar-footer);
   background-repeat: no-repeat, no-repeat;
-  background-size: 100% 3px, min(34rem, 70vw) auto;
-  background-position: top left, right -6rem top 2rem;
+  background-size: 100% 2px, 2400px 120px;
+  background-position: top left, top 8px center;
 }
-.site-footer {
-  background-size: 100% 3px, min(30rem, 60vw) auto;
-  background-position: top left, right -8rem bottom -6rem;
+@media (max-width: 767px) {
+  .site-footer {
+    padding-top: 48px;
+    background-size: 100% 2px, 1600px 80px;
+  }
+}
+/* Valuation form as a calm white card; the brand colour stays on the button. */
+.valuation-form {
+  border: 0;
+  border-radius: 16px;
+  background: var(--card);
+  padding: 1.75rem;
+  box-shadow:
+    0 1px 2px color-mix(in oklab, var(--ink) 6%, transparent),
+    0 24px 48px -28px color-mix(in oklab, var(--ink) 28%, transparent);
+}
+@media (min-width: 1024px) {
+  .valuation-form {
+    padding: 2.25rem;
+  }
+}
+/* Footer contact QR: a quiet button that reveals the code on hover or click. */
+.qr-pop {
+  position: relative;
+  display: inline-block;
+}
+.qr-pop-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid color-mix(in oklab, var(--stelar-soft) 35%, transparent);
+  border-radius: 999px;
+  background: color-mix(in oklab, #fff 3%, transparent);
+  font-size: 0.9rem;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
+}
+.qr-pop-button:hover,
+.qr-pop-button:focus-visible {
+  border-color: var(--stelar-soft);
+  background: color-mix(in oklab, var(--stelar-soft) 8%, transparent);
+}
+.qr-pop-card {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 0;
+  z-index: 5;
+  width: 220px;
+  padding: 14px;
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--foreground);
+  box-shadow: 0 20px 40px -12px rgb(0 0 0 / 0.6);
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+.qr-pop:hover .qr-pop-card,
+.qr-pop:focus-within .qr-pop-card,
+.qr-pop[data-open="true"] .qr-pop-card {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.qr-pop-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
 }

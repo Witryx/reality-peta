@@ -1,11 +1,12 @@
 import { useSiteConfig } from "@/lib/website-context";
 import { SiteText } from "@/components/SiteText";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouter } from "@tanstack/react-router";
+import { useState } from "react";
+import { QrCode } from "lucide-react";
+import { scrollToTop } from "@/lib/scroll-to-top";
 import { nav, site } from "@/config/site";
 import { openConsentSettings } from "@/lib/consent";
 import { ContactLinks, SocialLinks } from "./ContactLinks";
-import signature from "@/assets/petr-pavlat-signature.png.asset.json";
-import { BrandImage } from "./BrandImage";
 import { BrandLockup } from "./BrandLockup";
 import { SocialIcons } from "./ContactLinks";
 import { Button } from "./ui/button";
@@ -13,22 +14,15 @@ import { CollaborationStrip } from "./CollaborationStrip";
 
 export function SiteFooter() {
   const site = useSiteConfig();
+  const router = useRouter();
 
   return (
     <footer className="site-footer bg-ink text-ink-foreground">
       <div className="container-page grid gap-12 py-16 md:grid-cols-3">
         <div>
-          <Link to="/" aria-label="Petr Pavlát reality – úvod">
+          <Link to="/" aria-label="Petr Pavlát reality – úvod" onClick={() => scrollToTop(router)}>
             <BrandLockup light />
           </Link>
-          <BrandImage
-            asset={signature}
-            alt="Podpis Petr Pavlát reality"
-            width={600}
-            height={75}
-            loading="lazy"
-            className="mt-5 h-auto w-full max-w-72"
-          />
           <p className="mt-6 max-w-xs text-sm leading-relaxed opacity-60">
             <SiteText>{site.footerRegion}</SiteText>
           </p>
@@ -98,8 +92,9 @@ export function SiteFooter() {
   );
 }
 
-/** QR code on larger screens, a direct download button on phones. */
+/** A quiet QR button on larger screens, a direct download button on phones. */
 function SaveContact() {
+  const [open, setOpen] = useState(false);
   return (
     <div className="mt-8">
       <a
@@ -109,20 +104,25 @@ function SaveContact() {
       >
         <SiteText>{"Uložit kontakt do telefonu"}</SiteText>
       </a>
-      <div className="hidden items-center gap-4 md:flex">
-        <img
-          src="/kontakt-qr.svg"
-          alt="QR kód pro uložení kontaktu Petr Pavlát reality"
-          width={112}
-          height={112}
-          loading="lazy"
-          className="h-28 w-28 shrink-0 rounded-md bg-white p-1"
-        />
-        <div>
-          <p className="font-semibold">
-            <SiteText>{"Uložte si můj kontakt do telefonu"}</SiteText>
-          </p>
-          <p className="mt-1 text-sm opacity-70">
+      <div className="qr-pop hidden md:inline-block" data-open={open}>
+        <button
+          type="button"
+          className="qr-pop-button"
+          aria-expanded={open}
+          onClick={() => setOpen((value) => !value)}
+        >
+          <QrCode aria-hidden className="h-[18px] w-[18px] text-[#fdca5d]" />
+          <SiteText>{"Uložte si můj kontakt do telefonu"}</SiteText>
+        </button>
+        <div className="qr-pop-card">
+          <img
+            src="/kontakt-qr.svg"
+            alt="QR kód pro uložení kontaktu Petr Pavlát reality"
+            width={192}
+            height={192}
+            loading="lazy"
+          />
+          <p className="mt-2 text-center text-xs text-muted-foreground">
             <SiteText>{"Stačí naskenovat fotoaparátem."}</SiteText>
           </p>
         </div>

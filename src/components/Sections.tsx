@@ -16,7 +16,6 @@ import {
 import { LeadForm } from "./LeadForm";
 import portrait from "@/assets/petr-pavlat-portrait.png.asset.json";
 import fullPortrait from "@/assets/petr-pavlat-full.png.asset.json";
-import signature from "@/assets/petr-pavlat-signature.png.asset.json";
 import { BrandImage } from "./BrandImage";
 import { Plus, ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/button";
@@ -230,7 +229,7 @@ export function ValuationSection({ standalone = false }: { standalone?: boolean 
             </li>
           </ul>
         </div>
-        <div className="valuation-form border-t border-valuation/30 pt-6 lg:pt-8">
+        <div className="valuation-form">
           <LeadForm kind="valuation" submitLabel="Získat odhad nemovitosti zdarma" />
         </div>
       </div>
@@ -270,14 +269,6 @@ export function AboutTeaser({ full = false }: { full?: boolean }) {
         <p className="mt-6 text-lg text-muted-foreground">
           <SiteText>{aboutDescription}</SiteText>
         </p>
-        <BrandImage
-          asset={signature}
-          alt="Podpis Petr Pavlát reality"
-          width={600}
-          height={75}
-          loading="lazy"
-          className="mt-7 h-auto w-full max-w-80"
-        />
         {!full && (
           <Link to="/o-mne" className="btn btn-outline mt-8">
             <SiteText>{"Více o mně"}</SiteText>
