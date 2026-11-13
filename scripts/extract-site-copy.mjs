@@ -24,6 +24,8 @@ const groups = {
   "CookieConsent.tsx": "Cookies",
   "GoogleRating.tsx": "Reference",
   "AboutCard.tsx": "Společné sekce",
+  "SituationPicker.tsx": "Úvodní stránka",
+  "CzechMap.tsx": "Úvodní stránka",
   "PropertyCarousel.tsx": "Nabídka",
   "PropertyContactCta.tsx": "Kontakt u nabídek",
   "PropertyCard.tsx": "Nabídka",
@@ -57,6 +59,7 @@ const sectionPages = {
   processSteps: ["Úvodní stránka", "Služby"],
   testimonials: ["Úvodní stránka", "Reference"],
   aboutDescription: ["Úvodní stránka", "O mně"],
+  situations: ["Úvodní stránka"],
 };
 function pagesFor(node, ast) {
   for (let parent = node.parent; parent; parent = parent.parent) {

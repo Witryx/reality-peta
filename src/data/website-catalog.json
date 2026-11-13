@@ -250,33 +250,8 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_b7c08aa3",
-    "default": "Prodáváte, kupujete, pronajímáte nebo dědíte? Řešíte složitou životní situaci, nebo chcete svůj majetek lépe využít a zhodnotit?",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_9563ace",
-    "default": "Pomohu vám zorientovat se v možnostech a otevřeně říct, co dává smysl. I při exekuci nebo tlaku kolem majetku. Citlivě, bez hodnocení a bez nátlaku — a podle potřeby s pomocí odborníků.",
-    "groups": ["Úvodní stránka"]
-  },
-  {
     "key": "text_18f12d7c",
     "default": "Probrat moji situaci",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_572bd7bb",
-    "default": "Vše transparentně s osobním přístupem od A do Z",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_7c9b5dda",
-    "default": "Reálná cena podle skutečných prodejů a exkluzivita",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_4957ac49",
-    "default": "Právní a hypoteční servis pod jednou střechou",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -299,12 +274,6 @@
     "key": "text_b168bdb8",
     "default": "Služby",
     "groups": ["Úvodní stránka", "Identita"]
-  },
-  {
-    "key": "text_dad88553",
-    "default": "S čím vám pomohu",
-    "groups": ["Úvodní stránka"],
-    "role": "heading"
   },
   {
     "key": "text_ab0f73af",
@@ -405,7 +374,7 @@
   {
     "key": "text_4dbb9b13",
     "default": "Odpovídám osobně, obvykle ještě týž den.",
-    "groups": ["Kontakt"]
+    "groups": ["Kontakt", "Společné sekce"]
   },
   {
     "key": "text_2a160385",
@@ -1062,11 +1031,6 @@
     "groups": ["Cookies"]
   },
   {
-    "key": "text_eeda464d",
-    "default": "Ilustrační fotografie, ne konkrétní nabídka",
-    "groups": ["Egypt"]
-  },
-  {
     "key": "text_791d3fc7",
     "default": "DALŠÍ HORIZONT · EGYPTSKO ČESKÁ REALITY",
     "groups": ["Egypt"]
@@ -1189,16 +1153,6 @@
     "key": "text_5130a0c4",
     "default": "Proberme vaši situaci",
     "groups": ["Časté dotazy"]
-  },
-  {
-    "key": "text_a9707473",
-    "default": "Google hodnocení",
-    "groups": ["Reference"]
-  },
-  {
-    "key": "text_9083db65",
-    "default": "Všechny recenze na Google",
-    "groups": ["Reference"]
   },
   {
     "key": "text_8d349e8c",
@@ -2114,7 +2068,7 @@
   {
     "key": "text_f752208d",
     "default": "Česko",
-    "groups": ["Nabídka"]
+    "groups": ["Společné sekce", "Nabídka"]
   },
   {
     "key": "text_29e321fe",
@@ -2206,5 +2160,254 @@
     "key": "text_2bef0192",
     "default": "Napsat zprávu",
     "groups": ["Společné sekce", "Úvodní stránka", "O mně"]
+  },
+  {
+    "key": "text_bf290785",
+    "default": "Bez hodnocení a bez nátlaku. U vyjednávání vždy hájím vaše zájmy.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_1944d63a",
+    "default": "Jeden makléř",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_f8abcaff",
+    "default": "od první schůzky po předání klíčů",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_ec70f2b5",
+    "default": "Reálná cena",
+    "groups": ["Úvodní stránka", "Společné sekce", "Odhad ceny"]
+  },
+  {
+    "key": "text_350f49f3",
+    "default": "podle skutečných prodejů v okolí",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_1b7f41a4",
+    "default": "Právník a hypoteční specialista",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_75ea1cf4",
+    "default": "když je potřebujete",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_67fe8e9a",
+    "default": "Nejsem jen pražský makléř. Pomáhám po celém Česku – a na mapě vidíte, kde všude už.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_c6c069f3",
+    "default": "S čím Vám pomohu",
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_c32d36f0",
+    "default": "Od první schůzky až po předání klíčů. V každém kroku víte, kde jsme a co přijde dál.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_bd3b4919",
+    "default": "Zprávy čtu a odpovídám na ně osobně",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_d16f4a49",
+    "default": "aktivní nabídka",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_3f15b84a",
+    "default": "úspěšně prodáno",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_117eb6c5",
+    "default": "Celým procesem vás provedu v češtině",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_25a15596",
+    "default": "Ověření právního stavu nemovitosti a právní servis",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_1fc89efb",
+    "default": "Hurghadu dobře známe",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_f7f3f803",
+    "default": "Proč na ceně tolik záleží",
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
+  },
+  {
+    "key": "text_b4928eb",
+    "default": "Vaše cena",
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
+  },
+  {
+    "key": "text_e12d0109",
+    "default": "Podhodnocená",
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
+  },
+  {
+    "key": "text_93205b46",
+    "default": "Přestřelená",
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
+  },
+  {
+    "key": "text_90924986",
+    "default": "Podhodnocená cena vás připraví o peníze. Přestřelená prodej zbytečně natahuje a nemovitost na trhu „okouká“. Odhad proto stavím na skutečných prodejích v okolí.",
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
+  },
+  {
+    "key": "text_efb77ad",
+    "default": "Co právě řešíte?",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_c7d75ebd",
+    "default": "Vyberte, co je vám nejblíž – hned uvidíte, jak vám pomohu.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_ec6fd4bd",
+    "default": "Jak vám pomohu",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_b16dac59",
+    "default": "Prodávám",
+    "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_a004b008",
+    "default": "Prodej, u kterého víte, co přijde dál.",
+    "groups": ["Služby a reference", "Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_216a5555",
+    "default": "Nastavíme reálnou cenu podle skutečných prodejů v okolí, připravím prezentaci, povedu prohlídky i vyjednávání. Vy máte vždy přehled, co se děje.",
+    "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_645c7be7",
+    "default": "Kupuji",
+    "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_5fd19033",
+    "default": "Koupě bez unáhlených rozhodnutí.",
+    "groups": ["Služby a reference", "Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_141f6db7",
+    "default": "Pomohu s výběrem, prověřím nemovitost i smlouvy a vyjednám podmínky. Rozhodnutí zůstává vždy na vás.",
+    "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_a33cb438",
+    "default": "Prodávám i kupuji",
+    "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_5929539f",
+    "default": "Prodej a koupě v jednom plánu.",
+    "groups": ["Služby a reference", "Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_82a3787e",
+    "default": "Sladíme termíny tak, abyste nezůstali bez bydlení a zbytečně neplatili dvakrát. Obojí hlídám já, vy máte jeden kontakt.",
+    "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_318ecce1",
+    "default": "Pronajímám",
+    "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_ef1ed956",
+    "default": "Spolehlivý nájemník a jasná smlouva.",
+    "groups": ["Služby a reference", "Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_59b4931",
+    "default": "Připravím nabídku, prověřím zájemce a s právníkem nachystáme smlouvu i předávací protokol. Klidnější správa vašeho majetku.",
+    "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_723730c2",
+    "default": "Dědím",
+    "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_8ab2fa50",
+    "default": "Dědictví v klidu a bez spěchu.",
+    "groups": ["Služby a reference", "Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_74918cfe",
+    "default": "Probereme, co s nemovitostí dává smysl – prodat, pronajmout, nebo ji ponechat. A co s každou možností souvisí.",
+    "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_4735f4fe",
+    "default": "Spoluvlastnický podíl",
+    "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_8089bbdf",
+    "default": "Spoluvlastnický podíl má svá specifika.",
+    "groups": ["Služby a reference", "Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_4b0241fb",
+    "default": "S prodejem podílů mám zkušenost. Řeknu vám otevřeně, jaké máte možnosti a co od nich můžete čekat.",
+    "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_373dd1fb",
+    "default": "Exekuce nebo dluhy",
+    "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_930ec213",
+    "default": "Diskrétně a bez hodnocení.",
+    "groups": ["Služby a reference", "Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_35950724",
+    "default": "Řeknu vám na rovinu, co se dá ještě udělat a jaký postup dává smysl. Čím dřív se ozvete, tím víc možností obvykle zbývá.",
+    "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_43f183db",
+    "default": "Apartmán v Egyptě",
+    "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_16058a7",
+    "default": "Apartmán u Rudého moře.",
+    "groups": ["Služby a reference", "Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_e176d54d",
+    "default": "Koupě v Hurghadě v češtině, s ověřením právního stavu nemovitosti a právním servisem. Provedu vás celým procesem.",
+    "groups": ["Služby a reference", "Úvodní stránka"]
   }
 ]

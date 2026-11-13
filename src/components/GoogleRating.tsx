@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { useSiteConfig } from "@/lib/website-context";
 import { SiteText } from "@/components/SiteText";
 import { Star, ArrowUpRight, BadgeCheck } from "lucide-react";
@@ -26,6 +27,48 @@ function Stars({ value }: { value: number }) {
   );
 }
 
+/** Counts the rating up once when the card scrolls into view; the final text is server-rendered. */
+function RatingNumber({ value, text }: { value: number; text: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [shown, setShown] = useState<string | null>(null);
+  useEffect(() => {
+    const node = ref.current;
+    if (!node || !Number.isFinite(value) || value <= 0) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (node.getBoundingClientRect().top < window.innerHeight) return;
+    const format = (n: number) => n.toFixed(1).replace(".", ",");
+    setShown(format(0));
+    let frame = 0;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return;
+        observer.disconnect();
+        const start = performance.now();
+        const step = (now: number) => {
+          const progress = Math.min(1, (now - start) / 1400);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          if (progress < 1) {
+            setShown(format(value * eased));
+            frame = requestAnimationFrame(step);
+          } else setShown(null);
+        };
+        frame = requestAnimationFrame(step);
+      },
+      { threshold: 0.6 },
+    );
+    observer.observe(node);
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+    };
+  }, [value]);
+  return (
+    <span ref={ref} className="tabular-nums">
+      {shown ?? text}
+    </span>
+  );
+}
+
 export function GoogleRating() {
   const site = useSiteConfig();
   const value = Number(String(site.googleReviews.rating).replace(",", "."));
@@ -40,7 +83,7 @@ export function GoogleRating() {
           <img src="/brand/google-g.png" alt="Google" width={36} height={37} className="size-9" />
         </span>
         <span className="font-display text-6xl leading-none">
-          <SiteText>{site.googleReviews.rating}</SiteText>
+          <RatingNumber value={value} text={site.googleReviews.rating} />
         </span>
         <div>
           <div aria-label={`Hodnocení na Googlu ${site.googleReviews.rating} z 5`}>

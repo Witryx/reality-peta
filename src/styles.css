@@ -2209,3 +2209,822 @@
     animation: none;
   }
 }
+
+/* ── Themed homepage chapters: one STELAR route from the first question to handed-over keys.
+   Every animation starts from PageMotion's motion-visible class (or a CSS scroll timeline);
+   without motion the final state is shown. ── */
+:root {
+  --stelar-gradient-down: linear-gradient(180deg, var(--stelar-brown), var(--stelar-orange), var(--stelar-yellow));
+}
+
+/* Situation signpost */
+.situation-promise {
+  border-left: 2px solid;
+  border-image: var(--stelar-gradient-down) 1;
+  padding-left: 1.1rem;
+}
+.situation-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.situation-chip {
+  border: 1px solid color-mix(in oklab, var(--ink) 16%, transparent);
+  border-radius: 999px;
+  background: var(--card);
+  padding: 0.55rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s;
+}
+.situation-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.situation-chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.situation-chip[aria-pressed="true"] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--ink-foreground);
+}
+.situation-answer {
+  position: relative;
+  min-height: 13.5rem;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 1.6rem 1.75rem 1.5rem;
+}
+.situation-answer::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--stelar-gradient-down);
+}
+.situation-answer-body {
+  animation: situation-in 0.35s ease both;
+}
+@keyframes situation-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+.situation-kicker {
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.situation-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.situation-link svg {
+  width: 1rem;
+  height: 1rem;
+}
+.situation-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Trust trail: three stops on one line */
+.trust-trail {
+  position: relative;
+  display: grid;
+  gap: 1.1rem;
+  list-style: none;
+}
+.trust-trail::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 7px;
+  width: 2px;
+  background: var(--stelar-gradient-down);
+  transform-origin: top;
+  transition: transform 1.6s cubic-bezier(0.6, 0, 0.2, 1) 0.2s;
+}
+.trust-trail li {
+  position: relative;
+  padding-left: 2.1rem;
+  font-size: 0.9rem;
+  color: color-mix(in oklab, var(--foreground) 82%, transparent);
+}
+.trust-trail strong {
+  display: block;
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+.trust-stop {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 5px color-mix(in oklab, var(--accent) 12%, transparent);
+  transition:
+    background 0.4s,
+    box-shadow 0.4s;
+}
+.trust-trail li:nth-child(2) .trust-stop {
+  transition-delay: 0.7s;
+}
+.trust-trail li:nth-child(3) .trust-stop {
+  transition-delay: 1.4s;
+}
+.motion-ready:not(.motion-visible) .trust-trail::before {
+  transform: scaleY(0);
+}
+.motion-ready:not(.motion-visible) .trust-stop {
+  background: var(--card);
+  box-shadow: none;
+}
+@media (min-width: 640px) {
+  .trust-trail {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .trust-trail::before {
+    top: 7px;
+    bottom: auto;
+    left: 8px;
+    width: 66.6%;
+    height: 2px;
+    background: var(--stelar-gradient);
+    transform-origin: left;
+  }
+  .motion-ready:not(.motion-visible) .trust-trail::before {
+    transform: scaleX(0);
+  }
+  .trust-trail li {
+    padding: 1.9rem 1.5rem 0 0;
+  }
+}
+
+/* Czech dot map with listings */
+.czech-map svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.czech-map-label {
+  fill: #7a766f;
+  font: 500 11px var(--font-sans);
+}
+.czech-map-label.is-active {
+  fill: var(--foreground);
+  font-weight: 700;
+}
+.czech-map-pin {
+  fill: var(--ink);
+  stroke: var(--background);
+  stroke-width: 2;
+}
+.czech-map-pin.is-active circle {
+  fill: var(--accent);
+  stroke: none;
+}
+.czech-map-pin.is-active .czech-map-ring {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: map-ring 2.4s ease-out infinite;
+}
+@keyframes map-ring {
+  from {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+.czech-map-legend {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.1rem;
+  margin-top: 0.25rem;
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+}
+.czech-map-legend i {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+.czech-map-legend i.is-active {
+  background: var(--accent);
+}
+
+/* Services: icons draw themselves, cards come alive under the pointer */
+.service-detail {
+  position: relative;
+  overflow: hidden;
+  transition:
+    translate 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+.service-detail::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 3px;
+  background: var(--stelar-gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s ease;
+}
+.service-detail:hover {
+  translate: 0 -4px;
+  box-shadow: 0 26px 40px -30px color-mix(in oklab, var(--accent) 70%, transparent);
+}
+.service-detail:hover::after,
+.service-detail[open]::after {
+  transform: scaleX(1);
+}
+.service-icon :is(path, circle, rect, line, polyline) {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 0;
+}
+.motion-ready:not(.motion-visible) .service-icon :is(path, circle, rect, line, polyline) {
+  stroke-dashoffset: 120;
+}
+.motion-ready.motion-visible .service-icon :is(path, circle, rect, line, polyline) {
+  animation: icon-draw 1.6s 0.35s ease both;
+}
+.motion-ready.motion-visible .service-detail:nth-child(n + 2) .service-icon * {
+  animation-delay: 0.55s;
+}
+.motion-ready.motion-visible .service-detail:nth-child(n + 4) .service-icon * {
+  animation-delay: 0.75s;
+}
+@keyframes icon-draw {
+  from {
+    stroke-dashoffset: 120;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Egypt: sea light, moving waves, what is arranged by the sea */
+.egypt-band-home {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #e9f4f4 0%, #e3f1f2 70%, #d9ecee 100%);
+}
+.egypt-band-home::before {
+  content: "";
+  position: absolute;
+  top: -160px;
+  right: -120px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(251 186 0 / 0.22), rgb(251 186 0 / 0) 65%);
+  pointer-events: none;
+}
+.egypt-band-home > .container-page {
+  position: relative;
+  z-index: 1;
+}
+.egypt-facts {
+  display: grid;
+  gap: 0.65rem;
+  list-style: none;
+}
+.egypt-facts li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: color-mix(in oklab, var(--sea) 80%, var(--foreground));
+}
+.egypt-facts span {
+  display: grid;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.75);
+  color: var(--sea);
+}
+.egypt-facts svg {
+  width: 17px;
+  height: 17px;
+}
+.egypt-waves {
+  position: absolute;
+  inset: auto 0 -2px 0;
+  height: 90px;
+  pointer-events: none;
+}
+.egypt-waves svg {
+  position: absolute;
+  bottom: 0;
+  width: 200%;
+  height: 100%;
+  animation: wave-drift 22s linear infinite;
+}
+.egypt-waves svg:first-child path {
+  fill: color-mix(in oklab, var(--sea) 12%, transparent);
+}
+.egypt-waves svg:last-child {
+  animation-duration: 34s;
+  animation-direction: reverse;
+}
+.egypt-waves svg:last-child path {
+  fill: var(--background);
+}
+@keyframes wave-drift {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* FAQ: the open answer is marked with the brand line */
+.faq-item {
+  position: relative;
+}
+.faq-item[open]::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  bottom: 1rem;
+  left: -1rem;
+  width: 3px;
+  border-radius: 0 2px 2px 0;
+  background: var(--stelar-gradient-down);
+}
+.faq-item[open] h3 {
+  color: var(--accent);
+}
+@media (min-width: 640px) {
+  .faq-item[open]::before {
+    left: -1.5rem;
+  }
+}
+
+/* Process: the key travels along the route and lights the steps up */
+.process-section {
+  position: relative;
+  overflow: hidden;
+}
+.process-section::after {
+  content: "";
+  position: absolute;
+  bottom: -340px;
+  left: 50%;
+  width: 900px;
+  height: 520px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(247 166 0 / 0.16), rgb(247 166 0 / 0));
+  pointer-events: none;
+}
+.process-section > .container-page {
+  position: relative;
+  z-index: 1;
+}
+.process-journey {
+  --journey-end: calc(80% + 1.2rem);
+  position: relative;
+  margin-top: 4.5rem;
+}
+.journey-rail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  list-style: none;
+  background: color-mix(in oklab, var(--ink-foreground) 14%, transparent);
+  pointer-events: none;
+}
+.journey-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--journey-end);
+  height: 100%;
+  background: var(--stelar-gradient);
+}
+.journey-key {
+  position: absolute;
+  top: 1px;
+  left: var(--journey-end);
+  z-index: 2;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  border: 1.5px solid var(--stelar-orange);
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--stelar-yellow);
+  box-shadow:
+    0 0 0 6px rgb(247 166 0 / 0.08),
+    0 0 24px rgb(247 166 0 / 0.35);
+}
+.journey-key svg {
+  width: 20px;
+  height: 20px;
+}
+.process-journey .process-step {
+  position: relative;
+  border-top-color: transparent;
+  padding-top: 2.75rem;
+}
+.process-journey .process-step > * {
+  opacity: 1;
+}
+.process-journey .process-step > span:first-child {
+  background: var(--stelar-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.process-journey .process-step > span:first-child::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--stelar-orange);
+}
+.process-journey .process-step h3 {
+  color: var(--ink-foreground);
+}
+@keyframes journey-move {
+  from {
+    left: 0;
+  }
+  to {
+    left: var(--journey-end);
+  }
+}
+@keyframes journey-grow {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--journey-end);
+  }
+}
+@keyframes journey-step-2 {
+  0%,
+  23% {
+    opacity: 0.32;
+  }
+  25%,
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes journey-step-3 {
+  0%,
+  48% {
+    opacity: 0.32;
+  }
+  50%,
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes journey-step-4 {
+  0%,
+  73% {
+    opacity: 0.32;
+  }
+  75%,
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes journey-step-5 {
+  0%,
+  96% {
+    opacity: 0.32;
+  }
+  98%,
+  100% {
+    opacity: 1;
+  }
+}
+/* Time-based journey once the chapter is visible (fallback for browsers without scroll timelines). */
+.motion-ready.motion-visible .journey-key {
+  animation: journey-move 3.6s 0.5s cubic-bezier(0.6, 0, 0.2, 1) both;
+}
+.motion-ready.motion-visible .journey-fill {
+  animation: journey-grow 3.6s 0.5s cubic-bezier(0.6, 0, 0.2, 1) both;
+}
+.motion-ready.motion-visible .process-journey .process-step:nth-child(3) > * {
+  animation: journey-step-2 3.6s 0.5s linear both;
+}
+.motion-ready.motion-visible .process-journey .process-step:nth-child(4) > * {
+  animation: journey-step-3 3.6s 0.5s linear both;
+}
+.motion-ready.motion-visible .process-journey .process-step:nth-child(5) > * {
+  animation: journey-step-4 3.6s 0.5s linear both;
+}
+.motion-ready.motion-visible .process-journey .process-step:nth-child(6) > * {
+  animation: journey-step-5 3.6s 0.5s linear both;
+}
+@supports (view-timeline-name: --journey) and (animation-timeline: --journey) and
+  (animation-range: cover 0% cover 100%) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* While scrolling, the key follows the reader; scrolling back retraces it. */
+    .process-journey {
+      view-timeline-name: --journey;
+      view-timeline-axis: block;
+    }
+    .process-section.motion-ready .journey-key {
+      animation: journey-move 1s linear both;
+    }
+    .process-section.motion-ready .journey-fill {
+      animation: journey-grow 1s linear both;
+    }
+    .process-section.motion-ready .process-journey .process-step:nth-child(3) > * {
+      animation: journey-step-2 1s linear both;
+    }
+    .process-section.motion-ready .process-journey .process-step:nth-child(4) > * {
+      animation: journey-step-3 1s linear both;
+    }
+    .process-section.motion-ready .process-journey .process-step:nth-child(5) > * {
+      animation: journey-step-4 1s linear both;
+    }
+    .process-section.motion-ready .process-journey .process-step:nth-child(6) > * {
+      animation: journey-step-5 1s linear both;
+    }
+    .process-section.motion-ready :is(.journey-key, .journey-fill, .process-journey .process-step > *) {
+      /* The animation shorthand resets the timeline, so keep this after all stages. */
+      animation-timeline: --journey;
+      animation-range: cover 12% cover 55%;
+    }
+  }
+}
+@media (max-width: 767px) {
+  .process-journey {
+    --journey-end: calc(100% - 7rem);
+    margin-top: 3rem;
+    padding-left: 2.25rem;
+  }
+  .journey-rail {
+    width: 2px;
+    height: 100%;
+  }
+  .journey-fill {
+    width: 100%;
+    height: var(--journey-end);
+  }
+  .journey-key {
+    top: var(--journey-end);
+    left: 1px;
+  }
+  .process-journey .process-step {
+    padding-top: 0;
+    border-top: 0;
+  }
+  .process-journey .process-step > span:first-child::before {
+    top: 0.9rem;
+    left: -2.25rem;
+    transform: translateX(-5px);
+  }
+  .process-section.motion-ready .journey-key {
+    animation-name: journey-move-down;
+  }
+  .process-section.motion-ready .journey-fill {
+    animation-name: journey-grow-down;
+  }
+}
+@keyframes journey-move-down {
+  from {
+    top: 0;
+  }
+  to {
+    top: var(--journey-end);
+  }
+}
+@keyframes journey-grow-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--journey-end);
+  }
+}
+
+/* References: stars fill in, quote marks in brand colours */
+.google-rating-card .rating-stars-fill {
+  transition: width 1.4s 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.google-rating-card.motion-ready:not(.motion-visible) .rating-stars-fill {
+  width: 0 !important;
+}
+.testimonials-carousel figure {
+  position: relative;
+}
+.testimonial-mark {
+  position: absolute;
+  top: 0.25rem;
+  right: 1.25rem;
+  background: var(--stelar-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: var(--font-display);
+  font-size: 6rem;
+  line-height: 1;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Articles: a quiet brand line on hover */
+.article-card {
+  position: relative;
+  overflow: hidden;
+}
+.article-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--stelar-gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.article-card:hover::before,
+.article-card:focus-visible::before {
+  transform: scaleX(1);
+}
+
+/* Valuation: the price compass finds the real price */
+.price-compass {
+  max-width: 28rem;
+  border: 1px solid color-mix(in oklab, var(--accent) 14%, var(--border));
+  border-radius: 14px;
+  background: var(--card);
+  padding: 1.35rem 1.4rem 1.1rem;
+}
+.price-compass-title {
+  color: var(--muted-foreground);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.price-compass-bar {
+  position: relative;
+  height: 12px;
+  margin-top: 2.9rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ece7e1 0 33%, transparent 33% 67%, #ece7e1 67%);
+}
+.price-compass-real {
+  position: absolute;
+  inset-block: 0;
+  left: 33%;
+  width: 34%;
+  border-radius: 3px;
+  background: var(--stelar-gradient);
+}
+.price-compass-needle {
+  position: absolute;
+  top: -2.3rem;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-50%);
+}
+.price-compass-needle > span {
+  border-radius: 4px;
+  background: var(--ink);
+  color: var(--ink-foreground);
+  padding: 0.15rem 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.price-compass-needle::after {
+  content: "";
+  width: 2px;
+  height: 2rem;
+  background: var(--ink);
+}
+.valuation-section.motion-visible .price-compass-needle {
+  animation: price-seek 3.2s 0.6s cubic-bezier(0.45, 0, 0.2, 1) both;
+}
+@keyframes price-seek {
+  0% {
+    left: 92%;
+  }
+  35% {
+    left: 10%;
+  }
+  62% {
+    left: 58%;
+  }
+  80% {
+    left: 47%;
+  }
+  100% {
+    left: 50%;
+  }
+}
+.price-compass-zones {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 0.6rem;
+  color: #8a8780;
+  font-size: 0.78rem;
+  text-align: center;
+}
+.price-compass-zones strong {
+  color: var(--accent);
+}
+.price-compass-note {
+  margin-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+  color: var(--muted-foreground);
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+/* Contact: a personal reply, not a call centre */
+.reply-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid #d5ecdc;
+  border-radius: 999px;
+  background: #f1f8f3;
+  padding: 0.45rem 0.9rem;
+  color: #25613a;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: #3ccf6e;
+  animation: status-pulse 2s infinite;
+}
+@keyframes status-pulse {
+  70% {
+    box-shadow: 0 0 0 8px rgb(60 207 110 / 0);
+  }
+  0% {
+    box-shadow: 0 0 0 0 rgb(60 207 110 / 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(60 207 110 / 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .czech-map-ring,
+  .egypt-waves svg,
+  .status-dot,
+  .situation-answer-body {
+    animation: none !important;
+  }
+}

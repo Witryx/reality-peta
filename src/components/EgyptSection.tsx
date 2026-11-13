@@ -2,8 +2,8 @@ import { SiteImage } from "@/components/SiteImage";
 import { useSiteConfig, useWebsiteImageHidden } from "@/lib/website-context";
 import { SiteText } from "@/components/SiteText";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
-import coast from "@/assets/egypt-coast.jpg";
+import { ArrowUpRight, MapPin, MessageCircle, ShieldCheck } from "lucide-react";
+import { egyptPhoto } from "@/data/website-image-defaults";
 import { Button } from "@/components/ui/button";
 import { PartnerLogo } from "./PartnerLogo";
 
@@ -38,7 +38,7 @@ export function EgyptSection({
   const hidden = useWebsiteImageHidden("image.egypt");
   return (
     <section
-      className={`egypt-band ${compact ? "py-12 md:py-16" : "py-20 md:py-24"}`}
+      className={`egypt-band ${compact ? "egypt-band-home pt-12 pb-28 md:pt-16 md:pb-32" : "py-20 md:py-24"}`}
       data-reveal="slide"
     >
       <div
@@ -48,16 +48,13 @@ export function EgyptSection({
           <div className="relative overflow-hidden">
             <SiteImage
               imageKey="image.egypt"
-              src={coast}
-              width={1440}
-              height={1024}
+              src={egyptPhoto}
+              width={1600}
+              height={1200}
               loading="lazy"
-              alt="Ilustrační pohled na bydlení u Rudého moře v Egyptě"
+              alt="Terasa s pergolou a výhledem na Rudé moře v Hurghadě"
               className="egypt-coast-image aspect-[4/3] w-full object-cover md:absolute md:inset-0 md:aspect-auto md:h-full md:w-full"
             />
-            <span className="absolute bottom-3 left-3 bg-card px-2 py-1 text-xs text-card-foreground">
-              <SiteText>{"Ilustrační fotografie, ne konkrétní nabídka"}</SiteText>
-            </span>
           </div>
         )}
         <div>
@@ -111,9 +108,31 @@ export function EgyptSection({
             </p>
           )}
           {compact && (
-            <p className="mt-5 leading-relaxed">
-              <SiteText>{"Chcete vědět o nemovitostech v Egyptě více?"}</SiteText>
-            </p>
+            <>
+              <ul className="egypt-facts mt-6">
+                <li>
+                  <span aria-hidden>
+                    <MessageCircle />
+                  </span>
+                  <SiteText>{"Celým procesem vás provedu v češtině"}</SiteText>
+                </li>
+                <li>
+                  <span aria-hidden>
+                    <ShieldCheck />
+                  </span>
+                  <SiteText>{"Ověření právního stavu nemovitosti a právní servis"}</SiteText>
+                </li>
+                <li>
+                  <span aria-hidden>
+                    <MapPin />
+                  </span>
+                  <SiteText>{"Hurghadu dobře známe"}</SiteText>
+                </li>
+              </ul>
+              <p className="mt-6 leading-relaxed">
+                <SiteText>{"Chcete vědět o nemovitostech v Egyptě více?"}</SiteText>
+              </p>
+            </>
           )}
           {detail ? (
             <Button asChild className="btn btn-primary mt-7 h-auto whitespace-normal">
@@ -137,6 +156,16 @@ export function EgyptSection({
           {!compact && <Partners />}
         </div>
       </div>
+      {compact && (
+        <div className="egypt-waves" aria-hidden="true">
+          <svg viewBox="0 0 2400 90" preserveAspectRatio="none">
+            <path d="M0 50 C200 20 400 80 600 50 S1000 20 1200 50 S1600 80 1800 50 S2200 20 2400 50 V90 H0Z" />
+          </svg>
+          <svg viewBox="0 0 2400 90" preserveAspectRatio="none">
+            <path d="M0 66 C150 46 300 82 450 66 S750 46 900 66 S1200 82 1350 66 S1650 46 1800 66 S2100 82 2400 66 V90 H0Z" />
+          </svg>
+        </div>
+      )}
     </section>
   );
 }

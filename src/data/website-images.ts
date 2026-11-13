@@ -9,10 +9,10 @@ export const websiteImages = [
   },
   {
     key: "image.egypt",
-    label: "Pobřeží v Egyptě",
+    label: "Egypt – terasa u Rudého moře",
     groups: ["Úvodní stránka", "Egypt", "Služby"],
     path: "/egypt",
-    alt: "Ilustrační pohled na bydlení u Rudého moře v Egyptě",
+    alt: "Terasa s pergolou a výhledem na Rudé moře v Hurghadě",
   },
   {
     key: "image.services",

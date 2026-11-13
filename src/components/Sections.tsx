@@ -95,11 +95,21 @@ export function ServicesGrid() {
   );
 }
 
-export function ProcessList() {
+export function ProcessList({ journey = false }: { journey?: boolean }) {
   return (
-    <ol className="mt-14 grid gap-10 md:grid-cols-5 md:gap-6">
+    <ol
+      className={`${journey ? "process-journey " : ""}mt-14 grid gap-10 md:grid-cols-5 md:gap-6`}
+    >
+      {journey && (
+        <li className="journey-rail" aria-hidden="true">
+          <span className="journey-fill" />
+          <span className="journey-key">
+            <KeyRound strokeWidth={1.6} />
+          </span>
+        </li>
+      )}
       {processSteps.map((s, i) => (
-        <li key={s.title} className="border-t border-foreground/20 pt-6">
+        <li key={s.title} className="process-step border-t border-foreground/20 pt-6">
           <span className="font-display text-5xl text-accent">{i + 1}</span>
           <h3 className="mt-4 text-xl">
             <SiteText>{s.title}</SiteText>
@@ -154,6 +164,9 @@ export function Testimonials() {
                   </span>
                   <span className="text-sm font-semibold">5/5</span>
                 </div>
+                <span className="testimonial-mark" aria-hidden="true">
+                  “
+                </span>
                 <blockquote className="font-display text-xl leading-snug">
                   „<SiteText>{t.text}</SiteText>“
                 </blockquote>
@@ -217,7 +230,38 @@ export function ValuationSection({ standalone = false }: { standalone?: boolean 
               }
             </SiteText>
           </p>
-          <ul className="mt-8 space-y-3 border-t border-valuation/20 pt-6 text-sm text-muted-foreground">
+          <div className="price-compass mt-8">
+            <p className="price-compass-title">
+              <SiteText>{"Proč na ceně tolik záleží"}</SiteText>
+            </p>
+            <div className="price-compass-bar" aria-hidden="true">
+              <span className="price-compass-real" />
+              <span className="price-compass-needle">
+                <span>
+                  <SiteText>{"Vaše cena"}</SiteText>
+                </span>
+              </span>
+            </div>
+            <div className="price-compass-zones">
+              <span>
+                <SiteText>{"Podhodnocená"}</SiteText>
+              </span>
+              <strong>
+                <SiteText>{"Reálná cena"}</SiteText>
+              </strong>
+              <span>
+                <SiteText>{"Přestřelená"}</SiteText>
+              </span>
+            </div>
+            <p className="price-compass-note">
+              <SiteText>
+                {
+                  "Podhodnocená cena vás připraví o peníze. Přestřelená prodej zbytečně natahuje a nemovitost na trhu „okouká“. Odhad proto stavím na skutečných prodejích v okolí."
+                }
+              </SiteText>
+            </p>
+          </div>
+          <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
             <li>
               <SiteText>{"Odpověď obvykle do dvou pracovních dnů"}</SiteText>
             </li>

@@ -88,3 +88,55 @@ export const testimonials = [
     isDemo: true,
   },
 ];
+
+/** Homepage signpost: the visitor picks a situation and sees how Petr helps. */
+export const situations = [
+  {
+    slug: "prodej",
+    label: "Prodávám",
+    title: "Prodej, u kterého víte, co přijde dál.",
+    text: "Nastavíme reálnou cenu podle skutečných prodejů v okolí, připravím prezentaci, povedu prohlídky i vyjednávání. Vy máte vždy přehled, co se děje.",
+  },
+  {
+    slug: "koupe",
+    label: "Kupuji",
+    title: "Koupě bez unáhlených rozhodnutí.",
+    text: "Pomohu s výběrem, prověřím nemovitost i smlouvy a vyjednám podmínky. Rozhodnutí zůstává vždy na vás.",
+  },
+  {
+    slug: "oboji",
+    label: "Prodávám i kupuji",
+    title: "Prodej a koupě v jednom plánu.",
+    text: "Sladíme termíny tak, abyste nezůstali bez bydlení a zbytečně neplatili dvakrát. Obojí hlídám já, vy máte jeden kontakt.",
+  },
+  {
+    slug: "najem",
+    label: "Pronajímám",
+    title: "Spolehlivý nájemník a jasná smlouva.",
+    text: "Připravím nabídku, prověřím zájemce a s právníkem nachystáme smlouvu i předávací protokol. Klidnější správa vašeho majetku.",
+  },
+  {
+    slug: "dedictvi",
+    label: "Dědím",
+    title: "Dědictví v klidu a bez spěchu.",
+    text: "Probereme, co s nemovitostí dává smysl – prodat, pronajmout, nebo ji ponechat. A co s každou možností souvisí.",
+  },
+  {
+    slug: "podil",
+    label: "Spoluvlastnický podíl",
+    title: "Spoluvlastnický podíl má svá specifika.",
+    text: "S prodejem podílů mám zkušenost. Řeknu vám otevřeně, jaké máte možnosti a co od nich můžete čekat.",
+  },
+  {
+    slug: "exekuce",
+    label: "Exekuce nebo dluhy",
+    title: "Diskrétně a bez hodnocení.",
+    text: "Řeknu vám na rovinu, co se dá ještě udělat a jaký postup dává smysl. Čím dřív se ozvete, tím víc možností obvykle zbývá.",
+  },
+  {
+    slug: "egypt",
+    label: "Apartmán v Egyptě",
+    title: "Apartmán u Rudého moře.",
+    text: "Koupě v Hurghadě v češtině, s ověřením právního stavu nemovitosti a právním servisem. Provedu vás celým procesem.",
+  },
+] as const;
