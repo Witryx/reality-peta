@@ -46,6 +46,45 @@ const eventMap = {
   property_inquiry: "property_inquiry",
 } as const;
 
+/**
+ * Thank-you seal: the green tick lands first, then flips like a tossed coin to a
+ * line-drawn smiley that winks with a little sparkle and now and then gives a thumbs-up.
+ * Reduced motion keeps the tick.
+ */
+function SuccessCoin() {
+  return (
+    <span className="success-coin" aria-hidden="true">
+      <span className="coin-inner">
+        <span className="coin-face coin-front success-seal">
+          <CheckCircle2 className="size-7" />
+        </span>
+        <span className="coin-face coin-back">
+          <svg viewBox="0 0 64 64">
+            <ellipse cx="24" cy="27" rx="2.8" ry="4" className="smiley-ink" />
+            <ellipse cx="40" cy="27" rx="2.8" ry="4" className="smiley-ink smiley-eye-open" />
+            <path d="M36 28 Q40 24 44 28" className="smiley-line smiley-eye-wink" />
+            <path d="M21 37 Q32 49 43 37" className="smiley-line smiley-mouth" />
+            <g transform="translate(60 27) scale(0.95)">
+              <g className="smiley-hand">
+                <path d="M7 10v12" className="smiley-line smiley-hand-line" />
+                <path
+                  d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"
+                  className="smiley-line smiley-hand-line smiley-hand-fill"
+                />
+              </g>
+            </g>
+            <g className="smiley-sparkle">
+              <path d="M50 12 L51.3 15.7 L55 17 L51.3 18.3 L50 22 L48.7 18.3 L45 17 L48.7 15.7 Z" />
+              <path d="M56.5 24 L57.2 25.8 L59 26.5 L57.2 27.2 L56.5 29 L55.8 27.2 L54 26.5 L55.8 25.8 Z" />
+              <path d="M43 8 L43.6 9.4 L45 10 L43.6 10.6 L43 12 L42.4 10.6 L41 10 L42.4 9.4 Z" />
+            </g>
+          </svg>
+        </span>
+      </span>
+    </span>
+  );
+}
+
 export function LeadForm({
   kind,
   propertySlug,
@@ -110,9 +149,7 @@ export function LeadForm({
     return (
       <div ref={successRef} tabIndex={-1} role="status" className="lead-success">
         <div className="lead-success-content">
-          <span className="success-seal">
-            <CheckCircle2 className="size-7" aria-hidden />
-          </span>
+          <SuccessCoin />
           <p className="eyebrow mt-6">
             <SiteText>{"Zpráva úspěšně odeslána"}</SiteText>
           </p>

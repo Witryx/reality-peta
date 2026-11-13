@@ -3114,3 +3114,201 @@
     transition: none;
   }
 }
+
+/* Thank-you seal: green tick, then a top-to-bottom coin flip to a line smiley that winks with a sparkle. */
+.success-coin {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin-inline: auto;
+  perspective: 420px;
+  animation: success-arrive 0.55s 0.1s both;
+}
+.coin-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: coin-toss 1.05s 1.3s cubic-bezier(0.45, 0, 0.25, 1) both;
+}
+.coin-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.coin-front.success-seal {
+  animation: none;
+}
+.coin-back {
+  display: block;
+  border-radius: 50%;
+  border: 1px solid color-mix(in oklab, var(--ink) 14%, transparent);
+  background: var(--card);
+  box-shadow: 0 0 0 7px color-mix(in oklab, var(--ink) 3%, transparent);
+  transform: rotateX(180deg);
+}
+.coin-back svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.smiley-ink {
+  fill: var(--foreground);
+}
+.smiley-line {
+  fill: none;
+  stroke: var(--foreground);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+.smiley-eye-open,
+.smiley-eye-wink,
+.smiley-mouth,
+.smiley-sparkle path {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.smiley-eye-wink {
+  opacity: 0;
+}
+.smiley-sparkle path {
+  fill: var(--stelar-orange);
+  opacity: 0;
+}
+.smiley-eye-open {
+  animation: smiley-eye 3.4s 2.6s ease-in-out infinite;
+}
+.smiley-eye-wink {
+  animation: smiley-wink 3.4s 2.6s ease-in-out infinite;
+}
+.smiley-mouth {
+  animation: smiley-grin 3.4s 2.6s ease-in-out infinite;
+}
+.smiley-sparkle path {
+  animation: smiley-sparkle 3.4s 2.6s ease-out infinite;
+}
+.smiley-hand {
+  transform-box: fill-box;
+  transform-origin: 0% 70%;
+  transform: scale(0);
+  animation: smiley-thumb 6.8s 2.6s ease-in-out infinite;
+}
+.smiley-hand-line {
+  stroke-width: 1.9;
+  stroke-linejoin: round;
+}
+.smiley-hand-fill {
+  fill: var(--card);
+}
+.smiley-sparkle path:nth-child(2) {
+  animation-delay: 2.68s;
+}
+.smiley-sparkle path:nth-child(3) {
+  animation-delay: 2.76s;
+}
+@keyframes coin-toss {
+  0% {
+    transform: translateY(0) rotateX(0);
+  }
+  45% {
+    transform: translateY(-14px) rotateX(-110deg);
+  }
+  100% {
+    transform: translateY(0) rotateX(-180deg);
+  }
+}
+@keyframes smiley-eye {
+  0%,
+  12%,
+  34%,
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  16%,
+  30% {
+    transform: scaleY(0.1);
+    opacity: 0;
+  }
+}
+@keyframes smiley-wink {
+  0%,
+  12%,
+  34%,
+  100% {
+    opacity: 0;
+  }
+  16%,
+  30% {
+    opacity: 1;
+  }
+}
+@keyframes smiley-grin {
+  0%,
+  12%,
+  34%,
+  100% {
+    transform: none;
+  }
+  16%,
+  30% {
+    transform: scale(1.08) translateY(0.5px);
+  }
+}
+@keyframes smiley-thumb {
+  0%,
+  28% {
+    transform: scale(0) rotate(20deg);
+  }
+  34% {
+    transform: scale(1.12) rotate(-10deg);
+  }
+  38% {
+    transform: scale(1) rotate(0);
+  }
+  43% {
+    transform: scale(1) rotate(-9deg);
+  }
+  48%,
+  52% {
+    transform: scale(1) rotate(0);
+  }
+  58%,
+  100% {
+    transform: scale(0) rotate(20deg);
+  }
+}
+@keyframes smiley-sparkle {
+  0%,
+  13% {
+    opacity: 0;
+    transform: scale(0.2) rotate(0deg);
+  }
+  19% {
+    opacity: 1;
+    transform: scale(1.15) rotate(45deg);
+  }
+  30% {
+    opacity: 0.9;
+    transform: scale(0.9) rotate(70deg);
+  }
+  38%,
+  100% {
+    opacity: 0;
+    transform: scale(0.3) rotate(90deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .success-coin,
+  .coin-inner,
+  .smiley-eye-open,
+  .smiley-eye-wink,
+  .smiley-mouth,
+  .smiley-sparkle path,
+  .smiley-hand {
+    animation: none;
+  }
+}
