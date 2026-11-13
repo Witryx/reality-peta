@@ -24,15 +24,8 @@ export const websiteImages = [
   {
     key: "image.portrait",
     label: "Portrét – detail",
-    groups: ["Úvodní stránka", "Kontakt"],
-    path: "/",
-    alt: "Petr Pavlát, realitní makléř",
-  },
-  {
-    key: "image.fullPortrait",
-    label: "Portrét – celá postava",
-    groups: ["O mně"],
-    path: "/o-mne",
+    groups: ["Kontakt"],
+    path: "/kontakt",
     alt: "Petr Pavlát, realitní makléř",
   },
   {

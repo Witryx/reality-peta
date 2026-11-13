@@ -23,6 +23,7 @@ const groups = {
   "SiteHeader.tsx": "Navigace",
   "CookieConsent.tsx": "Cookies",
   "GoogleRating.tsx": "Reference",
+  "AboutCard.tsx": "Společné sekce",
   "PropertyCarousel.tsx": "Nabídka",
   "PropertyContactCta.tsx": "Kontakt u nabídek",
   "PropertyCard.tsx": "Nabídka",

@@ -1,5 +1,4 @@
 import { SiteText } from "@/components/SiteText";
-import { useWebsiteImageHidden } from "@/lib/website-context";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { processSteps, services, testimonials } from "@/data/content";
@@ -14,9 +13,7 @@ import {
   Star,
 } from "lucide-react";
 import { LeadForm } from "./LeadForm";
-import portrait from "@/assets/petr-pavlat-portrait.png.asset.json";
-import fullPortrait from "@/assets/petr-pavlat-full.png.asset.json";
-import { BrandImage } from "./BrandImage";
+import { AboutCard } from "./AboutCard";
 import { Plus, ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { GoogleRating } from "./GoogleRating";
@@ -239,26 +236,9 @@ export function ValuationSection({ standalone = false }: { standalone?: boolean 
 
 export function AboutTeaser({ full = false }: { full?: boolean }) {
   const Heading = full ? "h1" : "h2";
-  const hidden = useWebsiteImageHidden(full ? "image.fullPortrait" : "image.portrait");
   return (
-    <div className={`grid gap-10 ${hidden ? "" : "md:grid-cols-[0.8fr_1.2fr]"} md:items-center`}>
-      {
-        <SiteText>
-          {!hidden && (
-            <div className="flex aspect-[4/5] items-end justify-center overflow-hidden bg-surface">
-              <BrandImage
-                asset={full ? fullPortrait : portrait}
-                imageKey={full ? "image.fullPortrait" : "image.portrait"}
-                alt="Petr Pavlát, realitní makléř"
-                width={full ? 585 : 1439}
-                height={full ? 1355 : 1825}
-                loading="lazy"
-                className="h-[95%] w-full object-contain object-bottom"
-              />
-            </div>
-          )}
-        </SiteText>
-      }
+    <div className="grid gap-12 md:grid-cols-[0.85fr_1.15fr] md:items-center md:gap-16">
+      <AboutCard />
       <div>
         <p className="eyebrow">
           <SiteText>{"O mně"}</SiteText>
@@ -270,9 +250,14 @@ export function AboutTeaser({ full = false }: { full?: boolean }) {
           <SiteText>{aboutDescription}</SiteText>
         </p>
         {!full && (
-          <Link to="/o-mne" className="btn btn-outline mt-8">
-            <SiteText>{"Více o mně"}</SiteText>
-          </Link>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link to="/o-mne" className="btn btn-outline">
+              <SiteText>{"Více o mně"}</SiteText>
+            </Link>
+            <Link to="/" hash="napiste-mi" className="btn btn-primary">
+              <SiteText>{"Napsat zprávu"}</SiteText>
+            </Link>
+          </div>
         )}
       </div>
     </div>

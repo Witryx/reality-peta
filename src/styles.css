@@ -2065,3 +2065,147 @@
   overflow: hidden;
   white-space: nowrap;
 }
+/* About card: "U nás i u moře" with live clocks, a flight and three facts. */
+.about-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #1f1f1d;
+  color: #f5f1ea;
+  padding: 2rem;
+  box-shadow: 0 40px 80px -40px color-mix(in oklab, var(--ink) 55%, transparent);
+}
+.about-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 80% at 100% 0%, rgb(247 166 0 / 0.16), rgb(247 166 0 / 0) 60%);
+}
+.about-card-map {
+  position: absolute;
+  inset: 0;
+  background: url("/brand/map-dots.svg") 58% 46% / 150% auto no-repeat;
+  opacity: 0.1;
+  mask-image: radial-gradient(120% 90% at 50% 45%, #000 40%, transparent 85%);
+}
+.about-card-city {
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: #b9a98f;
+}
+.about-card-time {
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.25rem);
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+}
+.about-card-place {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #8f887d;
+}
+.about-card-route {
+  position: relative;
+  height: 120px;
+  margin: 12px 0 4px;
+}
+.about-card-route svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.about-card-plane {
+  filter: drop-shadow(0 0 4px rgb(232 198 144 / 0.6));
+}
+.about-card-flight {
+  position: relative;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #b9a98f;
+}
+.about-card-facts {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 30px;
+}
+.about-card-fact {
+  border: 1px solid #3a3a37;
+  border-radius: 14px;
+  background: #2a2a28;
+  padding: 16px 14px;
+}
+.about-card-fact b {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 28px;
+  color: #fff;
+}
+.about-card-fact span {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #a49d92;
+}
+.about-card-fact .about-card-stars {
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: var(--color-review-star);
+}
+.about-card-fact .about-card-infinity {
+  margin-top: -3px;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 34px;
+  color: #e8c690;
+}
+.about-card-status {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  font-size: 13px;
+  color: #cfc8bd;
+}
+.about-card-dot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: #3ccf6e;
+  animation: about-card-pulse 2s infinite;
+}
+@keyframes about-card-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(60 207 110 / 0.6);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 8px rgb(60 207 110 / 0);
+  }
+}
+@media (max-width: 520px) {
+  .about-card {
+    padding: 1.4rem;
+  }
+  .about-card-facts {
+    gap: 8px;
+  }
+  .about-card-fact {
+    padding: 12px 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-card-dot {
+    animation: none;
+  }
+}

@@ -2166,5 +2166,45 @@
     "key": "text_9ae11cb4",
     "default": "Přečíst recenze na Googlu",
     "groups": ["Reference"]
+  },
+  {
+    "key": "text_b80fe27d",
+    "default": "PRAHA",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_d10c475d",
+    "default": "HURGHADA",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_9b73f7a9",
+    "default": "Egypt · Rudé moře",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_22e8e6c",
+    "default": "PŘÍMÝ LET CCA 4,5 HODINY",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_84a18376",
+    "default": "hodnocení klientů na Googlu",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_f3979e1d",
+    "default": "země, jeden makléř: Česko a Egypt",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_93b1a88c",
+    "default": "možností, jak Vám pomoct",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_2bef0192",
+    "default": "Napsat zprávu",
+    "groups": ["Společné sekce", "Úvodní stránka", "O mně"]
   }
 ]

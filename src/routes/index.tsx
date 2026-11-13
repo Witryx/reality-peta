@@ -319,7 +319,7 @@ function Home() {
 
       <ValuationSection />
 
-      <section className="py-20 md:py-28">
+      <section id="napiste-mi" className="scroll-mt-24 py-20 md:py-28">
         <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.2fr]">
           <div>
             <SectionHead
