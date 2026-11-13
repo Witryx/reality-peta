@@ -61,10 +61,20 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-ink-foreground/15">
         <div className="container-page flex flex-col gap-3 py-6 text-xs opacity-70 md:flex-row md:justify-between">
-          <p>
-            © <SiteText>{2023}</SiteText> <SiteText>{site.name}</SiteText>
-            <SiteText>{site.contact.ico ? ` · IČO ${site.contact.ico}` : ""}</SiteText>
-          </p>
+          <div>
+            <p>
+              © <SiteText>{2023}</SiteText>–{new Date().getFullYear()}{" "}
+              <SiteText>{site.name}</SiteText>
+              <SiteText>{site.contact.ico ? ` · IČO ${site.contact.ico}` : ""}</SiteText>
+            </p>
+            <p className="mt-1">
+              <SiteText>
+                {
+                  "Všechna práva vyhrazena. Texty, fotografie a design webu jsou chráněny autorským zákonem."
+                }
+              </SiteText>
+            </p>
+          </div>
           <ul className="flex flex-wrap gap-5">
             <li>
               <Link to="/ochrana-osobnich-udaju" className="hover:underline">

@@ -2151,5 +2151,10 @@
     "key": "text_b58f1e4e",
     "default": "Stačí naskenovat fotoaparátem.",
     "groups": ["Patička"]
+  },
+  {
+    "key": "text_72d09b7a",
+    "default": "Všechna práva vyhrazena. Texty, fotografie a design webu jsou chráněny autorským zákonem.",
+    "groups": ["Patička"]
   }
 ]

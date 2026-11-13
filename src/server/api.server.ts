@@ -1,5 +1,6 @@
 import { randomBytes, randomUUID } from "node:crypto";
 import sharp from "sharp";
+import { applyWatermark, watermarkSide } from "./watermark.server";
 import { z } from "zod";
 import { getDatabase, hasDatabase, type Database } from "./database.server";
 import {
@@ -89,23 +90,34 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
       const [media] = await db.query("SELECT id,filename FROM media WHERE filename=$1", [filename]);
       if (!media) throw new HttpError(404, "Fotografie nenalezena.");
       const articleReferences = await hasArticleTable(db);
-      const [published] = await db.query(
-        `SELECT id FROM properties WHERE publication='published'
+      const references = await db.query(
+        `SELECT 'listing' AS kind, NULL::text AS key FROM properties WHERE publication='published'
         AND (data->>'publishedAt')::date <= (now() AT TIME ZONE 'Europe/Prague')::date AND EXISTS
         (SELECT 1 FROM jsonb_array_elements(data->'images') image WHERE image->>'src'=$1)
-        ${articleReferences ? "UNION ALL SELECT id FROM articles WHERE publication='published' AND data->'image'->>'src'=$1" : ""}
-        UNION ALL SELECT NULL::uuid FROM website_content WHERE EXISTS
-        (SELECT 1 FROM jsonb_each_text(data) entry WHERE entry.key LIKE 'image.%' AND entry.key NOT LIKE '%.alt' AND entry.value=$1)
-        LIMIT 1`,
+        ${articleReferences ? "UNION ALL SELECT 'listing', NULL::text FROM articles WHERE publication='published' AND data->'image'->>'src'=$1" : ""}
+        UNION ALL SELECT 'website', entry.key FROM website_content, jsonb_each_text(website_content.data) entry
+        WHERE entry.key LIKE 'image.%' AND entry.key NOT LIKE '%.alt' AND entry.value=$1
+        LIMIT 20`,
         [url.pathname],
       );
+      const published = references.length > 0;
       if (!published) await requireAdmin(db, request);
-      const bytes = await readStoredImage(db, media["id"], filename);
+      let bytes = await readStoredImage(db, media["id"], filename);
       if (!bytes) throw new HttpError(404, "Fotografie nenalezena.");
+      const side = published ? watermarkSide(references) : null;
+      if (request.method === "GET" && side) {
+        try {
+          bytes = await applyWatermark(bytes, side);
+        } catch {
+          // Never block a photo because the mark could not be applied.
+        }
+      }
       return new Response(request.method === "HEAD" ? null : bytes, {
         headers: {
           "Content-Type": "image/webp",
-          "Cache-Control": "private, max-age=300",
+          "Cache-Control": published
+            ? "public, max-age=300, s-maxage=3600"
+            : "private, max-age=300",
           "X-Content-Type-Options": "nosniff",
         },
       });
