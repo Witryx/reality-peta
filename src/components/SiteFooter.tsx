@@ -15,7 +15,7 @@ export function SiteFooter() {
   const site = useSiteConfig();
 
   return (
-    <footer className="bg-ink text-ink-foreground">
+    <footer className="site-footer bg-ink text-ink-foreground">
       <div className="container-page grid gap-12 py-16 md:grid-cols-3">
         <div>
           <Link to="/" aria-label="Petr Pavlát reality – úvod">

@@ -815,26 +815,26 @@
   --card-foreground: #292927;
   --popover: oklch(1 0 0);
   --popover-foreground: #292927;
-  --primary: #f7a600;
-  --primary-foreground: #292927;
-  --secondary: #f5f5f5;
+  --primary: #bd5c17;
+  --primary-foreground: #ffffff;
+  --secondary: #fbf6f0;
   --secondary-foreground: #292927;
-  --muted: #f5f5f5;
+  --muted: #fbf6f0;
   --muted-foreground: #585857;
-  --accent: #a34f13;
+  --accent: #bd5c17;
   --accent-foreground: #292927;
   --destructive: oklch(0.55 0.2 27);
   --destructive-foreground: oklch(0.98 0 0);
   --border: #e0e0e0;
   --input: #d6d6d6;
   --ring: #bd5c17;
-  --surface: #f5f5f5;
+  --surface: #fbf6f0;
   --sea: oklch(0.4 0.065 205);
   --sea-surface: oklch(0.96 0.015 205);
-  --valuation: #f7a600;
-  --valuation-foreground: #292927;
-  --valuation-ink: #a34f13;
-  --valuation-surface: #fff8ea;
+  --valuation: #bd5c17;
+  --valuation-foreground: #ffffff;
+  --valuation-ink: #bd5c17;
+  --valuation-surface: #fbf6f0;
   --shadow-valuation: 0 5px 14px -7px color-mix(in oklab, var(--ink) 24%, transparent);
   --ink: #292927;
   --ink-foreground: #f5f5f5;
@@ -1935,4 +1935,41 @@
   .section-connector .connector-canvas {
     transform: none;
   }
+}
+
+/* ── STELAR brand vrstva (brandbook Stelar Reality) ───────────────────── */
+:root {
+  --stelar-brown: #bd5c17;
+  --stelar-orange: #f7a600;
+  --stelar-yellow: #fbba00;
+  --stelar-soft: #fdca5d;
+  --stelar-gradient: linear-gradient(90deg, var(--stelar-yellow), var(--stelar-orange), var(--stelar-brown));
+  --stelar-star: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none' stroke='%23fdca5d' stroke-width='0.6'><line x1='5.0' y1='100.0' x2='195.0' y2='100.0'/><line x1='12.2' y1='63.6' x2='187.8' y2='136.4'/><line x1='32.8' y1='32.8' x2='167.2' y2='167.2'/><line x1='63.6' y1='12.2' x2='136.4' y2='187.8'/><line x1='100.0' y1='5.0' x2='100.0' y2='195.0'/><line x1='136.4' y1='12.2' x2='63.6' y2='187.8'/><line x1='167.2' y1='32.8' x2='32.8' y2='167.2'/><line x1='187.8' y1='63.6' x2='12.2' y2='136.4'/></svg>");
+  --klin: var(--stelar-brown);
+}
+/* Klín: tapering wedge in front of small section headings. */
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 1.75em;
+  height: 0.55em;
+  margin-right: 0.6em;
+  vertical-align: 0.05em;
+  background: var(--klin);
+  clip-path: polygon(0 0, 100% 42%, 100% 58%, 0 100%);
+}
+.egypt-band {
+  --klin: var(--sea);
+}
+/* Thin brand gradient on top and a soft line star in the corner, as background layers. */
+.valuation-section,
+.site-footer {
+  background-image: var(--stelar-gradient), var(--stelar-star);
+  background-repeat: no-repeat, no-repeat;
+  background-size: 100% 3px, min(34rem, 70vw) auto;
+  background-position: top left, right -6rem top 2rem;
+}
+.site-footer {
+  background-size: 100% 3px, min(30rem, 60vw) auto;
+  background-position: top left, right -8rem bottom -6rem;
 }
