@@ -75,6 +75,18 @@ DO $$ BEGIN
     GRANT SELECT,INSERT,UPDATE,DELETE ON media_variants TO realty_app;
   END IF;
 END $$;
+-- Where new leads are announced by e-mail. Only the administration reads it; never public.
+CREATE TABLE IF NOT EXISTS notification_settings (
+  id text PRIMARY KEY CHECK (id='main'),
+  notify_email text,
+  resend_api_key text,
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+DO $$ BEGIN
+  IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname='realty_app') THEN
+    GRANT SELECT,INSERT,UPDATE,DELETE ON notification_settings TO realty_app;
+  END IF;
+END $$;
 CREATE TABLE IF NOT EXISTS audit_log (
   id uuid PRIMARY KEY, admin_id uuid REFERENCES admins(id) ON DELETE SET NULL,
   action text NOT NULL, entity_id text, created_at timestamptz NOT NULL DEFAULT now()

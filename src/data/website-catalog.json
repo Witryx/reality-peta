@@ -2409,5 +2409,10 @@
     "key": "text_e176d54d",
     "default": "Koupě v Hurghadě v češtině, s ověřením právního stavu nemovitosti a právním servisem. Provedu vás celým procesem.",
     "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_7949a0f8",
+    "default": "Zavolat",
+    "groups": ["Kontakt"]
   }
 ]

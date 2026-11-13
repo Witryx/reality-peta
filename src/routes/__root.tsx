@@ -19,6 +19,7 @@ import { TrackingScripts } from "@/components/TrackingScripts";
 import { agentJsonLd, socialImageMeta } from "@/lib/seo";
 import { site, resolveSiteConfig } from "@/config/site";
 import { PageMotion } from "@/components/PageMotion";
+import { MobileContactBar } from "@/components/MobileContactBar";
 import { readWebsiteContent } from "@/data/website";
 import { WebsiteContentContext } from "@/lib/website-context";
 
@@ -132,6 +133,7 @@ function RootComponent() {
             <CookieConsent />
             <TrackingScripts />
             <PageMotion />
+            <MobileContactBar />
           </>
         )}
       </WebsiteContentContext.Provider>

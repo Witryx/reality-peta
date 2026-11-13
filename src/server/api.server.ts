@@ -23,6 +23,12 @@ import {
 } from "./security.server";
 import { adminProperty, audit, saveProperty } from "./properties.server";
 import { leadSchema } from "./validation";
+import { notifyNewLead, sendLeadEmail } from "./lead-notify.server";
+import {
+  loadNotifyConfig,
+  notificationSettingsView,
+  saveNotificationSettings,
+} from "./notification-settings.server";
 import { loadWebsiteContent, saveWebsiteContent } from "./website.server";
 import { adminArticle, saveArticle, hasArticleTable, type ArticleRow } from "./articles.server";
 import {
@@ -228,6 +234,7 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
           ],
         );
       });
+      await notifyNewLead(d, url.origin, await loadNotifyConfig(db));
       return json({ ok: true }, 201);
     }
     if (url.pathname === "/api/admin/login" && request.method === "POST") {
@@ -474,6 +481,30 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
         });
         await removeImageFile(media["filename"]);
         return json({ ok: true });
+      }
+    }
+    if (route[0] === "notifications") {
+      if (request.method === "GET" && !route[1]) return json(await notificationSettingsView(db));
+      if (request.method === "PUT" && !route[1])
+        return json(await saveNotificationSettings(db, admin.id, await body(request)));
+      if (request.method === "POST" && route[1] === "test") {
+        await rateLimit(db, `notify-test:${admin.id}`, 5, 600);
+        const config = await loadNotifyConfig(db);
+        if (!config) throw new HttpError(422, "Nejdřív vyplňte e-mail i klíč a uložte je.");
+        const result = await sendLeadEmail(
+          config,
+          {
+            kind: "contact",
+            name: "Zkušební zájemce",
+            email: config.to[0]!,
+            phone: "+420 600 000 000",
+            message: "Dobrý den, tohle je jen zkouška upozornění. Nic nemusíte dělat.",
+          },
+          url.origin,
+          true,
+        );
+        if (!result.ok) throw new HttpError(422, result.error);
+        return json({ ok: true, to: config.to });
       }
     }
     if (route[0] === "export" && request.method === "GET")

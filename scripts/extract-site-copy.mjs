@@ -26,6 +26,7 @@ const groups = {
   "AboutCard.tsx": "Společné sekce",
   "SituationPicker.tsx": "Úvodní stránka",
   "CzechMap.tsx": "Úvodní stránka",
+  "MobileContactBar.tsx": "Kontakt",
   "PropertyCarousel.tsx": "Nabídka",
   "PropertyContactCta.tsx": "Kontakt u nabídek",
   "PropertyCard.tsx": "Nabídka",

@@ -1188,6 +1188,129 @@ function MediaLibrary({ items, refresh }: { items: Media[]; refresh: () => Promi
     </>
   );
 }
+type NotifySettings = {
+  email: string;
+  keyHint: string | null;
+  managedByServer: boolean;
+  ready: boolean;
+};
+
+/** Where new leads are announced by e-mail (Resend). The saved key is never shown again. */
+function LeadNotifications() {
+  const query = useQuery({
+    queryKey: ["admin-notifications"],
+    queryFn: () => api<NotifySettings>("/api/admin/notifications"),
+  });
+  const [message, setMessage] = useState<{ text: string; success: boolean } | null>(null);
+  const [busy, setBusy] = useState(false);
+  const settings = query.data;
+  async function save(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    setBusy(true);
+    setMessage(null);
+    try {
+      await api("/api/admin/notifications", {
+        method: "PUT",
+        body: JSON.stringify({ email: fd.get("email"), key: fd.get("key") || undefined }),
+      });
+      (form.elements.namedItem("key") as HTMLInputElement).value = "";
+      await query.refetch();
+      setMessage({ text: "Uloženo. Pošlete si zkušební e-mail.", success: true });
+    } catch (error) {
+      setMessage({ text: errorMessage(error), success: false });
+    } finally {
+      setBusy(false);
+    }
+  }
+  async function test() {
+    setBusy(true);
+    setMessage(null);
+    try {
+      const result = await api<{ to: string[] }>("/api/admin/notifications/test", {
+        method: "POST",
+      });
+      setMessage({
+        text: `Zkušební e-mail odešel na ${result.to.join(", ")}. Zkontrolujte i složku Spam.`,
+        success: true,
+      });
+    } catch (error) {
+      setMessage({ text: errorMessage(error), success: false });
+    } finally {
+      setBusy(false);
+    }
+  }
+  return (
+    <section className="admin-card admin-settings-card">
+      <h2>Upozornění na poptávky</h2>
+      <p>
+        Každá nová poptávka z webu Vám přijde e-mailem. E-maily odesílá služba Resend (zdarma):
+        založte si účet na resend.com e-mailem, kam chcete upozornění dostávat, v části API Keys
+        vytvořte klíč a vložte ho sem.
+      </p>
+      {query.error && <Notice>{errorMessage(query.error)}</Notice>}
+      {settings?.managedByServer ? (
+        <p>Upozornění jsou nastavená na serveru ({settings.email}).</p>
+      ) : (
+        <form onSubmit={save}>
+          <label>
+            E-mail pro upozornění
+            <input
+              type="text"
+              name="email"
+              inputMode="email"
+              defaultValue={settings?.email ?? ""}
+              key={settings?.email ?? ""}
+              placeholder="vas@email.cz"
+              maxLength={500}
+              required
+            />
+          </label>
+          <label>
+            Klíč z Resendu
+            <input
+              type="password"
+              name="key"
+              autoComplete="off"
+              spellCheck={false}
+              placeholder={settings?.keyHint ? `Uložený klíč ${settings.keyHint}` : "re_…"}
+              maxLength={200}
+            />
+          </label>
+          <small>
+            Klíč se po uložení už nikde nezobrazí. Pole nechte prázdné, pokud ho neměníte.
+          </small>
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <button className="admin-btn primary" disabled={busy}>
+              {busy ? "Pracuji…" : "Uložit"}
+            </button>
+            <button
+              type="button"
+              className="admin-btn"
+              disabled={busy || !settings?.ready}
+              onClick={test}
+            >
+              Poslat zkušební e-mail
+            </button>
+          </div>
+        </form>
+      )}
+      {settings?.managedByServer && (
+        <button className="admin-btn" disabled={busy || !settings.ready} onClick={test}>
+          Poslat zkušební e-mail
+        </button>
+      )}
+      {message && <Notice success={message.success}>{message.text}</Notice>}
+      {settings && (
+        <p style={{ marginTop: 16, marginBottom: 0 }}>
+          Stav: {settings.ready ? "zapnuto ✓" : "zatím vypnuto – chybí e-mail nebo klíč"}
+        </p>
+      )}
+    </section>
+  );
+}
+
 function AdminSettings({
   admin,
   onPasswordChange,
@@ -1286,6 +1409,7 @@ function AdminSettings({
           </form>
         </section>
         <div>
+          <LeadNotifications />
           <section className="admin-card admin-settings-card">
             <h2>Vaše data patří vám</h2>
             <p>
@@ -1335,6 +1459,7 @@ function AdminSettings({
                     "lead.update": "Úprava poptávky",
                     "lead.delete": "Smazání poptávky",
                     "media.delete": "Smazání fotografie",
+                    "notifications.update": "Nastavení upozornění na poptávky",
                   } as Record<string, string>
                 )[a.action] || a.action}
               </span>

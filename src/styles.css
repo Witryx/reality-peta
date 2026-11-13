@@ -3047,3 +3047,70 @@
 .offer-showcase .property-carousel-arrow {
   background: var(--card);
 }
+
+/* Phones: call / WhatsApp one tap away once the intro has scrolled by. */
+.mobile-contact-bar {
+  position: fixed;
+  right: 10px;
+  bottom: calc(10px + env(safe-area-inset-bottom));
+  left: 10px;
+  z-index: 40;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 16px;
+  background: rgb(255 255 255 / 0.92);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 10px 30px -10px rgb(41 41 39 / 0.45),
+    0 0 0 1px rgb(41 41 39 / 0.06);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(120%);
+  transition:
+    transform 0.45s cubic-bezier(0.3, 1.3, 0.5, 1),
+    opacity 0.3s;
+}
+.mobile-contact-bar.is-shown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+.mobile-contact-bar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 10px;
+  padding: 12px 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.mobile-contact-bar svg {
+  width: 18px;
+  height: 18px;
+}
+.mobile-contact-call {
+  background: var(--accent);
+  color: #fff;
+}
+.mobile-contact-whatsapp {
+  border: 1px solid color-mix(in oklab, var(--ink) 16%, transparent);
+  background: var(--card);
+  color: var(--foreground);
+}
+.mobile-contact-whatsapp svg {
+  color: #1f9d55;
+}
+@media (min-width: 768px) {
+  .mobile-contact-bar {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-contact-bar {
+    transition: none;
+  }
+}
