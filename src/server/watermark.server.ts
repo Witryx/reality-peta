@@ -33,7 +33,45 @@ export async function applyWatermark(
 }
 
 /**
- * Listing and article photos and site photographs get the mark; portraits do not.
+ * Brings a listing photo to the same 4:3 frame the property cards use, so every
+ * photo looks alike and the mark is never cropped away. Landscape photos are
+ * trimmed from the centre; upright photos are kept whole on a softly blurred
+ * fill of themselves, so no part of the room is lost.
+ */
+export async function toListingFrame(bytes: Uint8Array<ArrayBuffer>): Promise<Uint8Array<ArrayBuffer>> {
+  const { width = 0, height = 0 } = await sharp(bytes, {
+    limitInputPixels: 40_000_000,
+    animated: false,
+  }).metadata();
+  if (!width || !height) return bytes;
+  const ratio = width / height;
+  const target = 4 / 3;
+  if (Math.abs(ratio - target) < 0.02) return bytes;
+  if (ratio >= 1) {
+    const frameWidth = ratio > target ? Math.round(height * target) : width;
+    const frameHeight = ratio > target ? height : Math.round(width / target);
+    const framed = await sharp(bytes, { limitInputPixels: 40_000_000, animated: false })
+      .resize({ width: frameWidth, height: frameHeight, fit: "cover", position: "centre" })
+      .webp({ quality: 90 })
+      .toBuffer();
+    return new Uint8Array(framed);
+  }
+  const frameHeight = height;
+  const frameWidth = Math.round(height * target);
+  const fill = await sharp(bytes, { limitInputPixels: 40_000_000, animated: false })
+    .resize({ width: frameWidth, height: frameHeight, fit: "cover" })
+    .blur(40)
+    .modulate({ brightness: 0.85 })
+    .toBuffer();
+  const framed = await sharp(fill)
+    .composite([{ input: Buffer.from(bytes), gravity: "centre" }])
+    .webp({ quality: 90 })
+    .toBuffer();
+  return new Uint8Array(framed);
+}
+
+/**
+ * Listing, article and site photographs get the mark; portraits do not.
  * The home photo is cropped from the right, so its mark sits bottom-left.
  */
 export function watermarkSide(
@@ -42,8 +80,13 @@ export function watermarkSide(
   const marked = references.filter(
     (reference) =>
       reference.kind === "listing" ||
+      reference.kind === "article" ||
       (reference.kind === "website" && !/portrait/i.test(String(reference.key ?? ""))),
   );
   if (!marked.length) return null;
   return marked.some((reference) => reference.key === "image.home") ? "left" : "right";
+}
+
+export function isListingPhoto(references: { kind: unknown }[]) {
+  return references.some((reference) => reference.kind === "listing");
 }

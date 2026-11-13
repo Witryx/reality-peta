@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import sharp from "sharp";
-import { applyWatermark, watermarkSide } from "./watermark.server";
+import { applyWatermark, toListingFrame, watermarkSide } from "./watermark.server";
 
 describe("watermark", () => {
   it("marks listings and site photos, not portraits", () => {
@@ -26,5 +26,24 @@ describe("watermark", () => {
         .toBuffer(),
     );
     expect(await applyWatermark(thumb)).toBe(thumb);
+  });
+
+  it("frames every listing photo as 4:3", async () => {
+    const make = async (width: number, height: number) =>
+      new Uint8Array(
+        await sharp({ create: { width, height, channels: 3, background: "#777" } })
+          .webp()
+          .toBuffer(),
+      );
+    for (const [width, height] of [
+      [1600, 900],
+      [1200, 1000],
+      [900, 1200],
+      [1200, 900],
+    ]) {
+      const framed = await toListingFrame(await make(width, height));
+      const meta = await sharp(framed).metadata();
+      expect(Math.abs(meta.width! / meta.height! - 4 / 3)).toBeLessThan(0.01);
+    }
   });
 });

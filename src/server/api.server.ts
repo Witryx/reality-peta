@@ -1,6 +1,6 @@
 import { randomBytes, randomUUID } from "node:crypto";
 import sharp from "sharp";
-import { applyWatermark, watermarkSide } from "./watermark.server";
+import { applyWatermark, isListingPhoto, toListingFrame, watermarkSide } from "./watermark.server";
 import { z } from "zod";
 import { getDatabase, hasDatabase, type Database } from "./database.server";
 import {
@@ -94,7 +94,7 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
         `SELECT 'listing' AS kind, NULL::text AS key FROM properties WHERE publication='published'
         AND (data->>'publishedAt')::date <= (now() AT TIME ZONE 'Europe/Prague')::date AND EXISTS
         (SELECT 1 FROM jsonb_array_elements(data->'images') image WHERE image->>'src'=$1)
-        ${articleReferences ? "UNION ALL SELECT 'listing', NULL::text FROM articles WHERE publication='published' AND data->'image'->>'src'=$1" : ""}
+        ${articleReferences ? "UNION ALL SELECT 'article', NULL::text FROM articles WHERE publication='published' AND data->'image'->>'src'=$1" : ""}
         UNION ALL SELECT 'website', entry.key FROM website_content, jsonb_each_text(website_content.data) entry
         WHERE entry.key LIKE 'image.%' AND entry.key NOT LIKE '%.alt' AND entry.value=$1
         LIMIT 20`,
@@ -107,6 +107,7 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
       const side = published ? watermarkSide(references) : null;
       if (request.method === "GET" && side) {
         try {
+          if (isListingPhoto(references)) bytes = await toListingFrame(bytes);
           bytes = await applyWatermark(bytes, side);
         } catch {
           // Never block a photo because the mark could not be applied.
