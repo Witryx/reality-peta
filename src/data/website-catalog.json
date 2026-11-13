@@ -2156,5 +2156,15 @@
     "key": "text_72d09b7a",
     "default": "Všechna práva vyhrazena. Texty, fotografie a design webu jsou chráněny autorským zákonem.",
     "groups": ["Patička"]
+  },
+  {
+    "key": "text_4c227656",
+    "default": "Hodnocení klientů na Googlu",
+    "groups": ["Reference"]
+  },
+  {
+    "key": "text_9ae11cb4",
+    "default": "Přečíst recenze na Googlu",
+    "groups": ["Reference"]
   }
 ]

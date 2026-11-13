@@ -1948,16 +1948,18 @@
   --stelar-footer: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2400 120'><defs><linearGradient id='h' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='2400' y2='0'><stop offset='.25' stop-color='%23fdca5d' stop-opacity='0'/><stop offset='.5' stop-color='%23fdca5d' stop-opacity='.5'/><stop offset='.75' stop-color='%23fdca5d' stop-opacity='0'/></linearGradient><radialGradient id='r' gradientUnits='userSpaceOnUse' cx='1200' cy='120' r='118'><stop offset='0' stop-color='%23fdca5d' stop-opacity='.7'/><stop offset='1' stop-color='%23fdca5d' stop-opacity='0'/></radialGradient><radialGradient id='s' gradientUnits='userSpaceOnUse' cx='1200' cy='120' r='118'><stop offset='0' stop-color='%23fdca5d' stop-opacity='.16'/><stop offset='1' stop-color='%23bd5c17' stop-opacity='0'/></radialGradient></defs><path d='M1200 120 L1200 2 L1283 37 Z' fill='url(%23s)'/><rect x='0' y='119' width='2400' height='1' fill='url(%23h)'/><path d='M1200 120 V2 M1200 120 L1117 37 M1200 120 L1283 37' stroke='url(%23r)' stroke-width='1' fill='none'/></svg>");
   --klin: var(--stelar-brown);
 }
-/* Klín: tapering wedge in front of small section headings. */
+/* Klín (brandbook STELAR): a wedge tapering to a blunt end, in front of small
+   section headings. Whole-pixel corners keep its edges sharp on every screen. */
 .eyebrow::before {
   content: "";
   display: inline-block;
-  width: 1.75em;
-  height: 0.55em;
-  margin-right: 0.6em;
-  vertical-align: 0.05em;
+  width: 24px;
+  height: 6px;
+  margin-right: 10px;
+  vertical-align: middle;
+  transform: translateY(-1px);
   background: var(--klin);
-  clip-path: polygon(0 0, 100% 42%, 100% 58%, 0 100%);
+  clip-path: polygon(0 0, 24px 2px, 24px 4px, 0 6px);
 }
 .egypt-band {
   --klin: var(--sea);
@@ -2045,4 +2047,21 @@
   width: 100%;
   height: auto;
   border-radius: 6px;
+}
+/* Google rating: a calm card that still catches the eye. */
+.google-rating-card {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fff 0%, var(--surface) 100%);
+  box-shadow: 0 18px 40px -30px color-mix(in oklab, var(--ink) 40%, transparent);
+}
+.rating-stars {
+  position: relative;
+  display: inline-flex;
+}
+.rating-stars-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  overflow: hidden;
+  white-space: nowrap;
 }
