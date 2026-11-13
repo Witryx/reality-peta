@@ -130,30 +130,36 @@ function Home() {
         </div>
       </section>
 
-      <SectionConnector />
-
-      <section className="situation-section border-t py-16 md:py-24" data-reveal="line">
-        <div className="container-page grid gap-8 lg:grid-cols-[1fr_1fr] lg:gap-16">
-          <div>
-            <h2 className="text-4xl leading-tight md:text-5xl">
-              <SiteText>{"Reality šité na"}</SiteText>
-              <br className="hidden md:block" />
-              <SiteText>{" míru vaší situace."}</SiteText>
-            </h2>
-            <p className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
-              <SiteText>{"Každá nemovitost má svůj příběh."}</SiteText>
-              <br />
-              <SiteText>{"A každý člověk svou situaci."}</SiteText>
-            </p>
-            <p className="situation-promise mt-8 max-w-md font-display text-xl leading-snug">
-              <SiteText>{"Bez hodnocení a bez nátlaku. U vyjednávání vždy hájím vaše zájmy."}</SiteText>
-            </p>
+      <section id="nabidka" className="offer-showcase border-t bg-surface pt-12 pb-16 md:pt-14 md:pb-20">
+        <div className="container-page">
+          <div className="grid items-center gap-6 lg:grid-cols-[1fr_minmax(0,21rem)] lg:gap-10">
+            <div>
+              <p className="eyebrow">
+                <SiteText>{"Aktuální nabídka"}</SiteText>
+              </p>
+              <h2 className="mt-3 text-4xl leading-tight md:text-[2.75rem]">
+                <SiteText>{"Nemovitosti v Česku, které právě hledají nové majitele"}</SiteText>
+              </h2>
+              <p className="mt-3 max-w-xl text-lg leading-relaxed text-muted-foreground">
+                <SiteText>
+                  {"Nejsem jen pražský makléř. Pomáhám po celém Česku – a na mapě vidíte, kde všude už."}
+                </SiteText>
+              </p>
+              <Button asChild variant="outline" className="btn btn-outline mt-5 h-auto bg-card">
+                <Link to="/nabidka">
+                  <SiteText>{"Celá nabídka "}</SiteText>
+                  <ArrowUpRight className="size-4" />
+                </Link>
+              </Button>
+            </div>
+            <CzechMap pins={mapPins} className="offer-map" />
           </div>
-          <SituationPicker />
+          <PropertyCarousel properties={featured} />
+          <PropertyContactCta className="bg-card" />
         </div>
       </section>
 
-      <section className="trust-trail-section border-y bg-surface" data-reveal="fade">
+      <section className="trust-trail-section border-y" data-reveal="fade">
         <div className="container-page py-8">
           <ul className="trust-trail">
             <li>
@@ -181,30 +187,26 @@ function Home() {
         </div>
       </section>
 
-      <section className="py-20 md:py-28">
-        <div className="container-page">
-          <div className="grid items-end gap-8 lg:grid-cols-[1fr_minmax(0,30rem)] lg:gap-12">
-            <div>
-              <SectionHead
-                eyebrow="Aktuální nabídka"
-                title="Nemovitosti v Česku, které právě hledají nové majitele"
-              />
-              <p className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
-                <SiteText>
-                  {"Nejsem jen pražský makléř. Pomáhám po celém Česku – a na mapě vidíte, kde všude už."}
-                </SiteText>
-              </p>
-              <Button asChild variant="outline" className="btn btn-outline mt-6 h-auto">
-                <Link to="/nabidka">
-                  <SiteText>{"Celá nabídka "}</SiteText>
-                  <ArrowUpRight className="size-4" />
-                </Link>
-              </Button>
-            </div>
-            <CzechMap pins={mapPins} />
+      <SectionConnector />
+
+      <section className="situation-section border-t py-16 md:py-24" data-reveal="line">
+        <div className="container-page grid gap-8 lg:grid-cols-[1fr_1fr] lg:gap-16">
+          <div>
+            <h2 className="text-4xl leading-tight md:text-5xl">
+              <SiteText>{"Reality šité na"}</SiteText>
+              <br className="hidden md:block" />
+              <SiteText>{" míru vaší situace."}</SiteText>
+            </h2>
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
+              <SiteText>{"Každá nemovitost má svůj příběh."}</SiteText>
+              <br />
+              <SiteText>{"A každý člověk svou situaci."}</SiteText>
+            </p>
+            <p className="situation-promise mt-8 max-w-md font-display text-xl leading-snug">
+              <SiteText>{"Bez hodnocení a bez nátlaku. U vyjednávání vždy hájím vaše zájmy."}</SiteText>
+            </p>
           </div>
-          <PropertyCarousel properties={featured} />
-          <PropertyContactCta />
+          <SituationPicker />
         </div>
       </section>
 

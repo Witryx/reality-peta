@@ -28,11 +28,11 @@ function labels(pins: CzechMapPin[]): Label[] {
 }
 
 /** Dot map of Czechia with every listing: active offers glow, sold ones stay as quiet dots. */
-export function CzechMap({ pins }: { pins: CzechMapPin[] }) {
+export function CzechMap({ pins, className = "" }: { pins: CzechMapPin[]; className?: string }) {
   if (!pins.length) return null;
   const { width, height } = czechMapSize;
   return (
-    <figure className="czech-map" aria-label="Mapa Česka s místy, kde jsem prodával a pronajímal">
+    <figure className={`czech-map ${className}`} aria-label="Mapa Česka s místy, kde jsem prodával a pronajímal">
       <svg viewBox={`-10 -14 ${width + 20} ${height + 24}`} role="img" aria-hidden="true">
         <image href="/brand/cz-dots.svg" x="0" y="0" width={width} height={height} />
         {labels(pins).map((label) => {

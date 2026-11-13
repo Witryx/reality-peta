@@ -3028,3 +3028,22 @@
     animation: none !important;
   }
 }
+
+/* Offer right below the hero: a cream showcase with a compact head, so the photos show early. */
+.offer-map {
+  width: 100%;
+  max-width: 21rem;
+  justify-self: end;
+}
+.offer-map .czech-map-label {
+  font-size: 14px;
+}
+@media (max-width: 1023px) {
+  .offer-map {
+    max-width: 17rem;
+    justify-self: center;
+  }
+}
+.offer-showcase .property-carousel-arrow {
+  background: var(--card);
+}
