@@ -2136,5 +2136,20 @@
     "key": "text_88605f03",
     "default": "Pomohl jsem klientům najít a koupit byt, včetně právní kontroly.",
     "groups": ["Reference"]
+  },
+  {
+    "key": "text_8c278d49",
+    "default": "Uložit kontakt do telefonu",
+    "groups": ["Patička"]
+  },
+  {
+    "key": "text_8980f9a9",
+    "default": "Uložte si můj kontakt do telefonu",
+    "groups": ["Patička"]
+  },
+  {
+    "key": "text_b58f1e4e",
+    "default": "Stačí naskenovat fotoaparátem.",
+    "groups": ["Patička"]
   }
 ]

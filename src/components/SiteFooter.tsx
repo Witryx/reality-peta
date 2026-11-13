@@ -57,6 +57,7 @@ export function SiteFooter() {
           <div className="mt-6">
             <SocialLinks />
           </div>
+          <SaveContact />
         </div>
       </div>
       <div className="container-page pb-12">
@@ -94,5 +95,38 @@ export function SiteFooter() {
         </div>
       </div>
     </footer>
+  );
+}
+
+/** QR code on larger screens, a direct download button on phones. */
+function SaveContact() {
+  return (
+    <div className="mt-8">
+      <a
+        href="/kontakt.vcf"
+        download="Petr-Pavlat-reality.vcf"
+        className="btn btn-primary md:hidden"
+      >
+        <SiteText>{"Uložit kontakt do telefonu"}</SiteText>
+      </a>
+      <div className="hidden items-center gap-4 md:flex">
+        <img
+          src="/kontakt-qr.svg"
+          alt="QR kód pro uložení kontaktu Petr Pavlát reality"
+          width={112}
+          height={112}
+          loading="lazy"
+          className="h-28 w-28 shrink-0 rounded-md bg-white p-1"
+        />
+        <div>
+          <p className="font-semibold">
+            <SiteText>{"Uložte si můj kontakt do telefonu"}</SiteText>
+          </p>
+          <p className="mt-1 text-sm opacity-70">
+            <SiteText>{"Stačí naskenovat fotoaparátem."}</SiteText>
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
