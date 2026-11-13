@@ -35,6 +35,13 @@ export const websiteImages = [
     path: "/o-mne",
     alt: "Petr Pavlát, realitní makléř",
   },
+  {
+    key: "image.helpBuyingRuska",
+    label: "Pomoc s koupí – byt Ruská",
+    groups: ["Reference"],
+    path: "/reference",
+    alt: "Byt v ulici Ruská v Praze, se kterým jsem klientům pomohl při koupi",
+  },
 ] as const;
 export type WebsiteImageKey = (typeof websiteImages)[number]["key"];
 export const uploadImagePattern = /^\/uploads\/[a-f0-9-]{36}\.webp$/;

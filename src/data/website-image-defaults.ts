@@ -11,4 +11,6 @@ export const websiteImageDefaults: Record<WebsiteImageKey, string> = {
   "image.services": kitchen,
   "image.portrait": portrait.url,
   "image.fullPortrait": fullPortrait.url,
+  // Photo is uploaded in admin (Fotky webu); until then the section shows text only.
+  "image.helpBuyingRuska": "",
 };

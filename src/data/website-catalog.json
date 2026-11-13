@@ -2115,5 +2115,26 @@
     "key": "text_f752208d",
     "default": "Česko",
     "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_29e321fe",
+    "default": "Pomoc s koupí",
+    "groups": ["Reference"]
+  },
+  {
+    "key": "text_3c5571e8",
+    "default": "Pomohl jsem najít a koupit",
+    "groups": ["Reference"],
+    "role": "heading"
+  },
+  {
+    "key": "text_10741028",
+    "default": "Byt 68 m² · Ruská, Praha",
+    "groups": ["Reference"]
+  },
+  {
+    "key": "text_88605f03",
+    "default": "Pomohl jsem klientům najít a koupit byt, včetně právní kontroly.",
+    "groups": ["Reference"]
   }
 ]
