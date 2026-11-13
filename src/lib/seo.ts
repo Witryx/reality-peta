@@ -4,7 +4,7 @@ import { resolveCopy } from "./site-copy";
 // A public, absolute JPEG URL lets crawlers use our own card before running JavaScript.
 export function socialImageMeta(values: Record<string, string> = {}) {
   const current = resolveSiteConfig(values);
-  const image = new URL("/social-preview-v1.jpg", site.url || `https://${site.domain}`).href;
+  const image = new URL("/social-preview-v2.jpg", site.url || `https://${site.domain}`).href;
   const alt = `${current.agentName} reality – ${current.claim}`;
   return [
     { property: "og:image", content: image },
