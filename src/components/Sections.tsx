@@ -237,8 +237,7 @@ export function ValuationSection({ standalone = false }: { standalone?: boolean 
 export function AboutTeaser({ full = false }: { full?: boolean }) {
   const Heading = full ? "h1" : "h2";
   return (
-    <div className="grid gap-12 md:grid-cols-[0.85fr_1.15fr] md:items-center md:gap-16">
-      <AboutCard />
+    <div className="grid gap-12 md:grid-cols-[1.15fr_0.85fr] md:items-center md:gap-16">
       <div>
         <p className="eyebrow">
           <SiteText>{"O mně"}</SiteText>
@@ -260,6 +259,7 @@ export function AboutTeaser({ full = false }: { full?: boolean }) {
           </div>
         )}
       </div>
+      <AboutCard />
     </div>
   );
 }
