@@ -1,3 +1,4 @@
+import { photoUrl } from "@/lib/photo-src";
 import { SiteText } from "@/components/SiteText";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Clock } from "lucide-react";
@@ -47,7 +48,7 @@ function Page() {
           >
             {a.image && (
               <img
-                src={a.image.src}
+                src={photoUrl(a.image.src)}
                 alt={a.image.alt}
                 loading="lazy"
                 className="mb-5 aspect-[16/9] w-full rounded object-cover"

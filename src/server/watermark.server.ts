@@ -15,7 +15,7 @@ export async function applyWatermark(
   const image = sharp(bytes, { limitInputPixels: 40_000_000, animated: false });
   const { width = 0, height = 0 } = await image.metadata();
   if (width < 360 || height < 240) return bytes;
-  const markWidth = Math.round(Math.min(width * (width < 800 ? 0.2 : 0.15), 440));
+  const markWidth = Math.round(Math.min(width * (width < 800 ? 0.12 : 0.1), 300));
   const markHeight = Math.round(markWidth * markRatio);
   const margin = Math.round(width * 0.025);
   const mark = await sharp(watermarkPng).resize({ width: markWidth }).toBuffer();
@@ -100,7 +100,7 @@ export function requestedWidth(value: string | null): number | null {
 }
 
 /** Bump when the mark or framing changes so stored copies are made afresh. */
-export const variantVersion = "v2";
+export const variantVersion = "v3";
 
 /** Frames (listings), shrinks (when asked) and marks one public photo. */
 export async function preparePublicPhoto(

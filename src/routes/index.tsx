@@ -1,3 +1,4 @@
+import { photoUrl } from "@/lib/photo-src";
 import { SiteImage } from "@/components/SiteImage";
 import { SiteText } from "@/components/SiteText";
 import { useWebsiteImageHidden } from "@/lib/website-context";
@@ -292,7 +293,7 @@ function Home() {
               >
                 {a.image && (
                   <img
-                    src={a.image.src}
+                    src={photoUrl(a.image.src)}
                     alt={a.image.alt}
                     loading="lazy"
                     className="mb-5 aspect-[16/9] w-full rounded object-cover"

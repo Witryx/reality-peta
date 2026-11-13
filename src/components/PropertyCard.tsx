@@ -1,3 +1,4 @@
+import { photoAt, photoSrcSet } from "@/lib/photo-src";
 import { SiteText } from "@/components/SiteText";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, CalendarDays, MapPin, Ruler } from "lucide-react";
@@ -32,12 +33,8 @@ export function PropertyCard({ p, eager = false }: { p: Property; eager?: boolea
         <div className="property-photo relative aspect-[4/3] shrink-0 overflow-hidden bg-muted">
           {img ? (
             <img
-              src={img.src.startsWith("/uploads/") ? `${img.src}?w=960` : img.src}
-              srcSet={
-                img.src.startsWith("/uploads/")
-                  ? `${img.src}?w=480 480w, ${img.src}?w=960 960w`
-                  : undefined
-              }
+              src={photoAt(img.src, 960)}
+              srcSet={photoSrcSet(img.src, [480, 960])}
               sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
               alt={img.alt}
               width={1200}

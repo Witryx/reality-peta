@@ -1,3 +1,4 @@
+import { photoUrl } from "@/lib/photo-src";
 import type { ImgHTMLAttributes } from "react";
 import { useWebsiteImage, useWebsiteImageAlt } from "@/lib/website-context";
 import type { WebsiteImageKey } from "@/data/website-images";
@@ -10,5 +11,5 @@ export function SiteImage({
   const image = useWebsiteImage(imageKey, src ?? "");
   const alt = useWebsiteImageAlt(imageKey, props.alt ?? "");
   if (!image) return null;
-  return <img {...props} src={image} alt={alt} />;
+  return <img {...props} src={photoUrl(image)} alt={alt} />;
 }
