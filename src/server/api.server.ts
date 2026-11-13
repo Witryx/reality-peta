@@ -77,6 +77,88 @@ const ip = (request: Request) =>
     ? request.headers.get("x-forwarded-for")?.split(",").at(-1)?.trim() || "unknown"
     : "local";
 
+async function photoReferences(db: Database, pathname: string) {
+  const articleReferences = await hasArticleTable(db);
+  return db.query(
+    `SELECT 'listing' AS kind, NULL::text AS key FROM properties WHERE publication='published'
+    AND (data->>'publishedAt')::date <= (now() AT TIME ZONE 'Europe/Prague')::date AND EXISTS
+    (SELECT 1 FROM jsonb_array_elements(data->'images') image WHERE image->>'src'=$1)
+    ${articleReferences ? "UNION ALL SELECT 'article', NULL::text FROM articles WHERE publication='published' AND data->'image'->>'src'=$1" : ""}
+    UNION ALL SELECT 'website', entry.key FROM website_content, jsonb_each_text(website_content.data) entry
+    WHERE entry.key LIKE 'image.%' AND entry.key NOT LIKE '%.alt' AND entry.value=$1
+    LIMIT 20`,
+    [pathname],
+  );
+}
+
+/** Returns the stored prepared copy of a public photo, making and storing it once. */
+async function publicPhotoVariant(
+  db: Database,
+  mediaId: string,
+  filename: string,
+  references: { kind: unknown; key: unknown }[],
+  width: number | null,
+): Promise<Uint8Array<ArrayBuffer> | null> {
+  const side = watermarkSide(references);
+  const listing = isListingPhoto(references);
+  if (!side && !listing && !width) return null;
+  const variant = [variantVersion, listing ? "4x3" : "orig", side ?? "none", width ?? "full"].join(
+    "-",
+  );
+  try {
+    const [stored] = await db.query<{ content: Uint8Array }>(
+      "SELECT content FROM media_variants WHERE media_id=$1 AND variant=$2",
+      [mediaId, variant],
+    );
+    if (stored) return new Uint8Array(stored.content);
+  } catch {
+    // The table may not exist yet on an older database; prepare the photo below.
+  }
+  const original = await readStoredImage(db, mediaId, filename);
+  if (!original) return null;
+  try {
+    const prepared = await preparePublicPhoto(original, { listing, side, width });
+    try {
+      await db.query(
+        "INSERT INTO media_variants(media_id,variant,content) VALUES ($1,$2,$3) ON CONFLICT DO NOTHING",
+        [mediaId, variant, prepared],
+      );
+    } catch {
+      // Serving the prepared copy matters more than keeping it.
+    }
+    return prepared;
+  } catch {
+    // Never block a photo because it could not be prepared.
+    return original;
+  }
+}
+
+/**
+ * Prepares the card and gallery sizes of every photo in saved content right away,
+ * so the first visitor never waits for them.
+ */
+async function warmPhotos(db: Database, content: unknown) {
+  const sources = [
+    ...new Set(JSON.stringify(content).match(/\/uploads\/[a-f0-9-]{36}\.webp/g) ?? []),
+  ];
+  const jobs = sources.flatMap((source) => [480, 960].map((width) => ({ source, width })));
+  const run = async () => {
+    for (let job = jobs.shift(); job; job = jobs.shift()) {
+      try {
+        const filename = job.source.slice("/uploads/".length);
+        const [media] = await db.query("SELECT id FROM media WHERE filename=$1", [filename]);
+        if (!media) continue;
+        const references = await photoReferences(db, job.source);
+        if (references.length)
+          await publicPhotoVariant(db, media["id"], filename, references, job.width);
+      } catch {
+        // A photo that cannot be prepared now is prepared on its first visit.
+      }
+    }
+  };
+  await Promise.all([run(), run(), run(), run()]);
+}
+
 export async function handleApi(request: Request, suppliedDb?: Database): Promise<Response | null> {
   const url = new URL(request.url);
   if (!url.pathname.startsWith("/api/") && !url.pathname.startsWith("/uploads/")) return null;
@@ -95,54 +177,15 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
         throw new HttpError(404, "Fotografie nenalezena.");
       const [media] = await db.query("SELECT id,filename FROM media WHERE filename=$1", [filename]);
       if (!media) throw new HttpError(404, "Fotografie nenalezena.");
-      const articleReferences = await hasArticleTable(db);
-      const references = await db.query(
-        `SELECT 'listing' AS kind, NULL::text AS key FROM properties WHERE publication='published'
-        AND (data->>'publishedAt')::date <= (now() AT TIME ZONE 'Europe/Prague')::date AND EXISTS
-        (SELECT 1 FROM jsonb_array_elements(data->'images') image WHERE image->>'src'=$1)
-        ${articleReferences ? "UNION ALL SELECT 'article', NULL::text FROM articles WHERE publication='published' AND data->'image'->>'src'=$1" : ""}
-        UNION ALL SELECT 'website', entry.key FROM website_content, jsonb_each_text(website_content.data) entry
-        WHERE entry.key LIKE 'image.%' AND entry.key NOT LIKE '%.alt' AND entry.value=$1
-        LIMIT 20`,
-        [url.pathname],
-      );
+      const references = await photoReferences(db, url.pathname);
       const published = references.length > 0;
       if (!published) await requireAdmin(db, request);
-      const side = published ? watermarkSide(references) : null;
-      const listing = published && isListingPhoto(references);
       const width = published ? requestedWidth(url.searchParams.get("w")) : null;
-      const variant =
-        side || listing || width
-          ? [variantVersion, listing ? "4x3" : "orig", side ?? "none", width ?? "full"].join("-")
-          : null;
-      let bytes: Uint8Array<ArrayBuffer> | null = null;
-      if (variant) {
-        try {
-          const [stored] = await db.query<{ content: Uint8Array }>(
-            "SELECT content FROM media_variants WHERE media_id=$1 AND variant=$2",
-            [media["id"], variant],
-          );
-          if (stored) bytes = new Uint8Array(stored.content);
-        } catch {
-          // The table may not exist yet on an older database; prepare the photo below.
-        }
-      }
-      if (!bytes) {
-        const original = await readStoredImage(db, media["id"], filename);
-        if (!original) throw new HttpError(404, "Fotografie nenalezena.");
-        bytes = original;
-        if (variant && request.method === "GET") {
-          try {
-            bytes = await preparePublicPhoto(original, { listing, side, width });
-            await db.query(
-              "INSERT INTO media_variants(media_id,variant,content) VALUES ($1,$2,$3) ON CONFLICT DO NOTHING",
-              [media["id"], variant, bytes],
-            );
-          } catch {
-            // Never block a photo because it could not be prepared or stored.
-          }
-        }
-      }
+      const bytes =
+        (published && request.method === "GET"
+          ? await publicPhotoVariant(db, media["id"], filename, references, width)
+          : null) ?? (await readStoredImage(db, media["id"], filename));
+      if (!bytes) throw new HttpError(404, "Fotografie nenalezena.");
       return new Response(request.method === "HEAD" ? null : bytes, {
         headers: {
           "Content-Type": "image/webp",
@@ -219,8 +262,11 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
     const route = url.pathname.slice("/api/admin/".length).split("/");
     if (route[0] === "website" && !route[1]) {
       if (request.method === "GET") return json(await loadWebsiteContent(db));
-      if (request.method === "PUT")
-        return json(await saveWebsiteContent(db, admin.id, await body(request)));
+      if (request.method === "PUT") {
+        const saved = await saveWebsiteContent(db, admin.id, await body(request));
+        await warmPhotos(db, saved);
+        return json(saved);
+      }
     }
     if (route[0] === "session" && request.method === "GET") return json({ admin });
     if (route[0] === "articles") {
@@ -235,10 +281,16 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
             await db.query<ArticleRow>("SELECT * FROM articles ORDER BY updated_at DESC")
           ).map(adminArticle),
         });
-      if (request.method === "POST" && !route[1])
-        return json(await saveArticle(db, admin.id, await body(request)), 201);
-      if (request.method === "PUT" && route[1])
-        return json(await saveArticle(db, admin.id, await body(request), uuid(route[1])));
+      if (request.method === "POST" && !route[1]) {
+        const saved = await saveArticle(db, admin.id, await body(request));
+        await warmPhotos(db, saved);
+        return json(saved, 201);
+      }
+      if (request.method === "PUT" && route[1]) {
+        const saved = await saveArticle(db, admin.id, await body(request), uuid(route[1]));
+        await warmPhotos(db, saved);
+        return json(saved);
+      }
       if (request.method === "DELETE" && route[1]) {
         const id = uuid(route[1]);
         await db.transaction(async (tx) => {
@@ -282,10 +334,16 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
             adminProperty,
           ),
         });
-      if (request.method === "POST" && !route[1])
-        return json(await saveProperty(db, admin.id, await body(request)), 201);
-      if (request.method === "PUT" && route[1])
-        return json(await saveProperty(db, admin.id, await body(request), uuid(route[1])));
+      if (request.method === "POST" && !route[1]) {
+        const saved = await saveProperty(db, admin.id, await body(request));
+        await warmPhotos(db, saved);
+        return json(saved, 201);
+      }
+      if (request.method === "PUT" && route[1]) {
+        const saved = await saveProperty(db, admin.id, await body(request), uuid(route[1]));
+        await warmPhotos(db, saved);
+        return json(saved);
+      }
       if (request.method === "DELETE" && route[1]) {
         const id = uuid(route[1]);
         await db.transaction(async (tx) => {

@@ -1,3 +1,4 @@
+import { photoAt, photoSrcSet } from "@/lib/photo-src";
 import {
   useCallback,
   useEffect,
@@ -38,7 +39,7 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
     if (node?.complete && node.naturalWidth > 0) {
       node.dataset["orientation"] =
         node.naturalHeight > node.naturalWidth ? "portrait" : "landscape";
-      setLoaded(node.getAttribute("src") ?? "");
+      setLoaded(node.dataset["source"] ?? node.getAttribute("src") ?? "");
       setFailed("");
     }
   }, []);
@@ -112,7 +113,10 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
   const photo = image && (
     <img
       key={image.src}
-      src={image.src}
+      src={photoAt(image.src, 1600)}
+      data-source={image.src}
+      srcSet={photoSrcSet(image.src, [960, 1600])}
+      sizes="(min-width: 1024px) 66vw, 100vw"
       alt={image.alt}
       width={1600}
       height={1066}
@@ -212,7 +216,15 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
                   aria-label={`Otevřít fotografii ${i + 1}`}
                   aria-haspopup="dialog"
                 >
-                  <img src={item.src} alt="" loading="lazy" width={640} height={420} />
+                  <img
+                    src={photoAt(item.src, 960)}
+                    srcSet={photoSrcSet(item.src, [480, 960])}
+                    sizes="(min-width: 1024px) 320px, 50vw"
+                    alt=""
+                    loading="lazy"
+                    width={640}
+                    height={420}
+                  />
                   <span className="property-gallery-preview-expand" aria-hidden="true">
                     <Expand size={18} />
                   </span>
@@ -273,7 +285,7 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
                 aria-current={i === index ? "true" : undefined}
               >
                 <img
-                  src={item.src}
+                  src={photoAt(item.src, 480)}
                   alt=""
                   loading="lazy"
                   width={160}
@@ -334,7 +346,13 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
                   aria-label={`Otevřít fotografii ${i + 1}`}
                   aria-current={i === index ? "true" : undefined}
                 >
-                  <img src={item.src} alt="" loading="lazy" width={400} height={270} />
+                  <img
+                    src={photoAt(item.src, 480)}
+                    alt=""
+                    loading="lazy"
+                    width={400}
+                    height={270}
+                  />
                   <span>
                     {i + 1} / {images.length}
                   </span>
