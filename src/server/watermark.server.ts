@@ -14,8 +14,8 @@ export async function applyWatermark(
 ): Promise<Uint8Array<ArrayBuffer>> {
   const image = sharp(bytes, { limitInputPixels: 40_000_000, animated: false });
   const { width = 0, height = 0 } = await image.metadata();
-  if (width < 480 || height < 320) return bytes;
-  const markWidth = Math.round(Math.min(width * 0.22, 640));
+  if (width < 360 || height < 240) return bytes;
+  const markWidth = Math.round(Math.min(width * (width < 800 ? 0.3 : 0.22), 640));
   const markHeight = Math.round(markWidth * markRatio);
   const margin = Math.round(width * 0.025);
   const mark = await sharp(watermarkPng).resize({ width: markWidth }).toBuffer();
@@ -89,4 +89,33 @@ export function watermarkSide(
 
 export function isListingPhoto(references: { kind: unknown }[]) {
   return references.some((reference) => reference.kind === "listing");
+}
+
+/** Widths the site may ask for; anything else falls back to the full photo. */
+export const photoWidths = [480, 960, 1600] as const;
+
+export function requestedWidth(value: string | null): number | null {
+  const width = Number(value);
+  return (photoWidths as readonly number[]).includes(width) ? width : null;
+}
+
+/** Bump when the mark or framing changes so stored copies are made afresh. */
+export const variantVersion = "v1";
+
+/** Frames (listings), shrinks (when asked) and marks one public photo. */
+export async function preparePublicPhoto(
+  bytes: Uint8Array<ArrayBuffer>,
+  options: { listing: boolean; side: "left" | "right" | null; width: number | null },
+): Promise<Uint8Array<ArrayBuffer>> {
+  let photo = bytes;
+  if (options.listing) photo = await toListingFrame(photo);
+  if (options.width) {
+    const shrunk = await sharp(photo, { limitInputPixels: 40_000_000, animated: false })
+      .resize({ width: options.width, withoutEnlargement: true })
+      .webp({ quality: 82 })
+      .toBuffer();
+    photo = new Uint8Array(shrunk);
+  }
+  if (options.side) photo = await applyWatermark(photo, options.side);
+  return photo;
 }

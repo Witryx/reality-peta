@@ -1,6 +1,12 @@
 import { randomBytes, randomUUID } from "node:crypto";
 import sharp from "sharp";
-import { applyWatermark, isListingPhoto, toListingFrame, watermarkSide } from "./watermark.server";
+import {
+  isListingPhoto,
+  preparePublicPhoto,
+  requestedWidth,
+  variantVersion,
+  watermarkSide,
+} from "./watermark.server";
 import { z } from "zod";
 import { getDatabase, hasDatabase, type Database } from "./database.server";
 import {
@@ -102,22 +108,46 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
       );
       const published = references.length > 0;
       if (!published) await requireAdmin(db, request);
-      let bytes = await readStoredImage(db, media["id"], filename);
-      if (!bytes) throw new HttpError(404, "Fotografie nenalezena.");
       const side = published ? watermarkSide(references) : null;
-      if (request.method === "GET" && side) {
+      const listing = published && isListingPhoto(references);
+      const width = published ? requestedWidth(url.searchParams.get("w")) : null;
+      const variant =
+        side || listing || width
+          ? [variantVersion, listing ? "4x3" : "orig", side ?? "none", width ?? "full"].join("-")
+          : null;
+      let bytes: Uint8Array<ArrayBuffer> | null = null;
+      if (variant) {
         try {
-          if (isListingPhoto(references)) bytes = await toListingFrame(bytes);
-          bytes = await applyWatermark(bytes, side);
+          const [stored] = await db.query<{ content: Uint8Array }>(
+            "SELECT content FROM media_variants WHERE media_id=$1 AND variant=$2",
+            [media["id"], variant],
+          );
+          if (stored) bytes = new Uint8Array(stored.content);
         } catch {
-          // Never block a photo because the mark could not be applied.
+          // The table may not exist yet on an older database; prepare the photo below.
+        }
+      }
+      if (!bytes) {
+        const original = await readStoredImage(db, media["id"], filename);
+        if (!original) throw new HttpError(404, "Fotografie nenalezena.");
+        bytes = original;
+        if (variant && request.method === "GET") {
+          try {
+            bytes = await preparePublicPhoto(original, { listing, side, width });
+            await db.query(
+              "INSERT INTO media_variants(media_id,variant,content) VALUES ($1,$2,$3) ON CONFLICT DO NOTHING",
+              [media["id"], variant, bytes],
+            );
+          } catch {
+            // Never block a photo because it could not be prepared or stored.
+          }
         }
       }
       return new Response(request.method === "HEAD" ? null : bytes, {
         headers: {
           "Content-Type": "image/webp",
           "Cache-Control": published
-            ? "public, max-age=300, s-maxage=3600"
+            ? "public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400"
             : "private, max-age=300",
           "X-Content-Type-Options": "nosniff",
         },

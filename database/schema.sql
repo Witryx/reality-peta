@@ -62,6 +62,19 @@ DO $$ BEGIN
     GRANT SELECT,INSERT,UPDATE,DELETE ON media_files TO realty_app;
   END IF;
 END $$;
+-- Watermarked, framed and resized copies of public photos, made once and reused.
+CREATE TABLE IF NOT EXISTS media_variants (
+  media_id uuid NOT NULL REFERENCES media(id) ON DELETE CASCADE,
+  variant text NOT NULL,
+  content bytea NOT NULL CHECK (octet_length(content) <= 6000000),
+  created_at timestamptz NOT NULL DEFAULT now(),
+  PRIMARY KEY (media_id, variant)
+);
+DO $$ BEGIN
+  IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname='realty_app') THEN
+    GRANT SELECT,INSERT,UPDATE,DELETE ON media_variants TO realty_app;
+  END IF;
+END $$;
 CREATE TABLE IF NOT EXISTS audit_log (
   id uuid PRIMARY KEY, admin_id uuid REFERENCES admins(id) ON DELETE SET NULL,
   action text NOT NULL, entity_id text, created_at timestamptz NOT NULL DEFAULT now()

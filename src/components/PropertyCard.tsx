@@ -32,7 +32,13 @@ export function PropertyCard({ p, eager = false }: { p: Property; eager?: boolea
         <div className="property-photo relative aspect-[4/3] shrink-0 overflow-hidden bg-muted">
           {img ? (
             <img
-              src={img.src}
+              src={img.src.startsWith("/uploads/") ? `${img.src}?w=960` : img.src}
+              srcSet={
+                img.src.startsWith("/uploads/")
+                  ? `${img.src}?w=480 480w, ${img.src}?w=960 960w`
+                  : undefined
+              }
+              sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
               alt={img.alt}
               width={1200}
               height={900}
