@@ -2279,10 +2279,14 @@
     "role": "heading"
   },
   {
-    "key": "text_2574f680",
-    "default": "Až 100 000 Kč pro vás.",
-    "groups": ["Úvodní stránka"],
-    "role": "heading"
+    "key": "text_4458e0a9",
+    "default": "Odměna pro vás až",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_7af5b130",
+    "default": "100 000 Kč",
+    "groups": ["Úvodní stránka"]
   },
   {
     "key": "text_d502a8e0",

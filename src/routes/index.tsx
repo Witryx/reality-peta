@@ -191,27 +191,6 @@ function Home() {
 
       <SectionConnector />
 
-      <section className="situation-section border-t py-16 md:py-24" data-reveal="line">
-        <div className="container-page grid gap-8 lg:grid-cols-[1fr_1fr] lg:gap-16">
-          <div>
-            <h2 className="text-4xl leading-tight md:text-5xl">
-              <SiteText>{"Reality šité na"}</SiteText>
-              <br className="hidden md:block" />
-              <SiteText>{" míru vaší situace."}</SiteText>
-            </h2>
-            <p className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
-              <SiteText>{"Každá nemovitost má svůj příběh."}</SiteText>
-              <br />
-              <SiteText>{"A každý člověk svou situaci."}</SiteText>
-            </p>
-            <p className="situation-promise mt-8 max-w-md font-display text-xl leading-snug">
-              <SiteText>{"Bez hodnocení a bez nátlaku. U vyjednávání vždy hájím vaše zájmy."}</SiteText>
-            </p>
-          </div>
-          <SituationPicker />
-        </div>
-      </section>
-
       <section className="py-20 md:py-28 border-t">
         <div className="container-page">
           <SectionHead eyebrow="Služby" title="S čím Vám pomohu" />
@@ -250,6 +229,27 @@ function Home() {
             intro="Od první schůzky až po předání klíčů. V každém kroku víte, kde jsme a co přijde dál."
           />
           <ProcessList journey />
+        </div>
+      </section>
+
+      <section className="situation-section border-t py-16 md:py-24" data-reveal="line">
+        <div className="container-page grid gap-8 lg:grid-cols-[1fr_1fr] lg:gap-16">
+          <div>
+            <h2 className="text-4xl leading-tight md:text-5xl">
+              <SiteText>{"Reality šité na"}</SiteText>
+              <br className="hidden md:block" />
+              <SiteText>{" míru vaší situace."}</SiteText>
+            </h2>
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
+              <SiteText>{"Každá nemovitost má svůj příběh."}</SiteText>
+              <br />
+              <SiteText>{"A každý člověk svou situaci."}</SiteText>
+            </p>
+            <p className="situation-promise mt-8 max-w-md font-display text-xl leading-snug">
+              <SiteText>{"Bez hodnocení a bez nátlaku. U vyjednávání vždy hájím vaše zájmy."}</SiteText>
+            </p>
+          </div>
+          <SituationPicker />
         </div>
       </section>
 

@@ -18,11 +18,17 @@ export function ReferralStrip() {
           <p className="eyebrow">
             <SiteText>{"Doporučte mě"}</SiteText>
           </p>
-          <h2 id="referral-heading" className="mt-4 text-4xl leading-tight md:text-5xl">
+          <h2 id="referral-heading" className="mt-4 text-3xl leading-tight sm:text-4xl md:text-5xl">
             <SiteText>{"Znáte někoho, kdo prodává?"}</SiteText>
-            <br className="hidden sm:block" />
-            <SiteText>{" Až 100 000 Kč pro vás."}</SiteText>
           </h2>
+          <p className="referral-amount">
+            <span>
+              <SiteText>{"Odměna pro vás až"}</SiteText>
+            </span>
+            <strong>
+              <SiteText>{"100 000 Kč"}</SiteText>
+            </strong>
+          </p>
           <p className="mt-5 max-w-xl text-lg leading-relaxed">
             <SiteText>
               {

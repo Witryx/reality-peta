@@ -1964,29 +1964,26 @@
 .egypt-band {
   --klin: var(--sea);
 }
-/* Brand frame: a soft STELAR-orange glow around the edges of the window.
-   Purely decorative, never catches clicks, hidden in print. */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 55;
-  pointer-events: none;
-  box-shadow:
-    inset 0 0 0 2px color-mix(in oklab, var(--stelar-orange) 75%, transparent),
-    inset 0 0 22px color-mix(in oklab, var(--stelar-orange) 32%, transparent);
+/* Referral band: the reward gets its own line and never breaks inside the amount. */
+.referral-amount {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.75rem;
+  margin-top: 1.25rem;
 }
-@media (max-width: 767px) {
-  body::after {
-    box-shadow:
-      inset 0 0 0 1.5px color-mix(in oklab, var(--stelar-orange) 70%, transparent),
-      inset 0 0 14px color-mix(in oklab, var(--stelar-orange) 28%, transparent);
-  }
+.referral-amount span {
+  font-size: 1.05rem;
+  font-weight: 500;
+  opacity: 0.85;
 }
-@media print {
-  body::after {
-    display: none;
-  }
+.referral-amount strong {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 12vw, 4.75rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 /* Referral band: white wedge and eyebrow on the deep brand orange. */
 .referral-strip {
@@ -2631,7 +2628,10 @@ body::after {
 /* Process: the key travels along the route and lights the steps up */
 .process-section {
   position: relative;
+  /* `clip`, not `hidden`: hidden turns the section into its own (never scrolled) scroll
+     container, so the scroll-driven key stood still. */
   overflow: hidden;
+  overflow: clip;
 }
 .process-section::after {
   content: "";
@@ -2986,23 +2986,74 @@ body::after {
   background: var(--ink);
 }
 .valuation-section.motion-visible .price-compass-needle {
-  animation: price-seek 3.2s 0.6s cubic-bezier(0.45, 0, 0.2, 1) both;
+  animation:
+    price-seek 2.9s 0.5s both,
+    price-buzz 0.55s 3.4s linear both;
 }
+.valuation-section.motion-visible .price-compass-real {
+  animation: price-lock 0.9s 3.35s ease-out both;
+}
+/* The needle sweeps left and right, each swing a little shorter, then lands on the real price. */
 @keyframes price-seek {
   0% {
-    left: 92%;
+    left: 3%;
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
   }
-  35% {
-    left: 10%;
+  20% {
+    left: 97%;
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
   }
-  62% {
-    left: 58%;
+  40% {
+    left: 8%;
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
   }
-  80% {
-    left: 47%;
+  58% {
+    left: 90%;
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  }
+  74% {
+    left: 20%;
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  }
+  88% {
+    left: 72%;
+    animation-timing-function: cubic-bezier(0.3, 0, 0.2, 1);
   }
   100% {
     left: 50%;
+  }
+}
+/* A short vibration when it stops, like a compass needle settling. */
+@keyframes price-buzz {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  12% {
+    translate: -4px 0;
+  }
+  25% {
+    translate: 4px 0;
+  }
+  38% {
+    translate: -3px 0;
+  }
+  51% {
+    translate: 3px 0;
+  }
+  64% {
+    translate: -2px 0;
+  }
+  77% {
+    translate: 1px 0;
+  }
+}
+@keyframes price-lock {
+  0% {
+    box-shadow: 0 0 0 0 rgb(247 166 0 / 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 9px rgb(247 166 0 / 0);
   }
 }
 .price-compass-zones {
