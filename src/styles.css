@@ -2799,8 +2799,11 @@
     .process-section.motion-ready .process-journey .process-step:nth-child(6) > * {
       animation: journey-step-5 1s linear both;
     }
-    .process-section.motion-ready :is(.journey-key, .journey-fill, .process-journey .process-step > *) {
-      /* The animation shorthand resets the timeline, so keep this after all stages. */
+    /* The animation shorthand resets the timeline, so keep this after all stages.
+       `:nth-child(n)` matches the specificity of the step rules above; without it the
+       steps ran on the clock instead of the scroll and all lit up at once. */
+    .process-section.motion-ready :is(.journey-key, .journey-fill),
+    .process-section.motion-ready .process-journey .process-step:nth-child(n) > * {
       animation-timeline: --journey;
       animation-range: cover 12% cover 55%;
     }
