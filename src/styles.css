@@ -2284,6 +2284,38 @@
   background: var(--ink);
   color: var(--ink-foreground);
 }
+.situation-chip-icon {
+  display: none;
+}
+/* Phones: an orderly 2 × 4 grid of equal tiles instead of pills of different widths. */
+@media (max-width: 767px) {
+  .situation-chips {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .situation-chip {
+    display: flex;
+    min-height: 56px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 12px;
+    padding: 0.6rem 0.75rem;
+    text-align: left;
+    font-size: 0.86rem;
+    line-height: 1.25;
+  }
+  .situation-chip-icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    flex: none;
+    color: var(--accent);
+  }
+  .situation-chip[aria-pressed="true"] .situation-chip-icon {
+    color: var(--stelar-yellow);
+  }
+}
 .situation-answer {
   position: relative;
   min-height: 13.5rem;
@@ -3136,70 +3168,143 @@
   background: var(--card);
 }
 
-/* Phones: call / WhatsApp one tap away once the intro has scrolled by. */
-.mobile-contact-bar {
+/* Phones: one small round phone button at the side; a tap opens Call / WhatsApp. */
+.contact-fab {
   position: fixed;
-  right: 10px;
-  bottom: calc(10px + env(safe-area-inset-bottom));
-  left: 10px;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
   z-index: 40;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  gap: 8px;
-  padding: 8px;
-  border-radius: 16px;
-  background: rgb(255 255 255 / 0.92);
-  backdrop-filter: blur(10px);
-  box-shadow:
-    0 10px 30px -10px rgb(41 41 39 / 0.45),
-    0 0 0 1px rgb(41 41 39 / 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(120%);
+  transform: scale(0.6) translateY(30px);
+  transform-origin: bottom right;
   transition:
-    transform 0.45s cubic-bezier(0.3, 1.3, 0.5, 1),
+    transform 0.45s cubic-bezier(0.3, 1.4, 0.5, 1),
     opacity 0.3s;
 }
-.mobile-contact-bar.is-shown {
+.contact-fab.is-shown {
   opacity: 1;
   pointer-events: auto;
   transform: none;
 }
-.mobile-contact-bar a {
+.contact-fab-main {
+  position: relative;
+  display: grid;
+  width: 56px;
+  height: 56px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  box-shadow:
+    0 10px 24px -8px rgb(41 41 39 / 0.5),
+    0 0 0 4px rgb(247 166 0 / 0.18);
+  cursor: pointer;
+}
+.contact-fab-main svg {
+  width: 24px;
+  height: 24px;
+}
+.contact-fab.is-shown:not(.is-open) .contact-fab-main::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  animation: contact-fab-ping 2.4s 0.6s ease-out 2;
+}
+@keyframes contact-fab-ping {
+  0% {
+    box-shadow: 0 0 0 0 rgb(247 166 0 / 0.55);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 16px rgb(247 166 0 / 0);
+  }
+}
+.contact-fab-hide {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  display: grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  cursor: pointer;
+}
+/* Bigger invisible tap area around the small cross. */
+.contact-fab-hide::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+}
+.contact-fab-hide svg {
+  width: 12px;
+  height: 12px;
+  stroke-width: 3;
+}
+.contact-fab-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition:
+    opacity 0.2s,
+    transform 0.3s cubic-bezier(0.3, 1.3, 0.5, 1);
+}
+.contact-fab.is-open .contact-fab-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+.contact-fab-menu a {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
-  border-radius: 10px;
-  padding: 12px 6px;
-  font-size: 0.9rem;
+  border-radius: 999px;
+  padding: 11px 18px;
+  font-size: 0.92rem;
   font-weight: 700;
+  box-shadow: 0 8px 22px -8px rgb(41 41 39 / 0.45);
 }
-.mobile-contact-bar svg {
+.contact-fab-menu svg {
   width: 18px;
   height: 18px;
 }
-.mobile-contact-call {
-  background: var(--accent);
+.contact-fab-call {
+  background: var(--ink);
   color: #fff;
 }
-.mobile-contact-whatsapp {
-  border: 1px solid color-mix(in oklab, var(--ink) 16%, transparent);
+.contact-fab-whatsapp {
+  border: 1px solid color-mix(in oklab, var(--ink) 12%, transparent);
   background: var(--card);
   color: var(--foreground);
 }
-.mobile-contact-whatsapp svg {
+.contact-fab-whatsapp svg {
   color: #1f9d55;
 }
 @media (min-width: 768px) {
-  .mobile-contact-bar {
+  .contact-fab {
     display: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mobile-contact-bar {
+  .contact-fab,
+  .contact-fab-menu {
     transition: none;
+  }
+  .contact-fab-main::after {
+    animation: none !important;
   }
 }
 

@@ -1,11 +1,33 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import {
+  ArrowLeftRight,
+  ArrowUpRight,
+  ChartPie,
+  House,
+  KeyRound,
+  Scale,
+  ScrollText,
+  Search,
+  Sun,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { situations } from "@/data/content";
 import { SiteText } from "./SiteText";
 
 type Situation = (typeof situations)[number];
+
+/** Small icons that make the phone tiles easy to scan. */
+const situationIcons: Record<string, typeof House> = {
+  prodej: House,
+  koupe: Search,
+  oboji: ArrowLeftRight,
+  najem: KeyRound,
+  dedictvi: ScrollText,
+  podil: ChartPie,
+  exekuce: Scale,
+  egypt: Sun,
+};
 
 /** Secondary step for each situation; sellers get the free valuation, buyers the offer. */
 function NextStep({ slug }: { slug: Situation["slug"] }) {
@@ -43,17 +65,21 @@ export function SituationPicker() {
         <SiteText>{"Vyberte, co je vám nejblíž – hned uvidíte, jak vám pomohu."}</SiteText>
       </p>
       <div className="situation-chips mt-5" role="group" aria-label="Vaše situace">
-        {situations.map((situation) => (
-          <button
-            key={situation.slug}
-            type="button"
-            className="situation-chip"
-            aria-pressed={situation.slug === current.slug}
-            onClick={() => setCurrent(situation)}
-          >
-            <SiteText>{situation.label}</SiteText>
-          </button>
-        ))}
+        {situations.map((situation) => {
+          const Icon = situationIcons[situation.slug] ?? House;
+          return (
+            <button
+              key={situation.slug}
+              type="button"
+              className="situation-chip"
+              aria-pressed={situation.slug === current.slug}
+              onClick={() => setCurrent(situation)}
+            >
+              <Icon className="situation-chip-icon" strokeWidth={1.6} aria-hidden />
+              <SiteText>{situation.label}</SiteText>
+            </button>
+          );
+        })}
       </div>
       <div className="situation-answer mt-5" aria-live="polite">
         <div key={current.slug} className="situation-answer-body">
