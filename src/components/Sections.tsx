@@ -13,6 +13,7 @@ import {
   Star,
 } from "lucide-react";
 import { LeadForm } from "./LeadForm";
+import { ContactLinks } from "./ContactLinks";
 import { AboutCard } from "./AboutCard";
 import { Plus, ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/button";
@@ -104,9 +105,7 @@ export function ServicesGrid({ cta = false }: { cta?: boolean }) {
 
 export function ProcessList({ journey = false }: { journey?: boolean }) {
   return (
-    <ol
-      className={`${journey ? "process-journey " : ""}mt-14 grid gap-10 md:grid-cols-5 md:gap-6`}
-    >
+    <ol className={`${journey ? "process-journey " : ""}mt-14 grid gap-10 md:grid-cols-5 md:gap-6`}>
       {journey && (
         <li className="journey-rail" aria-hidden="true">
           <span className="journey-fill" />
@@ -163,34 +162,56 @@ export function Testimonials() {
               className="md:pl-0"
               aria-label={`${index + 1} z ${testimonials.length}`}
             >
-              <figure className="flex h-full flex-col rounded-lg bg-card p-6 shadow-soft sm:p-8">
-                <div className="mb-4 flex items-center gap-2" aria-label="Hodnocení 5 z 5">
-                  <span className="flex text-review-star" aria-hidden="true">
-                    {
-                      <SiteText>
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <Star key={i} className="h-4 w-4 fill-current" />
-                        ))}
-                      </SiteText>
-                    }
+              {"kind" in t && t.kind === "case" ? (
+                <figure className="testimonial-case flex h-full flex-col rounded-lg p-6 sm:p-8">
+                  <p className="testimonial-case-kicker">
+                    <SiteText>{"Z praxe"}</SiteText>
+                  </p>
+                  <h3 className="mt-3 font-display text-2xl leading-snug">
+                    <SiteText>{t.title}</SiteText>
+                  </h3>
+                  <p className="mt-3 leading-relaxed text-muted-foreground">
+                    <SiteText>{t.text}</SiteText>
+                  </p>
+                  <figcaption className="mt-auto pt-6 text-sm">
+                    <span className="font-semibold">
+                      <SiteText>{t.context}</SiteText>
+                    </span>
+                    <span className="block text-muted-foreground">
+                      <SiteText>{`Klient: ${t.name}`}</SiteText>
+                    </span>
+                  </figcaption>
+                </figure>
+              ) : (
+                <figure className="flex h-full flex-col rounded-lg bg-card p-6 shadow-soft sm:p-8">
+                  <div className="mb-4 flex items-center gap-2" aria-label="Hodnocení 5 z 5">
+                    <span className="flex text-review-star" aria-hidden="true">
+                      {
+                        <SiteText>
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <Star key={i} className="h-4 w-4 fill-current" />
+                          ))}
+                        </SiteText>
+                      }
+                    </span>
+                    <span className="text-sm font-semibold">5/5</span>
+                  </div>
+                  <span className="testimonial-mark" aria-hidden="true">
+                    “
                   </span>
-                  <span className="text-sm font-semibold">5/5</span>
-                </div>
-                <span className="testimonial-mark" aria-hidden="true">
-                  “
-                </span>
-                <blockquote className="font-display text-xl leading-snug">
-                  „<SiteText>{t.text}</SiteText>“
-                </blockquote>
-                <figcaption className="mt-auto pt-6 text-sm">
-                  <span className="font-semibold">
-                    <SiteText>{t.name}</SiteText>
-                  </span>
-                  <span className="block text-muted-foreground">
-                    <SiteText>{t.context}</SiteText>
-                  </span>
-                </figcaption>
-              </figure>
+                  <blockquote className="font-display text-xl leading-snug">
+                    „<SiteText>{t.text}</SiteText>“
+                  </blockquote>
+                  <figcaption className="mt-auto pt-6 text-sm">
+                    <span className="font-semibold">
+                      <SiteText>{t.name}</SiteText>
+                    </span>
+                    <span className="block text-muted-foreground">
+                      <SiteText>{t.context}</SiteText>
+                    </span>
+                  </figcaption>
+                </figure>
+              )}
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -211,8 +232,16 @@ export function Testimonials() {
   );
 }
 
-export function ValuationSection({ standalone = false }: { standalone?: boolean }) {
+export function ValuationSection({
+  standalone = false,
+  withContact = false,
+}: {
+  standalone?: boolean;
+  /** Homepage: one form with two tabs (valuation / other question) and the contacts once. */
+  withContact?: boolean;
+}) {
   const Heading = standalone ? "h1" : "h2";
+  const [tab, setTab] = useState<"valuation" | "contact">("valuation");
   return (
     <section
       id="odhad"
@@ -281,9 +310,42 @@ export function ValuationSection({ standalone = false }: { standalone?: boolean 
               <SiteText>{"Bez závazků. Bez nátlaku."}</SiteText>
             </li>
           </ul>
+          {withContact && (
+            <div className="mt-10 border-t pt-8">
+              <p className="reply-status">
+                <span className="status-dot" aria-hidden />
+                <SiteText>{"Zprávy čtu a odpovídám na ně osobně"}</SiteText>
+              </p>
+              <ContactLinks className="mt-6" />
+            </div>
+          )}
         </div>
         <div className="valuation-form">
-          <LeadForm kind="valuation" submitLabel="Získat odhad nemovitosti zdarma" />
+          {withContact && (
+            <div className="form-tabs" role="tablist" aria-label="Typ dotazu">
+              <button
+                type="button"
+                role="tab"
+                aria-selected={tab === "valuation"}
+                onClick={() => setTab("valuation")}
+              >
+                <SiteText>{"Odhad ceny zdarma"}</SiteText>
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={tab === "contact"}
+                onClick={() => setTab("contact")}
+              >
+                <SiteText>{"Jiný dotaz"}</SiteText>
+              </button>
+            </div>
+          )}
+          {tab === "valuation" || !withContact ? (
+            <LeadForm kind="valuation" submitLabel="Získat odhad nemovitosti zdarma" />
+          ) : (
+            <LeadForm kind="contact" submitLabel="Odeslat zprávu" />
+          )}
         </div>
       </div>
     </section>

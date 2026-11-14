@@ -145,7 +145,13 @@ export function AboutCard() {
             ★★★★★
           </span>
           <span>
-            <SiteText>{"hodnocení klientů na Googlu"}</SiteText>
+            <SiteText>{"hodnocení na Googlu"}</SiteText>
+            {site.googleReviews.count && (
+              <>
+                {" · "}
+                {site.googleReviews.count} <SiteText>{"recenzí"}</SiteText>
+              </>
+            )}
           </span>
         </div>
         <div className="about-card-fact">
@@ -157,11 +163,9 @@ export function AboutCard() {
           </span>
         </div>
         <div className="about-card-fact">
-          <b className="about-card-infinity" aria-label="Nekonečno">
-            ∞
-          </b>
+          <b>{site.dealsCount}</b>
           <span>
-            <SiteText>{"možností, jak Vám pomoct"}</SiteText>
+            <SiteText>{"prodaných a pronajatých nemovitostí"}</SiteText>
           </span>
         </div>
       </div>

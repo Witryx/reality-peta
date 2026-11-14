@@ -228,6 +228,89 @@
     "groups": ["Úvodní stránka"]
   },
   {
+    "key": "text_88145f6",
+    "default": "Aktuální nabídka",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_3d45d8b1",
+    "default": "Nemovitosti v Česku, které právě hledají nové majitele",
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_67fe8e9a",
+    "default": "Nejsem jen pražský makléř. Pomáhám po celém Česku – a na mapě vidíte, kde všude už.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_ec6d2622",
+    "default": "Celá nabídka",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_1944d63a",
+    "default": "Jeden makléř",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_f8abcaff",
+    "default": "od první schůzky po předání klíčů",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_ec70f2b5",
+    "default": "Reálná cena",
+    "groups": ["Úvodní stránka", "Společné sekce", "Odhad ceny"]
+  },
+  {
+    "key": "text_350f49f3",
+    "default": "podle skutečných prodejů v okolí",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_1b7f41a4",
+    "default": "Právník a hypoteční specialista",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_75ea1cf4",
+    "default": "když je potřebujete",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_b168bdb8",
+    "default": "Služby",
+    "groups": ["Úvodní stránka", "Identita"]
+  },
+  {
+    "key": "text_c6c069f3",
+    "default": "S čím Vám pomohu",
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_23d87204",
+    "default": "Celá nabídka v Egyptě",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_12be45d5",
+    "default": "JAK PROBÍHÁ SPOLUPRÁCE?",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_1df6b932",
+    "default": "Prodej v pěti klidných krocích",
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_c32d36f0",
+    "default": "Od první schůzky až po předání klíčů. V každém kroku víte, kde jsme a co přijde dál.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
     "key": "text_ba8ae35",
     "default": "Reality šité na",
     "groups": ["Úvodní stránka"],
@@ -250,57 +333,9 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_18f12d7c",
-    "default": "Probrat moji situaci",
+    "key": "text_bf290785",
+    "default": "Bez hodnocení a bez nátlaku. U vyjednávání vždy hájím vaše zájmy.",
     "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_88145f6",
-    "default": "Aktuální nabídka",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_3d45d8b1",
-    "default": "Nemovitosti v Česku, které právě hledají nové majitele",
-    "groups": ["Úvodní stránka"],
-    "role": "heading"
-  },
-  {
-    "key": "text_ec6d2622",
-    "default": "Celá nabídka",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_b168bdb8",
-    "default": "Služby",
-    "groups": ["Úvodní stránka", "Identita"]
-  },
-  {
-    "key": "text_ab0f73af",
-    "default": "Nabídka v Egyptě",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_3482be80",
-    "default": "Nemovitosti v Hurghádě přímo u Rudého moře",
-    "groups": ["Úvodní stránka"],
-    "role": "heading"
-  },
-  {
-    "key": "text_23d87204",
-    "default": "Celá nabídka v Egyptě",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_12be45d5",
-    "default": "JAK PROBÍHÁ SPOLUPRÁCE?",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_1df6b932",
-    "default": "Prodej v pěti klidných krocích",
-    "groups": ["Úvodní stránka"],
-    "role": "heading"
   },
   {
     "key": "text_adc8c33a",
@@ -314,46 +349,9 @@
     "role": "heading"
   },
   {
-    "key": "text_2de4e34a",
-    "default": "Články",
-    "groups": ["Úvodní stránka", "Články", "Identita"]
-  },
-  {
-    "key": "text_6077bc96",
-    "default": "Informace, na které si dát pozor",
-    "groups": ["Úvodní stránka", "Články"],
-    "role": "heading"
-  },
-  {
-    "key": "text_d7a8c795",
-    "default": "Všechny články",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_c56610e",
-    "default": "min čtení",
-    "groups": ["Úvodní stránka", "Články"]
-  },
-  {
     "key": "text_42ec9773",
     "default": "Kontakt",
-    "groups": ["Úvodní stránka", "Kontakt – vyhledávače", "Kontakt", "Identita"]
-  },
-  {
-    "key": "text_8abcf143",
-    "default": "Pojďme si promluvit",
-    "groups": ["Úvodní stránka"],
-    "role": "heading"
-  },
-  {
-    "key": "text_9c2d016e",
-    "default": "Zavolejte, napište nebo vyplňte formulář. Ozvu se osobně.",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_26f24eff",
-    "default": "Odeslat zprávu",
-    "groups": ["Úvodní stránka", "Kontakt"]
+    "groups": ["Kontakt – vyhledávače", "Kontakt", "Identita"]
   },
   {
     "key": "text_292cb62e",
@@ -375,6 +373,11 @@
     "key": "text_2a160385",
     "default": "Realitní makléř ·",
     "groups": ["Kontakt"]
+  },
+  {
+    "key": "text_26f24eff",
+    "default": "Odeslat zprávu",
+    "groups": ["Kontakt", "Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
     "key": "text_90eeacd5",
@@ -666,11 +669,6 @@
     "role": "heading"
   },
   {
-    "key": "text_ce52d528",
-    "default": "Pracovní verze – před spuštěním nechte text zkontrolovat a doplňte identifikační údaje správce (jméno, IČO, adresu, kontakt).",
-    "groups": ["Ochrana osobních údajů"]
-  },
-  {
     "key": "text_8cd8906f",
     "default": "Správce",
     "groups": ["Ochrana osobních údajů"],
@@ -768,6 +766,27 @@
     "groups": ["Reference"]
   },
   {
+    "key": "text_29e321fe",
+    "default": "Pomoc s koupí",
+    "groups": ["Reference"]
+  },
+  {
+    "key": "text_3c5571e8",
+    "default": "Pomohl jsem najít a koupit",
+    "groups": ["Reference"],
+    "role": "heading"
+  },
+  {
+    "key": "text_10741028",
+    "default": "Byt 68 m² · Ruská, Praha",
+    "groups": ["Reference"]
+  },
+  {
+    "key": "text_88605f03",
+    "default": "Pomohl jsem klientům najít a koupit byt, včetně právní kontroly.",
+    "groups": ["Reference"]
+  },
+  {
     "key": "text_1cb9db57",
     "default": "Služby – prodej, koupě, pronájem, odhad",
     "groups": ["Služby – vyhledávače"]
@@ -819,6 +838,51 @@
     "default": "Proces prodeje",
     "groups": ["Služby"],
     "role": "heading"
+  },
+  {
+    "key": "text_b80fe27d",
+    "default": "PRAHA",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_f752208d",
+    "default": "Česko",
+    "groups": ["Společné sekce", "Nabídka"]
+  },
+  {
+    "key": "text_d10c475d",
+    "default": "HURGHADA",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_9b73f7a9",
+    "default": "Egypt · Rudé moře",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_22e8e6c",
+    "default": "PŘÍMÝ LET CCA 4,5 HODINY",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_2a446ffa",
+    "default": "hodnocení na Googlu",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_1c57aa13",
+    "default": "recenzí",
+    "groups": ["Společné sekce", "Reference"]
+  },
+  {
+    "key": "text_f3979e1d",
+    "default": "země, jeden makléř: Česko a Egypt",
+    "groups": ["Společné sekce"]
+  },
+  {
+    "key": "text_81e3414",
+    "default": "prodaných a pronajatých nemovitostí",
+    "groups": ["Společné sekce"]
   },
   {
     "key": "text_12f36293",
@@ -901,6 +965,37 @@
     "groups": ["Kontakt"]
   },
   {
+    "key": "text_f37098e0",
+    "default": "Souhlas s cookies",
+    "groups": ["Cookies"],
+    "role": "heading"
+  },
+  {
+    "key": "text_f06faaca",
+    "default": "Návštěvnost měřím pomocí cookies, jen s Vaším souhlasem.",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_edb8f946",
+    "default": "Nastavení",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_c8504116",
+    "default": "Více o cookies",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_33508c48",
+    "default": "Povolit vše",
+    "groups": ["Cookies"]
+  },
+  {
+    "key": "text_c8c34c97",
+    "default": "Jen nezbytné",
+    "groups": ["Cookies"]
+  },
+  {
     "key": "text_92ef4d3c",
     "default": "Pomozte mi dělat web užitečnější",
     "groups": ["Cookies"],
@@ -932,28 +1027,8 @@
     "groups": ["Cookies"]
   },
   {
-    "key": "text_33508c48",
-    "default": "Povolit vše",
-    "groups": ["Cookies"]
-  },
-  {
-    "key": "text_c8c34c97",
-    "default": "Jen nezbytné",
-    "groups": ["Cookies"]
-  },
-  {
     "key": "text_427c3ef1",
     "default": "Uložit nastavení",
-    "groups": ["Cookies"]
-  },
-  {
-    "key": "text_edb8f946",
-    "default": "Nastavení",
-    "groups": ["Cookies"]
-  },
-  {
-    "key": "text_c8504116",
-    "default": "Více o cookies",
     "groups": ["Cookies"]
   },
   {
@@ -1026,6 +1101,16 @@
     "groups": ["Cookies"]
   },
   {
+    "key": "text_d16f4a49",
+    "default": "aktivní nabídka",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_3f15b84a",
+    "default": "úspěšně prodáno",
+    "groups": ["Úvodní stránka"]
+  },
+  {
     "key": "text_791d3fc7",
     "default": "DALŠÍ HORIZONT · EGYPTSKO ČESKÁ REALITY",
     "groups": ["Egypt"]
@@ -1071,6 +1156,21 @@
   {
     "key": "text_2eda435b",
     "default": "Vy si vyberete. My nemovitost prověříme a pomůžeme vám celý proces bezpečně realizovat.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_117eb6c5",
+    "default": "Celým procesem vás provedu v češtině",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_25a15596",
+    "default": "Ověření právního stavu nemovitosti a právní servis",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_1fc89efb",
+    "default": "Hurghadu dobře známe",
     "groups": ["Egypt"]
   },
   {
@@ -1140,6 +1240,16 @@
     "groups": ["Časté dotazy"]
   },
   {
+    "key": "text_4c227656",
+    "default": "Hodnocení klientů na Googlu",
+    "groups": ["Reference"]
+  },
+  {
+    "key": "text_9ae11cb4",
+    "default": "Přečíst recenze na Googlu",
+    "groups": ["Reference"]
+  },
+  {
     "key": "text_8d349e8c",
     "default": "Odkaz na Google profil doplníme",
     "groups": ["Reference"]
@@ -1193,7 +1303,7 @@
   {
     "key": "text_a1e6580",
     "default": "valuation",
-    "groups": ["Formuláře"]
+    "groups": ["Formuláře", "Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
     "key": "text_ce6c3fec",
@@ -1294,6 +1404,11 @@
     "key": "text_608c845b",
     "default": "Odeslat",
     "groups": ["Formuláře"]
+  },
+  {
+    "key": "text_7949a0f8",
+    "default": "Zavolat",
+    "groups": ["Kontakt"]
   },
   {
     "key": "text_cd10f9a8",
@@ -1460,6 +1575,52 @@
     "groups": ["Detail nemovitosti"]
   },
   {
+    "key": "text_38ba0044",
+    "default": "Doporučte mě",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_4e75b35b",
+    "default": "Znáte někoho, kdo prodává?",
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_4458e0a9",
+    "default": "Odměna pro vás až",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_7af5b130",
+    "default": "100 000 Kč",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_d502a8e0",
+    "default": "Stačí nás propojit. Podmínky si domluvíme předem a odměnu dostanete po úspěšném prodeji.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_af9d4c2",
+    "default": "Doporučit kontakt",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_d913e243",
+    "default": "kind",
+    "groups": ["Společné sekce", "Úvodní stránka", "Reference"]
+  },
+  {
+    "key": "text_9b2538b1",
+    "default": "case",
+    "groups": ["Společné sekce", "Úvodní stránka", "Reference", "Služby a reference"]
+  },
+  {
+    "key": "text_ff94e48b",
+    "default": "Z praxe",
+    "groups": ["Společné sekce", "Úvodní stránka", "Reference"]
+  },
+  {
     "key": "text_698ac23d",
     "default": "Předchozí reference",
     "groups": ["Společné sekce", "Úvodní stránka", "Reference"]
@@ -1502,6 +1663,31 @@
     "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
+    "key": "text_f7f3f803",
+    "default": "Proč na ceně tolik záleží",
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
+  },
+  {
+    "key": "text_b4928eb",
+    "default": "Vaše cena",
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
+  },
+  {
+    "key": "text_e12d0109",
+    "default": "Podhodnocená",
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
+  },
+  {
+    "key": "text_93205b46",
+    "default": "Přestřelená",
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
+  },
+  {
+    "key": "text_90924986",
+    "default": "Podhodnocená cena vás připraví o peníze. Přestřelená prodej zbytečně natahuje a nemovitost na trhu „okouká“. Odhad proto stavím na skutečných prodejích v okolí.",
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
+  },
+  {
     "key": "text_5d501bac",
     "default": "Odpověď obvykle do dvou pracovních dnů",
     "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
@@ -1509,6 +1695,21 @@
   {
     "key": "text_4c0b2e49",
     "default": "Bez závazků. Bez nátlaku.",
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
+  },
+  {
+    "key": "text_bd3b4919",
+    "default": "Zprávy čtu a odpovídám na ně osobně",
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
+  },
+  {
+    "key": "text_ae2e40db",
+    "default": "Odhad ceny zdarma",
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny", "Patička", "Navigace"]
+  },
+  {
+    "key": "text_49e626b5",
+    "default": "Jiný dotaz",
     "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
@@ -1533,8 +1734,33 @@
     "groups": ["Společné sekce", "Úvodní stránka", "O mně"]
   },
   {
+    "key": "text_ac54b0d8",
+    "default": "· IČO",
+    "groups": ["Patička"]
+  },
+  {
+    "key": "text_72d09b7a",
+    "default": "Všechna práva vyhrazena. Texty, fotografie a design webu jsou chráněny autorským zákonem.",
+    "groups": ["Patička"]
+  },
+  {
     "key": "text_9c40b789",
     "default": "Nastavení cookies",
+    "groups": ["Patička"]
+  },
+  {
+    "key": "text_8c278d49",
+    "default": "Uložit kontakt do telefonu",
+    "groups": ["Patička"]
+  },
+  {
+    "key": "text_8980f9a9",
+    "default": "Uložte si můj kontakt do telefonu",
+    "groups": ["Patička"]
+  },
+  {
+    "key": "text_b58f1e4e",
+    "default": "Stačí naskenovat fotoaparátem.",
     "groups": ["Patička"]
   },
   {
@@ -1543,9 +1769,29 @@
     "groups": ["Navigace"]
   },
   {
-    "key": "text_ae2e40db",
-    "default": "Odhad ceny zdarma",
-    "groups": ["Navigace", "Patička"]
+    "key": "text_ab0f73af",
+    "default": "Nabídka v Egyptě",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_efb77ad",
+    "default": "Co právě řešíte?",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_c7d75ebd",
+    "default": "Vyberte, co je vám nejblíž – hned uvidíte, jak vám pomohu.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_ec6fd4bd",
+    "default": "Jak vám pomohu",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_18f12d7c",
+    "default": "Probrat moji situaci",
+    "groups": ["Úvodní stránka"]
   },
   {
     "key": "text_de98c133",
@@ -1558,8 +1804,24 @@
     "groups": ["Články – vyhledávače"]
   },
   {
+    "key": "text_2de4e34a",
+    "default": "Články",
+    "groups": ["Články", "Identita"]
+  },
+  {
+    "key": "text_6077bc96",
+    "default": "Informace, na které si dát pozor",
+    "groups": ["Články"],
+    "role": "heading"
+  },
+  {
     "key": "text_f15defa8",
     "default": "Při prodeji, koupi i vlastnictví nemovitosti je potřeba hlídat spoustu povinností. Tady najdete přehledně shrnuté, co se klientů nejčastěji týká — daň z nemovitosti, předání, hypotéky i peníze.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_c56610e",
+    "default": "min čtení",
     "groups": ["Články"]
   },
   {
@@ -1891,411 +2153,23 @@
     "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
   },
   {
-    "key": "text_c150daa2",
-    "default": "Eva S.",
+    "key": "text_3f76a8c3",
+    "default": "Qido K.",
     "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
   },
   {
-    "key": "text_ec97308e",
-    "default": "Pronájem bytu, Praha 7",
+    "key": "text_ea663bdb",
+    "default": "Prodej bytu",
     "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
   },
   {
-    "key": "text_f2842dcd",
-    "default": "Lidský přístup a profesionální výsledek. Nájemníka jsme měli do dvou týdnů.",
-    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
-  },
-  {
-    "key": "text_69632327",
-    "default": "Věřím, že dobře odvedená práce začíná pochopením toho, na čem Vám skutečně záleží. Proto svou práci stavím na osobním přístupu, otevřené komunikaci a pečlivé přípravě. Chci, abyste rozuměli každému kroku, měli se o koho opřít a došli k výsledku, který Vám přinese jistotu a posune Vás blíž k životu, jaký si přejete. Právě v tom vidím hodnotu své práce a důvod, proč ji dělám tak, jak ji dělám.",
-    "groups": ["Společné sekce", "Úvodní stránka", "O mně"]
-  },
-  {
-    "key": "text_c8f9b370",
-    "default": "Petr Pavlát reality",
-    "groups": ["Identita"]
-  },
-  {
-    "key": "text_ca3b48a4",
-    "default": "Bydlení v pohodě. U nás i u moře.",
-    "groups": ["Identita"]
-  },
-  {
-    "key": "text_30deb718",
-    "default": "Petr Pavlát",
-    "groups": ["Identita"]
-  },
-  {
-    "key": "text_2e383e4",
-    "default": "Celé Česko · zázemí v Praze a okolí",
-    "groups": ["Identita"]
-  },
-  {
-    "key": "text_a34daaf1",
-    "default": "Zázemí v Česku a Egyptě, se sídlem v Praze a Hurghadě",
-    "groups": ["Identita"]
-  },
-  {
-    "key": "text_ad4ecaa4",
-    "default": "STELAR reality",
-    "groups": ["Identita"]
-  },
-  {
-    "key": "text_9a8bd13f",
-    "default": "STELAR Advisory",
-    "groups": ["Identita"]
-  },
-  {
-    "key": "text_d310e30a",
-    "default": "Egyptsko-Česká Reality",
-    "groups": ["Identita"]
-  },
-  {
-    "key": "text_d7e1af08",
-    "default": "Egypt",
-    "groups": ["Identita", "Nabídka"]
-  },
-  {
-    "key": "text_216c339d",
-    "default": "Mimořádně úsporná",
-    "groups": ["Energetická třída"]
-  },
-  {
-    "key": "text_3ed0f17b",
-    "default": "Velmi úsporná",
-    "groups": ["Energetická třída"]
-  },
-  {
-    "key": "text_73c0b3c2",
-    "default": "Úsporná",
-    "groups": ["Energetická třída"]
-  },
-  {
-    "key": "text_6dba65f1",
-    "default": "Méně úsporná",
-    "groups": ["Energetická třída"]
-  },
-  {
-    "key": "text_e5c861b",
-    "default": "Nehospodárná",
-    "groups": ["Energetická třída"]
-  },
-  {
-    "key": "text_84d292e0",
-    "default": "Velmi nehospodárná",
-    "groups": ["Energetická třída"]
-  },
-  {
-    "key": "text_e43fb7ea",
-    "default": "Mimořádně nehospodárná",
-    "groups": ["Energetická třída"]
-  },
-  {
-    "key": "text_578155da",
-    "default": "Škola",
-    "groups": ["Okolí nemovitosti"]
-  },
-  {
-    "key": "text_7f81f6c7",
-    "default": "Školka",
-    "groups": ["Okolí nemovitosti"]
-  },
-  {
-    "key": "text_1436fd25",
-    "default": "Potraviny",
-    "groups": ["Okolí nemovitosti"]
-  },
-  {
-    "key": "text_7c4f7ecc",
-    "default": "Pošta",
-    "groups": ["Okolí nemovitosti"]
-  },
-  {
-    "key": "text_b49388a1",
-    "default": "Lékař",
-    "groups": ["Okolí nemovitosti"]
-  },
-  {
-    "key": "text_bd83d141",
-    "default": "Lékárna",
-    "groups": ["Okolí nemovitosti"]
-  },
-  {
-    "key": "text_e54e30d0",
-    "default": "Zastávka",
-    "groups": ["Okolí nemovitosti"]
-  },
-  {
-    "key": "text_ca5938d9",
-    "default": "Park",
-    "groups": ["Okolí nemovitosti"]
-  },
-  {
-    "key": "text_2cd122c2",
-    "default": "Další místo",
-    "groups": ["Okolí nemovitosti"]
-  },
-  {
-    "key": "text_bf14c487",
-    "default": "pěšky",
-    "groups": ["Okolí nemovitosti"]
-  },
-  {
-    "key": "text_18e69149",
-    "default": "vzdušnou čarou",
-    "groups": ["Okolí nemovitosti"]
-  },
-  {
-    "key": "text_50d4349d",
-    "default": "Aktivní",
-    "groups": ["Nabídka"]
-  },
-  {
-    "key": "text_a9976168",
-    "default": "Rezervováno",
-    "groups": ["Nabídka"]
-  },
-  {
-    "key": "text_f752208d",
-    "default": "Česko",
-    "groups": ["Společné sekce", "Nabídka"]
-  },
-  {
-    "key": "text_29e321fe",
-    "default": "Pomoc s koupí",
-    "groups": ["Reference"]
-  },
-  {
-    "key": "text_3c5571e8",
-    "default": "Pomohl jsem najít a koupit",
-    "groups": ["Reference"],
-    "role": "heading"
-  },
-  {
-    "key": "text_10741028",
-    "default": "Byt 68 m² · Ruská, Praha",
-    "groups": ["Reference"]
-  },
-  {
-    "key": "text_88605f03",
-    "default": "Pomohl jsem klientům najít a koupit byt, včetně právní kontroly.",
-    "groups": ["Reference"]
-  },
-  {
-    "key": "text_8c278d49",
-    "default": "Uložit kontakt do telefonu",
-    "groups": ["Patička"]
-  },
-  {
-    "key": "text_8980f9a9",
-    "default": "Uložte si můj kontakt do telefonu",
-    "groups": ["Patička"]
-  },
-  {
-    "key": "text_b58f1e4e",
-    "default": "Stačí naskenovat fotoaparátem.",
-    "groups": ["Patička"]
-  },
-  {
-    "key": "text_72d09b7a",
-    "default": "Všechna práva vyhrazena. Texty, fotografie a design webu jsou chráněny autorským zákonem.",
-    "groups": ["Patička"]
-  },
-  {
-    "key": "text_4c227656",
-    "default": "Hodnocení klientů na Googlu",
-    "groups": ["Reference"]
-  },
-  {
-    "key": "text_9ae11cb4",
-    "default": "Přečíst recenze na Googlu",
-    "groups": ["Reference"]
-  },
-  {
-    "key": "text_b80fe27d",
-    "default": "PRAHA",
-    "groups": ["Společné sekce"]
-  },
-  {
-    "key": "text_d10c475d",
-    "default": "HURGHADA",
-    "groups": ["Společné sekce"]
-  },
-  {
-    "key": "text_9b73f7a9",
-    "default": "Egypt · Rudé moře",
-    "groups": ["Společné sekce"]
-  },
-  {
-    "key": "text_22e8e6c",
-    "default": "PŘÍMÝ LET CCA 4,5 HODINY",
-    "groups": ["Společné sekce"]
-  },
-  {
-    "key": "text_84a18376",
-    "default": "hodnocení klientů na Googlu",
-    "groups": ["Společné sekce"]
-  },
-  {
-    "key": "text_f3979e1d",
-    "default": "země, jeden makléř: Česko a Egypt",
-    "groups": ["Společné sekce"]
-  },
-  {
-    "key": "text_93b1a88c",
-    "default": "možností, jak Vám pomoct",
-    "groups": ["Společné sekce"]
-  },
-  {
-    "key": "text_bf290785",
-    "default": "Bez hodnocení a bez nátlaku. U vyjednávání vždy hájím vaše zájmy.",
+    "key": "text_f6f183a0",
+    "default": "Prodej bytu za 14 dní",
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_1944d63a",
-    "default": "Jeden makléř",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_f8abcaff",
-    "default": "od první schůzky po předání klíčů",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_ec70f2b5",
-    "default": "Reálná cena",
-    "groups": ["Úvodní stránka", "Společné sekce", "Odhad ceny"]
-  },
-  {
-    "key": "text_350f49f3",
-    "default": "podle skutečných prodejů v okolí",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_1b7f41a4",
-    "default": "Právník a hypoteční specialista",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_75ea1cf4",
-    "default": "když je potřebujete",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_67fe8e9a",
-    "default": "Nejsem jen pražský makléř. Pomáhám po celém Česku – a na mapě vidíte, kde všude už.",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_c6c069f3",
-    "default": "S čím Vám pomohu",
-    "groups": ["Úvodní stránka"],
-    "role": "heading"
-  },
-  {
-    "key": "text_c32d36f0",
-    "default": "Od první schůzky až po předání klíčů. V každém kroku víte, kde jsme a co přijde dál.",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_bd3b4919",
-    "default": "Zprávy čtu a odpovídám na ně osobně",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_d16f4a49",
-    "default": "aktivní nabídka",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_3f15b84a",
-    "default": "úspěšně prodáno",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_117eb6c5",
-    "default": "Celým procesem vás provedu v češtině",
-    "groups": ["Egypt"]
-  },
-  {
-    "key": "text_25a15596",
-    "default": "Ověření právního stavu nemovitosti a právní servis",
-    "groups": ["Egypt"]
-  },
-  {
-    "key": "text_1fc89efb",
-    "default": "Hurghadu dobře známe",
-    "groups": ["Egypt"]
-  },
-  {
-    "key": "text_f7f3f803",
-    "default": "Proč na ceně tolik záleží",
-    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
-  },
-  {
-    "key": "text_b4928eb",
-    "default": "Vaše cena",
-    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
-  },
-  {
-    "key": "text_e12d0109",
-    "default": "Podhodnocená",
-    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
-  },
-  {
-    "key": "text_93205b46",
-    "default": "Přestřelená",
-    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
-  },
-  {
-    "key": "text_90924986",
-    "default": "Podhodnocená cena vás připraví o peníze. Přestřelená prodej zbytečně natahuje a nemovitost na trhu „okouká“. Odhad proto stavím na skutečných prodejích v okolí.",
-    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
-  },
-  {
-    "key": "text_efb77ad",
-    "default": "Co právě řešíte?",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_c7d75ebd",
-    "default": "Vyberte, co je vám nejblíž – hned uvidíte, jak vám pomohu.",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_ec6fd4bd",
-    "default": "Jak vám pomohu",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_38ba0044",
-    "default": "Doporučte mě",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_4e75b35b",
-    "default": "Znáte někoho, kdo prodává?",
-    "groups": ["Úvodní stránka"],
-    "role": "heading"
-  },
-  {
-    "key": "text_4458e0a9",
-    "default": "Odměna pro vás až",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_7af5b130",
-    "default": "100 000 Kč",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_d502a8e0",
-    "default": "Stačí nás propojit. Podmínky si domluvíme předem a odměnu dostanete po úspěšném prodeji.",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_af9d4c2",
-    "default": "Doporučit kontakt",
+    "key": "text_4f0e7f33",
+    "default": "Kvalitní pomoc s prodejem a řešením všech náležitostí spojených s prodejem nemovitosti, rychlé a férové jednání, mohu vřele doporučit. Prodávat sám a nervovat se s tím za to určitě nestojí.",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -2427,8 +2301,168 @@
     "groups": ["Služby a reference", "Úvodní stránka"]
   },
   {
-    "key": "text_7949a0f8",
-    "default": "Zavolat",
-    "groups": ["Kontakt"]
+    "key": "text_69632327",
+    "default": "Věřím, že dobře odvedená práce začíná pochopením toho, na čem Vám skutečně záleží. Proto svou práci stavím na osobním přístupu, otevřené komunikaci a pečlivé přípravě. Chci, abyste rozuměli každému kroku, měli se o koho opřít a došli k výsledku, který Vám přinese jistotu a posune Vás blíž k životu, jaký si přejete. Právě v tom vidím hodnotu své práce a důvod, proč ji dělám tak, jak ji dělám.",
+    "groups": ["Společné sekce", "Úvodní stránka", "O mně"]
+  },
+  {
+    "key": "text_c8f9b370",
+    "default": "Petr Pavlát reality",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_ca3b48a4",
+    "default": "Bydlení v pohodě. U nás i u moře.",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_30deb718",
+    "default": "Petr Pavlát",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_2e383e4",
+    "default": "Celé Česko · zázemí v Praze a okolí",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_a5e58fca",
+    "default": "Působím po celém Česku a v Hurghadě (Egypt).",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_550a0349",
+    "default": "Petr Pavlát - reality s.r.o.",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_359c0a43",
+    "default": "Varšavská 715/36, Vinohrady, 120 00 Praha 2",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_49f19a9f",
+    "default": "zapsaná v obchodním rejstříku vedeném Městským soudem v Praze, oddíl C, vložka 430714",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_ad4ecaa4",
+    "default": "STELAR reality",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_9a8bd13f",
+    "default": "STELAR Advisory",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_d310e30a",
+    "default": "Egyptsko-Česká Reality",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_d7e1af08",
+    "default": "Egypt",
+    "groups": ["Identita", "Nabídka"]
+  },
+  {
+    "key": "text_216c339d",
+    "default": "Mimořádně úsporná",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_3ed0f17b",
+    "default": "Velmi úsporná",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_73c0b3c2",
+    "default": "Úsporná",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_6dba65f1",
+    "default": "Méně úsporná",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_e5c861b",
+    "default": "Nehospodárná",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_84d292e0",
+    "default": "Velmi nehospodárná",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_e43fb7ea",
+    "default": "Mimořádně nehospodárná",
+    "groups": ["Energetická třída"]
+  },
+  {
+    "key": "text_578155da",
+    "default": "Škola",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_7f81f6c7",
+    "default": "Školka",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_1436fd25",
+    "default": "Potraviny",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_7c4f7ecc",
+    "default": "Pošta",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_b49388a1",
+    "default": "Lékař",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_bd83d141",
+    "default": "Lékárna",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_e54e30d0",
+    "default": "Zastávka",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_ca5938d9",
+    "default": "Park",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_2cd122c2",
+    "default": "Další místo",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_bf14c487",
+    "default": "pěšky",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_18e69149",
+    "default": "vzdušnou čarou",
+    "groups": ["Okolí nemovitosti"]
+  },
+  {
+    "key": "text_50d4349d",
+    "default": "Aktivní",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_a9976168",
+    "default": "Rezervováno",
+    "groups": ["Nabídka"]
   }
 ]

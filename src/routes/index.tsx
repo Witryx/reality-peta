@@ -1,4 +1,3 @@
-import { photoUrl } from "@/lib/photo-src";
 import { SiteImage } from "@/components/SiteImage";
 import { SiteText } from "@/components/SiteText";
 import { useWebsiteImageHidden } from "@/lib/website-context";
@@ -7,7 +6,6 @@ import hero from "@/assets/hero.jpg";
 import portrait from "@/assets/petr-pavlat-portrait.png.asset.json";
 import { BrandImage } from "@/components/BrandImage";
 import { listEgypt, listProperties } from "@/data/properties";
-import { listArticles } from "@/data/articles";
 import { pageHead, websiteValues } from "@/lib/seo";
 import { site } from "@/config/site";
 import { PropertyCarousel } from "@/components/PropertyCarousel";
@@ -21,11 +19,10 @@ import {
   ValuationSection,
 } from "@/components/Sections";
 import { ReferralStrip } from "@/components/ReferralStrip";
-import { LeadForm } from "@/components/LeadForm";
-import { ContactLinks, HeroContactHint } from "@/components/ContactLinks";
+import { HeroContactHint } from "@/components/ContactLinks";
 import { EgyptSection } from "@/components/EgyptSection";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, Clock } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { CollaborationStrip } from "@/components/CollaborationStrip";
 import { SectionConnector } from "@/components/SectionConnector";
 import { FaqSection } from "@/components/FaqSection";
@@ -37,7 +34,6 @@ export const Route = createFileRoute("/")({
   loader: async () => ({
     featured: (await listProperties()).sort((a, b) => Number(b.featured) - Number(a.featured)),
     egypt: await listEgypt(),
-    articles: await listArticles(),
     mapPins: await listCzechMapPins(),
   }),
   head: ({ matches }) =>
@@ -54,7 +50,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const { featured, egypt, articles, mapPins } = Route.useLoaderData();
+  const { featured, egypt, mapPins } = Route.useLoaderData();
   const homeHidden = useWebsiteImageHidden("image.home");
   const portraitHidden = useWebsiteImageHidden("image.portrait");
   const photoHidden = homeHidden && portraitHidden;
@@ -132,7 +128,10 @@ function Home() {
         </div>
       </section>
 
-      <section id="nabidka" className="offer-showcase border-t bg-surface pt-12 pb-16 md:pt-14 md:pb-20">
+      <section
+        id="nabidka"
+        className="offer-showcase border-t bg-surface pt-12 pb-16 md:pt-14 md:pb-20"
+      >
         <div className="container-page">
           <div className="grid items-center gap-6 lg:grid-cols-[1fr_minmax(0,21rem)] lg:gap-10">
             <div>
@@ -144,7 +143,9 @@ function Home() {
               </h2>
               <p className="mt-3 max-w-xl text-lg leading-relaxed text-muted-foreground">
                 <SiteText>
-                  {"Nejsem jen pražský makléř. Pomáhám po celém Česku – a na mapě vidíte, kde všude už."}
+                  {
+                    "Nejsem jen pražský makléř. Pomáhám po celém Česku – a na mapě vidíte, kde všude už."
+                  }
                 </SiteText>
               </p>
               <Button asChild variant="outline" className="btn btn-outline mt-5 h-auto bg-card">
@@ -201,25 +202,19 @@ function Home() {
       <SectionConnector variant="horizon" />
       <EgyptSection compact />
 
-      <section className="py-20 md:py-28">
+      <section className="egypt-offer pt-4 pb-20 md:pb-28" aria-label="Nabídka v Egyptě">
         <div className="container-page">
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <SectionHead
-              eyebrow="Nabídka v Egyptě"
-              title="Nemovitosti v Hurghádě přímo u Rudého moře"
-            />
-            <Button asChild variant="outline" className="btn btn-outline h-auto self-start md:self-auto">
+          <PropertyCarousel properties={egypt} />
+          <div className="mt-8 flex justify-center">
+            <Button asChild variant="outline" className="btn btn-outline h-auto">
               <Link to="/egypt">
                 <SiteText>{"Celá nabídka v Egyptě "}</SiteText>
                 <ArrowUpRight className="size-4" />
               </Link>
             </Button>
           </div>
-          <PropertyCarousel properties={egypt} />
         </div>
       </section>
-
-      <FaqSection />
 
       <section className="process-section bg-ink py-20 text-ink-foreground md:py-28">
         <div className="container-page [&_.eyebrow]:text-ink-foreground/60 [&_p]:text-ink-foreground/75">
@@ -246,7 +241,9 @@ function Home() {
               <SiteText>{"A každý člověk svou situaci."}</SiteText>
             </p>
             <p className="situation-promise mt-8 max-w-md font-display text-xl leading-snug">
-              <SiteText>{"Bez hodnocení a bez nátlaku. U vyjednávání vždy hájím vaše zájmy."}</SiteText>
+              <SiteText>
+                {"Bez hodnocení a bez nátlaku. U vyjednávání vždy hájím vaše zájmy."}
+              </SiteText>
             </p>
           </div>
           <SituationPicker />
@@ -262,50 +259,6 @@ function Home() {
 
       <ReferralStrip />
 
-      <section className="border-t bg-surface py-20 md:py-28">
-        <div className="container-page">
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <SectionHead eyebrow="Články" title="Informace, na které si dát pozor" />
-            <Button
-              asChild
-              variant="outline"
-              className="btn btn-outline h-auto self-start md:self-auto"
-            >
-              <Link to="/clanky">
-                <SiteText>{"Všechny články "}</SiteText>
-                <ArrowUpRight className="size-4" />
-              </Link>
-            </Button>
-          </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {articles.slice(0, 3).map((a) => (
-              <Link
-                key={a.slug}
-                to="/clanky/$slug"
-                params={{ slug: a.slug }}
-                className="article-card group flex flex-col rounded-lg border bg-card p-6 transition-shadow hover:shadow-md"
-              >
-                {a.image && (
-                  <img
-                    src={photoUrl(a.image.src)}
-                    alt={a.image.alt}
-                    loading="lazy"
-                    className="mb-5 aspect-[16/9] w-full rounded object-cover"
-                  />
-                )}
-                <p className="eyebrow">{a.category}</p>
-                <h3 className="mt-3 font-display text-2xl leading-snug">{a.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{a.excerpt}</p>
-                <p className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
-                  <Clock className="size-3.5" aria-hidden /> {a.readingMinutes}
-                  <SiteText>{" min čtení"}</SiteText>
-                </p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <SectionConnector variant="flight" />
       <section className="border-t py-20 md:py-28">
         <div className="container-page">
@@ -313,25 +266,9 @@ function Home() {
         </div>
       </section>
 
-      <ValuationSection />
+      <FaqSection />
 
-      <section id="napiste-mi" className="scroll-mt-24 py-20 md:py-28">
-        <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.2fr]">
-          <div>
-            <SectionHead
-              eyebrow="Kontakt"
-              title="Pojďme si promluvit"
-              intro="Zavolejte, napište nebo vyplňte formulář. Ozvu se osobně."
-            />
-            <p className="reply-status mt-6">
-              <span className="status-dot" aria-hidden />
-              <SiteText>{"Zprávy čtu a odpovídám na ně osobně"}</SiteText>
-            </p>
-            <ContactLinks className="mt-8" />
-          </div>
-          <LeadForm kind="contact" submitLabel="Odeslat zprávu" />
-        </div>
-      </section>
+      <ValuationSection withContact />
     </>
   );
 }

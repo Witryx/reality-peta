@@ -83,10 +83,10 @@ export const testimonials = [
     isDemo: true,
   },
   {
-    name: "Eva S.",
-    context: "Pronájem bytu, Praha 7",
-    text: "Lidský přístup a profesionální výsledek. Nájemníka jsme měli do dvou týdnů.",
-    isDemo: true,
+    name: "Qido K.",
+    context: "Prodej bytu za 14 dní",
+    text: "Kvalitní pomoc s prodejem a řešením všech náležitostí spojených s prodejem nemovitosti, rychlé a férové jednání, mohu vřele doporučit. Prodávat sám a nervovat se s tím za to určitě nestojí.",
+    isDemo: false,
   },
 ];
 

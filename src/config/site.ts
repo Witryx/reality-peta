@@ -11,7 +11,16 @@ export const site = {
   url: import.meta.env.VITE_SITE_URL || "",
   agentName: "Petr Pavlát",
   region: "Celé Česko · zázemí v Praze a okolí",
-  footerRegion: "Zázemí v Česku a Egyptě, se sídlem v Praze a Hurghadě",
+  footerRegion: "Působím po celém Česku a v Hurghadě (Egypt).",
+  /** Údaje, které zákon vyžaduje na webu podnikatele (§ 435 občanského zákoníku). */
+  company: {
+    name: "Petr Pavlát - reality s.r.o.",
+    ico: "23650087",
+    seat: "Varšavská 715/36, Vinohrady, 120 00 Praha 2",
+    register:
+      "zapsaná v obchodním rejstříku vedeném Městským soudem v Praze, oddíl C, vložka 430714",
+    since: 2025,
+  },
   contact: {
     phone: "+420 607 008 995",
     email: "petr.pavlat@stelar-reality.cz",
@@ -19,14 +28,20 @@ export const site = {
     egyptPhone: "+20 10 35448132",
     egyptWhatsapp: "201035448132",
     address: "",
-    ico: "",
+    ico: "23650087",
   },
   social: {
     instagram: "https://www.instagram.com/petr.pavlat_reality/",
     facebook: "https://www.facebook.com/petrpavlatreality/",
     linkedin: "https://www.linkedin.com/in/petr-pavlat-reality/",
   },
-  googleReviews: { rating: "4,7", profileUrl: "https://share.google/3ERvci4sNYmAwJnEp" },
+  /** Počet prodaných a pronajatých nemovitostí pro čísla důvěry na webu. */
+  dealsCount: "15+",
+  googleReviews: {
+    rating: "4,7",
+    count: "21",
+    profileUrl: "https://share.google/3ERvci4sNYmAwJnEp",
+  },
   partnerUrls: ["", "", "https://www.egyptskoceskareality.cz/"],
   partners: ["STELAR reality", "STELAR Advisory", "Egyptsko-Česká Reality"],
 };
@@ -156,6 +171,22 @@ export const editableSiteFields = [
     group: "Reference",
     kind: "rating",
     max: 3,
+  },
+  {
+    key: "site.googleReviews.count",
+    label: "Počet recenzí na Googlu",
+    default: site.googleReviews.count,
+    group: "Reference",
+    kind: "text",
+    max: 10,
+  },
+  {
+    key: "site.dealsCount",
+    label: "Prodané a pronajaté nemovitosti (např. 15+)",
+    default: site.dealsCount,
+    group: "Reference",
+    kind: "text",
+    max: 10,
   },
   ...site.partners.map((name, index) => ({
     key: `site.partners.${index}`,

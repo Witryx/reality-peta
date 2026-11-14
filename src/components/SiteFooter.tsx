@@ -4,7 +4,7 @@ import { Link, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
 import { QrCode } from "lucide-react";
 import { scrollToTop } from "@/lib/scroll-to-top";
-import { nav, site } from "@/config/site";
+import { nav, site as staticSite } from "@/config/site";
 import { openConsentSettings } from "@/lib/consent";
 import { ContactLinks } from "./ContactLinks";
 import { BrandLockup } from "./BrandLockup";
@@ -14,6 +14,7 @@ import { CollaborationStrip } from "./CollaborationStrip";
 
 export function SiteFooter() {
   const site = useSiteConfig();
+  const { company } = staticSite;
   const router = useRouter();
 
   return (
@@ -60,9 +61,10 @@ export function SiteFooter() {
         <div className="container-page flex flex-col gap-3 py-6 text-xs opacity-70 md:flex-row md:justify-between">
           <div>
             <p>
-              © <SiteText>{2023}</SiteText>–{new Date().getFullYear()}{" "}
-              <SiteText>{site.name}</SiteText>
-              <SiteText>{site.contact.ico ? ` · IČO ${site.contact.ico}` : ""}</SiteText>
+              © {company.since}–{new Date().getFullYear()} <SiteText>{site.name}</SiteText>
+            </p>
+            <p className="mt-1">
+              {company.name} · IČO {company.ico} · {company.seat} · {company.register}
             </p>
             <p className="mt-1">
               <SiteText>

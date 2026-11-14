@@ -28,13 +28,6 @@ function Page() {
       <h1 className="mt-4 text-5xl">
         <SiteText>{"Zásady ochrany osobních údajů"}</SiteText>
       </h1>
-      <p className="rounded-lg border border-dashed p-4 text-sm">
-        <SiteText>
-          {
-            "Pracovní verze – před spuštěním nechte text zkontrolovat a doplňte identifikační údaje správce (jméno, IČO, adresu, kontakt)."
-          }
-        </SiteText>
-      </p>
       <h2>
         <SiteText>{"Správce"}</SiteText>
       </h2>

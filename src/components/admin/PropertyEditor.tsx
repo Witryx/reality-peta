@@ -373,6 +373,20 @@ export function PropertyEditor({
                   }
                 />,
               )}
+              {field(
+                "priceEur",
+                "Cena v eurech (volitelné, hlavně Egypt)",
+                <input
+                  type="number"
+                  min="0"
+                  max="10000000000"
+                  value={value.priceEur ?? ""}
+                  placeholder="Např. 69900 – web pak ukáže eura a orientačně Kč"
+                  onChange={(e) =>
+                    update("priceEur", e.target.value === "" ? undefined : Number(e.target.value))
+                  }
+                />,
+              )}
             </div>
             <div className="admin-field-grid">
               {(["lat", "lng"] as const).map((key) =>

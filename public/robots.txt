@@ -38,3 +38,5 @@ Disallow: /
 
 User-agent: Diffbot
 Disallow: /
+
+Sitemap: https://www.petrpavlat-reality.cz/sitemap.xml

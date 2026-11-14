@@ -430,9 +430,24 @@ const readProperties = createServerFn({ method: "GET" }).handler(async (): Promi
   return [...demo, ...egyptDemo];
 });
 
+/** Photo captions like "foto1" or "byt62_01" say nothing to Google or screen readers. */
+const fileLikeAlt = /^[\p{L}_-]*[\d_.-]*\d[\w.-]*$/u;
+function photoAlt(alt: string | undefined, title: string, index: number): string {
+  const text = (alt ?? "").trim();
+  const meaningless =
+    (fileLikeAlt.test(text) && !text.includes(" ")) ||
+    /^(foto|photo|img|obrázek)\s*\d+$/i.test(text);
+  if (text && !meaningless) return text;
+  return `${title} – foto ${index + 1}`;
+}
+
 function publicCopy(property: Property): Property {
   return {
     ...property,
+    images: property.images.map((image, index) => ({
+      ...image,
+      alt: photoAlt(image.alt, formalAddress(property.title), index),
+    })),
     title: formalAddress(property.title),
     perex: formalAddress(property.perex),
     description: property.description.map(formalAddress),

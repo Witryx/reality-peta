@@ -52,6 +52,7 @@ export const propertySchema = z
       lng: z.number().min(-180).max(180).optional(),
     }),
     price: z.number().finite().min(0).max(1e12).nullable(),
+    priceEur: z.number().finite().min(0).max(1e10).optional(),
     priceNote: text(500).optional(),
     advancePayments: text(500).optional(),
     area: z.number().finite().min(0).max(1e8),

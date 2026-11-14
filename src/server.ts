@@ -48,6 +48,10 @@ function isH3SwallowedErrorBody(body: string): boolean {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      if (new URL(request.url).pathname === "/sitemap.xml") {
+        const { renderSitemap } = await import("./server/sitemap.server");
+        return await renderSitemap(request);
+      }
       const apiResponse = await handleApi(request);
       if (apiResponse) return apiResponse;
       const handler = await getServerEntry();

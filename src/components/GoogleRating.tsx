@@ -10,17 +10,15 @@ function Stars({ value }: { value: number }) {
   const share = Math.max(0, Math.min(1, value / 5)) * 100;
   const row = (filled: boolean) =>
     [0, 1, 2, 3, 4].map((i) => (
-      <Star
-        key={i}
-        className={filled ? starFilled : starEmpty}
-        strokeWidth={1.5}
-        aria-hidden
-      />
+      <Star key={i} className={filled ? starFilled : starEmpty} strokeWidth={1.5} aria-hidden />
     ));
   return (
     <span className="rating-stars gap-1" aria-hidden>
       {row(false)}
-      <span className="rating-stars-fill flex gap-1 text-review-star" style={{ width: `${share}%` }}>
+      <span
+        className="rating-stars-fill flex gap-1 text-review-star"
+        style={{ width: `${share}%` }}
+      >
         {row(true)}
       </span>
     </span>
@@ -37,12 +35,15 @@ function RatingNumber({ value, text }: { value: number; text: string }) {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (node.getBoundingClientRect().top < window.innerHeight) return;
     const format = (n: number) => n.toFixed(1).replace(".", ",");
-    setShown(format(0));
+    // Keep the real rating in the page (search engines read it), only fade it out until counted.
+    node.style.opacity = "0";
     let frame = 0;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry?.isIntersecting) return;
         observer.disconnect();
+        setShown(format(0));
+        node.style.opacity = "";
         const start = performance.now();
         const step = (now: number) => {
           const progress = Math.min(1, (now - start) / 1400);
@@ -60,6 +61,7 @@ function RatingNumber({ value, text }: { value: number; text: string }) {
     return () => {
       observer.disconnect();
       cancelAnimationFrame(frame);
+      node.style.opacity = "";
     };
   }, [value]);
   return (
@@ -92,6 +94,12 @@ export function GoogleRating() {
           <p className="mt-2 flex items-center gap-1.5 text-sm font-semibold">
             <BadgeCheck className="size-4 text-accent" aria-hidden />
             <SiteText>{"Hodnocení klientů na Googlu"}</SiteText>
+            {site.googleReviews.count && (
+              <span className="font-normal text-muted-foreground">
+                {" · "}
+                {site.googleReviews.count} <SiteText>{"recenzí"}</SiteText>
+              </span>
+            )}
           </p>
         </div>
       </div>

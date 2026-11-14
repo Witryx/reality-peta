@@ -57,6 +57,8 @@ export interface Property {
   /** Trh: cz = Česko (výchozí), egypt = nemovitosti v Egyptě */
   market?: "cz" | "egypt";
   price: number | null; // null = cena na vyžádání
+  /** Volitelná cena v eurech (hlavně Egypt). Když je vyplněná, web ukáže eura a orientačně Kč. */
+  priceEur?: number;
   priceNote?: string;
   /** Volitelný popis záloh, např. měsíčních služeb a energií u pronájmu. */
   advancePayments?: string;
@@ -96,7 +98,19 @@ export const marketLabel: Record<NonNullable<Property["market"]>, string> = {
   egypt: "Egypt",
 };
 
+/** Rounded Czech amount for "cca …" next to a euro price, e.g. "cca 1,7 mil. Kč". */
+export function approxCzk(price: number) {
+  if (price >= 1_000_000)
+    return `cca ${(Math.round(price / 100_000) / 10).toLocaleString("cs-CZ")} mil. Kč`;
+  return `cca ${Math.round(price / 1000).toLocaleString("cs-CZ")} tis. Kč`;
+}
+
 export function formatPrice(p: Property) {
+  if (p.priceEur) {
+    const eur = new Intl.NumberFormat("cs-CZ").format(p.priceEur) + " €";
+    const value = p.price ? `${eur} (${approxCzk(p.price)})` : eur;
+    return p.offerType === "rent" ? `${value} / měsíc` : value;
+  }
   if (p.price === null) return "Cena na vyžádání";
   const v = new Intl.NumberFormat("cs-CZ").format(p.price) + " Kč";
   return p.offerType === "rent" ? `${v} / měsíc` : v;
