@@ -1964,6 +1964,13 @@
 .egypt-band {
   --klin: var(--sea);
 }
+/* Referral band: white wedge and eyebrow on the deep brand orange. */
+.referral-strip {
+  --klin: var(--color-primary-foreground);
+}
+.referral-strip .eyebrow {
+  color: color-mix(in oklab, var(--color-primary-foreground) 85%, transparent);
+}
 /* Footer: the brandbook line star as a small sunrise on a fading horizon,
    in its own band above the content so it never runs behind text or buttons. */
 .site-footer {
@@ -1995,9 +2002,10 @@
   }
 }
 /* Footer contact QR: a quiet button that reveals the code on hover or click. */
+/* No display here: the Tailwind `hidden md:inline-block` utilities decide, so phones
+   get only the direct "Uložit kontakt do telefonu" button and the QR stays desktop-only. */
 .qr-pop {
   position: relative;
-  display: inline-block;
 }
 .qr-pop-button {
   display: inline-flex;

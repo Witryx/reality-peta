@@ -1548,11 +1548,6 @@
     "groups": ["Společné sekce", "Úvodní stránka", "O mně"]
   },
   {
-    "key": "text_59f62998",
-    "default": "Odhad ceny",
-    "groups": ["Patička"]
-  },
-  {
     "key": "text_9c40b789",
     "default": "Nastavení cookies",
     "groups": ["Patička"]
@@ -1563,9 +1558,9 @@
     "groups": ["Navigace"]
   },
   {
-    "key": "text_5b1badae",
-    "default": "Odhad zdarma",
-    "groups": ["Navigace"]
+    "key": "text_ae2e40db",
+    "default": "Odhad ceny zdarma",
+    "groups": ["Navigace", "Patička"]
   },
   {
     "key": "text_de98c133",
@@ -1677,6 +1672,11 @@
   {
     "key": "text_6ca3fc01",
     "default": "Podíváme se na reakce trhu, prezentaci i způsob oslovení zájemců a podle toho upravíme strategii. Snížení ceny není automaticky první ani jediné řešení. Při vyjednávání hájím vaše zájmy a řeším také termíny, financování a další podmínky celého obchodu.",
+    "groups": ["Časté dotazy"]
+  },
+  {
+    "key": "text_bbe57108",
+    "default": "Vždy jednám o nejlepší možnou cenu. Cena ale není cíl, je to cesta k němu. Někdy dává větší smysl prodat o něco níž, mít peníze v ruce a pořídit si to, co opravdu chcete, než měsíce stát za cenou a vzdalovat se od toho, kvůli čemu prodáváte.",
     "groups": ["Časté dotazy"]
   },
   {
@@ -1835,6 +1835,11 @@
   {
     "key": "text_497e31d3",
     "default": "Připravím analýzu trhu a navrhnu cenu i způsob prodeje, který dává smysl.",
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
+  },
+  {
+    "key": "text_45b1c95c",
+    "default": "Stát za cenou se nemusí vyplatit. Společně zvážíme, co je pro vás výhodnější.",
     "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
@@ -2280,6 +2285,33 @@
   {
     "key": "text_ec6fd4bd",
     "default": "Jak vám pomohu",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_38ba0044",
+    "default": "Doporučte mě",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_4e75b35b",
+    "default": "Znáte někoho, kdo prodává?",
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_2574f680",
+    "default": "Až 100 000 Kč pro vás.",
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_d502a8e0",
+    "default": "Stačí nás propojit. Podmínky si domluvíme předem a odměnu dostanete po úspěšném prodeji.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_af9d4c2",
+    "default": "Doporučit kontakt",
     "groups": ["Úvodní stránka"]
   },
   {

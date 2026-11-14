@@ -60,38 +60,45 @@ const serviceIcons = {
   "pravni-hypoteka": ShieldCheck,
 } as const;
 
-export function ServicesGrid() {
+/** One shared call to action under the grid (only where `cta` is set) instead of one per card. */
+export function ServicesGrid({ cta = false }: { cta?: boolean }) {
   return (
-    <div className="services-grid mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {services.map((s) => {
-        const Icon = serviceIcons[s.slug as keyof typeof serviceIcons];
-        return (
-          <details key={s.slug} className="service-detail p-6 sm:p-8">
-            <summary className="focus-visible:outline-ring">
-              <span className="flex items-start justify-between gap-4">
-                <Icon className="service-icon" strokeWidth={1.35} aria-hidden="true" />
-                <Plus className="service-plus size-5 shrink-0" aria-hidden />
-              </span>
-              <h3 className="mt-6 text-2xl">
-                <SiteText>{s.title}</SiteText>
-              </h3>
-              <p className="service-description mt-3">
-                <SiteText>{s.text}</SiteText>
+    <>
+      <div className="services-grid mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {services.map((s) => {
+          const Icon = serviceIcons[s.slug as keyof typeof serviceIcons];
+          return (
+            <details key={s.slug} className="service-detail p-6 sm:p-8">
+              <summary className="focus-visible:outline-ring">
+                <span className="flex items-start justify-between gap-4">
+                  <Icon className="service-icon" strokeWidth={1.35} aria-hidden="true" />
+                  <Plus className="service-plus size-5 shrink-0" aria-hidden />
+                </span>
+                <h3 className="mt-6 text-2xl">
+                  <SiteText>{s.title}</SiteText>
+                </h3>
+                <p className="service-description mt-3">
+                  <SiteText>{s.text}</SiteText>
+                </p>
+              </summary>
+              <p className="mt-5 border-t pt-5 text-sm leading-relaxed text-muted-foreground">
+                <SiteText>{s.detail}</SiteText>
               </p>
-            </summary>
-            <p className="mt-5 border-t pt-5 text-sm leading-relaxed text-muted-foreground">
-              <SiteText>{s.detail}</SiteText>
-            </p>
-            <Button asChild variant="link" className="mt-3 h-auto p-0">
-              <Link to="/kontakt">
-                <SiteText>{"Probrat možnosti "}</SiteText>
-                <ArrowUpRight className="size-4" />
-              </Link>
-            </Button>
-          </details>
-        );
-      })}
-    </div>
+            </details>
+          );
+        })}
+      </div>
+      {cta && (
+        <div className="mt-10 flex justify-center">
+          <Button asChild variant="outline" className="btn btn-outline h-auto whitespace-normal">
+            <Link to="/kontakt">
+              <SiteText>{"Probrat možnosti "}</SiteText>
+              <ArrowUpRight className="size-4" />
+            </Link>
+          </Button>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -117,6 +124,11 @@ export function ProcessList({ journey = false }: { journey?: boolean }) {
           <p className="mt-2 text-sm text-muted-foreground">
             <SiteText>{s.text}</SiteText>
           </p>
+          {s.note && (
+            <p className="mt-3 border-l-2 border-primary pl-3 text-sm font-medium">
+              <SiteText>{s.note}</SiteText>
+            </p>
+          )}
         </li>
       ))}
     </ol>

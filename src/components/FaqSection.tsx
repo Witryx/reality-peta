@@ -100,6 +100,11 @@ function FaqItems({ items, offset }: { items: typeof frequentlyAskedQuestions; o
           <p className="pb-5 pl-7 text-sm leading-relaxed text-muted-foreground sm:pr-9">
             <SiteText>{item.answer}</SiteText>
           </p>
+          {item.note && (
+            <p className="mb-5 ml-7 rounded-md border-l-2 border-primary bg-surface px-4 py-3 text-sm font-medium leading-relaxed text-foreground sm:mr-9">
+              <SiteText>{item.note}</SiteText>
+            </p>
+          )}
         </details>
       ))}
     </div>

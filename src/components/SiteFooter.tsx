@@ -41,7 +41,7 @@ export function SiteFooter() {
             ))}
             <li>
               <Link to="/odhad-ceny" className="opacity-80 hover:opacity-100">
-                <SiteText>{"Odhad ceny"}</SiteText>
+                <SiteText>{"Odhad ceny zdarma"}</SiteText>
               </Link>
             </li>
           </ul>

@@ -20,6 +20,7 @@ import {
   Testimonials,
   ValuationSection,
 } from "@/components/Sections";
+import { ReferralStrip } from "@/components/ReferralStrip";
 import { LeadForm } from "@/components/LeadForm";
 import { ContactLinks, HeroContactHint } from "@/components/ContactLinks";
 import { EgyptSection } from "@/components/EgyptSection";
@@ -267,6 +268,8 @@ function Home() {
           <Testimonials />
         </div>
       </section>
+
+      <ReferralStrip />
 
       <section className="border-t bg-surface py-20 md:py-28">
         <div className="container-page">

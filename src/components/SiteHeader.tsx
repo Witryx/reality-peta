@@ -43,7 +43,7 @@ export function SiteHeader() {
           ))}
           <Button asChild variant="valuation" className="btn cta-arrive h-auto !py-2.5 !px-5">
             <Link to="/odhad-ceny">
-              <SiteText>{"Odhad zdarma"}</SiteText>
+              <SiteText>{"Odhad ceny zdarma"}</SiteText>
             </Link>
           </Button>
         </nav>

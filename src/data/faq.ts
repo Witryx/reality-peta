@@ -35,6 +35,7 @@ export const frequentlyAskedQuestions = [
     question: "Co když se nemovitost neprodává podle očekávání?",
     answer:
       "Podíváme se na reakce trhu, prezentaci i způsob oslovení zájemců a podle toho upravíme strategii. Snížení ceny není automaticky první ani jediné řešení. Při vyjednávání hájím vaše zájmy a řeším také termíny, financování a další podmínky celého obchodu.",
+    note: "Vždy jednám o nejlepší možnou cenu. Cena ale není cíl, je to cesta k němu. Někdy dává větší smysl prodat o něco níž, mít peníze v ruce a pořídit si to, co opravdu chcete, než měsíce stát za cenou a vzdalovat se od toho, kvůli čemu prodáváte.",
   },
   {
     slug: "servis",

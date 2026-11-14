@@ -31,7 +31,7 @@ function Page() {
           title="Vše kolem vašeho bydlení na jednom místě"
           intro="Ať prodáváte, kupujete, pronajímáte nebo hledáte cestu v náročné životní situaci, nejprve vás vyslechnu. Společně vybereme postup, který dává smysl právě vám."
         />
-        <ServicesGrid />
+        <ServicesGrid cta />
       </section>
       <EgyptSection />
       <section

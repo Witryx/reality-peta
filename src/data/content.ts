@@ -52,6 +52,7 @@ export const processSteps = [
   {
     title: "Cena a strategie",
     text: "Připravím analýzu trhu a navrhnu cenu i způsob prodeje, který dává smysl.",
+    note: "Stát za cenou se nemusí vyplatit. Společně zvážíme, co je pro vás výhodnější.",
   },
   {
     title: "Příprava a prezentace",
