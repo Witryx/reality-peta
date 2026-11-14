@@ -309,9 +309,6 @@ export function AboutTeaser({ full = false }: { full?: boolean }) {
             <Link to="/o-mne" className="btn btn-outline">
               <SiteText>{"Více o mně"}</SiteText>
             </Link>
-            <Link to="/" hash="napiste-mi" className="btn btn-primary">
-              <SiteText>{"Napsat zprávu"}</SiteText>
-            </Link>
           </div>
         )}
       </div>

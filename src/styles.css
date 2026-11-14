@@ -1964,6 +1964,30 @@
 .egypt-band {
   --klin: var(--sea);
 }
+/* Brand frame: a soft STELAR-orange glow around the edges of the window.
+   Purely decorative, never catches clicks, hidden in print. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 0 2px color-mix(in oklab, var(--stelar-orange) 75%, transparent),
+    inset 0 0 22px color-mix(in oklab, var(--stelar-orange) 32%, transparent);
+}
+@media (max-width: 767px) {
+  body::after {
+    box-shadow:
+      inset 0 0 0 1.5px color-mix(in oklab, var(--stelar-orange) 70%, transparent),
+      inset 0 0 14px color-mix(in oklab, var(--stelar-orange) 28%, transparent);
+  }
+}
+@media print {
+  body::after {
+    display: none;
+  }
+}
 /* Referral band: white wedge and eyebrow on the deep brand orange. */
 .referral-strip {
   --klin: var(--color-primary-foreground);
@@ -2813,6 +2837,8 @@
   .process-journey {
     --journey-end: calc(100% - 7rem);
     margin-top: 3rem;
+    /* Room for half of the 46px key, so it is never cut off by the screen edge. */
+    margin-left: 0.5rem;
     padding-left: 2.25rem;
   }
   .journey-rail {

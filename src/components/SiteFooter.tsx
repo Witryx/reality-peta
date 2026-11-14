@@ -6,7 +6,7 @@ import { QrCode } from "lucide-react";
 import { scrollToTop } from "@/lib/scroll-to-top";
 import { nav, site } from "@/config/site";
 import { openConsentSettings } from "@/lib/consent";
-import { ContactLinks, SocialLinks } from "./ContactLinks";
+import { ContactLinks } from "./ContactLinks";
 import { BrandLockup } from "./BrandLockup";
 import { SocialIcons } from "./ContactLinks";
 import { Button } from "./ui/button";
@@ -48,9 +48,6 @@ export function SiteFooter() {
         </nav>
         <div className="[&_li]:border-ink-foreground/15">
           <ContactLinks />
-          <div className="mt-6">
-            <SocialLinks />
-          </div>
           <SaveContact />
         </div>
       </div>

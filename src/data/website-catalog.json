@@ -287,11 +287,6 @@
     "role": "heading"
   },
   {
-    "key": "text_1d649e4f",
-    "default": "Jak to u moře děláme",
-    "groups": ["Úvodní stránka"]
-  },
-  {
     "key": "text_23d87204",
     "default": "Celá nabídka v Egyptě",
     "groups": ["Úvodní stránka"]
@@ -1079,19 +1074,9 @@
     "groups": ["Egypt"]
   },
   {
-    "key": "text_f6010c64",
-    "default": "Chcete vědět o nemovitostech v Egyptě více?",
-    "groups": ["Egypt"]
-  },
-  {
     "key": "text_bf353012",
     "default": "Probrat možnosti",
     "groups": ["Egypt", "Společné sekce", "Úvodní stránka", "Služby"]
-  },
-  {
-    "key": "text_b4b1fd9b",
-    "default": "Jak pracujeme v Egyptě",
-    "groups": ["Egypt"]
   },
   {
     "key": "text_bfb1d53a",
@@ -2160,11 +2145,6 @@
     "key": "text_93b1a88c",
     "default": "možností, jak Vám pomoct",
     "groups": ["Společné sekce"]
-  },
-  {
-    "key": "text_2bef0192",
-    "default": "Napsat zprávu",
-    "groups": ["Společné sekce", "Úvodní stránka", "O mně"]
   },
   {
     "key": "text_bf290785",

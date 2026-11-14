@@ -229,23 +229,14 @@ function Home() {
               eyebrow="Nabídka v Egyptě"
               title="Nemovitosti v Hurghádě přímo u Rudého moře"
             />
-            <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-              <Button asChild variant="link" className="h-auto p-0">
-                <Link to="/egypt">
-                  <SiteText>{"Jak to u moře děláme "}</SiteText>
-                  <ArrowUpRight className="size-4" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" className="btn btn-outline h-auto">
-                <Link to="/egypt">
-                  <SiteText>{"Celá nabídka v Egyptě "}</SiteText>
-                  <ArrowUpRight className="size-4" />
-                </Link>
-              </Button>
-            </div>
+            <Button asChild variant="outline" className="btn btn-outline h-auto self-start md:self-auto">
+              <Link to="/egypt">
+                <SiteText>{"Celá nabídka v Egyptě "}</SiteText>
+                <ArrowUpRight className="size-4" />
+              </Link>
+            </Button>
           </div>
           <PropertyCarousel properties={egypt} />
-          <PropertyContactCta />
         </div>
       </section>
 

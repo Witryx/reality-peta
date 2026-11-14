@@ -129,9 +129,6 @@ export function EgyptSection({
                   <SiteText>{"Hurghadu dobře známe"}</SiteText>
                 </li>
               </ul>
-              <p className="mt-6 leading-relaxed">
-                <SiteText>{"Chcete vědět o nemovitostech v Egyptě více?"}</SiteText>
-              </p>
             </>
           )}
           {detail ? (
@@ -142,16 +139,14 @@ export function EgyptSection({
               </a>
             </Button>
           ) : (
-            <Button asChild className="btn btn-primary mt-7 h-auto whitespace-normal">
-              <Link to="/egypt">
-                {compact ? (
-                  <SiteText>{"Jak pracujeme v Egyptě "}</SiteText>
-                ) : (
+            !compact && (
+              <Button asChild className="btn btn-primary mt-7 h-auto whitespace-normal">
+                <Link to="/egypt">
                   <SiteText>{"Nemovitosti v Egyptě "}</SiteText>
-                )}
-                <ArrowUpRight className="size-4" />
-              </Link>
-            </Button>
+                  <ArrowUpRight className="size-4" />
+                </Link>
+              </Button>
+            )
           )}
           {!compact && <Partners />}
         </div>
