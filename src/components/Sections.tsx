@@ -262,8 +262,11 @@ export function ValuationSection({
   standalone = false,
   withContact = false,
   compact = false,
+  defaultMessage,
 }: {
   standalone?: boolean;
+  /** Pre-filled first line of the message (e.g. valuation for a notary). */
+  defaultMessage?: string;
   /** Homepage: just the pitch and the form, without the price compass. */
   compact?: boolean;
   /** Homepage: one form with two tabs (valuation / other question) and the contacts once. */
@@ -373,7 +376,11 @@ export function ValuationSection({
             </div>
           )}
           {tab === "valuation" || !withContact ? (
-            <LeadForm kind="valuation" submitLabel="Získat odhad nemovitosti zdarma" />
+            <LeadForm
+              kind="valuation"
+              submitLabel="Získat odhad nemovitosti zdarma"
+              defaultMessage={defaultMessage}
+            />
           ) : (
             <LeadForm kind="contact" submitLabel="Odeslat zprávu" />
           )}

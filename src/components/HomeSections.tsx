@@ -13,7 +13,15 @@ export function HeroFacts() {
     <ul className="hero-facts">
       <li>
         <strong>
-          {googleReviews.rating} <Star className="hero-facts-star" aria-hidden />
+          <img
+            src="/brand/google-g.png"
+            alt="Google"
+            width={18}
+            height={18}
+            className="hero-facts-g"
+          />
+          {googleReviews.rating}
+          <Star className="hero-facts-star" aria-hidden />
         </strong>
         <span>
           <SiteText>{"hodnocení na Googlu"}</SiteText>
@@ -146,7 +154,7 @@ export function PriceInsight() {
             <SiteText>{"Cena a strategie"}</SiteText>
           </p>
           <h2 className="mt-4 text-4xl leading-tight md:text-5xl">
-            <SiteText>{"Nižší cena neznamená, že prodáte za míň."}</SiteText>
+            <SiteText>{"Nižší, správně stanovená cena neznamená, že prodáte za míň."}</SiteText>
           </h2>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
             <SiteText>

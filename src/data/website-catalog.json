@@ -262,7 +262,7 @@
   {
     "key": "text_42ec9773",
     "default": "Kontakt",
-    "groups": ["Kontakt – vyhledávače", "Kontakt", "Identita"]
+    "groups": ["Kontakt – vyhledávače", "Kontakt", "Patička", "Identita"]
   },
   {
     "key": "text_292cb62e",
@@ -1207,8 +1207,8 @@
     "role": "heading"
   },
   {
-    "key": "text_c93e6907",
-    "default": "Nižší cena neznamená, že prodáte za míň.",
+    "key": "text_e30bb8ed",
+    "default": "Nižší, správně stanovená cena neznamená, že prodáte za míň.",
     "groups": ["Úvodní stránka"],
     "role": "heading"
   },
@@ -1849,6 +1849,16 @@
     "groups": ["Společné sekce", "Úvodní stránka", "O mně"]
   },
   {
+    "key": "text_c6075a",
+    "default": "Menu",
+    "groups": ["Patička"]
+  },
+  {
+    "key": "text_64086fd4",
+    "default": "Uložit kontakt",
+    "groups": ["Patička"]
+  },
+  {
     "key": "text_ac54b0d8",
     "default": "· IČO",
     "groups": ["Patička"]
@@ -1889,6 +1899,31 @@
     "groups": ["Úvodní stránka"]
   },
   {
+    "key": "text_13f5c122",
+    "default": "Pro notáře",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_4ca3a129",
+    "default": "dědictví, darování, vypořádání",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_75c0029f",
+    "default": "Pro své účely",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_c4b68a5a",
+    "default": "prodej, rozvod, rozhodování",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_e329d170",
+    "default": "Jde o tržní odhad makléře, ne o znalecký posudek.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
     "key": "text_efb77ad",
     "default": "Co právě řešíte?",
     "groups": ["Úvodní stránka"]
@@ -1901,6 +1936,11 @@
   {
     "key": "text_ec6fd4bd",
     "default": "Jak vám pomohu",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_d8918997",
+    "default": "odhad",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -2095,6 +2135,22 @@
   {
     "key": "text_deb843f8",
     "default": "Společně stanovíme cenu, časový plán a způsob prezentace. Postarám se o zájemce, vyjednávání a koordinaci smluv i předání.",
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
+  },
+  {
+    "key": "text_3c7ac6a5",
+    "default": "Odhad ceny nemovitosti",
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
+  },
+  {
+    "key": "text_113ba0f4",
+    "default": "Za kolik byste nemovitost opravdu prodali?",
+    "groups": ["Služby a reference", "Úvodní stránka", "Služby"],
+    "role": "heading"
+  },
+  {
+    "key": "text_bdc5432f",
+    "default": "Tržní odhad podle skutečných prodejů v okolí. Vyberte, k čemu ho potřebujete.",
     "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
@@ -2386,22 +2442,6 @@
   {
     "key": "text_29ba8cad",
     "default": "Čím dřív se ozvete, tím víc možností obvykle zbývá.",
-    "groups": ["Služby a reference", "Úvodní stránka"]
-  },
-  {
-    "key": "text_59f62998",
-    "default": "Odhad ceny",
-    "groups": ["Služby a reference", "Úvodní stránka"]
-  },
-  {
-    "key": "text_113ba0f4",
-    "default": "Za kolik byste nemovitost opravdu prodali?",
-    "groups": ["Služby a reference", "Úvodní stránka"],
-    "role": "heading"
-  },
-  {
-    "key": "text_b94e94d",
-    "default": "Odhad pro notáře, dědictví, rozvod nebo jen pro Vaši potřebu. Podle skutečných prodejů v okolí.",
     "groups": ["Služby a reference", "Úvodní stránka"]
   },
   {

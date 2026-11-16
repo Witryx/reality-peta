@@ -19,46 +19,59 @@ export function SiteFooter() {
 
   return (
     <footer className="site-footer bg-ink text-ink-foreground">
-      <div className="container-page grid gap-12 py-16 md:grid-cols-3">
-        <div>
+      {/* Four aligned columns on desktop (brand · menu · contact · save contact); on phones
+          brand first, then menu and contact side by side, then the save button. */}
+      <div className="footer-grid container-page">
+        <div className="footer-brand">
           <Link to="/" aria-label="Petr Pavlát reality – úvod" onClick={() => scrollToTop(router)}>
             <BrandLockup light />
           </Link>
-          <p className="mt-6 max-w-xs text-sm leading-relaxed opacity-60">
+          <p className="mt-4 max-w-xs text-sm leading-relaxed opacity-60">
             <SiteText>{site.footerRegion}</SiteText>
           </p>
-          <div className="mt-6">
+          <div className="mt-4">
             <SocialIcons />
           </div>
         </div>
-        <nav aria-label="Odkazy v patičce">
-          <ul className="space-y-2">
+        <nav aria-label="Odkazy v patičce" className="footer-col">
+          <p className="footer-title">
+            <SiteText>{"Menu"}</SiteText>
+          </p>
+          <ul className="footer-links">
             {nav.map((n) => (
               <li key={n.to}>
-                <Link to={n.to} className="opacity-80 hover:opacity-100">
+                <Link to={n.to}>
                   <SiteText>{n.label}</SiteText>
                 </Link>
               </li>
             ))}
             <li>
-              <Link to="/odhad-ceny" className="opacity-80 hover:opacity-100">
+              <Link to="/odhad-ceny">
                 <SiteText>{"Odhad ceny zdarma"}</SiteText>
               </Link>
             </li>
           </ul>
         </nav>
-        <div className="[&_li]:border-ink-foreground/15">
+        <div className="footer-col footer-contact">
+          <p className="footer-title">
+            <SiteText>{"Kontakt"}</SiteText>
+          </p>
           <ContactLinks />
+        </div>
+        <div className="footer-col footer-save">
+          <p className="footer-title">
+            <SiteText>{"Uložit kontakt"}</SiteText>
+          </p>
           <SaveContact />
         </div>
       </div>
-      <div className="container-page pb-12">
-        <div className="border-t border-ink-foreground/15 pt-8">
+      <div className="container-page pb-10">
+        <div className="footer-partners border-t border-ink-foreground/15 pt-8">
           <CollaborationStrip />
         </div>
       </div>
       <div className="border-t border-ink-foreground/15">
-        <div className="container-page flex flex-col gap-3 py-6 text-xs opacity-70 md:flex-row md:justify-between">
+        <div className="footer-legal container-page">
           <div>
             <p>
               © {company.since}–{new Date().getFullYear()} <SiteText>{site.name}</SiteText>
@@ -74,7 +87,7 @@ export function SiteFooter() {
               </SiteText>
             </p>
           </div>
-          <ul className="flex flex-wrap gap-5">
+          <ul className="footer-legal-links">
             <li>
               <Link to="/ochrana-osobnich-udaju" className="hover:underline">
                 <SiteText>{"Zásady ochrany osobních údajů"}</SiteText>
@@ -105,7 +118,7 @@ export function SiteFooter() {
 function SaveContact() {
   const [open, setOpen] = useState(false);
   return (
-    <div className="mt-8">
+    <div>
       <a
         href="/kontakt.vcf"
         download="Petr-Pavlat-reality.vcf"

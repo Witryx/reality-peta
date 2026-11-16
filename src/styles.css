@@ -4080,3 +4080,149 @@
     font-size: 0.85rem;
   }
 }
+
+/* Footer: tidy aligned columns with small titles, same spacing everywhere. */
+.footer-grid {
+  display: grid;
+  gap: 2.25rem 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "brand brand"
+    "menu contact"
+    "save save";
+  padding-block: 2.5rem 2.25rem;
+}
+.footer-brand {
+  grid-area: brand;
+}
+.footer-grid > nav {
+  grid-area: menu;
+}
+.footer-contact {
+  grid-area: contact;
+  min-width: 0;
+}
+.footer-save {
+  grid-area: save;
+}
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1.3fr 0.8fr 1.1fr 0.9fr;
+    grid-template-areas: "brand menu contact save";
+    gap: 2.5rem;
+    padding-block: 3.5rem 3rem;
+  }
+}
+.footer-title {
+  margin-bottom: 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+.footer-links {
+  display: grid;
+  gap: 0.55rem;
+  font-size: 0.92rem;
+}
+.footer-links a {
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+.footer-contact ul li {
+  border-color: color-mix(in oklab, var(--ink-foreground) 15%, transparent);
+  padding-block: 0.45rem;
+  font-size: 0.92rem;
+  overflow-wrap: anywhere;
+}
+.footer-contact ul li:first-child {
+  padding-top: 0;
+}
+.footer-legal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding-block: 1.5rem;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  opacity: 0.7;
+}
+@media (min-width: 768px) {
+  .footer-legal {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+}
+.footer-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+}
+/* Valuation purpose choice in "Co právě řešíte". */
+.valuation-purpose {
+  display: grid;
+  gap: 0.6rem;
+}
+@media (min-width: 640px) {
+  .valuation-purpose {
+    grid-template-columns: 1fr 1fr;
+    max-width: 34rem;
+  }
+}
+.valuation-purpose-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  padding: 0.8rem 1rem;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+}
+.valuation-purpose-option:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+.valuation-purpose-option svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  flex: none;
+  color: var(--accent);
+}
+.valuation-purpose-option span {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+}
+.valuation-purpose-option strong {
+  font-size: 0.95rem;
+  color: var(--foreground);
+}
+/* Hero facts: Google G before the rating, all three fit side by side on phones. */
+.hero-facts-g {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.15rem;
+}
+.home-page .hero-facts strong {
+  font-size: clamp(0.92rem, 0.75rem + 0.9vw, 1.2rem);
+  white-space: nowrap;
+}
+.home-page .hero-facts li {
+  padding-inline: clamp(0.5rem, 0.3rem + 1vw, 0.9rem);
+}
+.home-page .hero-facts li:first-child {
+  padding-left: 0;
+}
+.home-page .hero-facts li > span {
+  font-size: clamp(0.66rem, 0.6rem + 0.25vw, 0.75rem);
+}

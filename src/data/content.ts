@@ -8,6 +8,12 @@ export const services = [
       "Společně stanovíme cenu, časový plán a způsob prezentace. Postarám se o zájemce, vyjednávání a koordinaci smluv i předání.",
   },
   {
+    slug: "odhad",
+    label: "Odhad ceny nemovitosti",
+    title: "Za kolik byste nemovitost opravdu prodali?",
+    text: "Tržní odhad podle skutečných prodejů v okolí. Vyberte, k čemu ho potřebujete.",
+  },
+  {
     slug: "koupe",
     title: "Koupě",
     text: "Domov, který vám bude sedět. Pomohu s výběrem, prověřením i vyjednáváním.",
@@ -133,12 +139,6 @@ export const situations = [
     label: "Exekuce nebo dluhy",
     title: "Diskrétně a bez hodnocení.",
     text: "Čím dřív se ozvete, tím víc možností obvykle zbývá.",
-  },
-  {
-    slug: "odhad",
-    label: "Odhad ceny",
-    title: "Za kolik byste nemovitost opravdu prodali?",
-    text: "Odhad pro notáře, dědictví, rozvod nebo jen pro Vaši potřebu. Podle skutečných prodejů v okolí.",
   },
   {
     slug: "egypt",

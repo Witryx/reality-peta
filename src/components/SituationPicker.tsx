@@ -55,6 +55,37 @@ function NextStep({ slug }: { slug: Situation["slug"] }) {
   );
 }
 
+/** Valuation: two clear choices, each opens the form with the purpose already filled in. */
+function ValuationPurpose() {
+  return (
+    <div className="mt-5">
+      <div className="valuation-purpose">
+        <Link to="/odhad-ceny" search={{ ucel: "notar" }} className="valuation-purpose-option">
+          <ScrollText aria-hidden />
+          <span>
+            <strong>
+              <SiteText>{"Pro notáře"}</SiteText>
+            </strong>
+            <SiteText>{"dědictví, darování, vypořádání"}</SiteText>
+          </span>
+        </Link>
+        <Link to="/odhad-ceny" search={{ ucel: "vlastni" }} className="valuation-purpose-option">
+          <Calculator aria-hidden />
+          <span>
+            <strong>
+              <SiteText>{"Pro své účely"}</SiteText>
+            </strong>
+            <SiteText>{"prodej, rozvod, rozhodování"}</SiteText>
+          </span>
+        </Link>
+      </div>
+      <p className="mt-3 text-xs text-muted-foreground">
+        <SiteText>{"Jde o tržní odhad makléře, ne o znalecký posudek."}</SiteText>
+      </p>
+    </div>
+  );
+}
+
 /** Signpost: the visitor picks what they are dealing with and sees how Petr helps. */
 export function SituationPicker() {
   const [current, setCurrent] = useState<Situation>(situations[0]);
@@ -94,15 +125,19 @@ export function SituationPicker() {
           <p className="mt-3 max-w-xl leading-relaxed text-muted-foreground">
             <SiteText>{current.text}</SiteText>
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <Button asChild variant="valuation" className="btn h-auto whitespace-normal">
-              <Link to="/kontakt">
-                <SiteText>{"Probrat moji situaci "}</SiteText>
-                <ArrowUpRight aria-hidden />
-              </Link>
-            </Button>
-            <NextStep slug={current.slug} />
-          </div>
+          {current.slug === "odhad" ? (
+            <ValuationPurpose />
+          ) : (
+            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <Button asChild variant="valuation" className="btn h-auto whitespace-normal">
+                <Link to="/kontakt">
+                  <SiteText>{"Probrat moji situaci "}</SiteText>
+                  <ArrowUpRight aria-hidden />
+                </Link>
+              </Button>
+              <NextStep slug={current.slug} />
+            </div>
+          )}
         </div>
       </div>
     </div>
