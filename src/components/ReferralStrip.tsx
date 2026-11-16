@@ -23,7 +23,9 @@ export function ReferralStrip() {
               id="referral-heading"
               className="mt-4 text-3xl leading-tight sm:text-4xl md:text-5xl"
             >
-              <SiteText>{"Znáte někoho, kdo prodává?"}</SiteText>
+              <SiteText>
+                {"Víte o někom, kdo prodává, nebo by se mu hodila pomoc s prodejem?"}
+              </SiteText>
             </h2>
             <p className="referral-amount">
               <span>

@@ -148,8 +148,6 @@ function Home() {
         </div>
       </section>
 
-      <PriceInsight />
-
       <section className="situation-section border-t py-16 md:py-24" data-reveal="line">
         <div className="container-page max-w-4xl">
           <SituationPicker />
@@ -168,6 +166,8 @@ function Home() {
       <ReferralStrip />
 
       <ValuationSection compact />
+
+      <PriceInsight />
     </div>
   );
 }

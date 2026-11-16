@@ -1695,8 +1695,8 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_4e75b35b",
-    "default": "Znáte někoho, kdo prodává?",
+    "key": "text_99df700b",
+    "default": "Víte o někom, kdo prodává, nebo by se mu hodila pomoc s prodejem?",
     "groups": ["Úvodní stránka"],
     "role": "heading"
   },
