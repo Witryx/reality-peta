@@ -57,7 +57,7 @@ function Home() {
   const portraitHidden = useWebsiteImageHidden("image.portrait");
   const photoHidden = homeHidden && portraitHidden;
   return (
-    <>
+    <div className="home-page">
       <section className="home-hero relative">
         <div
           className={`container-page grid gap-8 pt-8 pb-10 md:pt-12 ${photoHidden ? "" : "lg:grid-cols-[1.1fr_1fr]"} lg:items-stretch lg:gap-12 lg:pb-14`}
@@ -156,8 +156,6 @@ function Home() {
         </div>
       </section>
 
-      <EgyptTeaser properties={egypt} />
-
       <section className="py-16 md:py-24">
         <div className="container-page">
           <SectionHead eyebrow="Reference" title="Co na spolupráci říkají klienti" />
@@ -165,9 +163,11 @@ function Home() {
         </div>
       </section>
 
+      <EgyptTeaser properties={egypt} />
+
       <ReferralStrip />
 
       <ValuationSection compact />
-    </>
+    </div>
   );
 }
