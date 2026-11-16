@@ -3616,17 +3616,34 @@
   fill: currentColor;
   color: var(--color-review-star, #e8a317);
 }
+/* Listings on the homepage: one row that moves on by itself (Czech offer and Egypt alike). */
 .compact-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
   gap: 0.875rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 0.25rem;
+}
+.compact-grid::-webkit-scrollbar {
+  display: none;
+}
+.compact-grid > .compact-card {
+  flex: 0 0 46%;
+  scroll-snap-align: start;
+}
+@media (min-width: 768px) {
+  .compact-grid > .compact-card {
+    flex-basis: calc((100% - 2 * 0.875rem) / 3);
+  }
 }
 @media (min-width: 1024px) {
-  .compact-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .compact-grid > .compact-card {
+    flex-basis: calc((100% - 3 * 0.875rem) / 4);
   }
-  .compact-grid.compact-grid-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .compact-grid.compact-grid-2 > .compact-card {
+    flex-basis: calc((100% - 0.875rem) / 2);
   }
 }
 .compact-card {
@@ -3692,9 +3709,20 @@
   color: var(--muted-foreground);
 }
 .presentation-note {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
   margin-top: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--secondary);
+  padding: 0.6rem 1rem;
   font-size: 0.9rem;
   color: var(--muted-foreground);
+}
+.presentation-note a {
+  border-bottom: 2px solid var(--accent);
 }
 .presentation-note a {
   display: inline-flex;
@@ -3709,6 +3737,38 @@
 }
 .price-insight {
   background: var(--secondary);
+}
+/* Price section: only a short teaser at first; the comparison sharpens after a click. */
+.price-reveal {
+  margin-top: 1.5rem;
+  border: 0;
+  border-bottom: 2px solid var(--accent);
+  background: none;
+  padding: 0 0 2px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.price-reveal::after {
+  content: " ↓";
+}
+.price-insight.is-open .price-reveal::after {
+  content: " ↑";
+}
+.price-duel-wrap {
+  opacity: 0.3;
+  filter: blur(3px);
+  transition:
+    opacity 0.5s,
+    filter 0.5s;
+}
+.price-insight.is-open .price-duel-wrap {
+  opacity: 1;
+  filter: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .price-duel-wrap {
+    transition: none;
+  }
 }
 .price-duel {
   display: grid;
@@ -3786,6 +3846,14 @@
 .referral-strip .referral-amount strong {
   color: #f0a46a;
   font-weight: 400;
+  /* Fits one line on the narrowest phones without touching the card edge. */
+  font-size: clamp(2.25rem, 10vw, 4.75rem);
+  max-width: 100%;
+}
+@media (max-width: 479px) {
+  .referral-strip .referral-card {
+    padding: 1.5rem 1.25rem;
+  }
 }
 .referral-strip .referral-card > div > p:last-child {
   color: #bdbdbd;

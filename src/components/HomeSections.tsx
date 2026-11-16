@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Star } from "lucide-react";
 import { photoAt, photoSrcSet } from "@/lib/photo-src";
@@ -24,7 +25,7 @@ export function HeroFacts() {
       </li>
       <li>
         <strong>
-          <SiteText>{"Právník a hypotéky"}</SiteText>
+          <SiteText>{"Právník a finanční specialista"}</SiteText>
         </strong>
         <SiteText>{"v týmu"}</SiteText>
       </li>
@@ -70,18 +71,44 @@ function CompactCard({ p }: { p: Property }) {
   );
 }
 
+/**
+ * One row of small listing cards that moves on by one card every 3 seconds.
+ * Stops while the visitor touches, hovers or tabs into it; respects reduced motion.
+ */
 export function CompactPropertyGrid({
   properties,
-  limit = 4,
+  limit = 8,
   className = "",
 }: {
   properties: Property[];
   limit?: number;
   className?: string;
 }) {
+  const rail = useRef<HTMLDivElement>(null);
+  const pausedUntil = useRef(0);
+  useEffect(() => {
+    const node = rail.current;
+    if (!node) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const hold = () => (pausedUntil.current = Date.now() + 6000);
+    const events = ["pointerdown", "pointerenter", "wheel", "focusin", "touchstart"] as const;
+    events.forEach((e) => node.addEventListener(e, hold, { passive: true }));
+    const timer = window.setInterval(() => {
+      if (Date.now() < pausedUntil.current || document.hidden) return;
+      if (node.scrollWidth <= node.clientWidth + 2) return;
+      const card = node.firstElementChild as HTMLElement | null;
+      const step = (card?.offsetWidth ?? 200) + 14;
+      const atEnd = node.scrollLeft + node.clientWidth >= node.scrollWidth - 4;
+      node.scrollTo({ left: atEnd ? 0 : node.scrollLeft + step, behavior: "smooth" });
+    }, 3000);
+    return () => {
+      window.clearInterval(timer);
+      events.forEach((e) => node.removeEventListener(e, hold));
+    };
+  }, []);
   if (!properties.length) return null;
   return (
-    <div className={`compact-grid ${className}`}>
+    <div ref={rail} className={`compact-grid ${className}`}>
       {properties.slice(0, limit).map((p) => (
         <CompactCard key={p.slug} p={p} />
       ))}
@@ -93,9 +120,9 @@ export function CompactPropertyGrid({
 export function PresentationNote() {
   return (
     <p className="presentation-note">
-      <SiteText>{"Líbí se Vám, jak nemovitosti prezentuji?"}</SiteText>{" "}
+      <SiteText>{"Líbí se Vám tato prezentace?"}</SiteText>{" "}
       <Link to="/odhad-ceny">
-        <SiteText>{"Prodám tak i tu Vaši "}</SiteText>
+        <SiteText>{"Takhle prodám i tu Vaši "}</SiteText>
         <ArrowUpRight aria-hidden />
       </Link>
     </p>
@@ -104,8 +131,9 @@ export function PresentationNote() {
 
 /** Curiosity section: a sensible asking price is not the same as selling for less. */
 export function PriceInsight() {
+  const [open, setOpen] = useState(false);
   return (
-    <section className="price-insight py-16 md:py-24" data-reveal="fade">
+    <section className={`price-insight py-16 md:py-24 ${open ? "is-open" : ""}`} data-reveal="fade">
       <div className="container-page grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div>
           <p className="eyebrow">
@@ -117,22 +145,33 @@ export function PriceInsight() {
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
             <SiteText>
               {
-                "Rozumně nastavená cena přivede víc zájemců najednou. Když se o nemovitost zajímá víc lidí, vyjednává se z pozice síly – a výsledná cena se může dostat i nad tu nabídkovou."
+                "Zní to jako paradox. Ve skutečnosti je to nejčastější důvod, proč se nemovitost prodá dráž."
               }
             </SiteText>
           </p>
-          <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            <SiteText>
-              {
-                "A i když ne, peníze máte dřív a můžete koupit to, co dává smysl. Měsíce čekání na vysněnou cenu Vás od cíle spíš vzdalují."
-              }
-            </SiteText>
-          </p>
-          <Link to="/odhad-ceny" className="text-link mt-7 inline-flex">
-            <SiteText>{"Spočítám, co se Vám vyplatí víc"}</SiteText>
-          </Link>
+          <div className="price-more" id="price-more" hidden={!open}>
+            <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted-foreground">
+              <SiteText>
+                {
+                  "Rozumná cena přivede víc zájemců najednou – a kde je víc lidí, vyjednává se z pozice síly. A i když ne, peníze máte dřív a můžete koupit to, co dává smysl."
+                }
+              </SiteText>
+            </p>
+            <Link to="/odhad-ceny" className="text-link mt-6 inline-flex">
+              <SiteText>{"Spočítám, co se Vám vyplatí víc"}</SiteText>
+            </Link>
+          </div>
+          <button
+            type="button"
+            className="price-reveal"
+            aria-expanded={open}
+            aria-controls="price-more price-duel"
+            onClick={() => setOpen((value) => !value)}
+          >
+            {open ? <SiteText>{"Skrýt"}</SiteText> : <SiteText>{"Jak je to možné?"}</SiteText>}
+          </button>
         </div>
-        <div>
+        <div id="price-duel" className="price-duel-wrap" aria-hidden={!open}>
           <div className="price-duel">
             <div className="price-lane">
               <p className="price-lane-label">
@@ -203,7 +242,7 @@ export function EgyptTeaser({ properties }: { properties: Property[] }) {
                 <SiteText>{"od 1,15 mil."}</SiteText>
               </dt>
               <dd>
-                <SiteText>{"Kč za krásný byt"}</SiteText>
+                <SiteText>{"Kč za byt"}</SiteText>
               </dd>
             </div>
             <div>
@@ -211,7 +250,7 @@ export function EgyptTeaser({ properties }: { properties: Property[] }) {
                 <SiteText>{"4,5 h"}</SiteText>
               </dt>
               <dd>
-                <SiteText>{"přímý let z Prahy"}</SiteText>
+                <SiteText>{"letu z Prahy"}</SiteText>
               </dd>
             </div>
             <div>
@@ -219,18 +258,15 @@ export function EgyptTeaser({ properties }: { properties: Property[] }) {
                 <SiteText>{"česky"}</SiteText>
               </dt>
               <dd>
-                <SiteText>{"celý proces i právník"}</SiteText>
+                <SiteText>{"celý proces"}</SiteText>
               </dd>
             </div>
           </dl>
-          <p className="max-w-md leading-relaxed text-muted-foreground">
-            <SiteText>{"Ověření právního stavu na místě, v češtině i arabštině."}</SiteText>
-          </p>
-          <Link to="/egypt" className="text-link mt-7 inline-flex">
+          <Link to="/egypt" className="text-link inline-flex">
             <SiteText>{"Prohlédnout byty u moře"}</SiteText>
           </Link>
         </div>
-        <CompactPropertyGrid properties={active} limit={2} className="compact-grid-2" />
+        <CompactPropertyGrid properties={active} className="compact-grid-2" />
       </div>
     </section>
   );

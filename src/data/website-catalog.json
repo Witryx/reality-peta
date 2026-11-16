@@ -234,102 +234,8 @@
     "role": "heading"
   },
   {
-    "key": "text_67fe8e9a",
-    "default": "Nejsem jen pražský makléř. Pomáhám po celém Česku – a na mapě vidíte, kde všude už.",
-    "groups": ["Úvodní stránka"]
-  },
-  {
     "key": "text_ec6d2622",
     "default": "Celá nabídka",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_1944d63a",
-    "default": "Jeden makléř",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_f8abcaff",
-    "default": "od první schůzky po předání klíčů",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_ec70f2b5",
-    "default": "Reálná cena",
-    "groups": ["Úvodní stránka", "Společné sekce", "Odhad ceny"]
-  },
-  {
-    "key": "text_350f49f3",
-    "default": "podle skutečných prodejů v okolí",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_1b7f41a4",
-    "default": "Právník a hypoteční specialista",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_75ea1cf4",
-    "default": "když je potřebujete",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_b168bdb8",
-    "default": "Služby",
-    "groups": ["Úvodní stránka", "Identita"]
-  },
-  {
-    "key": "text_c6c069f3",
-    "default": "S čím Vám pomohu",
-    "groups": ["Úvodní stránka"],
-    "role": "heading"
-  },
-  {
-    "key": "text_23d87204",
-    "default": "Celá nabídka v Egyptě",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_12be45d5",
-    "default": "JAK PROBÍHÁ SPOLUPRÁCE?",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_1df6b932",
-    "default": "Prodej v pěti klidných krocích",
-    "groups": ["Úvodní stránka"],
-    "role": "heading"
-  },
-  {
-    "key": "text_c32d36f0",
-    "default": "Od první schůzky až po předání klíčů. V každém kroku víte, kde jsme a co přijde dál.",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_ba8ae35",
-    "default": "Reality šité na",
-    "groups": ["Úvodní stránka"],
-    "role": "heading"
-  },
-  {
-    "key": "text_7dcdd54f",
-    "default": "míru vaší situace.",
-    "groups": ["Úvodní stránka"],
-    "role": "heading"
-  },
-  {
-    "key": "text_a192d499",
-    "default": "Každá nemovitost má svůj příběh.",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_f0fa3fca",
-    "default": "A každý člověk svou situaci.",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_bf290785",
-    "default": "Bez hodnocení a bez nátlaku. U vyjednávání vždy hájím vaše zájmy.",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -539,12 +445,12 @@
   {
     "key": "text_e0633d1f",
     "default": "sold",
-    "groups": ["Detail nemovitosti", "Nabídka"]
+    "groups": ["Detail nemovitosti", "Úvodní stránka", "Nabídka"]
   },
   {
     "key": "text_7c2e0074",
     "default": "Prodáno",
-    "groups": ["Detail nemovitosti", "Nabídka"]
+    "groups": ["Detail nemovitosti", "Úvodní stránka", "Nabídka"]
   },
   {
     "key": "text_85376d9f",
@@ -604,6 +510,11 @@
   {
     "key": "text_6a12e45d",
     "default": "Každou nemovitost osobně znám a rád vám o ní řeknu víc.",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_67fe8e9a",
+    "default": "Nejsem jen pražský makléř. Pomáhám po celém Česku – a na mapě vidíte, kde všude už.",
     "groups": ["Nabídka"]
   },
   {
@@ -1113,7 +1024,7 @@
   {
     "key": "text_b773a070",
     "default": "Nemovitosti v Egyptě",
-    "groups": ["Egypt"],
+    "groups": ["Egypt", "Úvodní stránka"],
     "role": "heading"
   },
   {
@@ -1248,6 +1159,169 @@
     "key": "text_8d349e8c",
     "default": "Odkaz na Google profil doplníme",
     "groups": ["Reference"]
+  },
+  {
+    "key": "text_83c25f5f",
+    "default": "na Googlu",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_1944d63a",
+    "default": "Jeden makléř",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_a921a992",
+    "default": "od schůzky po klíče",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_a06bfe03",
+    "default": "Právník a finanční specialista",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_d2a58d16",
+    "default": "v týmu",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_e956e9bb",
+    "default": "Líbí se Vám tato prezentace?",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_92d7d50c",
+    "default": "Takhle prodám i tu Vaši",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_82b5ef37",
+    "default": "Cena a strategie",
+    "groups": ["Úvodní stránka", "Služby a reference", "Služby"],
+    "role": "heading"
+  },
+  {
+    "key": "text_c93e6907",
+    "default": "Nižší cena neznamená, že prodáte za míň.",
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_a71fb4b8",
+    "default": "Zní to jako paradox. Ve skutečnosti je to nejčastější důvod, proč se nemovitost prodá dráž.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_ce382808",
+    "default": "Rozumná cena přivede víc zájemců najednou – a kde je víc lidí, vyjednává se z pozice síly. A i když ne, peníze máte dřív a můžete koupit to, co dává smysl.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_56dfcf4c",
+    "default": "Spočítám, co se Vám vyplatí víc",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_1e71ff52",
+    "default": "Skrýt",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_247dd969",
+    "default": "Jak je to možné?",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_1150a72f",
+    "default": "Přestřelená cena",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_440fb078",
+    "default": "Málo prohlídek",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_4968f20b",
+    "default": "Měsíce na trhu",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_727af495",
+    "default": "Nabídka „okouká“",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_605d71e2",
+    "default": "Sleva pod reálnou cenu",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_ec70f2b5",
+    "default": "Reálná cena",
+    "groups": ["Úvodní stránka", "Společné sekce", "Odhad ceny"]
+  },
+  {
+    "key": "text_c8eb02be",
+    "default": "Víc zájemců naráz",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_56ea0c96",
+    "default": "Konkurence mezi nimi",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_99672c99",
+    "default": "Silnější vyjednávání",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_d67a2f5",
+    "default": "Prodej za férovou cenu",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_cb1ebc14",
+    "default": "Ilustrativní srovnání. Výsledek vždy záleží na lokalitě, stavu nemovitosti a trhu.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_c4664940",
+    "default": "Kolik stojí byt u Rudého moře?",
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_f194be27",
+    "default": "od 1,15 mil.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_99ab95c9",
+    "default": "Kč za byt",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_9cb09535",
+    "default": "letu z Prahy",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_ec2fd744",
+    "default": "česky",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_a1e438ba",
+    "default": "celý proces",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_442e2b66",
+    "default": "Prohlédnout byty u moře",
+    "groups": ["Úvodní stránka"]
   },
   {
     "key": "text_356d6d26",
@@ -1591,8 +1665,8 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_d502a8e0",
-    "default": "Stačí nás propojit. Podmínky si domluvíme předem a odměnu dostanete po úspěšném prodeji.",
+    "key": "text_92ee19b2",
+    "default": "Stačí nás propojit. Odměnu dostanete po úspěšném prodeji.",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -1608,7 +1682,7 @@
   {
     "key": "text_9b2538b1",
     "default": "case",
-    "groups": ["Společné sekce", "Úvodní stránka", "Reference", "Služby a reference"]
+    "groups": ["Společné sekce", "Úvodní stránka", "Reference"]
   },
   {
     "key": "text_ff94e48b",
@@ -2069,12 +2143,6 @@
     "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
-    "key": "text_82b5ef37",
-    "default": "Cena a strategie",
-    "groups": ["Služby a reference", "Úvodní stránka", "Služby"],
-    "role": "heading"
-  },
-  {
     "key": "text_497e31d3",
     "default": "Připravím analýzu trhu a navrhnu cenu i způsob prodeje, který dává smysl.",
     "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
@@ -2118,24 +2186,49 @@
     "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
+    "key": "text_fddef165",
+    "default": "Dan K.",
+    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
+  },
+  {
+    "key": "text_4f3792ad",
+    "default": "Koupě bytu pro rodinu",
+    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
+  },
+  {
+    "key": "text_b3943ae6",
+    "default": "Pan Pavlát jedná rychle, dovedl značně stlačit prodejní cenu, a tak jsme díky němu nakonec koupili byt v lepší lokalitě, než jsme původně zamýšleli.",
+    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
+  },
+  {
+    "key": "text_80c4ef80",
+    "default": "Vera A.",
+    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
+  },
+  {
+    "key": "text_7c2b98c9",
+    "default": "Koupě nemovitosti v zahraničí",
+    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
+  },
+  {
+    "key": "text_2123c41e",
+    "default": "Během pár dnů našel naši vysněnou nemovitost v zahraničí a zajistil veškerý právní předpis. Děkujeme za profesionální přístup.",
+    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
+  },
+  {
     "key": "text_3f76a8c3",
     "default": "Qido K.",
     "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
   },
   {
-    "key": "text_ea663bdb",
-    "default": "Prodej bytu",
-    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
-  },
-  {
     "key": "text_f6f183a0",
     "default": "Prodej bytu za 14 dní",
-    "groups": ["Úvodní stránka"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
   },
   {
     "key": "text_4f0e7f33",
     "default": "Kvalitní pomoc s prodejem a řešením všech náležitostí spojených s prodejem nemovitosti, rychlé a férové jednání, mohu vřele doporučit. Prodávat sám a nervovat se s tím za to určitě nestojí.",
-    "groups": ["Úvodní stránka"]
+    "groups": ["Služby a reference", "Úvodní stránka", "Reference"]
   },
   {
     "key": "text_b16dac59",
@@ -2149,8 +2242,8 @@
     "role": "heading"
   },
   {
-    "key": "text_57406583",
-    "default": "Špatně nastavenou cenou, ne při vyjednávání. Nastavíme ji podle skutečných prodejů v okolí, připravím prezentaci, povedu prohlídky i vyjednávání. Vy máte vždy přehled, co se děje.",
+    "key": "text_1b68ed9a",
+    "default": "Špatně nastavenou cenou, ne při vyjednávání. Nastavíme ji podle skutečných prodejů v okolí.",
     "groups": ["Služby a reference", "Úvodní stránka"]
   },
   {
@@ -2165,8 +2258,8 @@
     "role": "heading"
   },
   {
-    "key": "text_afd929ec",
-    "default": "Prověřím nemovitost, list vlastnictví i smlouvy a upozorním Vás i na to, co v inzerátu nenajdete. Rozhodnutí zůstává vždy na Vás.",
+    "key": "text_70499e84",
+    "default": "Prověřím i to, co v inzerátu nenajdete.",
     "groups": ["Služby a reference", "Úvodní stránka"]
   },
   {
@@ -2181,8 +2274,8 @@
     "role": "heading"
   },
   {
-    "key": "text_c77e4d1e",
-    "default": "Na pořadí může záviset víc peněz, než čekáte. Sladíme termíny tak, abyste nezůstali bez bydlení a zbytečně neplatili dvakrát. Obojí hlídám já, vy máte jeden kontakt.",
+    "key": "text_889f6eec",
+    "default": "Na pořadí může záviset víc peněz, než čekáte. Obojí hlídám já, Vy máte jeden kontakt.",
     "groups": ["Služby a reference", "Úvodní stránka"]
   },
   {
@@ -2197,8 +2290,8 @@
     "role": "heading"
   },
   {
-    "key": "text_59b4931",
-    "default": "Připravím nabídku, prověřím zájemce a s právníkem nachystáme smlouvu i předávací protokol. Klidnější správa vašeho majetku.",
+    "key": "text_a74ddfed",
+    "default": "Prověřím zájemce, smlouvu chystám s právníkem.",
     "groups": ["Služby a reference", "Úvodní stránka"]
   },
   {
@@ -2213,8 +2306,8 @@
     "role": "heading"
   },
   {
-    "key": "text_91060aeb",
-    "default": "Prodat, pronajmout, nebo nechat? Každá možnost má jiné daně i náklady. Projdeme je v klidu, než se rozhodnete.",
+    "key": "text_818465fe",
+    "default": "Prodat, pronajmout, nebo nechat? Každá možnost má jiné daně i náklady.",
     "groups": ["Služby a reference", "Úvodní stránka"]
   },
   {
@@ -2229,8 +2322,8 @@
     "role": "heading"
   },
   {
-    "key": "text_4b0241fb",
-    "default": "S prodejem podílů mám zkušenost. Řeknu vám otevřeně, jaké máte možnosti a co od nich můžete čekat.",
+    "key": "text_22985446",
+    "default": "Řeknu Vám otevřeně, jaké máte možnosti.",
     "groups": ["Služby a reference", "Úvodní stránka"]
   },
   {
@@ -2245,8 +2338,8 @@
     "role": "heading"
   },
   {
-    "key": "text_35950724",
-    "default": "Řeknu vám na rovinu, co se dá ještě udělat a jaký postup dává smysl. Čím dřív se ozvete, tím víc možností obvykle zbývá.",
+    "key": "text_29ba8cad",
+    "default": "Čím dřív se ozvete, tím víc možností obvykle zbývá.",
     "groups": ["Služby a reference", "Úvodní stránka"]
   },
   {
@@ -2261,8 +2354,8 @@
     "role": "heading"
   },
   {
-    "key": "text_455d648a",
-    "default": "4,5 hodiny letu od Prahy. Koupě v Hurghadě v češtině, s ověřením právního stavu nemovitosti a právním servisem. Provedu vás celým procesem.",
+    "key": "text_9be7ffba",
+    "default": "4,5 hodiny letu od Prahy, celý proces v češtině.",
     "groups": ["Služby a reference", "Úvodní stránka"]
   },
   {
@@ -2323,6 +2416,11 @@
   {
     "key": "text_d310e30a",
     "default": "Egyptsko-Česká Reality",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_b168bdb8",
+    "default": "Služby",
     "groups": ["Identita"]
   },
   {
@@ -2429,175 +2527,5 @@
     "key": "text_a9976168",
     "default": "Rezervováno",
     "groups": ["Nabídka"]
-  },
-  {
-    "key": "text_83c25f5f",
-    "default": "na Googlu",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_a921a992",
-    "default": "od schůzky po klíče",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_fe317812",
-    "default": "Právník a hypotéky",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_d2a58d16",
-    "default": "v týmu",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_5c8f7ced",
-    "default": "Líbí se Vám, jak nemovitosti prezentuji?",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_1874d223",
-    "default": "Prodám tak i tu Vaši",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_c93e6907",
-    "default": "Nižší cena neznamená, že prodáte za míň.",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_f6833da",
-    "default": "Rozumně nastavená cena přivede víc zájemců najednou. Když se o nemovitost zajímá víc lidí, vyjednává se z pozice síly – a výsledná cena se může dostat i nad tu nabídkovou.",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_46e3ca3a",
-    "default": "A i když ne, peníze máte dřív a můžete koupit to, co dává smysl. Měsíce čekání na vysněnou cenu Vás od cíle spíš vzdalují.",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_56dfcf4c",
-    "default": "Spočítám, co se Vám vyplatí víc",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_1150a72f",
-    "default": "Přestřelená cena",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_440fb078",
-    "default": "Málo prohlídek",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_4968f20b",
-    "default": "Měsíce na trhu",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_727af495",
-    "default": "Nabídka „okouká“",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_605d71e2",
-    "default": "Sleva pod reálnou cenu",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_c8eb02be",
-    "default": "Víc zájemců naráz",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_56ea0c96",
-    "default": "Konkurence mezi nimi",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_99672c99",
-    "default": "Silnější vyjednávání",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_d67a2f5",
-    "default": "Prodej za férovou cenu",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_cb1ebc14",
-    "default": "Ilustrativní srovnání. Výsledek vždy záleží na lokalitě, stavu nemovitosti a trhu.",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_c4664940",
-    "default": "Kolik stojí byt u Rudého moře?",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_f194be27",
-    "default": "od 1,15 mil.",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_57c1b55",
-    "default": "Kč za krásný byt",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_fe07c286",
-    "default": "přímý let z Prahy",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_ec2fd744",
-    "default": "česky",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_9a5e366c",
-    "default": "celý proces i právník",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_a8a52908",
-    "default": "Ověření právního stavu na místě, v češtině i arabštině.",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_442e2b66",
-    "default": "Prohlédnout byty u moře",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_fddef165",
-    "default": "Dan K.",
-    "groups": ["Úvodní stránka", "Reference"]
-  },
-  {
-    "key": "text_4f3792ad",
-    "default": "Koupě bytu pro rodinu",
-    "groups": ["Úvodní stránka", "Reference"]
-  },
-  {
-    "key": "text_b3943ae6",
-    "default": "Pan Pavlát jedná rychle, dovedl značně stlačit prodejní cenu, a tak jsme díky němu nakonec koupili byt v lepší lokalitě, než jsme původně zamýšleli.",
-    "groups": ["Úvodní stránka", "Reference"]
-  },
-  {
-    "key": "text_80c4ef80",
-    "default": "Vera A.",
-    "groups": ["Úvodní stránka", "Reference"]
-  },
-  {
-    "key": "text_7c2b98c9",
-    "default": "Koupě nemovitosti v zahraničí",
-    "groups": ["Úvodní stránka", "Reference"]
-  },
-  {
-    "key": "text_2123c41e",
-    "default": "Během pár dnů našel naši vysněnou nemovitost v zahraničí a zajistil veškerý právní předpis. Děkujeme za profesionální přístup.",
-    "groups": ["Úvodní stránka", "Reference"]
   }
 ]

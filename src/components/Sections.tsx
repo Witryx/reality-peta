@@ -19,6 +19,7 @@ import { Plus, ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { GoogleRating } from "./GoogleRating";
 import {
+  type CarouselApi,
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -134,8 +135,13 @@ export function ProcessList({ journey = false }: { journey?: boolean }) {
   );
 }
 
+/**
+ * Client references: they move on by themselves every 5 seconds and can be browsed with
+ * the arrows or by swiping. A manual step pauses the automatic one for 10 seconds.
+ */
 export function Testimonials() {
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [api, setApi] = useState<CarouselApi>();
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => setReducedMotion(media.matches);
@@ -143,23 +149,43 @@ export function Testimonials() {
     media.addEventListener("change", update);
     return () => media.removeEventListener("change", update);
   }, []);
+  useEffect(() => {
+    if (!api || reducedMotion) return;
+    let pausedUntil = 0;
+    const hold = () => (pausedUntil = Date.now() + 10000);
+    api.on("pointerDown", hold);
+    const root = api.rootNode().closest(".testimonials-carousel");
+    root?.addEventListener("click", hold);
+    root?.addEventListener("focusin", hold);
+    const timer = window.setInterval(() => {
+      if (Date.now() < pausedUntil || document.hidden) return;
+      api.scrollNext();
+    }, 5000);
+    return () => {
+      window.clearInterval(timer);
+      api.off("pointerDown", hold);
+      root?.removeEventListener("click", hold);
+      root?.removeEventListener("focusin", hold);
+    };
+  }, [api, reducedMotion]);
   return (
     <>
       <GoogleRating />
       <Carousel
         className="testimonials-carousel mt-10 min-w-0"
         aria-label="Reference klientů"
+        setApi={setApi}
         opts={{
           align: "start",
+          loop: true,
           duration: reducedMotion ? 0 : 25,
-          breakpoints: { "(min-width: 768px)": { active: false } },
         }}
       >
-        <CarouselContent className="md:ml-0 md:grid md:grid-cols-3 md:gap-8">
+        <CarouselContent>
           {testimonials.map((t, index) => (
             <CarouselItem
               key={t.name}
-              className="md:pl-0"
+              className="md:basis-1/2 lg:basis-[42%]"
               aria-label={`${index + 1} z ${testimonials.length}`}
             >
               {"kind" in t && t.kind === "case" ? (
@@ -215,7 +241,7 @@ export function Testimonials() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <div className="mt-5 flex justify-end gap-2 md:hidden">
+        <div className="mt-5 flex justify-end gap-2">
           <CarouselPrevious
             className="static size-11 translate-y-0 bg-card"
             aria-label="Předchozí reference"
@@ -275,37 +301,37 @@ export function ValuationSection({
             </SiteText>
           </p>
           {!compact && (
-          <div className="price-compass mt-8">
-            <p className="price-compass-title">
-              <SiteText>{"Proč na ceně tolik záleží"}</SiteText>
-            </p>
-            <div className="price-compass-bar" aria-hidden="true">
-              <span className="price-compass-real" />
-              <span className="price-compass-needle">
-                <span>
-                  <SiteText>{"Vaše cena"}</SiteText>
+            <div className="price-compass mt-8">
+              <p className="price-compass-title">
+                <SiteText>{"Proč na ceně tolik záleží"}</SiteText>
+              </p>
+              <div className="price-compass-bar" aria-hidden="true">
+                <span className="price-compass-real" />
+                <span className="price-compass-needle">
+                  <span>
+                    <SiteText>{"Vaše cena"}</SiteText>
+                  </span>
                 </span>
-              </span>
+              </div>
+              <div className="price-compass-zones">
+                <span>
+                  <SiteText>{"Podhodnocená"}</SiteText>
+                </span>
+                <strong>
+                  <SiteText>{"Reálná cena"}</SiteText>
+                </strong>
+                <span>
+                  <SiteText>{"Přestřelená"}</SiteText>
+                </span>
+              </div>
+              <p className="price-compass-note">
+                <SiteText>
+                  {
+                    "Podhodnocená cena vás připraví o peníze. Přestřelená prodej zbytečně natahuje a nemovitost na trhu „okouká“. Odhad proto stavím na skutečných prodejích v okolí."
+                  }
+                </SiteText>
+              </p>
             </div>
-            <div className="price-compass-zones">
-              <span>
-                <SiteText>{"Podhodnocená"}</SiteText>
-              </span>
-              <strong>
-                <SiteText>{"Reálná cena"}</SiteText>
-              </strong>
-              <span>
-                <SiteText>{"Přestřelená"}</SiteText>
-              </span>
-            </div>
-            <p className="price-compass-note">
-              <SiteText>
-                {
-                  "Podhodnocená cena vás připraví o peníze. Přestřelená prodej zbytečně natahuje a nemovitost na trhu „okouká“. Odhad proto stavím na skutečných prodejích v okolí."
-                }
-              </SiteText>
-            </p>
-          </div>
           )}
           <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
             <li>

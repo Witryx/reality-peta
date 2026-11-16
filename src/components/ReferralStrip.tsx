@@ -15,33 +15,32 @@ export function ReferralStrip() {
     >
       <div className="container-page">
         <div className="referral-card flex flex-col gap-8 md:flex-row md:items-center md:justify-between md:gap-12">
-        <div className="max-w-2xl">
-          <p className="eyebrow">
-            <SiteText>{"Doporučte mě"}</SiteText>
-          </p>
-          <h2 id="referral-heading" className="mt-4 text-3xl leading-tight sm:text-4xl md:text-5xl">
-            <SiteText>{"Znáte někoho, kdo prodává?"}</SiteText>
-          </h2>
-          <p className="referral-amount">
-            <span>
-              <SiteText>{"Odměna pro vás až"}</SiteText>
-            </span>
-            <strong>
-              <SiteText>{"100 000 Kč"}</SiteText>
-            </strong>
-          </p>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed">
-            <SiteText>
-              {
-                "Stačí nás propojit. Podmínky si domluvíme předem a odměnu dostanete po úspěšném prodeji."
-              }
-            </SiteText>
-          </p>
-        </div>
-        <Link to="/nabidka-spoluprace" className="btn btn-primary h-auto self-start md:self-auto">
-          <SiteText>{"Doporučit kontakt "}</SiteText>
-          <ArrowUpRight className="size-4" aria-hidden />
-        </Link>
+          <div className="max-w-2xl">
+            <p className="eyebrow">
+              <SiteText>{"Doporučte mě"}</SiteText>
+            </p>
+            <h2
+              id="referral-heading"
+              className="mt-4 text-3xl leading-tight sm:text-4xl md:text-5xl"
+            >
+              <SiteText>{"Znáte někoho, kdo prodává?"}</SiteText>
+            </h2>
+            <p className="referral-amount">
+              <span>
+                <SiteText>{"Odměna pro vás až"}</SiteText>
+              </span>
+              <strong>
+                <SiteText>{"100 000 Kč"}</SiteText>
+              </strong>
+            </p>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed">
+              <SiteText>{"Stačí nás propojit. Odměnu dostanete po úspěšném prodeji."}</SiteText>
+            </p>
+          </div>
+          <Link to="/nabidka-spoluprace" className="btn btn-primary h-auto self-start md:self-auto">
+            <SiteText>{"Doporučit kontakt "}</SiteText>
+            <ArrowUpRight className="size-4" aria-hidden />
+          </Link>
         </div>
       </div>
     </section>

@@ -28,6 +28,7 @@ const groups = {
   "CzechMap.tsx": "Úvodní stránka",
   "MobileContactBar.tsx": "Kontakt",
   "ReferralStrip.tsx": "Úvodní stránka",
+  "HomeSections.tsx": "Úvodní stránka",
   "PropertyCarousel.tsx": "Nabídka",
   "PropertyContactCta.tsx": "Kontakt u nabídek",
   "PropertyCard.tsx": "Nabídka",

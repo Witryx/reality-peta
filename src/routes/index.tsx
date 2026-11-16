@@ -8,7 +8,7 @@ import { BrandImage } from "@/components/BrandImage";
 import { listEgypt, listProperties } from "@/data/properties";
 import { pageHead, websiteValues } from "@/lib/seo";
 import { site } from "@/config/site";
-import { AboutTeaser, SectionHead, Testimonials, ValuationSection } from "@/components/Sections";
+import { SectionHead, Testimonials, ValuationSection } from "@/components/Sections";
 import {
   CompactPropertyGrid,
   EgyptTeaser,
@@ -149,12 +149,6 @@ function Home() {
       </section>
 
       <ReferralStrip />
-
-      <section className="py-16 md:py-24">
-        <div className="container-page">
-          <AboutTeaser />
-        </div>
-      </section>
 
       <ValuationSection compact />
     </>
