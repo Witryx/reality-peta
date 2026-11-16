@@ -8,33 +8,24 @@ import { BrandImage } from "@/components/BrandImage";
 import { listEgypt, listProperties } from "@/data/properties";
 import { pageHead, websiteValues } from "@/lib/seo";
 import { site } from "@/config/site";
-import { PropertyCarousel } from "@/components/PropertyCarousel";
-import { PropertyContactCta } from "@/components/PropertyContactCta";
+import { AboutTeaser, SectionHead, Testimonials, ValuationSection } from "@/components/Sections";
 import {
-  AboutTeaser,
-  ProcessList,
-  SectionHead,
-  ServicesGrid,
-  Testimonials,
-  ValuationSection,
-} from "@/components/Sections";
+  CompactPropertyGrid,
+  EgyptTeaser,
+  HeroFacts,
+  PresentationNote,
+  PriceInsight,
+} from "@/components/HomeSections";
 import { ReferralStrip } from "@/components/ReferralStrip";
-import { HeroContactHint } from "@/components/ContactLinks";
-import { EgyptSection } from "@/components/EgyptSection";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import { CollaborationStrip } from "@/components/CollaborationStrip";
-import { SectionConnector } from "@/components/SectionConnector";
-import { FaqSection } from "@/components/FaqSection";
 import { SituationPicker } from "@/components/SituationPicker";
-import { CzechMap } from "@/components/CzechMap";
-import { listCzechMapPins } from "@/data/czech-map";
 
 export const Route = createFileRoute("/")({
   loader: async () => ({
     featured: (await listProperties()).sort((a, b) => Number(b.featured) - Number(a.featured)),
     egypt: await listEgypt(),
-    mapPins: await listCzechMapPins(),
   }),
   head: ({ matches }) =>
     pageHead(
@@ -50,7 +41,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const { featured, egypt, mapPins } = Route.useLoaderData();
+  const { featured, egypt } = Route.useLoaderData();
   const homeHidden = useWebsiteImageHidden("image.home");
   const portraitHidden = useWebsiteImageHidden("image.portrait");
   const photoHidden = homeHidden && portraitHidden;
@@ -65,41 +56,33 @@ function Home() {
               <SiteText>{"Prodej · Koupě · Pronájem"}</SiteText>
             </p>
             <h1 className="hero-title mt-4 text-5xl leading-tight sm:text-6xl">
-              <SiteText>{"Co bude váš"}</SiteText>
+              <SiteText>{"Prodat dobře"}</SiteText>
               <br className="hidden sm:block" />
-              <SiteText>{" další domov?"}</SiteText>
+              <SiteText>{" neznamená prodat draho."}</SiteText>
             </h1>
             <p className="hero-description mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
               <SiteText>
                 {
-                  "Možná ho hledáte. Možná se s tím současným loučíte. Pojďme si říct, co právě řešíte — a najít další krok, který vám dává smysl."
+                  "Přestřelená cena prodej jen protáhne a sleva stejně přijde. Řeknu Vám, za kolik se u Vás opravdu prodává."
                 }
               </SiteText>
             </p>
-            <div className="hero-actions mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="hero-actions mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
               <Button
                 asChild
                 variant="valuation"
                 className="btn cta-arrive h-auto whitespace-normal"
               >
                 <Link to="/odhad-ceny">
-                  <SiteText>{"Zjistit cenu nemovitosti zdarma "}</SiteText>
+                  <SiteText>{"Zjistit reálnou cenu zdarma "}</SiteText>
                   <ArrowUpRight className="size-4" />
                 </Link>
               </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="btn btn-outline h-auto whitespace-normal"
-              >
-                <Link to="/nabidka">
-                  <SiteText>{"Prohlédnout nabídku"}</SiteText>
-                </Link>
-              </Button>
+              <a href="#nabidka" className="text-link">
+                <SiteText>{"Prohlédnout nabídku"}</SiteText>
+              </a>
             </div>
-            <div className="hero-social mt-6">
-              <HeroContactHint />
-            </div>
+            <HeroFacts />
             <CollaborationStrip className="hero-trust mt-6 border-t pt-4" />
           </div>
           {!photoHidden && (
@@ -128,129 +111,37 @@ function Home() {
         </div>
       </section>
 
-      <section
-        id="nabidka"
-        className="offer-showcase border-t bg-surface pt-12 pb-16 md:pt-14 md:pb-20"
-      >
+      <section id="nabidka" className="offer-showcase border-t bg-surface py-14 md:py-20">
         <div className="container-page">
-          <div className="grid items-center gap-6 lg:grid-cols-[1fr_minmax(0,21rem)] lg:gap-10">
+          <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="eyebrow">
                 <SiteText>{"Aktuální nabídka"}</SiteText>
               </p>
               <h2 className="mt-3 text-4xl leading-tight md:text-[2.75rem]">
-                <SiteText>{"Nemovitosti v Česku, které právě hledají nové majitele"}</SiteText>
+                <SiteText>{"Co je právě na trhu – a co už se prodalo"}</SiteText>
               </h2>
-              <p className="mt-3 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                <SiteText>
-                  {
-                    "Nejsem jen pražský makléř. Pomáhám po celém Česku – a na mapě vidíte, kde všude už."
-                  }
-                </SiteText>
-              </p>
-              <Button asChild variant="outline" className="btn btn-outline mt-5 h-auto bg-card">
-                <Link to="/nabidka">
-                  <SiteText>{"Celá nabídka "}</SiteText>
-                  <ArrowUpRight className="size-4" />
-                </Link>
-              </Button>
             </div>
-            <CzechMap pins={mapPins} className="offer-map" />
+            <Link to="/nabidka" className="text-link">
+              <SiteText>{"Celá nabídka"}</SiteText>
+            </Link>
           </div>
-          <PropertyCarousel properties={featured} />
-          <PropertyContactCta className="bg-card" />
+          <CompactPropertyGrid properties={featured} className="mt-8" />
+          <PresentationNote />
         </div>
       </section>
 
-      <section className="trust-trail-section border-y" data-reveal="fade">
-        <div className="container-page py-8">
-          <ul className="trust-trail">
-            <li>
-              <span className="trust-stop" aria-hidden />
-              <strong>
-                <SiteText>{"Jeden makléř"}</SiteText>
-              </strong>
-              <SiteText>{"od první schůzky po předání klíčů"}</SiteText>
-            </li>
-            <li>
-              <span className="trust-stop" aria-hidden />
-              <strong>
-                <SiteText>{"Reálná cena"}</SiteText>
-              </strong>
-              <SiteText>{"podle skutečných prodejů v okolí"}</SiteText>
-            </li>
-            <li>
-              <span className="trust-stop" aria-hidden />
-              <strong>
-                <SiteText>{"Právník a hypoteční specialista"}</SiteText>
-              </strong>
-              <SiteText>{"když je potřebujete"}</SiteText>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <SectionConnector />
-
-      <section className="py-20 md:py-28 border-t">
-        <div className="container-page">
-          <SectionHead eyebrow="Služby" title="S čím Vám pomohu" />
-          <ServicesGrid />
-        </div>
-      </section>
-
-      <SectionConnector variant="horizon" />
-      <EgyptSection compact />
-
-      <section className="egypt-offer pt-4 pb-20 md:pb-28" aria-label="Nabídka v Egyptě">
-        <div className="container-page">
-          <PropertyCarousel properties={egypt} />
-          <div className="mt-8 flex justify-center">
-            <Button asChild variant="outline" className="btn btn-outline h-auto">
-              <Link to="/egypt">
-                <SiteText>{"Celá nabídka v Egyptě "}</SiteText>
-                <ArrowUpRight className="size-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <section className="process-section bg-ink py-20 text-ink-foreground md:py-28">
-        <div className="container-page [&_.eyebrow]:text-ink-foreground/60 [&_p]:text-ink-foreground/75">
-          <SectionHead
-            eyebrow="JAK PROBÍHÁ SPOLUPRÁCE?"
-            title="Prodej v pěti klidných krocích"
-            intro="Od první schůzky až po předání klíčů. V každém kroku víte, kde jsme a co přijde dál."
-          />
-          <ProcessList journey />
-        </div>
-      </section>
+      <PriceInsight />
 
       <section className="situation-section border-t py-16 md:py-24" data-reveal="line">
-        <div className="container-page grid gap-8 lg:grid-cols-[1fr_1fr] lg:gap-16">
-          <div>
-            <h2 className="text-4xl leading-tight md:text-5xl">
-              <SiteText>{"Reality šité na"}</SiteText>
-              <br className="hidden md:block" />
-              <SiteText>{" míru vaší situace."}</SiteText>
-            </h2>
-            <p className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
-              <SiteText>{"Každá nemovitost má svůj příběh."}</SiteText>
-              <br />
-              <SiteText>{"A každý člověk svou situaci."}</SiteText>
-            </p>
-            <p className="situation-promise mt-8 max-w-md font-display text-xl leading-snug">
-              <SiteText>
-                {"Bez hodnocení a bez nátlaku. U vyjednávání vždy hájím vaše zájmy."}
-              </SiteText>
-            </p>
-          </div>
+        <div className="container-page max-w-4xl">
           <SituationPicker />
         </div>
       </section>
 
-      <section className="py-20 md:py-28">
+      <EgyptTeaser properties={egypt} />
+
+      <section className="py-16 md:py-24">
         <div className="container-page">
           <SectionHead eyebrow="Reference" title="Co na spolupráci říkají klienti" />
           <Testimonials />
@@ -259,16 +150,13 @@ function Home() {
 
       <ReferralStrip />
 
-      <SectionConnector variant="flight" />
-      <section className="border-t py-20 md:py-28">
+      <section className="py-16 md:py-24">
         <div className="container-page">
           <AboutTeaser />
         </div>
       </section>
 
-      <FaqSection />
-
-      <ValuationSection withContact />
+      <ValuationSection compact />
     </>
   );
 }

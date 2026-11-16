@@ -3573,3 +3573,220 @@
     animation: none;
   }
 }
+
+/* ===== Homepage v2 (Nov 2026): fewer buttons, compact listings, curiosity sections ===== */
+.text-link {
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 700;
+  color: var(--foreground);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 2px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.text-link:hover {
+  color: var(--accent);
+}
+.hero-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.75rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+.hero-facts li {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.hero-facts strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  color: var(--foreground);
+  font-weight: 700;
+}
+.hero-facts-star {
+  width: 0.9rem;
+  height: 0.9rem;
+  fill: currentColor;
+  color: var(--color-review-star, #e8a317);
+}
+.compact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.875rem;
+}
+@media (min-width: 1024px) {
+  .compact-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .compact-grid.compact-grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.compact-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.compact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -14px rgb(0 0 0 / 0.35);
+}
+.compact-card-photo {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--muted);
+}
+.compact-card-badge {
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+  border-radius: 3px;
+  background: #fff;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--foreground);
+}
+.compact-card-badge-sold {
+  background: var(--ink);
+  color: var(--ink-foreground);
+}
+.compact-card-body {
+  padding: 0.65rem 0.75rem 0.8rem;
+}
+.compact-card-place {
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.compact-card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0.25rem 0 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.compact-card-price {
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+.compact-card.is-sold .compact-card-price {
+  font-weight: 700;
+  color: var(--muted-foreground);
+}
+.presentation-note {
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--muted-foreground);
+}
+.presentation-note a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+.presentation-note a svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+.price-insight {
+  background: var(--secondary);
+}
+.price-duel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.price-lane {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card);
+  padding: 1rem;
+}
+.price-lane.is-winner {
+  border: 2px solid var(--accent);
+}
+.price-lane-label {
+  margin-bottom: 0.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.price-lane ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+}
+.price-lane li {
+  padding: 0.35rem 0;
+  border-bottom: 1px dashed var(--border);
+}
+.price-lane li:last-child {
+  border-bottom: 0;
+  font-weight: 800;
+}
+.price-lane.is-winner li:last-child {
+  color: var(--accent);
+}
+.egypt-teaser {
+  background: linear-gradient(180deg, #eef6f7, var(--background));
+}
+.egypt-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin: 1.5rem 0;
+}
+.egypt-stats dt {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  line-height: 1.1;
+  color: var(--foreground);
+}
+.egypt-stats dd {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+}
+/* Referral: dark card with a light-orange amount (approved draft colours). */
+.referral-strip .referral-card {
+  border-radius: 10px;
+  background: #1f1f1d;
+  color: #fff;
+  padding: 2rem;
+}
+@media (min-width: 768px) {
+  .referral-strip .referral-card {
+    padding: 2.75rem;
+  }
+}
+.referral-strip .eyebrow {
+  color: #aaa;
+}
+.referral-strip .referral-amount strong {
+  color: #f0a46a;
+  font-weight: 400;
+}
+.referral-strip .referral-card > div > p:last-child {
+  color: #bdbdbd;
+}

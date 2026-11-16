@@ -75,7 +75,7 @@ export function EgyptSection({
           <p className="mt-5 leading-relaxed text-muted-foreground">
             <SiteText>
               {
-                "Druhý domov u moře, místo pro vlastní pobyt nebo příležitost ke zhodnocení vašich prostředků."
+                "Kolik stojí byt u Rudého moře? Krásný apartmán pořídíte od 1,15 milionu, 4,5 hodiny letu od Prahy. Celý proces v češtině, s právní kontrolou na místě."
               }
             </SiteText>
           </p>

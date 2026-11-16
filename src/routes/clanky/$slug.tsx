@@ -124,7 +124,7 @@ function ArticlePage() {
         <div className="mt-5 flex flex-wrap gap-3">
           <Button asChild variant="valuation" className="btn h-auto whitespace-normal">
             <Link to="/odhad-ceny">
-              <SiteText>{"Zjistit cenu nemovitosti zdarma "}</SiteText>
+              <SiteText>{"Zjistit reálnou cenu zdarma "}</SiteText>
               <ArrowUpRight className="size-4" />
             </Link>
           </Button>

@@ -151,7 +151,7 @@ describe("Self-hosted admin and public API", () => {
     ).toBe(422);
   });
   it("persists public website text, checks Origin, prevents stale saves and restores defaults", async () => {
-    const key = copyKey("Co bude váš");
+    const key = copyKey("Prodat dobře");
     const input = { values: { [key]: "Váš nový domov" }, version: 1 };
     expect(
       (await request("/api/admin/website", "PUT", input, true, "https://evil.example")).status,
@@ -538,7 +538,7 @@ describe("Self-hosted admin and public API", () => {
       ...website,
       values: {
         ...website.values,
-        [copyKey("Co bude váš")]: "Fotografie a text",
+        [copyKey("Prodat dobře")]: "Fotografie a text",
         "image.home": media.src,
       },
     };

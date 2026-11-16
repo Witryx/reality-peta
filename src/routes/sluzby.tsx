@@ -5,6 +5,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import kitchen from "@/assets/prop-kitchen.jpg";
 import { pageHead, websiteValues } from "@/lib/seo";
 import { ProcessList, SectionHead, ServicesGrid } from "@/components/Sections";
+import { FaqSection } from "@/components/FaqSection";
 import { EgyptSection } from "@/components/EgyptSection";
 
 export const Route = createFileRoute("/sluzby")({
@@ -68,6 +69,7 @@ function Page() {
           <ProcessList />
         </div>
       </section>
+      <FaqSection />
     </>
   );
 }

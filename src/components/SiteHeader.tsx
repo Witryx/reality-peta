@@ -78,7 +78,7 @@ export function SiteHeader() {
             <li className="pt-3">
               <Button asChild variant="valuation" className="btn h-auto w-full whitespace-normal">
                 <Link to="/odhad-ceny" onClick={() => setOpen(false)}>
-                  <SiteText>{"Zjistit cenu nemovitosti zdarma"}</SiteText>
+                  <SiteText>{"Zjistit reálnou cenu zdarma"}</SiteText>
                 </Link>
               </Button>
             </li>

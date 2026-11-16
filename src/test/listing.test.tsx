@@ -12,6 +12,7 @@ import { listAllProperties } from "@/data/properties";
 import { Route } from "@/routes/nabidka.index";
 
 vi.mock("@/data/properties", () => ({ listAllProperties: vi.fn() }));
+vi.mock("@/data/czech-map", () => ({ listCzechMapPins: vi.fn(async () => []) }));
 
 const base: Property = {
   id: "cz-active",

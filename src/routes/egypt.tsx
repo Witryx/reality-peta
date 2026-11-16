@@ -72,13 +72,6 @@ function Page() {
           intro="Přehled aktuálních možností. Každou nabídku projdeme osobně, včetně právního režimu vlastnictví a provozních nákladů."
         />
         <PropertyCarousel properties={egypt} />
-        <p className="mt-8 border-t pt-5 text-sm text-muted-foreground">
-          <SiteText>
-            {
-              "Jde o ukázkové nabídky — konkrétní a ověřené nemovitosti doplníme podle aktuální dostupnosti od partnerů. Aktuální možnosti rád proberu osobně."
-            }
-          </SiteText>
-        </p>
         <PropertyContactCta />
       </section>
       <section id="egypt-kontakt" className="scroll-mt-24 bg-surface py-16 md:py-24">

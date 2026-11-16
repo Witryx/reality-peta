@@ -27,18 +27,18 @@ it("saves a public headline and restores its source default with the current con
     return { values: {}, version: 1 };
   });
   setup();
-  const field = await screen.findByLabelText("Co bude váš");
-  fireEvent.change(screen.getByLabelText("Najít text"), { target: { value: "Co bude váš" } });
+  const field = await screen.findByLabelText("Prodat dobře");
+  fireEvent.change(screen.getByLabelText("Najít text"), { target: { value: "Prodat dobře" } });
   fireEvent.change(field, { target: { value: "Váš nový domov" } });
   fireEvent.click(screen.getByRole("button", { name: "Uložit texty" }));
   await screen.findByRole("status");
   const writes = vi.mocked(api).mock.calls.filter(([, options]) => options?.method === "PUT");
   expect(JSON.parse(writes[0]![1]!.body as string)).toEqual({
-    values: { [copyKey("Co bude váš")]: "Váš nový domov" },
+    values: { [copyKey("Prodat dobře")]: "Váš nový domov" },
     version: 1,
   });
   fireEvent.click(screen.getByRole("button", { name: "Obnovit původní text 1" }));
-  expect(screen.getByLabelText("Co bude váš")).toHaveValue("Co bude váš");
+  expect(screen.getByLabelText("Prodat dobře")).toHaveValue("Prodat dobře");
   fireEvent.click(screen.getByRole("button", { name: "Uložit texty" }));
   await waitFor(() =>
     expect(
@@ -56,7 +56,7 @@ it("retains unsaved text after a failed save", async () => {
     return { values: {}, version: 1 };
   });
   setup();
-  const field = await screen.findByLabelText("Co bude váš");
+  const field = await screen.findByLabelText("Prodat dobře");
   fireEvent.change(field, { target: { value: "Můj neuložený nadpis" } });
   fireEvent.click(screen.getByRole("button", { name: "Uložit texty" }));
   expect(await screen.findByRole("alert")).toHaveTextContent("Texty mezitím upravil jiný správce");
@@ -76,13 +76,13 @@ it("finds shared section headings on the homepage and saves them through the hea
   fireEvent.click(screen.getByLabelText("Jen nadpisy"));
   expect(screen.getByLabelText("S čím Vám pomohu")).toBeInTheDocument();
   fireEvent.change(screen.getByLabelText("Najít text"), { target: { value: "Reality jsou" } });
-  const heading = screen.getByLabelText("Reality jsou pro mě o lidech.");
+  const heading = screen.getByLabelText("Řeknu Vám i to, co slyšet nechcete.");
   fireEvent.change(heading, { target: { value: "Reality s osobním přístupem" } });
   fireEvent.click(screen.getByRole("button", { name: "Uložit texty" }));
   await screen.findByRole("status");
   const write = vi.mocked(api).mock.calls.find(([, options]) => options?.method === "PUT")!;
   expect(JSON.parse(write[1]!.body as string)).toEqual({
-    values: { [copyKey("Reality jsou pro mě o lidech.")]: "Reality s osobním přístupem" },
+    values: { [copyKey("Řeknu Vám i to, co slyšet nechcete.")]: "Reality s osobním přístupem" },
     version: 4,
   });
 });

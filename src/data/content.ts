@@ -52,7 +52,7 @@ export const processSteps = [
   {
     title: "Cena a strategie",
     text: "Připravím analýzu trhu a navrhnu cenu i způsob prodeje, který dává smysl.",
-    note: "Stát za cenou se nemusí vyplatit. Společně zvážíme, co je pro vás výhodnější.",
+    note: "Někdy se vyplatí prodat o něco níž, mít peníze v ruce a koupit to, co dává smysl. Měsíce čekání na vysněnou cenu Vás od cíle spíš vzdalují. Spočítáme si, co se Vám vyplatí víc.",
   },
   {
     title: "Příprava a prezentace",
@@ -68,19 +68,19 @@ export const processSteps = [
   },
 ];
 
-/** UKÁZKOVÉ reference – nahradit skutečnými se souhlasem klientů. */
+/** Skutečné reference klientů (jen se souhlasem). */
 export const testimonials = [
   {
-    name: "Jana a Martin",
-    context: "Prodej bytu 3+1, Praha 3",
-    text: "Petr nám vysvětlil každý krok a byl vždy k zastižení. Prodej proběhl rychleji, než jsme čekali, a bez jediného stresu.",
-    isDemo: true,
+    name: "Dan K.",
+    context: "Koupě bytu pro rodinu",
+    text: "Pan Pavlát jedná rychle, dovedl značně stlačit prodejní cenu, a tak jsme díky němu nakonec koupili byt v lepší lokalitě, než jsme původně zamýšleli.",
+    isDemo: false,
   },
   {
-    name: "Tomáš K.",
-    context: "Koupě domu, Praha-západ",
-    text: "Oceňuji, že nám nic netlačil. Upozornil i na věci, které by nám jiný makléř raději zamlčel.",
-    isDemo: true,
+    name: "Vera A.",
+    context: "Koupě nemovitosti v zahraničí",
+    text: "Během pár dnů našel naši vysněnou nemovitost v zahraničí a zajistil veškerý právní předpis. Děkujeme za profesionální přístup.",
+    isDemo: false,
   },
   {
     name: "Qido K.",
@@ -95,20 +95,20 @@ export const situations = [
   {
     slug: "prodej",
     label: "Prodávám",
-    title: "Prodej, u kterého víte, co přijde dál.",
-    text: "Nastavíme reálnou cenu podle skutečných prodejů v okolí, připravím prezentaci, povedu prohlídky i vyjednávání. Vy máte vždy přehled, co se děje.",
+    title: "Nejvíc peněz se často ztratí hned na začátku.",
+    text: "Špatně nastavenou cenou, ne při vyjednávání. Nastavíme ji podle skutečných prodejů v okolí, připravím prezentaci, povedu prohlídky i vyjednávání. Vy máte vždy přehled, co se děje.",
   },
   {
     slug: "koupe",
     label: "Kupuji",
-    title: "Koupě bez unáhlených rozhodnutí.",
-    text: "Pomohu s výběrem, prověřím nemovitost i smlouvy a vyjednám podmínky. Rozhodnutí zůstává vždy na vás.",
+    title: "Co Vám prodávající neřekne.",
+    text: "Prověřím nemovitost, list vlastnictví i smlouvy a upozorním Vás i na to, co v inzerátu nenajdete. Rozhodnutí zůstává vždy na Vás.",
   },
   {
     slug: "oboji",
     label: "Prodávám i kupuji",
-    title: "Prodej a koupě v jednom plánu.",
-    text: "Sladíme termíny tak, abyste nezůstali bez bydlení a zbytečně neplatili dvakrát. Obojí hlídám já, vy máte jeden kontakt.",
+    title: "Nejdřív prodat, nebo koupit?",
+    text: "Na pořadí může záviset víc peněz, než čekáte. Sladíme termíny tak, abyste nezůstali bez bydlení a zbytečně neplatili dvakrát. Obojí hlídám já, vy máte jeden kontakt.",
   },
   {
     slug: "najem",
@@ -119,13 +119,13 @@ export const situations = [
   {
     slug: "dedictvi",
     label: "Dědím",
-    title: "Dědictví v klidu a bez spěchu.",
-    text: "Probereme, co s nemovitostí dává smysl – prodat, pronajmout, nebo ji ponechat. A co s každou možností souvisí.",
+    title: "Zdědili jste nemovitost?",
+    text: "Prodat, pronajmout, nebo nechat? Každá možnost má jiné daně i náklady. Projdeme je v klidu, než se rozhodnete.",
   },
   {
     slug: "podil",
     label: "Spoluvlastnický podíl",
-    title: "Spoluvlastnický podíl má svá specifika.",
+    title: "Podíl jde prodat, i když se ostatní nedohodnou.",
     text: "S prodejem podílů mám zkušenost. Řeknu vám otevřeně, jaké máte možnosti a co od nich můžete čekat.",
   },
   {
@@ -137,7 +137,7 @@ export const situations = [
   {
     slug: "egypt",
     label: "Apartmán v Egyptě",
-    title: "Apartmán u Rudého moře.",
-    text: "Koupě v Hurghadě v češtině, s ověřením právního stavu nemovitosti a právním servisem. Provedu vás celým procesem.",
+    title: "Krásný byt u moře od 1,15 milionu.",
+    text: "4,5 hodiny letu od Prahy. Koupě v Hurghadě v češtině, s ověřením právního stavu nemovitosti a právním servisem. Provedu vás celým procesem.",
   },
 ] as const;

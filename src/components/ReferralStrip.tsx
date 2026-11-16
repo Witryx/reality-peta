@@ -10,10 +10,11 @@ export function ReferralStrip() {
   return (
     <section
       aria-labelledby="referral-heading"
-      className="referral-strip bg-[color-mix(in_oklab,var(--color-primary)_88%,black)] py-14 text-primary-foreground md:py-20"
+      className="referral-strip py-6 md:py-10"
       data-reveal="fade"
     >
-      <div className="container-page flex flex-col gap-8 md:flex-row md:items-center md:justify-between md:gap-12">
+      <div className="container-page">
+        <div className="referral-card flex flex-col gap-8 md:flex-row md:items-center md:justify-between md:gap-12">
         <div className="max-w-2xl">
           <p className="eyebrow">
             <SiteText>{"Doporučte mě"}</SiteText>
@@ -37,10 +38,11 @@ export function ReferralStrip() {
             </SiteText>
           </p>
         </div>
-        <Link to="/nabidka-spoluprace" className="btn btn-light h-auto self-start md:self-auto">
+        <Link to="/nabidka-spoluprace" className="btn btn-primary h-auto self-start md:self-auto">
           <SiteText>{"Doporučit kontakt "}</SiteText>
           <ArrowUpRight className="size-4" aria-hidden />
         </Link>
+        </div>
       </div>
     </section>
   );

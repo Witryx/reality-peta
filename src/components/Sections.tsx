@@ -235,8 +235,11 @@ export function Testimonials() {
 export function ValuationSection({
   standalone = false,
   withContact = false,
+  compact = false,
 }: {
   standalone?: boolean;
+  /** Homepage: just the pitch and the form, without the price compass. */
+  compact?: boolean;
   /** Homepage: one form with two tabs (valuation / other question) and the contacts once. */
   withContact?: boolean;
 }) {
@@ -254,12 +257,12 @@ export function ValuationSection({
             <SiteText>{"První krok k dobrému rozhodnutí"}</SiteText>
           </p>
           <Heading className="mt-5 text-4xl leading-tight md:text-5xl">
-            <SiteText>{"Chci znát cenu"}</SiteText>
+            <SiteText>{"Víte, za kolik se prodal"}</SiteText>
             <br className="hidden md:block" />
-            <SiteText>{" své nemovitosti."}</SiteText>
+            <SiteText>{" byt ve Vašem domě?"}</SiteText>
           </Heading>
           <p className="mt-8 max-w-md font-display text-2xl font-medium leading-snug">
-            <SiteText>{"Pro nové klienty připravím odhad nemovitosti "}</SiteText>
+            <SiteText>{"Já to zjistím. Pro nové klienty "}</SiteText>
             <span className="text-valuation-ink">
               <SiteText>{"zdarma."}</SiteText>
             </span>
@@ -267,10 +270,11 @@ export function ValuationSection({
           <p className="mt-5 max-w-md leading-relaxed text-muted-foreground">
             <SiteText>
               {
-                "Napište mi pár základních údajů. Zjistíme reálnou cenu podle skutečných prodejů v okolí — nezávazně a diskrétně."
+                "Napište mi pár základních údajů. Odhad postavím na skutečných prodejích v okolí — nezávazně a diskrétně."
               }
             </SiteText>
           </p>
+          {!compact && (
           <div className="price-compass mt-8">
             <p className="price-compass-title">
               <SiteText>{"Proč na ceně tolik záleží"}</SiteText>
@@ -302,6 +306,7 @@ export function ValuationSection({
               </SiteText>
             </p>
           </div>
+          )}
           <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
             <li>
               <SiteText>{"Odpověď obvykle do dvou pracovních dnů"}</SiteText>
@@ -361,7 +366,7 @@ export function AboutTeaser({ full = false }: { full?: boolean }) {
           <SiteText>{"O mně"}</SiteText>
         </p>
         <Heading className="mt-4 text-4xl md:text-5xl">
-          <SiteText>{"Reality jsou pro mě o lidech."}</SiteText>
+          <SiteText>{"Řeknu Vám i to, co slyšet nechcete."}</SiteText>
         </Heading>
         <p className="mt-6 text-lg text-muted-foreground">
           <SiteText>{aboutDescription}</SiteText>

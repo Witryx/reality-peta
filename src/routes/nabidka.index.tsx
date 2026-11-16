@@ -7,6 +7,8 @@ import { pageHead, websiteValues } from "@/lib/seo";
 import { PropertyCard } from "@/components/PropertyCard";
 import { PropertyContactCta } from "@/components/PropertyContactCta";
 import { SectionHead } from "@/components/Sections";
+import { CzechMap } from "@/components/CzechMap";
+import { listCzechMapPins } from "@/data/czech-map";
 
 const search = z.object({
   stav: z.enum(["active", "reserved", "sold"]).optional(),
@@ -15,7 +17,7 @@ const search = z.object({
 
 export const Route = createFileRoute("/nabidka/")({
   validateSearch: search,
-  loader: () => listAllProperties(),
+  loader: async () => ({ all: await listAllProperties(), mapPins: await listCzechMapPins() }),
   head: ({ matches }) =>
     pageHead(
       {
@@ -37,7 +39,7 @@ const filterClass = (active: boolean) =>
   `rounded-full border px-4 py-2 text-sm transition-colors ${active ? "border-primary bg-primary text-primary-foreground" : "hover:border-foreground"}`;
 
 function Listing() {
-  const all = Route.useLoaderData();
+  const { all, mapPins } = Route.useLoaderData();
   const { stav, zeme } = Route.useSearch();
   const inMarket = zeme ? all.filter((p) => marketOf(p) === zeme) : all;
   const inStatus = stav ? all.filter((p) => p.status === stav) : all;
@@ -49,6 +51,14 @@ function Listing() {
         title="Nemovitosti"
         intro="Každou nemovitost osobně znám a rád vám o ní řeknu víc."
       />
+      <div className="mt-10 grid items-center gap-6 lg:grid-cols-[1fr_minmax(0,21rem)] lg:gap-10">
+        <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
+          <SiteText>
+            {"Nejsem jen pražský makléř. Pomáhám po celém Česku – a na mapě vidíte, kde všude už."}
+          </SiteText>
+        </p>
+        <CzechMap pins={mapPins} className="offer-map" />
+      </div>
       <div role="group" aria-label="Filtr podle země" className="mt-10 flex flex-wrap gap-2">
         {markets.map((market) => {
           const active = zeme === market;

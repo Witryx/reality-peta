@@ -47,7 +47,7 @@ function NextStep({ slug }: { slug: Situation["slug"] }) {
     );
   return (
     <Link to="/odhad-ceny" className="situation-link">
-      <SiteText>{"Zjistit cenu nemovitosti zdarma "}</SiteText>
+      <SiteText>{"Zjistit reálnou cenu zdarma "}</SiteText>
       <ArrowUpRight aria-hidden />
     </Link>
   );
