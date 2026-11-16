@@ -22,9 +22,20 @@ import { ArrowUpRight } from "lucide-react";
 import { CollaborationStrip } from "@/components/CollaborationStrip";
 import { SituationPicker } from "@/components/SituationPicker";
 
+/**
+ * Homepage shows what is for sale now: active Czech listings (featured first); reserved ones
+ * only fill the row when there are fewer than four active. Sold ones stay on /nabidka.
+ */
+async function homepageOffer() {
+  const czech = (await listProperties()).sort((a, b) => Number(b.featured) - Number(a.featured));
+  const active = czech.filter((p) => p.status === "active");
+  if (active.length >= 4) return active;
+  return [...active, ...czech.filter((p) => p.status === "reserved")].slice(0, 4);
+}
+
 export const Route = createFileRoute("/")({
   loader: async () => ({
-    featured: (await listProperties()).sort((a, b) => Number(b.featured) - Number(a.featured)),
+    featured: await homepageOffer(),
     egypt: await listEgypt(),
   }),
   head: ({ matches }) =>
@@ -52,8 +63,14 @@ function Home() {
           className={`container-page grid gap-8 pt-8 pb-10 md:pt-12 ${photoHidden ? "" : "lg:grid-cols-[1.1fr_1fr]"} lg:items-stretch lg:gap-12 lg:pb-14`}
         >
           <div className="hero-copy">
-            <p className="eyebrow hero-stage">
-              <SiteText>{"Prodej · Koupě · Pronájem"}</SiteText>
+            <p className="hero-motto">
+              <SiteText>{"Bydlení v pohodě."}</SiteText>{" "}
+              <span>
+                <SiteText>{"U nás i u moře."}</SiteText>
+              </span>
+            </p>
+            <p className="eyebrow hero-stage mt-3">
+              <SiteText>{"Prodej · Koupě · Pronájem · Odhad ceny"}</SiteText>
             </p>
             <h1 className="hero-title mt-4 text-5xl leading-tight sm:text-6xl">
               <SiteText>{"Prodat dobře"}</SiteText>
@@ -119,11 +136,11 @@ function Home() {
                 <SiteText>{"Aktuální nabídka"}</SiteText>
               </p>
               <h2 className="mt-3 text-4xl leading-tight md:text-[2.75rem]">
-                <SiteText>{"Co je právě na trhu – a co už se prodalo"}</SiteText>
+                <SiteText>{"Co je právě na trhu"}</SiteText>
               </h2>
             </div>
             <Link to="/nabidka" className="text-link">
-              <SiteText>{"Celá nabídka"}</SiteText>
+              <SiteText>{"Celá nabídka i prodané"}</SiteText>
             </Link>
           </div>
           <CompactPropertyGrid properties={featured} className="mt-8" />

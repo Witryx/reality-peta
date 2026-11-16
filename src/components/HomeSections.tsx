@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Star } from "lucide-react";
+import { ArrowUpRight, BadgeCheck, KeyRound, Scale, Sofa, Star } from "lucide-react";
 import { photoAt, photoSrcSet } from "@/lib/photo-src";
 import { formatPrice, statusLabel, type Property } from "@/data/types";
 import { useSiteConfig } from "@/lib/website-context";
 import { SiteText } from "./SiteText";
 
-/** Three quiet trust facts under the hero buttons (replaces the separate trust band). */
+/** Three trust facts under the hero buttons: same height, number on top, label below. */
 export function HeroFacts() {
   const { googleReviews } = useSiteConfig();
   return (
@@ -15,19 +15,25 @@ export function HeroFacts() {
         <strong>
           {googleReviews.rating} <Star className="hero-facts-star" aria-hidden />
         </strong>
-        <SiteText>{"na Googlu"}</SiteText>
+        <span>
+          <SiteText>{"hodnocení na Googlu"}</SiteText>
+        </span>
       </li>
       <li>
         <strong>
-          <SiteText>{"Jeden makléř"}</SiteText>
+          <SiteText>{"1 makléř"}</SiteText>
         </strong>
-        <SiteText>{"od schůzky po klíče"}</SiteText>
+        <span>
+          <SiteText>{"od schůzky po klíče"}</SiteText>
+        </span>
       </li>
       <li>
         <strong>
-          <SiteText>{"Právník a finanční specialista"}</SiteText>
+          <SiteText>{"Právník a finance"}</SiteText>
         </strong>
-        <SiteText>{"v týmu"}</SiteText>
+        <span>
+          <SiteText>{"specialisté v týmu"}</SiteText>
+        </span>
       </li>
     </ul>
   );
@@ -223,34 +229,93 @@ export function PriceInsight() {
   );
 }
 
-/** Short Egypt teaser: three big numbers and two listings, details on /egypt. */
+/** Why buy in Egypt through Petr: four short reasons (facts Petr stated about his work). */
+const egyptReasons = [
+  {
+    icon: BadgeCheck,
+    title: "V každém bytě jsem byl",
+    text: "Žádné vizualizace developerů na okraji města.",
+  },
+  {
+    icon: Sofa,
+    title: "Připravené k nastěhování",
+    text: "Zařízené, klimatizace v každém pokoji.",
+  },
+  {
+    icon: Scale,
+    title: "Ověřený právní stav",
+    text: "Kontrola na místě, v češtině i arabštině.",
+  },
+  {
+    icon: KeyRound,
+    title: "Správa, když nejste tam",
+    text: "Úklid, dohled, přepis energií a internetu.",
+  },
+];
+
+const egyptSteps = [
+  "Videohovor – co hledáte a za kolik",
+  "Prohlídka na místě nebo online",
+  "Ověření právního stavu a rezervace",
+  "Podpis, klíče a přepis energií",
+];
+
+/**
+ * Egypt is Petr's main market, so it gets a full homepage section: the price answer,
+ * three key numbers, four reasons, the current flats (moving row) and the four steps.
+ */
 export function EgyptTeaser({ properties }: { properties: Property[] }) {
+  const { contact } = useSiteConfig();
   const active = properties.filter((p) => p.status === "active");
+  const whatsapp = contact.egyptWhatsapp || contact.whatsapp;
   return (
-    <section className="egypt-teaser py-16 md:py-24" aria-labelledby="egypt-teaser-heading">
-      <div className="container-page grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
-        <div>
-          <p className="eyebrow">
-            <SiteText>{"Nemovitosti v Egyptě"}</SiteText>
-          </p>
-          <h2 id="egypt-teaser-heading" className="mt-4 text-4xl leading-tight md:text-5xl">
-            <SiteText>{"Kolik stojí byt u Rudého moře?"}</SiteText>
-          </h2>
-          <dl className="egypt-stats">
-            <div>
-              <dt>
-                <SiteText>{"od 1,15 mil."}</SiteText>
-              </dt>
-              <dd>
-                <SiteText>{"Kč za byt"}</SiteText>
-              </dd>
+    <section className="egypt-home py-16 md:py-24" aria-labelledby="egypt-home-heading">
+      <div className="container-page">
+        <div className="egypt-home-top">
+          <div>
+            <p className="eyebrow">
+              <SiteText>{"Nemovitosti v Egyptě · Hurghada"}</SiteText>
+            </p>
+            <h2 id="egypt-home-heading" className="mt-4 text-4xl leading-tight md:text-5xl">
+              <SiteText>{"Kolik stojí byt u Rudého moře?"}</SiteText>
+            </h2>
+            <p className="egypt-home-answer">
+              <SiteText>{"od"}</SiteText>{" "}
+              <strong>
+                <SiteText>{"1,15 mil. Kč"}</SiteText>
+              </strong>
+            </p>
+            <p className="egypt-home-lead">
+              <SiteText>
+                {
+                  "Byty v centru Hurghady u Sheratonu – tam, kde se žije a všude dojdete pěšky. V každém z nich jsem osobně byl."
+                }
+              </SiteText>
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4">
+              <Link to="/egypt" className="btn btn-primary h-auto">
+                <SiteText>{"Prohlédnout byty u moře "}</SiteText>
+                <ArrowUpRight className="size-4" aria-hidden />
+              </Link>
+              {whatsapp && (
+                <a
+                  href={`https://wa.me/${whatsapp}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-link egypt-home-link"
+                >
+                  <SiteText>{"Napsat přes WhatsApp"}</SiteText>
+                </a>
+              )}
             </div>
+          </div>
+          <dl className="egypt-home-stats">
             <div>
               <dt>
                 <SiteText>{"4,5 h"}</SiteText>
               </dt>
               <dd>
-                <SiteText>{"letu z Prahy"}</SiteText>
+                <SiteText>{"přímý let z Prahy"}</SiteText>
               </dd>
             </div>
             <div>
@@ -258,15 +323,61 @@ export function EgyptTeaser({ properties }: { properties: Property[] }) {
                 <SiteText>{"česky"}</SiteText>
               </dt>
               <dd>
-                <SiteText>{"celý proces"}</SiteText>
+                <SiteText>{"celý proces i právník"}</SiteText>
+              </dd>
+            </div>
+            <div>
+              <dt>
+                <SiteText>{"v ceně"}</SiteText>
+              </dt>
+              <dd>
+                <SiteText>{"právní servis i provize"}</SiteText>
               </dd>
             </div>
           </dl>
-          <Link to="/egypt" className="text-link inline-flex">
-            <SiteText>{"Prohlédnout byty u moře"}</SiteText>
-          </Link>
         </div>
-        <CompactPropertyGrid properties={active} className="compact-grid-2" />
+
+        <ul className="egypt-home-why">
+          {egyptReasons.map(({ icon: Icon, title, text }) => (
+            <li key={title}>
+              <Icon className="egypt-home-why-icon" aria-hidden />
+              <strong>
+                <SiteText>{title}</SiteText>
+              </strong>
+              <span>
+                <SiteText>{text}</SiteText>
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        {active.length > 0 && (
+          <>
+            <div className="mt-12 flex flex-wrap items-end justify-between gap-4">
+              <h3 className="text-3xl">
+                <SiteText>{"Aktuálně u moře"}</SiteText>
+              </h3>
+              <Link to="/egypt" className="text-link egypt-home-link">
+                <SiteText>{"Celá nabídka v Egyptě"}</SiteText>
+              </Link>
+            </div>
+            <CompactPropertyGrid properties={active} className="mt-6" />
+          </>
+        )}
+
+        <div className="egypt-home-steps">
+          <p className="egypt-home-steps-title">
+            <SiteText>{"Jak koupě probíhá"}</SiteText>
+          </p>
+          <ol>
+            {egyptSteps.map((step, index) => (
+              <li key={step}>
+                <span aria-hidden>{index + 1}</span>
+                <SiteText>{step}</SiteText>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     </section>
   );

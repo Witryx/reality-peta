@@ -191,8 +191,18 @@
     "groups": ["Úvodní stránka – vyhledávače"]
   },
   {
-    "key": "text_41e04177",
-    "default": "Prodej · Koupě · Pronájem",
+    "key": "text_2a680585",
+    "default": "Bydlení v pohodě.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_f498b00e",
+    "default": "U nás i u moře.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_bdf8c137",
+    "default": "Prodej · Koupě · Pronájem · Odhad ceny",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -228,14 +238,14 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_8adf1dd0",
-    "default": "Co je právě na trhu – a co už se prodalo",
+    "key": "text_83bd22dc",
+    "default": "Co je právě na trhu",
     "groups": ["Úvodní stránka"],
     "role": "heading"
   },
   {
-    "key": "text_ec6d2622",
-    "default": "Celá nabídka",
+    "key": "text_fbd1e1a0",
+    "default": "Celá nabídka i prodané",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -773,7 +783,7 @@
   {
     "key": "text_2a446ffa",
     "default": "hodnocení na Googlu",
-    "groups": ["Společné sekce"]
+    "groups": ["Společné sekce", "Úvodní stránka"]
   },
   {
     "key": "text_1c57aa13",
@@ -1024,7 +1034,7 @@
   {
     "key": "text_b773a070",
     "default": "Nemovitosti v Egyptě",
-    "groups": ["Egypt", "Úvodní stránka"],
+    "groups": ["Egypt"],
     "role": "heading"
   },
   {
@@ -1161,13 +1171,8 @@
     "groups": ["Reference"]
   },
   {
-    "key": "text_83c25f5f",
-    "default": "na Googlu",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_1944d63a",
-    "default": "Jeden makléř",
+    "key": "text_d23804db",
+    "default": "1 makléř",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -1176,13 +1181,13 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_a06bfe03",
-    "default": "Právník a finanční specialista",
+    "key": "text_ab58389f",
+    "default": "Právník a finance",
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_d2a58d16",
-    "default": "v týmu",
+    "key": "text_8ea47a06",
+    "default": "specialisté v týmu",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -1288,24 +1293,44 @@
     "groups": ["Úvodní stránka"]
   },
   {
+    "key": "text_3988c7c7",
+    "default": "Nemovitosti v Egyptě · Hurghada",
+    "groups": ["Úvodní stránka"]
+  },
+  {
     "key": "text_c4664940",
     "default": "Kolik stojí byt u Rudého moře?",
     "groups": ["Úvodní stránka"],
     "role": "heading"
   },
   {
-    "key": "text_f194be27",
-    "default": "od 1,15 mil.",
+    "key": "text_6b343f8e",
+    "default": "od",
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_99ab95c9",
-    "default": "Kč za byt",
+    "key": "text_cbc4d5b2",
+    "default": "1,15 mil. Kč",
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_9cb09535",
-    "default": "letu z Prahy",
+    "key": "text_7ce5e538",
+    "default": "Byty v centru Hurghady u Sheratonu – tam, kde se žije a všude dojdete pěšky. V každém z nich jsem osobně byl.",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_442e2b66",
+    "default": "Prohlédnout byty u moře",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_1e9074bf",
+    "default": "Napsat přes WhatsApp",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_fe07c286",
+    "default": "přímý let z Prahy",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -1314,13 +1339,34 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_a1e438ba",
-    "default": "celý proces",
+    "key": "text_9a5e366c",
+    "default": "celý proces i právník",
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_442e2b66",
-    "default": "Prohlédnout byty u moře",
+    "key": "text_55996c50",
+    "default": "v ceně",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_82d8ed3b",
+    "default": "právní servis i provize",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_605c15b3",
+    "default": "Aktuálně u moře",
+    "groups": ["Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_23d87204",
+    "default": "Celá nabídka v Egyptě",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_1ab45448",
+    "default": "Jak koupě probíhá",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -2340,6 +2386,22 @@
   {
     "key": "text_29ba8cad",
     "default": "Čím dřív se ozvete, tím víc možností obvykle zbývá.",
+    "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_59f62998",
+    "default": "Odhad ceny",
+    "groups": ["Služby a reference", "Úvodní stránka"]
+  },
+  {
+    "key": "text_113ba0f4",
+    "default": "Za kolik byste nemovitost opravdu prodali?",
+    "groups": ["Služby a reference", "Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_b94e94d",
+    "default": "Odhad pro notáře, dědictví, rozvod nebo jen pro Vaši potřebu. Podle skutečných prodejů v okolí.",
     "groups": ["Služby a reference", "Úvodní stránka"]
   },
   {

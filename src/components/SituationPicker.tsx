@@ -4,6 +4,7 @@ import {
   ArrowLeftRight,
   ArrowUpRight,
   ChartPie,
+  Calculator,
   House,
   KeyRound,
   Scale,
@@ -26,6 +27,7 @@ const situationIcons: Record<string, typeof House> = {
   dedictvi: ScrollText,
   podil: ChartPie,
   exekuce: Scale,
+  odhad: Calculator,
   egypt: Sun,
 };
 

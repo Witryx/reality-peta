@@ -135,6 +135,12 @@ export const situations = [
     text: "Čím dřív se ozvete, tím víc možností obvykle zbývá.",
   },
   {
+    slug: "odhad",
+    label: "Odhad ceny",
+    title: "Za kolik byste nemovitost opravdu prodali?",
+    text: "Odhad pro notáře, dědictví, rozvod nebo jen pro Vaši potřebu. Podle skutečných prodejů v okolí.",
+  },
+  {
     slug: "egypt",
     label: "Apartmán v Egyptě",
     title: "Krásný byt u moře od 1,15 milionu.",
