@@ -1191,6 +1191,16 @@
     "groups": ["Úvodní stránka"]
   },
   {
+    "key": "text_5e72c68",
+    "default": "egypt",
+    "groups": ["Úvodní stránka", "Nabídka", "Detail nemovitosti"]
+  },
+  {
+    "key": "text_b9f7e416",
+    "default": "Cena včetně provize a kompletního servisu zprostředkování",
+    "groups": ["Úvodní stránka", "Nabídka"]
+  },
+  {
     "key": "text_e956e9bb",
     "default": "Líbí se Vám tato prezentace?",
     "groups": ["Úvodní stránka"]
@@ -1630,6 +1640,11 @@
   {
     "key": "text_b80eabe0",
     "default": "Cena",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_f93c4428",
+    "default": "Cena včetně provize a kompletního servisu zprostředkování.",
     "groups": ["Detail nemovitosti"]
   },
   {

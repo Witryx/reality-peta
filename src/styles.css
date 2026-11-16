@@ -4387,3 +4387,9 @@
   min-width: 0;
   white-space: nowrap;
 }
+.compact-card-note {
+  margin-top: 0.2rem;
+  font-size: 0.68rem;
+  line-height: 1.35;
+  color: var(--muted-foreground);
+}

@@ -12,7 +12,11 @@ export function PropertyParameters({ p }: { p: Property }) {
         {formatPrice(p)}
         {p.price !== null && p.status !== "sold" && (
           <span className="mt-1 block text-sm text-muted-foreground">
-            <SiteText>{"Cena včetně provize RK."}</SiteText>
+            {p.market === "egypt" ? (
+              <SiteText>{"Cena včetně provize a kompletního servisu zprostředkování."}</SiteText>
+            ) : (
+              <SiteText>{"Cena včetně provize RK."}</SiteText>
+            )}
           </span>
         )}
       </>,

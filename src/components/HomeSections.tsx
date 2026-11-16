@@ -81,6 +81,11 @@ function CompactCard({ p }: { p: Property }) {
           <p className="compact-card-price">
             {p.status === "sold" ? <SiteText>{"Prodáno"}</SiteText> : formatPrice(p)}
           </p>
+          {p.market === "egypt" && p.price !== null && p.status !== "sold" && (
+            <p className="compact-card-note">
+              <SiteText>{"Cena včetně provize a kompletního servisu zprostředkování"}</SiteText>
+            </p>
+          )}
         </div>
       </Link>
     </article>

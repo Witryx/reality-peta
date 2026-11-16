@@ -90,6 +90,13 @@ export function PropertyCard({ p, eager = false }: { p: Property; eager?: boolea
                 <p className="property-card-price">
                   {p.status === "sold" ? "Prodáno" : formatPrice(p)}
                 </p>
+                {p.market === "egypt" && p.price !== null && p.status !== "sold" && (
+                  <p className="property-card-price-note">
+                    <SiteText>
+                      {"Cena včetně provize a kompletního servisu zprostředkování"}
+                    </SiteText>
+                  </p>
+                )}
                 {p.priceNote && <p className="property-card-price-note">{p.priceNote}</p>}
               </div>
               <span className="property-detail-arrow">
