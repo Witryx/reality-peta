@@ -3887,7 +3887,80 @@
 .egypt-home {
   --sea-deep: #16707d;
   --sea-line: #d5e7ea;
-  background: linear-gradient(180deg, #e4f1f3 0%, #f3f9fa 55%, var(--background) 100%);
+  position: relative;
+  overflow: hidden;
+  /* Warm morning sky fading into sea blue, then a hint of sand at the bottom. */
+  background:
+    radial-gradient(60rem 28rem at 88% -6%, rgb(255 214 140 / 0.45), transparent 60%),
+    linear-gradient(180deg, #e2f1f4 0%, #f1f8f9 58%, #fbf4e8 100%);
+  padding-bottom: clamp(5rem, 4rem + 4vw, 7.5rem) !important;
+}
+/* The sun: a soft glowing disc with slowly turning rays (still when motion is reduced). */
+.egypt-home-sun {
+  position: absolute;
+  top: clamp(1.25rem, 3vw, 3rem);
+  right: clamp(-2.5rem, 4vw, 7%);
+  width: clamp(7rem, 5rem + 9vw, 12rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 38%, #ffe7a8 0%, #ffc768 45%, #f6a347 100%);
+  box-shadow:
+    0 0 0 14px rgb(255 205 120 / 0.18),
+    0 0 70px 20px rgb(255 190 90 / 0.35);
+  opacity: 0.9;
+  pointer-events: none;
+}
+.egypt-home-sun::before {
+  content: "";
+  position: absolute;
+  inset: -45%;
+  border-radius: 50%;
+  background: repeating-conic-gradient(rgb(255 196 100 / 0.22) 0 5deg, transparent 5deg 20deg);
+  mask: radial-gradient(circle, transparent 36%, #000 40%, transparent 70%);
+  animation: egypt-sun-turn 80s linear infinite;
+}
+@keyframes egypt-sun-turn {
+  to {
+    transform: rotate(1turn);
+  }
+}
+/* Two layers of gentle waves along the bottom edge. */
+.egypt-home-waves {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  width: 200%;
+  height: clamp(3.5rem, 2.5rem + 3vw, 6rem);
+  pointer-events: none;
+  animation: egypt-waves 26s linear infinite;
+}
+.egypt-home-waves path:first-child {
+  fill: #9fd3db;
+  opacity: 0.45;
+}
+.egypt-home-waves path:last-child {
+  fill: #1f8a9a;
+  opacity: 0.22;
+}
+@keyframes egypt-waves {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .egypt-home-sun::before,
+  .egypt-home-waves {
+    animation: none;
+  }
+}
+/* Keep the sun behind the text on phones. */
+@media (max-width: 767px) {
+  .egypt-home-sun {
+    opacity: 0.55;
+  }
+}
+.egypt-home .compact-card-price {
+  font-size: 0.88rem;
 }
 .egypt-home .eyebrow::before {
   background: #1f8a9a;
@@ -4088,8 +4161,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "brand brand"
-    "menu contact"
-    "save save";
+    "menu save";
   padding-block: 2.5rem 2.25rem;
 }
 .footer-brand {
@@ -4099,16 +4171,16 @@
   grid-area: menu;
 }
 .footer-contact {
-  grid-area: contact;
-  min-width: 0;
+  max-width: 22rem;
+  margin-top: 1.5rem;
 }
 .footer-save {
   grid-area: save;
 }
 @media (min-width: 1024px) {
   .footer-grid {
-    grid-template-columns: 1.3fr 0.8fr 1.1fr 0.9fr;
-    grid-template-areas: "brand menu contact save";
+    grid-template-columns: 1.4fr 0.8fr 0.9fr;
+    grid-template-areas: "brand menu save";
     gap: 2.5rem;
     padding-block: 3.5rem 3rem;
   }
@@ -4231,4 +4303,50 @@
 .home-page .referral-strip h2 {
   max-width: 34ch;
   font-size: clamp(1.6rem, 1.15rem + 2vw, 2.35rem);
+}
+
+/* Egypt: a real photo from Petr's Hurghada listing with the key numbers overlapping it. */
+.egypt-home-visual {
+  position: relative;
+}
+.egypt-home-photo {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 6px 6px 48px 6px;
+  box-shadow: 0 24px 50px -28px rgb(22 112 125 / 0.55);
+}
+.egypt-home-photo figcaption {
+  position: absolute;
+  left: 0.85rem;
+  top: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.9);
+  padding: 0.35rem 0.8rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--sea-deep);
+  backdrop-filter: blur(4px);
+}
+.egypt-home-photo figcaption svg {
+  width: 1rem;
+  height: 1rem;
+  color: #f2a541;
+}
+.egypt-home-visual.has-photo .egypt-home-stats {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 2rem);
+  margin: -2.5rem 0 0 1rem;
+  box-shadow: 0 16px 34px -22px rgb(22 112 125 / 0.5);
+}
+@media (min-width: 1024px) {
+  .egypt-home-top {
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+  }
 }

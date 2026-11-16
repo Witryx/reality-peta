@@ -105,7 +105,26 @@ export function approxCzk(price: number) {
   return `cca ${Math.round(price / 1000).toLocaleString("cs-CZ")} tis. Kč`;
 }
 
+/**
+ * Rate for the orientational euro price of Egypt listings. Deliberately a bit below the
+ * market rate and rounded up, so paying in euros always comes out slightly dearer than in CZK.
+ */
+export const EGYPT_EUR_RATE = 24;
+
+/** Euro amount for an Egypt listing: the one set in admin, otherwise CZK / rate rounded up to 1 000 €. */
+export function egyptEur(p: Property) {
+  if (p.priceEur) return p.priceEur;
+  if (!p.price) return null;
+  return Math.ceil(p.price / EGYPT_EUR_RATE / 1000) * 1000;
+}
+
 export function formatPrice(p: Property) {
+  if (p.market === "egypt" && p.price) {
+    const eur = egyptEur(p);
+    const czk = new Intl.NumberFormat("cs-CZ").format(p.price) + " Kč";
+    const value = eur ? `${czk} (${new Intl.NumberFormat("cs-CZ").format(eur)} €)` : czk;
+    return p.offerType === "rent" ? `${value} / měsíc` : value;
+  }
   if (p.priceEur) {
     const eur = new Intl.NumberFormat("cs-CZ").format(p.priceEur) + " €";
     const value = p.price ? `${eur} (${approxCzk(p.price)})` : eur;

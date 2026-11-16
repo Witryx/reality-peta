@@ -32,6 +32,9 @@ export function SiteFooter() {
           <div className="mt-4">
             <SocialIcons />
           </div>
+          <div className="footer-contact">
+            <ContactLinks />
+          </div>
         </div>
         <nav aria-label="Odkazy v patičce" className="footer-col">
           <p className="footer-title">
@@ -52,12 +55,6 @@ export function SiteFooter() {
             </li>
           </ul>
         </nav>
-        <div className="footer-col footer-contact">
-          <p className="footer-title">
-            <SiteText>{"Kontakt"}</SiteText>
-          </p>
-          <ContactLinks />
-        </div>
         <div className="footer-col footer-save">
           <p className="footer-title">
             <SiteText>{"Uložit kontakt"}</SiteText>

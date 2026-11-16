@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, BadgeCheck, KeyRound, Scale, Sofa, Star } from "lucide-react";
+import { ArrowUpRight, BadgeCheck, KeyRound, Scale, Sofa, Star, Sun } from "lucide-react";
 import { photoAt, photoSrcSet } from "@/lib/photo-src";
 import { formatPrice, statusLabel, type Property } from "@/data/types";
-import { useSiteConfig } from "@/lib/website-context";
+import { useSiteConfig, useWebsiteImageHidden } from "@/lib/website-context";
 import { SiteText } from "./SiteText";
+import { SiteImage } from "./SiteImage";
+import { egyptPhoto } from "@/data/website-image-defaults";
 
 /** Three trust facts under the hero buttons: same height, number on top, label below. */
 export function HeroFacts() {
@@ -276,9 +278,21 @@ export function EgyptTeaser({ properties }: { properties: Property[] }) {
   const { contact } = useSiteConfig();
   const active = properties.filter((p) => p.status === "active");
   const whatsapp = contact.egyptWhatsapp || contact.whatsapp;
+  const photoHidden = useWebsiteImageHidden("image.egypt");
   return (
     <section className="egypt-home py-16 md:py-24" aria-labelledby="egypt-home-heading">
-      <div className="container-page">
+      <div className="egypt-home-sun" aria-hidden />
+      <svg
+        className="egypt-home-waves"
+        viewBox="0 0 1440 120"
+        preserveAspectRatio="none"
+        aria-hidden
+        focusable="false"
+      >
+        <path d="M0 64c120-28 240-28 360 0s240 28 360 0 240-28 360 0 240 28 360 0v56H0z" />
+        <path d="M0 84c120-22 240-22 360 0s240 22 360 0 240-22 360 0 240 22 360 0v36H0z" />
+      </svg>
+      <div className="container-page relative z-[1]">
         <div className="egypt-home-top">
           <div>
             <p className="eyebrow">
@@ -317,32 +331,51 @@ export function EgyptTeaser({ properties }: { properties: Property[] }) {
               )}
             </div>
           </div>
-          <dl className="egypt-home-stats">
-            <div>
-              <dt>
-                <SiteText>{"4,5 h"}</SiteText>
-              </dt>
-              <dd>
-                <SiteText>{"přímý let z Prahy"}</SiteText>
-              </dd>
-            </div>
-            <div>
-              <dt>
-                <SiteText>{"česky"}</SiteText>
-              </dt>
-              <dd>
-                <SiteText>{"celý proces i právník"}</SiteText>
-              </dd>
-            </div>
-            <div>
-              <dt>
-                <SiteText>{"v ceně"}</SiteText>
-              </dt>
-              <dd>
-                <SiteText>{"právní servis i provize"}</SiteText>
-              </dd>
-            </div>
-          </dl>
+          <div className={`egypt-home-visual ${photoHidden ? "" : "has-photo"}`}>
+            {!photoHidden && (
+              <figure className="egypt-home-photo">
+                <SiteImage
+                  imageKey="image.egypt"
+                  src={egyptPhoto}
+                  alt="Terasa s výhledem na Rudé moře v Hurghadě"
+                  width={1600}
+                  height={1200}
+                  loading="lazy"
+                  className="size-full object-cover"
+                />
+                <figcaption>
+                  <Sun aria-hidden />
+                  <SiteText>{"Hurghada · Rudé moře"}</SiteText>
+                </figcaption>
+              </figure>
+            )}
+            <dl className="egypt-home-stats">
+              <div>
+                <dt>
+                  <SiteText>{"4,5 h"}</SiteText>
+                </dt>
+                <dd>
+                  <SiteText>{"přímý let z Prahy"}</SiteText>
+                </dd>
+              </div>
+              <div>
+                <dt>
+                  <SiteText>{"česky"}</SiteText>
+                </dt>
+                <dd>
+                  <SiteText>{"celý proces i právník"}</SiteText>
+                </dd>
+              </div>
+              <div>
+                <dt>
+                  <SiteText>{"v ceně"}</SiteText>
+                </dt>
+                <dd>
+                  <SiteText>{"právní servis i provize"}</SiteText>
+                </dd>
+              </div>
+            </dl>
+          </div>
         </div>
 
         <ul className="egypt-home-why">

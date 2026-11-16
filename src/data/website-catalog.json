@@ -262,7 +262,7 @@
   {
     "key": "text_42ec9773",
     "default": "Kontakt",
-    "groups": ["Kontakt – vyhledávače", "Kontakt", "Patička", "Identita"]
+    "groups": ["Kontakt – vyhledávače", "Kontakt", "Identita"]
   },
   {
     "key": "text_292cb62e",
@@ -1326,6 +1326,11 @@
   {
     "key": "text_1e9074bf",
     "default": "Napsat přes WhatsApp",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_ac838b2c",
+    "default": "Hurghada · Rudé moře",
     "groups": ["Úvodní stránka"]
   },
   {
