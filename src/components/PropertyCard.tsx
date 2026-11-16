@@ -60,7 +60,9 @@ export function PropertyCard({ p, eager = false }: { p: Property; eager?: boolea
         <div className="property-info">
           <p className="property-card-location">
             <MapPin size={14} aria-hidden="true" />
-            {[p.location.city, p.location.district].filter(Boolean).join(" · ")}
+            <span className="truncate">
+              {[p.location.city, p.location.district].filter(Boolean).join(" · ")}
+            </span>
           </p>
           <h3 className="property-title property-card-title">{p.title}</h3>
           <div className="property-card-facts">

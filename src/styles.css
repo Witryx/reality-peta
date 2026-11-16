@@ -4350,3 +4350,40 @@
     align-items: center;
   }
 }
+
+/* Listing cards side by side: place, title and price always sit at the same height.
+   Place = one line, title = always two lines tall, price pinned to the bottom. */
+.compact-card > a {
+  height: 100%;
+}
+.compact-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.compact-card-place {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.compact-card-place {
+  min-height: 1.5em;
+  line-height: 1.5;
+}
+.compact-card-title {
+  min-height: calc(2 * 1.3em);
+}
+.compact-card-price {
+  margin-top: auto;
+}
+.property-card .property-card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(2 * 1.45em);
+}
+.property-card-location {
+  min-width: 0;
+  white-space: nowrap;
+}
