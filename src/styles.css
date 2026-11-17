@@ -1951,6 +1951,8 @@
     var(--stelar-yellow)
   );
   --stelar-footer: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2400 120'><defs><linearGradient id='h' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='2400' y2='0'><stop offset='.25' stop-color='%23fdca5d' stop-opacity='0'/><stop offset='.5' stop-color='%23fdca5d' stop-opacity='.5'/><stop offset='.75' stop-color='%23fdca5d' stop-opacity='0'/></linearGradient><radialGradient id='r' gradientUnits='userSpaceOnUse' cx='1200' cy='120' r='118'><stop offset='0' stop-color='%23fdca5d' stop-opacity='.7'/><stop offset='1' stop-color='%23fdca5d' stop-opacity='0'/></radialGradient><radialGradient id='s' gradientUnits='userSpaceOnUse' cx='1200' cy='120' r='118'><stop offset='0' stop-color='%23fdca5d' stop-opacity='.16'/><stop offset='1' stop-color='%23bd5c17' stop-opacity='0'/></radialGradient></defs><path d='M1200 120 L1200 2 L1283 37 Z' fill='url(%23s)'/><rect x='0' y='119' width='2400' height='1' fill='url(%23h)'/><path d='M1200 120 V2 M1200 120 L1117 37 M1200 120 L1283 37' stroke='url(%23r)' stroke-width='1' fill='none'/></svg>");
+  --stelar-footer-line: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2400 120'><defs><linearGradient id='h' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='2400' y2='0'><stop offset='.25' stop-color='%23fdca5d' stop-opacity='0'/><stop offset='.5' stop-color='%23fdca5d' stop-opacity='.5'/><stop offset='.75' stop-color='%23fdca5d' stop-opacity='0'/></linearGradient></defs><rect x='0' y='119' width='2400' height='1' fill='url(%23h)'/></svg>");
+  --stelar-footer-star: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='1110 0 180 120'><defs><radialGradient id='r' gradientUnits='userSpaceOnUse' cx='1200' cy='120' r='118'><stop offset='0' stop-color='%23fdca5d' stop-opacity='.7'/><stop offset='1' stop-color='%23fdca5d' stop-opacity='0'/></radialGradient><radialGradient id='s' gradientUnits='userSpaceOnUse' cx='1200' cy='120' r='118'><stop offset='0' stop-color='%23fdca5d' stop-opacity='.16'/><stop offset='1' stop-color='%23bd5c17' stop-opacity='0'/></radialGradient></defs><path d='M1200 120 L1200 2 L1283 37 Z' fill='url(%23s)'/><path d='M1200 120 V2 M1200 120 L1117 37 M1200 120 L1283 37' stroke='url(%23r)' stroke-width='1' fill='none'/></svg>");
   --klin: var(--stelar-brown);
 }
 /* Klín (brandbook STELAR): a wedge tapering to a blunt end, in front of small
@@ -4183,6 +4185,29 @@
     grid-template-areas: "brand menu save";
     gap: 2.5rem;
     padding-block: 3.5rem 3rem;
+  }
+}
+/* Desktop: the star sits right above the Menu column (not the page centre),
+   so it lines up with the middle column at every window width. */
+@media (min-width: 1024px) {
+  .site-footer {
+    background-image: var(--stelar-gradient), var(--stelar-footer-line);
+  }
+  .footer-grid > nav {
+    position: relative;
+    justify-self: start;
+  }
+  .footer-grid > nav::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    /* footer padding 80px + grid padding 3.5rem − horizon at 128px */
+    bottom: calc(100% + 3.5rem - 48px);
+    width: 180px;
+    height: 120px;
+    transform: translateX(-50%);
+    background: var(--stelar-footer-star) no-repeat center / 180px 120px;
+    pointer-events: none;
   }
 }
 .footer-title {

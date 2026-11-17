@@ -1,6 +1,6 @@
 import { useSiteConfig } from "@/lib/website-context";
 import { SiteText } from "@/components/SiteText";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { pageHead, websiteValues } from "@/lib/seo";
 import { EgyptSection } from "@/components/EgyptSection";
 import { SectionHead } from "@/components/Sections";
@@ -71,6 +71,27 @@ function Page() {
           title="Nemovitosti u Rudého moře"
           intro="Přehled aktuálních možností. Každou nabídku projdeme osobně, včetně právního režimu vlastnictví a provozních nákladů."
         />
+        <nav aria-label="Přepnout nabídku" className="mt-8 flex flex-wrap items-center gap-2">
+          <span className="rounded-full border border-primary bg-primary px-4 py-2 text-sm text-primary-foreground">
+            <SiteText>{"Egypt"}</SiteText>
+          </span>
+          <Link
+            to="/nabidka"
+            search={{ zeme: "cz" }}
+            className="rounded-full border px-4 py-2 text-sm transition-colors hover:border-foreground"
+          >
+            <SiteText>{"Česko"}</SiteText>
+          </Link>
+          <Link
+            to="/nabidka"
+            className="rounded-full border px-4 py-2 text-sm transition-colors hover:border-foreground"
+          >
+            <SiteText>{"Celá nabídka"}</SiteText>
+          </Link>
+          <span className="ml-1 text-sm text-muted-foreground">
+            <SiteText>{"Prodávám i v Česku – po celé republice."}</SiteText>
+          </span>
+        </nav>
         <PropertyCarousel properties={egypt} />
         <PropertyContactCta />
       </section>
