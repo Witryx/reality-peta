@@ -19,8 +19,8 @@ export function SiteFooter() {
 
   return (
     <footer className="site-footer bg-ink text-ink-foreground">
-      {/* Four aligned columns on desktop (brand · menu · contact · save contact); on phones
-          brand first, then menu and contact side by side, then the save button. */}
+      {/* Desktop: three even columns (brand · menu · contact + QR), the star sits above the
+          middle one. Phones: brand, menu in two columns, contact, one save button. */}
       <div className="footer-grid container-page">
         <div className="footer-brand">
           <Link to="/" aria-label="Petr Pavlát reality – úvod" onClick={() => scrollToTop(router)}>
@@ -29,14 +29,9 @@ export function SiteFooter() {
           <p className="mt-4 max-w-xs text-sm leading-relaxed opacity-60">
             <SiteText>{site.footerRegion}</SiteText>
           </p>
-          <div className="mt-4">
-            <SocialIcons />
-          </div>
-          <div className="footer-contact">
-            <ContactLinks />
-          </div>
+          <QrToggle />
         </div>
-        <nav aria-label="Odkazy v patičce" className="footer-col">
+        <nav aria-label="Odkazy v patičce" className="footer-menu">
           <p className="footer-title">
             <SiteText>{"Menu"}</SiteText>
           </p>
@@ -55,10 +50,14 @@ export function SiteFooter() {
             </li>
           </ul>
         </nav>
-        <div className="footer-col footer-save">
+        <div className="footer-contact">
           <p className="footer-title">
-            <SiteText>{"Uložit kontakt"}</SiteText>
+            <SiteText>{"Kontakt"}</SiteText>
           </p>
+          <ContactLinks />
+          <div className="mt-4">
+            <SocialIcons />
+          </div>
           <SaveContact />
         </div>
       </div>
@@ -111,41 +110,48 @@ export function SiteFooter() {
   );
 }
 
-/** A quiet QR button on larger screens, a direct download button on phones. */
+/** Phones: one direct download button under the contacts. */
 function SaveContact() {
-  const [open, setOpen] = useState(false);
   return (
-    <div>
+    <div className="footer-save md:hidden">
       <a
         href="/kontakt.vcf"
         download="Petr-Pavlat-reality.vcf"
-        className="btn btn-primary md:hidden"
+        className="btn btn-primary w-full"
       >
         <SiteText>{"Uložit kontakt do telefonu"}</SiteText>
       </a>
-      <div className="qr-pop hidden md:inline-block" data-open={open}>
-        <button
-          type="button"
-          className="qr-pop-button"
-          aria-expanded={open}
-          onClick={() => setOpen((value) => !value)}
-        >
-          <QrCode aria-hidden className="h-[18px] w-[18px] text-[#fdca5d]" />
-          <SiteText>{"Uložte si můj kontakt do telefonu"}</SiteText>
-        </button>
-        <div className="qr-pop-card">
+    </div>
+  );
+}
+
+/** Larger screens: a quiet button under the logo that unfolds the QR code. */
+function QrToggle() {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="footer-qr-toggle hidden md:block">
+      <button
+        type="button"
+        className="footer-qr-button"
+        aria-expanded={open}
+        onClick={() => setOpen((value) => !value)}
+      >
+        <QrCode aria-hidden className="h-[18px] w-[18px] text-[#fdca5d]" />
+        <SiteText>{"Uložte si můj kontakt do telefonu"}</SiteText>
+      </button>
+      {open && (
+        <div className="footer-qr">
           <img
             src="/kontakt-qr.svg"
             alt="QR kód pro uložení kontaktu Petr Pavlát reality"
-            width={192}
-            height={192}
-            loading="lazy"
+            width={112}
+            height={112}
           />
-          <p className="mt-2 text-center text-xs text-muted-foreground">
-            <SiteText>{"Stačí naskenovat fotoaparátem."}</SiteText>
+          <p>
+            <SiteText>{"Namiřte fotoaparát telefonu na kód a kontakt se uloží."}</SiteText>
           </p>
         </div>
-      </div>
+      )}
     </div>
   );
 }

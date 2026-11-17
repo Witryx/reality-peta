@@ -1951,8 +1951,6 @@
     var(--stelar-yellow)
   );
   --stelar-footer: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2400 120'><defs><linearGradient id='h' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='2400' y2='0'><stop offset='.25' stop-color='%23fdca5d' stop-opacity='0'/><stop offset='.5' stop-color='%23fdca5d' stop-opacity='.5'/><stop offset='.75' stop-color='%23fdca5d' stop-opacity='0'/></linearGradient><radialGradient id='r' gradientUnits='userSpaceOnUse' cx='1200' cy='120' r='118'><stop offset='0' stop-color='%23fdca5d' stop-opacity='.7'/><stop offset='1' stop-color='%23fdca5d' stop-opacity='0'/></radialGradient><radialGradient id='s' gradientUnits='userSpaceOnUse' cx='1200' cy='120' r='118'><stop offset='0' stop-color='%23fdca5d' stop-opacity='.16'/><stop offset='1' stop-color='%23bd5c17' stop-opacity='0'/></radialGradient></defs><path d='M1200 120 L1200 2 L1283 37 Z' fill='url(%23s)'/><rect x='0' y='119' width='2400' height='1' fill='url(%23h)'/><path d='M1200 120 V2 M1200 120 L1117 37 M1200 120 L1283 37' stroke='url(%23r)' stroke-width='1' fill='none'/></svg>");
-  --stelar-footer-line: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2400 120'><defs><linearGradient id='h' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='2400' y2='0'><stop offset='.25' stop-color='%23fdca5d' stop-opacity='0'/><stop offset='.5' stop-color='%23fdca5d' stop-opacity='.5'/><stop offset='.75' stop-color='%23fdca5d' stop-opacity='0'/></linearGradient></defs><rect x='0' y='119' width='2400' height='1' fill='url(%23h)'/></svg>");
-  --stelar-footer-star: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='1110 0 180 120'><defs><radialGradient id='r' gradientUnits='userSpaceOnUse' cx='1200' cy='120' r='118'><stop offset='0' stop-color='%23fdca5d' stop-opacity='.7'/><stop offset='1' stop-color='%23fdca5d' stop-opacity='0'/></radialGradient><radialGradient id='s' gradientUnits='userSpaceOnUse' cx='1200' cy='120' r='118'><stop offset='0' stop-color='%23fdca5d' stop-opacity='.16'/><stop offset='1' stop-color='%23bd5c17' stop-opacity='0'/></radialGradient></defs><path d='M1200 120 L1200 2 L1283 37 Z' fill='url(%23s)'/><path d='M1200 120 V2 M1200 120 L1117 37 M1200 120 L1283 37' stroke='url(%23r)' stroke-width='1' fill='none'/></svg>");
   --klin: var(--stelar-brown);
 }
 /* Klín (brandbook STELAR): a wedge tapering to a blunt end, in front of small
@@ -2034,61 +2032,6 @@
   .valuation-form {
     padding: 2.25rem;
   }
-}
-/* Footer contact QR: a quiet button that reveals the code on hover or click. */
-/* No display here: the Tailwind `hidden md:inline-block` utilities decide, so phones
-   get only the direct "Uložit kontakt do telefonu" button and the QR stays desktop-only. */
-.qr-pop {
-  position: relative;
-}
-.qr-pop-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.6rem 1rem;
-  border: 1px solid color-mix(in oklab, var(--stelar-soft) 35%, transparent);
-  border-radius: 999px;
-  background: color-mix(in oklab, #fff 3%, transparent);
-  font-size: 0.9rem;
-  transition:
-    border-color 0.2s,
-    background-color 0.2s;
-}
-.qr-pop-button:hover,
-.qr-pop-button:focus-visible {
-  border-color: var(--stelar-soft);
-  background: color-mix(in oklab, var(--stelar-soft) 8%, transparent);
-}
-.qr-pop-card {
-  position: absolute;
-  bottom: calc(100% + 12px);
-  left: 0;
-  z-index: 5;
-  width: 220px;
-  padding: 14px;
-  border-radius: 14px;
-  background: var(--surface);
-  color: var(--foreground);
-  box-shadow: 0 20px 40px -12px rgb(0 0 0 / 0.6);
-  opacity: 0;
-  transform: translateY(6px);
-  pointer-events: none;
-  transition:
-    opacity 0.2s,
-    transform 0.2s;
-}
-.qr-pop:hover .qr-pop-card,
-.qr-pop:focus-within .qr-pop-card,
-.qr-pop[data-open="true"] .qr-pop-card {
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
-}
-.qr-pop-card img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
 }
 /* Google rating: a calm card that still catches the eye. */
 .google-rating-card {
@@ -4156,58 +4099,78 @@
   }
 }
 
-/* Footer: tidy aligned columns with small titles, same spacing everywhere. */
+/* Footer: phones stack brand → menu (two columns) → contact; desktop has three even
+   columns, so the middle one sits exactly under the star in the page centre. */
 .footer-grid {
   display: grid;
-  gap: 2.25rem 1.5rem;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-    "brand brand"
-    "menu save";
-  padding-block: 2.5rem 2.25rem;
+  gap: 2rem;
+  padding-block: 3rem 2.25rem;
 }
-.footer-brand {
-  grid-area: brand;
-}
-.footer-grid > nav {
-  grid-area: menu;
+.footer-menu .footer-links {
+  grid-template-columns: auto auto;
+  justify-content: start;
+  column-gap: 2rem;
 }
 .footer-contact {
   max-width: 22rem;
-  margin-top: 1.5rem;
 }
 .footer-save {
-  grid-area: save;
+  margin-top: 1.25rem;
+}
+.footer-qr-toggle {
+  margin-top: 1.5rem;
+}
+.footer-qr-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid color-mix(in oklab, var(--stelar-soft) 35%, transparent);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
+}
+.footer-qr-button:hover,
+.footer-qr-button:focus-visible,
+.footer-qr-button[aria-expanded="true"] {
+  border-color: var(--stelar-soft);
+  background: color-mix(in oklab, var(--stelar-soft) 8%, transparent);
+}
+.footer-qr {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  animation: reveal-up 0.25s ease both;
+}
+.footer-qr img {
+  width: 112px;
+  height: 112px;
+  flex-shrink: 0;
+  padding: 6px;
+  border-radius: 10px;
+  background: #fff;
+}
+.footer-qr p {
+  max-width: 12rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  opacity: 0.6;
 }
 @media (min-width: 1024px) {
   .footer-grid {
-    grid-template-columns: 1.4fr 0.8fr 0.9fr;
-    grid-template-areas: "brand menu save";
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 2.5rem;
-    padding-block: 3.5rem 3rem;
+    padding-block: 3.5rem 2.75rem;
   }
-}
-/* Desktop: the star sits right above the Menu column (not the page centre),
-   so it lines up with the middle column at every window width. */
-@media (min-width: 1024px) {
-  .site-footer {
-    background-image: var(--stelar-gradient), var(--stelar-footer-line);
+  .footer-menu {
+    justify-self: center;
   }
-  .footer-grid > nav {
-    position: relative;
-    justify-self: start;
-  }
-  .footer-grid > nav::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    /* footer padding 80px + grid padding 3.5rem − horizon at 128px */
-    bottom: calc(100% + 3.5rem - 48px);
-    width: 180px;
-    height: 120px;
-    transform: translateX(-50%);
-    background: var(--stelar-footer-star) no-repeat center / 180px 120px;
-    pointer-events: none;
+  .footer-contact {
+    justify-self: end;
+    width: 100%;
   }
 }
 .footer-title {
@@ -4230,13 +4193,13 @@
 .footer-links a:hover {
   opacity: 1;
 }
-.footer-contact ul li {
+.footer-contact > ul > li {
   border-color: color-mix(in oklab, var(--ink-foreground) 15%, transparent);
   padding-block: 0.45rem;
   font-size: 0.92rem;
   overflow-wrap: anywhere;
 }
-.footer-contact ul li:first-child {
+.footer-contact > ul > li:first-child {
   padding-top: 0;
 }
 .footer-legal {
@@ -4254,6 +4217,40 @@
     align-items: flex-start;
     justify-content: space-between;
     gap: 2rem;
+  }
+}
+/* Desktop: legal links start in the same line as the Kontakt column above. */
+@media (min-width: 1024px) {
+  .footer-legal {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5rem;
+  }
+  .footer-legal > div {
+    grid-column: span 2;
+  }
+  .footer-legal-links {
+    justify-self: end;
+    width: 100%;
+    max-width: 22rem;
+  }
+}
+/* Phones: the three partner logos small enough to sit readably side by side. */
+@media (max-width: 639px) {
+  .footer-partners .partner-grid {
+    gap: 0.5rem;
+  }
+  .footer-partners .partner-name {
+    min-height: 2.2rem;
+    font-size: 0.68rem;
+    line-height: 1.3;
+    overflow-wrap: normal;
+  }
+  .footer-partners .partner-logo,
+  .footer-partners .partner-logo-compact {
+    max-width: 92px;
+    height: 44px;
+    padding-inline: 0;
   }
 }
 .footer-legal-links {
