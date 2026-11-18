@@ -1,7 +1,7 @@
 import { photoAt, photoSrcSet } from "@/lib/photo-src";
 import { SiteText } from "@/components/SiteText";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, CalendarDays, MapPin, Ruler } from "lucide-react";
+import { ArrowUpRight, CalendarDays, Camera, MapPin, Ruler } from "lucide-react";
 import { formatPrice, statusLabel, type Property } from "@/data/types";
 
 export function StatusBadge({
@@ -22,7 +22,8 @@ export function StatusBadge({
 }
 
 export function PropertyCard({ p, eager = false }: { p: Property; eager?: boolean }) {
-  const img = [...p.images].sort((a, b) => a.position - b.position)[0];
+  const photos = [...p.images].sort((a, b) => a.position - b.position);
+  const [img, peek] = photos;
   const features = [...new Set(p.features.map((feature) => feature.trim()).filter(Boolean))].slice(
     0,
     5,
@@ -41,12 +42,32 @@ export function PropertyCard({ p, eager = false }: { p: Property; eager?: boolea
               height={900}
               loading={eager ? "eager" : "lazy"}
               decoding="async"
-              className="img-zoom size-full object-cover group-hover:scale-[1.03]"
+              className="property-card-img size-full object-cover"
             />
           ) : (
             <div className="flex size-full items-center justify-center text-sm text-muted-foreground">
               <SiteText>{"Fotografii připravujeme"}</SiteText>
             </div>
+          )}
+          {peek && (
+            <img
+              src={photoAt(peek.src, 960)}
+              srcSet={photoSrcSet(peek.src, [480, 960])}
+              sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
+              alt=""
+              aria-hidden
+              width={1200}
+              height={900}
+              loading="lazy"
+              decoding="async"
+              className="property-card-img property-card-peek size-full object-cover"
+            />
+          )}
+          {photos.length > 1 && (
+            <span className="property-card-count">
+              <Camera aria-hidden />
+              {photos.length}
+            </span>
           )}
           <div className="absolute left-3 top-3 flex gap-2">
             <StatusBadge status={p.status} prominent={p.status === "active"} />

@@ -4415,3 +4415,261 @@
   line-height: 1.35;
   color: var(--muted-foreground);
 }
+
+/* ── Listings, Nov 2026: slightly bigger cards and livelier interaction ──
+   Homepage rail shows ~1.3 / 2.4 / 3.3 cards, so the next one peeks in and invites a swipe.
+   On hover (mouse only) the second photo fades in, the card lifts and an orange line runs
+   along the bottom of the photo. Arrows + progress line under the rail. */
+.compact-rail {
+  min-width: 0;
+}
+.compact-grid {
+  gap: 18px;
+  padding: 6px 2px 14px;
+  margin-inline: -2px;
+}
+.compact-grid > .compact-card {
+  flex: 0 0 76%;
+}
+@media (min-width: 640px) {
+  .compact-grid > .compact-card {
+    flex-basis: 44%;
+  }
+}
+@media (min-width: 1024px) {
+  .compact-grid > .compact-card {
+    flex-basis: calc((100% - 3 * 18px) / 3.3);
+  }
+}
+.compact-card {
+  border-radius: 10px;
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s,
+    border-color 0.35s;
+}
+.compact-card:hover,
+.compact-card:focus-within {
+  transform: translateY(-6px);
+  border-color: color-mix(in oklab, var(--accent) 45%, var(--border));
+  box-shadow: 0 22px 40px -24px color-mix(in oklab, var(--ink) 55%, transparent);
+}
+.compact-card-photo::after,
+.property-photo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.compact-card:hover .compact-card-photo::after,
+.compact-card:focus-within .compact-card-photo::after,
+.property-card:hover .property-photo::after,
+.property-card:focus-within .property-photo::after {
+  transform: scaleX(1);
+}
+.compact-card-img,
+.property-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    opacity 0.6s ease,
+    transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.compact-card-peek,
+.property-card-peek {
+  opacity: 0;
+}
+@media (hover: hover) {
+  .compact-card:hover .compact-card-peek,
+  .property-card:hover .property-card-peek {
+    opacity: 1;
+  }
+  .compact-card:hover .compact-card-img,
+  .property-card:hover .property-card-img {
+    transform: scale(1.05);
+  }
+}
+.compact-card-count,
+.property-card-count {
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 999px;
+  background: rgb(20 20 18 / 0.62);
+  backdrop-filter: blur(6px);
+  padding: 0.2rem 0.55rem;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.compact-card-count svg,
+.property-card-count svg {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+.compact-card-cta {
+  position: absolute;
+  left: 0.6rem;
+  bottom: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 999px;
+  background: var(--accent);
+  padding: 0.3rem 0.7rem;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.3s,
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.compact-card-cta svg {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+.compact-card:hover .compact-card-cta,
+.compact-card:focus-within .compact-card-cta {
+  opacity: 1;
+  transform: none;
+}
+.compact-card-badge {
+  left: 0.6rem;
+  top: 0.6rem;
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.72rem;
+}
+.compact-card-body {
+  padding: 0.9rem 1rem 1rem;
+}
+.compact-card-place {
+  font-size: 0.7rem;
+}
+.compact-card-title,
+.home-page .compact-card-title {
+  font-size: 1rem;
+  margin: 0.3rem 0 0.6rem;
+}
+.compact-card-price,
+.egypt-home .compact-card-price {
+  font-size: 1.1rem;
+  color: var(--foreground);
+  transition: color 0.25s;
+}
+.compact-card:hover .compact-card-price {
+  color: var(--accent);
+}
+.compact-card.is-sold .compact-card-price {
+  color: var(--muted-foreground);
+}
+.compact-card-note {
+  font-size: 0.7rem;
+}
+.compact-rail-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+.compact-rail-track {
+  position: relative;
+  flex: 1;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: color-mix(in oklab, var(--border) 80%, transparent);
+}
+.compact-rail-thumb {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 3px;
+  background: var(--accent);
+  transition:
+    left 0.25s ease-out,
+    width 0.25s ease-out;
+}
+.compact-rail-arrow {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--foreground);
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    opacity 0.2s,
+    transform 0.2s;
+}
+.compact-rail-arrow svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+.compact-rail-arrow:not(:disabled):hover,
+.compact-rail-arrow:not(:disabled):focus-visible {
+  background: var(--ink);
+  color: var(--ink-foreground);
+}
+.compact-rail-arrow:not(:disabled):active {
+  transform: scale(0.92);
+}
+.compact-rail-arrow:disabled {
+  opacity: 0.35;
+}
+@media (max-width: 639px) {
+  .compact-rail-arrow {
+    display: none;
+  }
+}
+/* Big cards on /nabidka: lift on hover. */
+.property-card {
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.35s,
+    box-shadow 0.35s;
+}
+.property-card:hover,
+.property-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 44px -26px color-mix(in oklab, var(--ink) 55%, transparent);
+}
+.property-card:hover .property-card-price {
+  color: var(--accent);
+}
+.property-card-price {
+  transition: color 0.25s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .compact-card,
+  .property-card,
+  .compact-card-img,
+  .property-card-img,
+  .compact-card-cta,
+  .compact-card-photo::after,
+  .property-photo::after {
+    transition: none;
+  }
+  .compact-card:hover,
+  .property-card:hover {
+    transform: none;
+  }
+}

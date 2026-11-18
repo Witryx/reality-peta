@@ -1,6 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, BadgeCheck, KeyRound, Scale, Sofa, Star, Sun } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  BadgeCheck,
+  Camera,
+  KeyRound,
+  Scale,
+  Sofa,
+  Star,
+  Sun,
+} from "lucide-react";
 import { photoAt, photoSrcSet } from "@/lib/photo-src";
 import { formatPrice, statusLabel, type Property } from "@/data/types";
 import { useSiteConfig, useWebsiteImageHidden } from "@/lib/website-context";
@@ -49,28 +60,53 @@ export function HeroFacts() {
   );
 }
 
-/** Small listing card for the homepage grid: photo, place, title, price. */
+/** Listing card for the homepage rail: photo (second photo on hover), place, title, price. */
 function CompactCard({ p }: { p: Property }) {
-  const img = [...p.images].sort((a, b) => a.position - b.position)[0];
+  const photos = [...p.images].sort((a, b) => a.position - b.position);
+  const [img, peek] = photos;
   return (
     <article className={`compact-card group ${p.status === "sold" ? "is-sold" : ""}`}>
       <Link to="/nabidka/$slug" params={{ slug: p.slug }} className="flex h-full flex-col">
         <div className="compact-card-photo">
           {img && (
             <img
-              src={photoAt(img.src, 480)}
+              src={photoAt(img.src, 960)}
               srcSet={photoSrcSet(img.src, [480, 960])}
-              sizes="(min-width: 1024px) 260px, 50vw"
+              sizes="(min-width: 1024px) 340px, 75vw"
               alt={img.alt}
               width={480}
               height={360}
               loading="lazy"
               decoding="async"
-              className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+              className="compact-card-img"
+            />
+          )}
+          {peek && (
+            <img
+              src={photoAt(peek.src, 960)}
+              srcSet={photoSrcSet(peek.src, [480, 960])}
+              sizes="(min-width: 1024px) 340px, 75vw"
+              alt=""
+              aria-hidden
+              width={480}
+              height={360}
+              loading="lazy"
+              decoding="async"
+              className="compact-card-img compact-card-peek"
             />
           )}
           <span className={`compact-card-badge compact-card-badge-${p.status}`}>
             <SiteText>{statusLabel[p.status]}</SiteText>
+          </span>
+          {photos.length > 1 && (
+            <span className="compact-card-count">
+              <Camera aria-hidden />
+              {photos.length}
+            </span>
+          )}
+          <span className="compact-card-cta" aria-hidden>
+            <SiteText>{"Prohlédnout"}</SiteText>
+            <ArrowUpRight />
           </span>
         </div>
         <div className="compact-card-body">
@@ -93,8 +129,8 @@ function CompactCard({ p }: { p: Property }) {
 }
 
 /**
- * One row of small listing cards that moves on by one card every 3 seconds.
- * Stops while the visitor touches, hovers or tabs into it; respects reduced motion.
+ * One row of listing cards that moves on by one card every 4 seconds, with arrows and a
+ * progress line. Stops while the visitor touches, hovers or tabs into it; respects reduced motion.
  */
 export function CompactPropertyGrid({
   properties,
@@ -107,32 +143,87 @@ export function CompactPropertyGrid({
 }) {
   const rail = useRef<HTMLDivElement>(null);
   const pausedUntil = useRef(0);
+  const [progress, setProgress] = useState({ start: 0, size: 1, prev: false, next: false });
+  const step = (dir: 1 | -1) => {
+    const node = rail.current;
+    if (!node) return;
+    pausedUntil.current = Date.now() + 8000;
+    const card = node.firstElementChild as HTMLElement | null;
+    node.scrollBy({ left: dir * ((card?.offsetWidth ?? 240) + 18), behavior: "smooth" });
+  };
   useEffect(() => {
     const node = rail.current;
     if (!node) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const measure = () => {
+      const max = node.scrollWidth - node.clientWidth;
+      setProgress({
+        start: max > 0 ? (node.scrollLeft / node.scrollWidth) * 100 : 0,
+        size: max > 0 ? (node.clientWidth / node.scrollWidth) * 100 : 100,
+        prev: node.scrollLeft > 4,
+        next: node.scrollLeft < max - 4,
+      });
+    };
+    measure();
+    node.addEventListener("scroll", measure, { passive: true });
+    window.addEventListener("resize", measure);
     const hold = () => (pausedUntil.current = Date.now() + 6000);
     const events = ["pointerdown", "pointerenter", "wheel", "focusin", "touchstart"] as const;
     events.forEach((e) => node.addEventListener(e, hold, { passive: true }));
-    const timer = window.setInterval(() => {
-      if (Date.now() < pausedUntil.current || document.hidden) return;
-      if (node.scrollWidth <= node.clientWidth + 2) return;
-      const card = node.firstElementChild as HTMLElement | null;
-      const step = (card?.offsetWidth ?? 200) + 14;
-      const atEnd = node.scrollLeft + node.clientWidth >= node.scrollWidth - 4;
-      node.scrollTo({ left: atEnd ? 0 : node.scrollLeft + step, behavior: "smooth" });
-    }, 3000);
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const timer = reduced
+      ? 0
+      : window.setInterval(() => {
+          if (Date.now() < pausedUntil.current || document.hidden) return;
+          if (node.scrollWidth <= node.clientWidth + 2) return;
+          const card = node.firstElementChild as HTMLElement | null;
+          const width = (card?.offsetWidth ?? 200) + 18;
+          const atEnd = node.scrollLeft + node.clientWidth >= node.scrollWidth - 4;
+          node.scrollTo({ left: atEnd ? 0 : node.scrollLeft + width, behavior: "smooth" });
+        }, 4000);
     return () => {
       window.clearInterval(timer);
+      node.removeEventListener("scroll", measure);
+      window.removeEventListener("resize", measure);
       events.forEach((e) => node.removeEventListener(e, hold));
     };
   }, []);
   if (!properties.length) return null;
+  const scrollable = progress.prev || progress.next;
   return (
-    <div ref={rail} className={`compact-grid ${className}`}>
-      {properties.slice(0, limit).map((p) => (
-        <CompactCard key={p.slug} p={p} />
-      ))}
+    <div className={`compact-rail ${className}`}>
+      <div ref={rail} className="compact-grid">
+        {properties.slice(0, limit).map((p) => (
+          <CompactCard key={p.slug} p={p} />
+        ))}
+      </div>
+      {scrollable && (
+        <div className="compact-rail-controls">
+          <div className="compact-rail-track" aria-hidden>
+            <span
+              style={{ left: `${progress.start}%`, width: `${progress.size}%` }}
+              className="compact-rail-thumb"
+            />
+          </div>
+          <button
+            type="button"
+            className="compact-rail-arrow"
+            onClick={() => step(-1)}
+            disabled={!progress.prev}
+            aria-label="Předchozí nemovitosti"
+          >
+            <ArrowLeft aria-hidden />
+          </button>
+          <button
+            type="button"
+            className="compact-rail-arrow"
+            onClick={() => step(1)}
+            disabled={!progress.next}
+            aria-label="Další nemovitosti"
+          >
+            <ArrowRight aria-hidden />
+          </button>
+        </div>
+      )}
     </div>
   );
 }

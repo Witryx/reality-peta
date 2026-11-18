@@ -1582,6 +1582,11 @@
     "groups": ["Nabídka"]
   },
   {
+    "key": "text_e61baacf",
+    "default": "Prohlédnout",
+    "groups": ["Nabídka"]
+  },
+  {
     "key": "text_ed900127",
     "default": "Nové nabídky pro vás právě připravuji. Mezitím mi napište, jakou nemovitost hledáte.",
     "groups": ["Nabídka"]
