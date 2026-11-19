@@ -1,4 +1,4 @@
-import { randomUUID } from "node:crypto";
+import { randomBytes, randomUUID, timingSafeEqual } from "node:crypto";
 import type { Property } from "../data/types";
 import type { AdminProperty } from "../data/admin";
 import { getDatabase, type Database } from "./database.server";
@@ -38,6 +38,9 @@ export async function saveProperty(db: Database, adminId: string, input: unknown
     JSON.stringify({
       ...fields,
       id: propertyId,
+      ...(fields.shareKey || fields.status === "upcoming"
+        ? { shareKey: fields.shareKey ?? randomBytes(18).toString("base64url") }
+        : {}),
       features: fields.features.filter(Boolean),
       description: fields.description.filter(Boolean),
       images: fields.images.map((image, i) => ({ ...image, position: i })),
@@ -110,4 +113,47 @@ export async function saveProperty(db: Database, adminId: string, input: unknown
       throw error;
     }
   }
+}
+
+/** Public copy: never exposes shareKey; „Připravuji“ listings become a teaser without price or text. */
+export function publicView(p: Property): Property {
+  const { shareKey: _secret, ...rest } = p;
+  if (p.status !== "upcoming") return rest;
+  const cover = [...p.images].sort((a, b) => a.position - b.position)[0];
+  return {
+    id: p.id,
+    slug: p.slug,
+    title: p.title,
+    status: p.status,
+    offerType: p.offerType,
+    propertyType: p.propertyType,
+    disposition: p.disposition,
+    location: { city: p.location.city, district: p.location.district },
+    market: p.market ?? "cz",
+    price: null,
+    area: p.area,
+    ...(p.landArea ? { landArea: p.landArea } : {}),
+    ownership: "",
+    condition: "",
+    energyClass: "",
+    perex: "",
+    description: [],
+    features: [],
+    images: cover ? [{ ...cover, position: 0 }] : [],
+    featured: p.featured,
+    sortOrder: p.sortOrder,
+    publishedAt: p.publishedAt,
+    isDemo: p.isDemo,
+  };
+}
+
+/** Full „Připravuji“ listing for someone holding its share link; null for a wrong key. */
+export function sharedView(properties: Property[], slug: string, key: string): Property | null {
+  const p = properties.find((x) => x.slug === slug && x.status === "upcoming");
+  if (!p?.shareKey || !key) return null;
+  const a = Buffer.from(p.shareKey);
+  const b = Buffer.from(key);
+  if (a.length !== b.length || !timingSafeEqual(a, b)) return null;
+  const { shareKey: _secret, ...rest } = p;
+  return rest;
 }

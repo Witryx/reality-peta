@@ -31,7 +31,7 @@ export const Route = createFileRoute("/nabidka/")({
   component: Listing,
 });
 
-const filters: (PropertyStatus | undefined)[] = [undefined, "active"];
+const filters = [undefined, "active"] as const;
 const markets = [undefined, "cz", "egypt"] as const;
 const marketOf = (property: Property) => property.market ?? "cz";
 

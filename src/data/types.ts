@@ -3,7 +3,8 @@
  * PostgreSQL ukládá tato pole v properties.data (JSONB), včetně pořadí galerie.
  * Publikace, verze a interní metadata jsou oddělené od veřejného modelu.
  */
-export type PropertyStatus = "active" | "reserved" | "sold";
+/** upcoming = „Připravuji“: na webu jen jako upoutávka (bez ceny a detailu). */
+export type PropertyStatus = "active" | "reserved" | "sold" | "upcoming";
 export type OfferType = "sale" | "rent";
 export const propertyTypes = [
   "byt",
@@ -82,6 +83,8 @@ export interface Property {
   nearbyPlaces?: NearbyPlace[];
   featured: boolean;
   sortOrder: number;
+  /** Tajný klíč sdíleného odkazu na připravovanou nabídku (?klic=…). Nikdy se neposílá veřejně. */
+  shareKey?: string;
   publishedAt: string; // ISO datum
   /** true = ukázková data, ne reálná nabídka */
   isDemo: boolean;
@@ -91,6 +94,7 @@ export const statusLabel: Record<PropertyStatus, string> = {
   active: "Aktivní",
   reserved: "Rezervováno",
   sold: "Prodáno",
+  upcoming: "Připravuji",
 };
 
 export const marketLabel: Record<NonNullable<Property["market"]>, string> = {

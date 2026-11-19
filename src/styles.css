@@ -4673,3 +4673,105 @@
     transform: none;
   }
 }
+
+/* ── „Připravuji“: listings before they go live ──
+   On the board the cover photo is blurred (sharpens a little on hover). The detail without the
+   share link shows basic facts, placeholder text blurred out and an interest form. */
+.compact-card.is-upcoming .compact-card-img {
+  filter: blur(8px) saturate(1.1);
+  transform: scale(1.12);
+}
+@media (hover: hover) {
+  .compact-card.is-upcoming:hover .compact-card-img {
+    filter: blur(4px) saturate(1.15);
+    transform: scale(1.06);
+  }
+}
+.compact-card-badge-upcoming {
+  background: var(--accent);
+  color: #fff;
+}
+.property-status-upcoming {
+  --status-color: var(--accent);
+}
+.compact-card.is-upcoming .compact-card-price {
+  color: var(--accent);
+}
+.upcoming-detail-photo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  background: var(--muted);
+}
+.upcoming-detail-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(14px) saturate(1.1);
+  transform: scale(1.1);
+}
+.upcoming-detail-photo-note {
+  position: absolute;
+  inset: auto 1rem 1rem auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 999px;
+  background: rgb(20 20 18 / 0.65);
+  backdrop-filter: blur(6px);
+  padding: 0.45rem 0.9rem;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.upcoming-detail-photo-note svg {
+  width: 1rem;
+  height: 1rem;
+}
+.upcoming-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.75rem;
+}
+.upcoming-facts > div {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  padding: 0.85rem 1rem;
+}
+.upcoming-facts dt {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.upcoming-facts dd {
+  margin-top: 0.2rem;
+  font-weight: 700;
+}
+.upcoming-blurred {
+  filter: blur(6px);
+  user-select: none;
+  pointer-events: none;
+}
+.upcoming-shared-note {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-radius: 8px;
+  background: color-mix(in oklab, var(--accent) 12%, var(--card));
+  padding: 0.8rem 1rem;
+  font-size: 0.92rem;
+}
+.upcoming-shared-note svg {
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--accent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .compact-card.is-upcoming .compact-card-img {
+    transition: none;
+  }
+}

@@ -419,7 +419,7 @@ const egyptDemo: Property[] = [
   },
 ];
 
-const readProperties = createServerFn({ method: "GET" }).handler(async (): Promise<Property[]> => {
+async function allProperties(): Promise<Property[]> {
   const { hasDatabase } = await import("@/server/database.server");
   if (hasDatabase()) {
     const { publicProperties } = await import("@/server/properties.server");
@@ -428,7 +428,24 @@ const readProperties = createServerFn({ method: "GET" }).handler(async (): Promi
   if (process.env["NODE_ENV"] === "production")
     throw new Error("Chybí databáze pro produkční nabídky.");
   return [...demo, ...egyptDemo];
+}
+
+/** Public listings; „Připravuji“ ones arrive only as a teaser (no price, text or share key). */
+const readProperties = createServerFn({ method: "GET" }).handler(async (): Promise<Property[]> => {
+  const { publicView } = await import("@/server/properties.server");
+  return (await allProperties()).map(publicView);
 });
+
+/** Full „Připravuji“ listing behind its share link (?klic=…); null for a wrong key. */
+const readSharedProperty = createServerFn({ method: "GET" })
+  .inputValidator((input: { slug: string; key: string }) => ({
+    slug: String(input.slug).slice(0, 200),
+    key: String(input.key).slice(0, 64),
+  }))
+  .handler(async ({ data }): Promise<Property | null> => {
+    const { sharedView } = await import("@/server/properties.server");
+    return sharedView(await allProperties(), data.slug, data.key);
+  });
 
 /** Photo captions like "foto1" or "byt62_01" say nothing to Google or screen readers. */
 const fileLikeAlt = /^[\p{L}_-]*[\d_.-]*\d[\w.-]*$/u;
@@ -467,8 +484,21 @@ function publicCopy(property: Property): Property {
     }),
   };
 }
-const sorted = async () =>
+const everything = async () =>
   (await readProperties()).map(publicCopy).sort((a, b) => a.sortOrder - b.sortOrder);
+/** Připravované nabídky („Připravuji“) nejsou v běžných výpisech ani na detailu. */
+const sorted = async () => (await everything()).filter((p) => p.status !== "upcoming");
+
+/** Připravované české nabídky jako upoutávky pro nástěnku na úvodní stránce. */
+export async function listUpcoming(): Promise<Property[]> {
+  return (await everything()).filter((p) => p.status === "upcoming" && (p.market ?? "cz") === "cz");
+}
+
+/** Celá připravovaná nabídka pro držitele sdíleného odkazu. */
+export async function getSharedProperty(slug: string, key: string): Promise<Property | null> {
+  const p = await readSharedProperty({ data: { slug, key } });
+  return p ? publicCopy(p) : null;
+}
 
 /** Všechny publikované nabídky z Česka i Egypta pro společný přehled. */
 export async function listAllProperties(): Promise<Property[]> {
@@ -481,8 +511,9 @@ export async function listProperties(status?: PropertyStatus): Promise<Property[
     .filter((p) => !status || p.status === status);
 }
 
+/** Detail; a „Připravuji“ listing comes back as its teaser. */
 export async function getProperty(slug: string): Promise<Property | null> {
-  return (await sorted()).find((p) => p.slug === slug) ?? null;
+  return (await everything()).find((p) => p.slug === slug) ?? null;
 }
 
 export async function listFeatured(): Promise<Property[]> {

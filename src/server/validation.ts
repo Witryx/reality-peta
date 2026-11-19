@@ -39,7 +39,7 @@ export const propertySchema = z
       .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "URL smí obsahovat malá písmena, čísla a pomlčky."),
     publication: z.enum(["draft", "published", "archived"]),
     autoSlug: z.boolean().optional(),
-    status: z.enum(["active", "reserved", "sold"]),
+    status: z.enum(["active", "reserved", "sold", "upcoming"]),
     offerType: z.enum(["sale", "rent"]),
     propertyType: z.enum(propertyTypes),
     market: z.enum(["cz", "egypt"]).default("cz"),
@@ -112,6 +112,10 @@ export const propertySchema = z
       .max(20, "U nabídky lze uvést nejvýše 20 míst.")
       .optional(),
     featured: z.boolean(),
+    shareKey: z
+      .string()
+      .regex(/^[A-Za-z0-9_-]{16,64}$/)
+      .optional(),
     sortOrder: z.number().int().min(0).max(100000),
     publishedAt: z
       .string()

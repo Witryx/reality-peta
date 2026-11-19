@@ -1,8 +1,9 @@
 import { SiteText } from "@/components/SiteText";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { MapPin } from "lucide-react";
-import { getProperty } from "@/data/properties";
-import { formatPrice } from "@/data/types";
+import { BellRing, KeyRound, Lock, MapPin } from "lucide-react";
+import { z } from "zod";
+import { getProperty, getSharedProperty } from "@/data/properties";
+import { formatPrice, type Property } from "@/data/types";
 import { pageHead, websiteValues } from "@/lib/seo";
 import { site } from "@/config/site";
 import { StatusBadge } from "@/components/PropertyCard";
@@ -14,10 +15,17 @@ import { PropertyGallery } from "@/components/PropertyGallery";
 import { PropertyMap } from "@/components/PropertyMap";
 import { PropertyContactCta } from "@/components/PropertyContactCta";
 import { normalizeVideoUrl } from "@/lib/property-media";
+import { photoAt } from "@/lib/photo-src";
+
+/** „Připravuji“ listing seen without its share link: only the public teaser arrived. */
+const isTeaser = (p: Property) => p.status === "upcoming" && !p.perex;
 
 export const Route = createFileRoute("/nabidka/$slug")({
-  loader: async ({ params }) => {
-    const p = await getProperty(params.slug);
+  validateSearch: z.object({ klic: z.string().max(64).optional() }),
+  loaderDeps: ({ search }) => ({ klic: search.klic }),
+  loader: async ({ params, deps }) => {
+    const shared = deps.klic ? await getSharedProperty(params.slug, deps.klic) : null;
+    const p = shared ?? (await getProperty(params.slug));
     if (!p) throw notFound();
     return p;
   },
@@ -25,6 +33,18 @@ export const Route = createFileRoute("/nabidka/$slug")({
     if (!loaderData)
       return { meta: [{ title: "Nemovitost nenalezena" }, { name: "robots", content: "noindex" }] };
     const p = loaderData;
+    if (p.status === "upcoming") {
+      const h = pageHead(
+        {
+          title: `Připravuji: ${p.title}, ${p.location.city}`,
+          description:
+            "Nemovitost, kterou připravuji k prodeji. Dejte mi vědět a uvidíte ji jako první.",
+          path: `/nabidka/${params.slug}`,
+        },
+        websiteValues(matches),
+      );
+      return { ...h, meta: [...(h.meta ?? []), { name: "robots", content: "noindex" }] };
+    }
     const h = pageHead(
       {
         title: `${p.title}, ${p.location.city}`,
@@ -86,7 +106,9 @@ export const Route = createFileRoute("/nabidka/$slug")({
 
 function Detail() {
   const p = Route.useLoaderData();
-  const closed = p.status !== "active";
+  if (isTeaser(p)) return <UpcomingTeaser p={p} />;
+  const shared = p.status === "upcoming";
+  const closed = p.status !== "active" && !shared;
   const video = normalizeVideoUrl(p.videoUrl || "");
   return (
     <article className="container-page py-10 md:py-16">
@@ -97,6 +119,14 @@ function Detail() {
         {<SiteText> </SiteText>}
         <span aria-hidden>/</span> <span>{p.title}</span>
       </nav>
+      {shared && (
+        <p className="upcoming-shared-note mt-6">
+          <KeyRound aria-hidden />
+          <SiteText>
+            {"Exkluzivní náhled: tuto nabídku zatím vidíte jen Vy, ještě před zveřejněním."}
+          </SiteText>
+        </p>
+      )}
       <header className="mt-6 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <div className="flex gap-2">
@@ -186,6 +216,129 @@ function Detail() {
         </aside>
       </div>
       <PropertyContactCta className="mt-14 md:mt-20 [&_h2]:text-2xl md:[&_h2]:text-3xl [&_p]:text-base" />
+    </article>
+  );
+}
+
+const blurredLines = [
+  "Světlé a dobře řešené bydlení v klidné části obce, kde se dobře žije celý rok.",
+  "Dispozice, stav i okolí odpovídají tomu, co dnes kupující nejčastěji hledají.",
+  "Podrobnosti, fotografie a cenu pošlu nejdřív těm, kdo se ozvou předem.",
+  "Prohlídku domluvíme podle Vašich možností, klidně ještě před spuštěním inzerce.",
+];
+
+/** „Připravuji“ without the share link: basic facts, blurred text and an interest form. */
+function UpcomingTeaser({ p }: { p: Property }) {
+  const cover = p.images[0];
+  const place = [p.location.district, p.location.city].filter(Boolean).join(", ");
+  return (
+    <article className="container-page py-10 md:py-16">
+      <nav aria-label="Drobečková navigace" className="text-sm text-muted-foreground">
+        <Link to="/" className="hover:underline">
+          <SiteText>{"Úvod"}</SiteText>
+        </Link>{" "}
+        <span aria-hidden>/</span> <span>{p.title}</span>
+      </nav>
+      <header className="mt-6">
+        <StatusBadge status={p.status} />
+        <h1 className="property-title mt-4 max-w-3xl text-3xl md:text-[2.75rem]">{p.title}</h1>
+        <p className="mt-3 flex items-center gap-2 text-muted-foreground">
+          <MapPin className="size-4" aria-hidden />
+          {place}
+        </p>
+      </header>
+
+      <div className="mt-10 grid min-w-0 gap-10 lg:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)] lg:gap-14">
+        <div>
+          <div className="upcoming-detail-photo">
+            {cover && (
+              <img
+                src={photoAt(cover.src, 960)}
+                alt=""
+                aria-hidden
+                width={1200}
+                height={675}
+                decoding="async"
+              />
+            )}
+            <span className="upcoming-detail-photo-note">
+              <Lock aria-hidden />
+              <SiteText>{"Fotografie ukážu jako první zájemcům"}</SiteText>
+            </span>
+          </div>
+          <dl className="upcoming-facts mt-8">
+            <div>
+              <dt>
+                <SiteText>{"Typ"}</SiteText>
+              </dt>
+              <dd className="capitalize">{p.propertyType}</dd>
+            </div>
+            {p.disposition && (
+              <div>
+                <dt>
+                  <SiteText>{"Dispozice"}</SiteText>
+                </dt>
+                <dd>{p.disposition}</dd>
+              </div>
+            )}
+            {Boolean(p.area) && (
+              <div>
+                <dt>
+                  <SiteText>{"Plocha"}</SiteText>
+                </dt>
+                <dd>{`${p.area} m²`}</dd>
+              </div>
+            )}
+            {Boolean(p.landArea) && (
+              <div>
+                <dt>
+                  <SiteText>{"Pozemek"}</SiteText>
+                </dt>
+                <dd>{`${p.landArea} m²`}</dd>
+              </div>
+            )}
+            <div>
+              <dt>
+                <SiteText>{"Lokalita"}</SiteText>
+              </dt>
+              <dd>{p.location.city}</dd>
+            </div>
+          </dl>
+          <div
+            className="upcoming-blurred mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground"
+            aria-hidden
+          >
+            {blurredLines.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
+          </div>
+        </div>
+
+        <aside className="self-start">
+          <div className="rounded-lg border bg-card p-6 md:p-8">
+            <h2 className="flex items-center gap-2 text-2xl">
+              <BellRing className="size-5 text-accent" aria-hidden />
+              <SiteText>{"Chci vědět více informací"}</SiteText>
+            </h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              <SiteText>
+                {
+                  "Tuto nemovitost připravuji k prodeji. Pošlu Vám cenu, fotografie i popis dřív, než ji uvidí kdokoli jiný."
+                }
+              </SiteText>
+            </p>
+            <div className="mt-6">
+              <LeadForm
+                kind="property_inquiry"
+                propertySlug={p.slug}
+                submitLabel="Chci vědět více informací"
+                defaultMessage={`Dobrý den, mám zájem o připravovanou nemovitost „${p.title}“. Pošlete mi prosím více informací.`}
+              />
+            </div>
+            <ContactLinks className="mt-6 text-sm" />
+          </div>
+        </aside>
+      </div>
     </article>
   );
 }

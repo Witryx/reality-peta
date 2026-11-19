@@ -5,7 +5,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import hero from "@/assets/hero.jpg";
 import portrait from "@/assets/petr-pavlat-portrait.png.asset.json";
 import { BrandImage } from "@/components/BrandImage";
-import { listEgypt, listProperties } from "@/data/properties";
+import { listEgypt, listProperties, listUpcoming } from "@/data/properties";
 import { pageHead, websiteValues } from "@/lib/seo";
 import { site } from "@/config/site";
 import { SectionHead, Testimonials, ValuationSection } from "@/components/Sections";
@@ -23,14 +23,15 @@ import { CollaborationStrip } from "@/components/CollaborationStrip";
 import { SituationPicker } from "@/components/SituationPicker";
 
 /**
- * Homepage shows what is for sale now: active Czech listings (featured first); reserved ones
- * only fill the row when there are fewer than four active. Sold ones stay on /nabidka.
+ * Homepage shows what is for sale now: active Czech listings (featured first), then „Připravuji“
+ * teasers; reserved ones only fill the row up to four cards. Sold ones stay on /nabidka.
  */
 async function homepageOffer() {
   const czech = (await listProperties()).sort((a, b) => Number(b.featured) - Number(a.featured));
-  const active = czech.filter((p) => p.status === "active");
-  if (active.length >= 4) return active;
-  return [...active, ...czech.filter((p) => p.status === "reserved")].slice(0, 4);
+  const upcoming = await listUpcoming();
+  const shown = [...czech.filter((p) => p.status === "active"), ...upcoming];
+  if (shown.length >= 4) return shown;
+  return [...shown, ...czech.filter((p) => p.status === "reserved")].slice(0, 4);
 }
 
 export const Route = createFileRoute("/")({

@@ -696,7 +696,11 @@ export function PropertyEditor({
                 <option value="active">Aktivní</option>
                 <option value="reserved">Rezervováno</option>
                 <option value="sold">Prodáno</option>
+                <option value="upcoming">Připravuji (jen upoutávka bez ceny)</option>
               </select>,
+            )}
+            {value.status === "upcoming" && (
+              <ShareLink slug={value.slug} shareKey={value.shareKey} />
             )}
             <label className="admin-checkbox">
               <input
@@ -857,4 +861,47 @@ function PlusIcon() {
 }
 function ShieldCheckIcon() {
   return <Check size={20} />;
+}
+
+/** Secret link for a „Připravuji“ listing: whoever gets it sees the full offer. */
+function ShareLink({ slug, shareKey }: { slug: string; shareKey: string | undefined }) {
+  const [copied, setCopied] = useState(false);
+  if (!shareKey)
+    return (
+      <p className="text-sm text-muted-foreground">
+        Po uložení se tu objeví tajný odkaz. Kdo ho od Vás dostane, uvidí celou nabídku.
+      </p>
+    );
+  const origin =
+    typeof window === "undefined" ? "https://petrpavlat-reality.cz" : window.location.origin;
+  const url = `${origin}/nabidka/${slug}?klic=${shareKey}`;
+  return (
+    <div className="space-y-2 rounded-md border p-3 text-sm">
+      <p className="font-semibold">Tajný odkaz pro zájemce</p>
+      <p className="text-muted-foreground">
+        Bez odkazu web ukáže jen rozmazanou upoutávku. S odkazem celou nabídku.
+      </p>
+      <input
+        readOnly
+        value={url}
+        onFocus={(e) => e.currentTarget.select()}
+        aria-label="Tajný odkaz"
+      />
+      <button
+        type="button"
+        className="btn btn-primary h-auto"
+        onClick={async () => {
+          try {
+            await navigator.clipboard.writeText(url);
+            setCopied(true);
+            window.setTimeout(() => setCopied(false), 2000);
+          } catch {
+            window.prompt("Zkopírujte odkaz:", url);
+          }
+        }}
+      >
+        {copied ? "Zkopírováno ✓" : "Zkopírovat odkaz"}
+      </button>
+    </div>
+  );
 }

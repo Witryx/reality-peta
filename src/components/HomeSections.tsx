@@ -63,9 +63,12 @@ export function HeroFacts() {
 /** Listing card for the homepage rail: photo (second photo on hover), place, title, price. */
 function CompactCard({ p }: { p: Property }) {
   const photos = [...p.images].sort((a, b) => a.position - b.position);
-  const [img, peek] = photos;
+  const upcoming = p.status === "upcoming";
+  const [img, peek] = upcoming ? [photos[0]] : photos;
   return (
-    <article className={`compact-card group ${p.status === "sold" ? "is-sold" : ""}`}>
+    <article
+      className={`compact-card group ${p.status === "sold" ? "is-sold" : ""} ${upcoming ? "is-upcoming" : ""}`}
+    >
       <Link to="/nabidka/$slug" params={{ slug: p.slug }} className="flex h-full flex-col">
         <div className="compact-card-photo">
           {img && (
@@ -73,7 +76,7 @@ function CompactCard({ p }: { p: Property }) {
               src={photoAt(img.src, 960)}
               srcSet={photoSrcSet(img.src, [480, 960])}
               sizes="(min-width: 1024px) 340px, 75vw"
-              alt={img.alt}
+              alt={upcoming ? "" : img.alt}
               width={480}
               height={360}
               loading="lazy"
@@ -98,14 +101,14 @@ function CompactCard({ p }: { p: Property }) {
           <span className={`compact-card-badge compact-card-badge-${p.status}`}>
             <SiteText>{statusLabel[p.status]}</SiteText>
           </span>
-          {photos.length > 1 && (
+          {!upcoming && photos.length > 1 && (
             <span className="compact-card-count">
               <Camera aria-hidden />
               {photos.length}
             </span>
           )}
           <span className="compact-card-cta" aria-hidden>
-            <SiteText>{"Prohlédnout"}</SiteText>
+            <SiteText>{upcoming ? "Chci vědět víc" : "Prohlédnout"}</SiteText>
             <ArrowUpRight />
           </span>
         </div>
@@ -115,8 +118,19 @@ function CompactCard({ p }: { p: Property }) {
           </p>
           <h3 className="compact-card-title">{p.title}</h3>
           <p className="compact-card-price">
-            {p.status === "sold" ? <SiteText>{"Prodáno"}</SiteText> : formatPrice(p)}
+            {p.status === "sold" ? (
+              <SiteText>{"Prodáno"}</SiteText>
+            ) : upcoming ? (
+              <SiteText>{"Cena před zveřejněním"}</SiteText>
+            ) : (
+              formatPrice(p)
+            )}
           </p>
+          {upcoming && (
+            <p className="compact-card-note">
+              {[p.disposition, p.area ? `${p.area} m²` : ""].filter(Boolean).join(" · ")}
+            </p>
+          )}
           {p.market === "egypt" && p.price !== null && p.status !== "sold" && (
             <p className="compact-card-note">
               <SiteText>{"Cena včetně provize a kompletního servisu zprostředkování"}</SiteText>

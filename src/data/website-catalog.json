@@ -244,6 +244,11 @@
     "role": "heading"
   },
   {
+    "key": "text_4d38d9c2",
+    "default": "Připravuji",
+    "groups": ["Úvodní stránka"]
+  },
+  {
     "key": "text_fbd1e1a0",
     "default": "Celá nabídka i prodané",
     "groups": ["Úvodní stránka"]
@@ -2653,6 +2658,51 @@
   {
     "key": "text_a9976168",
     "default": "Rezervováno",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_55f4020a",
+    "default": "Chci vědět víc",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_c5711978",
+    "default": "Cena před zveřejněním",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_c01fa4c9",
+    "default": "Exkluzivní náhled: tuto nabídku zatím vidíte jen Vy, ještě před zveřejněním.",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_f3df622a",
+    "default": "Úvod",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_9004067b",
+    "default": "Fotografie ukážu jako první zájemcům",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_1dbe259a",
+    "default": "Typ",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_8f2f6ae0",
+    "default": "Plocha",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_9b557a1",
+    "default": "Chci vědět více informací",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_fe7335ee",
+    "default": "Tuto nemovitost připravuji k prodeji. Pošlu Vám cenu, fotografie i popis dřív, než ji uvidí kdokoli jiný.",
     "groups": ["Nabídka"]
   }
 ]
