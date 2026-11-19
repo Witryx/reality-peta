@@ -136,7 +136,7 @@ function Home() {
                 <SiteText>{"Aktuální nabídka"}</SiteText>
               </p>
               <h2 className="mt-3 text-4xl leading-tight md:text-[2.75rem]">
-                <SiteText>{"Co je právě na trhu"}</SiteText>
+                <SiteText>{"Nástěnka českých nemovitostí"}</SiteText>
               </h2>
             </div>
             <Link to="/nabidka" className="text-link">

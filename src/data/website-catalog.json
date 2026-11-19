@@ -238,8 +238,8 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_83bd22dc",
-    "default": "Co je právě na trhu",
+    "key": "text_52c41bb3",
+    "default": "Nástěnka českých nemovitostí",
     "groups": ["Úvodní stránka"],
     "role": "heading"
   },
