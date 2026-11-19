@@ -4787,3 +4787,126 @@
   background: #ffd23f;
   color: #292927;
 }
+
+/* Partner logos read as links: gentle lift on hover/focus or when the guide points. */
+.partner-item > a {
+  position: relative;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.partner-item > a:hover,
+.partner-item > a:focus-visible,
+.partner-item > a.is-guided {
+  transform: translateY(-3px);
+}
+.is-guided {
+  border-radius: 10px;
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--primary) 55%, transparent),
+    0 10px 24px -14px color-mix(in srgb, var(--primary) 70%, transparent);
+}
+
+/* Hero Google rating opens the references. */
+.hero-facts-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: inherit;
+  text-decoration: none;
+}
+.hero-facts-link {
+  border-radius: 8px;
+  transition: box-shadow 0.25s ease;
+}
+.hero-facts-link.is-guided {
+  box-shadow:
+    0 0 0 6px color-mix(in srgb, var(--primary) 8%, transparent),
+    0 0 0 8px color-mix(in srgb, var(--primary) 55%, transparent);
+}
+.hero-facts-link:hover strong {
+  color: var(--primary);
+}
+
+/* Guide cursor (desktop only, created by GuideCursor). */
+.guide-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: transform;
+}
+.guide-cursor.is-visible {
+  opacity: 1;
+}
+.guide-cursor svg {
+  position: relative;
+  display: block;
+  margin: -4px 0 0 -4px;
+  fill: var(--primary);
+  stroke: #fff;
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 6px 10px rgb(41 41 39 / 0.35));
+}
+/* Soft halo so the cursor is noticed at a glance, also on small screens. */
+.guide-cursor::before {
+  content: "";
+  position: absolute;
+  top: -19px;
+  left: -19px;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--primary) 22%, transparent);
+  animation: guide-halo 1.2s ease-in-out infinite;
+}
+@keyframes guide-halo {
+  50% {
+    transform: scale(1.25);
+    opacity: 0.55;
+  }
+}
+.guide-cursor-ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 42px;
+  height: 42px;
+  margin: -21px 0 0 -21px;
+  border: 3px solid var(--primary);
+  border-radius: 999px;
+  opacity: 0;
+}
+.guide-cursor.is-clicking svg {
+  animation: guide-press 0.35s ease;
+}
+.guide-cursor.is-clicking .guide-cursor-ripple {
+  animation: guide-ripple 0.6s ease-out;
+}
+@keyframes guide-press {
+  50% {
+    transform: scale(0.82);
+  }
+}
+@keyframes guide-ripple {
+  from {
+    opacity: 0.9;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .guide-cursor {
+    display: none;
+  }
+  .partner-item > a {
+    transition: none;
+  }
+}

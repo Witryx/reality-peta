@@ -157,7 +157,12 @@ function Home() {
 
       <section className="py-16 md:py-24">
         <div className="container-page">
-          <SectionHead eyebrow="Reference" title="Co na spolupráci říkají klienti" />
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <SectionHead eyebrow="Reference" title="Co na spolupráci říkají klienti" />
+            <Link to="/reference" className="text-link" data-guide="reference">
+              <SiteText>{"Všechny reference"}</SiteText>
+            </Link>
+          </div>
           <Testimonials />
         </div>
       </section>

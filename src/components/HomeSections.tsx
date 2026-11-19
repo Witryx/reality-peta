@@ -25,20 +25,22 @@ export function HeroFacts() {
   return (
     <ul className="hero-facts">
       <li>
-        <strong>
-          <img
-            src="/brand/google-g.png"
-            alt="Google"
-            width={18}
-            height={18}
-            className="hero-facts-g"
-          />
-          {googleReviews.rating}
-          <Star className="hero-facts-star" aria-hidden />
-        </strong>
-        <span>
-          <SiteText>{"hodnocení na Googlu"}</SiteText>
-        </span>
+        <Link to="/reference" className="hero-facts-link">
+          <strong>
+            <img
+              src="/brand/google-g.png"
+              alt="Google"
+              width={18}
+              height={18}
+              className="hero-facts-g"
+            />
+            {googleReviews.rating}
+            <Star className="hero-facts-star" aria-hidden />
+          </strong>
+          <span>
+            <SiteText>{"hodnocení na Googlu"}</SiteText>
+          </span>
+        </Link>
       </li>
       <li>
         <strong>

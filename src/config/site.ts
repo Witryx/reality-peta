@@ -42,7 +42,11 @@ export const site = {
     count: "21",
     profileUrl: "https://share.google/3ERvci4sNYmAwJnEp",
   },
-  partnerUrls: ["", "", "https://www.egyptskoceskareality.cz/"],
+  partnerUrls: [
+    "https://stelarholding.cz/",
+    "https://www.stelaradvisory.cz/",
+    "https://www.egyptskoceskareality.cz/",
+  ],
   partners: ["STELAR reality", "STELAR Advisory", "Egyptsko-Česká Reality"],
 };
 

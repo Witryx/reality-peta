@@ -80,23 +80,31 @@ export function GoogleRating() {
       data-reveal="fade"
       className="google-rating-card mt-10 flex flex-wrap items-center justify-between gap-6 p-6 md:p-8"
     >
-      <div className="flex items-center gap-5 md:gap-6">
-        <span className="flex size-16 shrink-0 items-center justify-center rounded-full bg-white shadow-[0_6px_20px_-8px_rgb(41_41_39/0.35)] md:size-[72px]">
-          <img src="/brand/google-g.png" alt="Google" width={36} height={37} className="size-9" />
+      <div className="flex min-w-0 items-center gap-3 sm:gap-5 md:gap-6">
+        <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-white shadow-[0_6px_20px_-8px_rgb(41_41_39/0.35)] sm:size-16 md:size-[72px]">
+          <img
+            src="/brand/google-g.png"
+            alt="Google"
+            width={36}
+            height={37}
+            className="size-7 sm:size-9"
+          />
         </span>
-        <span className="font-display text-6xl leading-none">
+        <span className="font-display text-5xl leading-none sm:text-6xl">
           <RatingNumber value={value} text={site.googleReviews.rating} />
         </span>
         <div>
           <div aria-label={`Hodnocení na Googlu ${site.googleReviews.rating} z 5`}>
             <Stars value={Number.isFinite(value) ? value : 5} />
           </div>
-          <p className="mt-2 flex items-center gap-1.5 text-sm font-semibold">
-            <BadgeCheck className="size-4 text-accent" aria-hidden />
-            <SiteText>{"Hodnocení klientů na Googlu"}</SiteText>
+          <p className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm font-semibold">
+            <span className="inline-flex items-start gap-1.5">
+              <BadgeCheck className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden />
+              <SiteText>{"Hodnocení klientů na Googlu"}</SiteText>
+            </span>
             {site.googleReviews.count && (
-              <span className="font-normal text-muted-foreground">
-                {" · "}
+              <span className="basis-full font-normal text-muted-foreground sm:basis-auto">
+                <span className="hidden sm:inline">{"· "}</span>
                 {site.googleReviews.count} <SiteText>{"recenzí"}</SiteText>
               </span>
             )}

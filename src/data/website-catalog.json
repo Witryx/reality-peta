@@ -265,6 +265,11 @@
     "role": "heading"
   },
   {
+    "key": "text_aaa3b6c4",
+    "default": "Všechny reference",
+    "groups": ["Úvodní stránka"]
+  },
+  {
     "key": "text_42ec9773",
     "default": "Kontakt",
     "groups": ["Kontakt – vyhledávače", "Kontakt", "Identita"]
