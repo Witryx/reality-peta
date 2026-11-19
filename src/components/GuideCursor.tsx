@@ -3,7 +3,7 @@ import { useLocation } from "@tanstack/react-router";
 
 /**
  * Homepage "průvodce": a brand cursor that shows visitors what is clickable — the Google rating
- * and all partner logos in the hero after load, then (on scroll) the link to all references.
+ * and all partner logos in the hero after load.
  * Purely decorative (aria-hidden, pointer-events none), once per browser session per stop,
  * skipped with reduced motion. Shown on phones too, slightly smaller.
  */
@@ -12,7 +12,6 @@ type Stop = { id: string; selector: string; delay: number };
 const STOPS: Stop[] = [
   // Hero: Google rating (opens references), then every partner logo.
   { id: "hero", selector: ".hero-facts-link, .hero-trust .partner-item > a", delay: 1300 },
-  { id: "reference", selector: '[data-guide="reference"]', delay: 250 },
 ];
 const STORAGE_KEY = "guide-cursor-seen";
 

@@ -4910,3 +4910,39 @@
     transition: none;
   }
 }
+
+/* Footer social icons: the same orange as the contact icons, with a very gentle, staggered pulse. */
+.footer-social .social-icon {
+  color: var(--accent);
+  border-color: color-mix(in oklab, var(--accent) 45%, transparent);
+  animation: footer-social-pulse 3.6s ease-in-out infinite;
+}
+.footer-social li:nth-child(2) .social-icon {
+  animation-delay: 0.3s;
+}
+.footer-social li:nth-child(3) .social-icon {
+  animation-delay: 0.6s;
+}
+.footer-social li:nth-child(4) .social-icon {
+  animation-delay: 0.9s;
+}
+.footer-social .social-icon:hover,
+.footer-social .social-icon:focus-visible {
+  color: #fff;
+  background: var(--accent);
+}
+@keyframes footer-social-pulse {
+  0%,
+  55%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 0%, transparent);
+  }
+  20% {
+    box-shadow: 0 0 0 5px color-mix(in oklab, var(--accent) 22%, transparent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer-social .social-icon {
+    animation: none;
+  }
+}

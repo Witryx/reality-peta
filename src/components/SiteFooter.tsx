@@ -55,7 +55,7 @@ export function SiteFooter() {
             <SiteText>{"Kontakt"}</SiteText>
           </p>
           <ContactLinks />
-          <div className="mt-4">
+          <div className="footer-social mt-4">
             <SocialIcons />
           </div>
           <SaveContact />
