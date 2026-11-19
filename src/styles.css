@@ -4780,3 +4780,10 @@
     transition: none;
   }
 }
+/* Reserved = yellow badge, so it reads differently from the orange brand accent. */
+.compact-card-badge-reserved,
+.property-status-reserved {
+  border-color: #e0b100;
+  background: #ffd23f;
+  color: #292927;
+}
