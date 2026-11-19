@@ -121,16 +121,11 @@ function CompactCard({ p }: { p: Property }) {
             {p.status === "sold" ? (
               <SiteText>{"Prodáno"}</SiteText>
             ) : upcoming ? (
-              <SiteText>{"Cena před zveřejněním"}</SiteText>
+              <SiteText>{"Inzerát před zveřejněním"}</SiteText>
             ) : (
               formatPrice(p)
             )}
           </p>
-          {upcoming && (
-            <p className="compact-card-note">
-              {[p.disposition, p.area ? `${p.area} m²` : ""].filter(Boolean).join(" · ")}
-            </p>
-          )}
           {p.market === "egypt" && p.price !== null && p.status !== "sold" && (
             <p className="compact-card-note">
               <SiteText>{"Cena včetně provize a kompletního servisu zprostředkování"}</SiteText>

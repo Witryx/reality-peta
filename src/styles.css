@@ -4697,6 +4697,11 @@
 .compact-card.is-upcoming .compact-card-price {
   color: var(--accent);
 }
+/* Two-line titles: hide the clipped top of a third line. */
+.compact-card-title,
+.home-page .compact-card-title {
+  max-height: calc(2 * 1.3em);
+}
 .upcoming-detail-photo {
   position: relative;
   overflow: hidden;
