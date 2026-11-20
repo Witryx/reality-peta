@@ -5,6 +5,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, MapPin, MessageCircle, ShieldCheck } from "lucide-react";
 import { egyptPhoto } from "@/data/website-image-defaults";
 import { Button } from "@/components/ui/button";
+import { DesertSides } from "./DesertSides";
 import { PartnerLogo } from "./PartnerLogo";
 
 export function Partners() {
@@ -38,9 +39,10 @@ export function EgyptSection({
   const hidden = useWebsiteImageHidden("image.egypt");
   return (
     <section
-      className={`egypt-band ${compact ? "egypt-band-home pt-12 pb-28 md:pt-16 md:pb-32" : "py-20 md:py-24"}`}
+      className={`egypt-band has-desert ${compact ? "egypt-band-home pt-12 pb-28 md:pt-16 md:pb-32" : "py-20 md:py-24"}`}
       data-reveal="slide"
     >
+      <DesertSides />
       <div
         className={`container-page grid gap-10 ${hidden ? "" : "md:grid-cols-2"} md:items-stretch`}
       >

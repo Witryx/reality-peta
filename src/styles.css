@@ -5524,3 +5524,158 @@
 .property-card.is-upcoming .property-card-price {
   color: var(--accent);
 }
+
+/* ── Desert sides (Egypt sections): pyramids, dunes, palms, a caravan on a trail, blowing sand ── */
+.desert-sides {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.desert-side,
+.desert-wind {
+  position: absolute;
+  bottom: 0;
+  width: clamp(200px, calc((100% - 82rem) / 2 + 150px), 540px);
+  height: auto;
+}
+.desert-wind {
+  aspect-ratio: 420 / 520;
+}
+.desert-left,
+.desert-wind-left {
+  left: 0;
+}
+.desert-right,
+.desert-wind-right {
+  right: 0;
+}
+/* Dunes fade out towards the content instead of ending in a hard edge. */
+.desert-left {
+  mask-image: linear-gradient(to right, #000 62%, transparent 98%);
+}
+.desert-right {
+  mask-image: linear-gradient(to left, #000 62%, transparent 98%);
+}
+@media (max-width: 1279px) {
+  .desert-side,
+  .desert-wind {
+    width: 30%;
+    opacity: 0.45;
+  }
+}
+@media (max-width: 767px) {
+  .desert-sides {
+    display: none;
+  }
+}
+.desert-wind span {
+  position: absolute;
+  left: -4%;
+  border-radius: 50%;
+  background: #d2a55f;
+  opacity: 0;
+  animation: desert-sand-blow-px 7s linear infinite;
+}
+@keyframes desert-sand-blow-px {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  15% {
+    opacity: 0.85;
+  }
+  70% {
+    opacity: 0.55;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(min(42vw, 520px), -40px);
+  }
+}
+.desert-trail {
+  animation: desert-trail-march 2.4s linear infinite;
+}
+@keyframes desert-trail-march {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+.desert-caravan {
+  animation: desert-caravan-walk 46s linear infinite;
+}
+@keyframes desert-caravan-walk {
+  0% {
+    transform: translate(-60px, 368px);
+  }
+  30% {
+    transform: translate(120px, 377px);
+  }
+  50% {
+    transform: translate(210px, 393px);
+  }
+  75% {
+    transform: translate(320px, 409px);
+  }
+  100% {
+    transform: translate(560px, 402px);
+  }
+}
+.desert-camel {
+  animation: desert-camel-step 0.7s ease-in-out infinite alternate;
+}
+@keyframes desert-camel-step {
+  to {
+    transform: translateY(-1.6px);
+  }
+}
+.desert-palm {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: desert-palm-sway 6s ease-in-out infinite alternate;
+}
+.desert-palm-small {
+  animation-duration: 4.5s;
+  animation-delay: -2s;
+}
+@keyframes desert-palm-sway {
+  from {
+    rotate: -1.2deg;
+  }
+  to {
+    rotate: 1.4deg;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .desert-wind {
+    display: none;
+  }
+  .desert-trail,
+  .desert-caravan,
+  .desert-camel,
+  .desert-palm {
+    animation: none;
+  }
+  .desert-caravan {
+    transform: translate(180px, 386px);
+  }
+}
+.egypt-band.has-desert {
+  position: relative;
+  overflow: hidden;
+}
+.egypt-band.has-desert > .container-page {
+  position: relative;
+  z-index: 1;
+}
+/* On the Egypt page band the content runs wider, so the desert stays in the free margin only. */
+.egypt-band .desert-side,
+.egypt-band .desert-wind {
+  width: clamp(160px, calc((100% - 82rem) / 2 + 30px), 420px);
+}
+@media (max-width: 1439px) {
+  .egypt-band .desert-sides {
+    display: none;
+  }
+}

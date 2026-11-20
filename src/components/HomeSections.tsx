@@ -17,6 +17,7 @@ import { formatPrice, statusLabel, type Property, isRecentSale } from "@/data/ty
 import { useSiteConfig, useWebsiteImageHidden } from "@/lib/website-context";
 import { SiteText } from "./SiteText";
 import { PropertyCard } from "./PropertyCard";
+import { DesertSides } from "./DesertSides";
 import { SiteImage } from "./SiteImage";
 import { egyptPhoto } from "@/data/website-image-defaults";
 
@@ -320,6 +321,7 @@ export function EgyptTeaser({ properties }: { properties: Property[] }) {
   return (
     <section className="egypt-home py-16 md:py-24" aria-labelledby="egypt-home-heading">
       <div className="egypt-home-sun" aria-hidden />
+      <DesertSides />
       <svg
         className="egypt-home-waves"
         viewBox="0 0 1440 120"
