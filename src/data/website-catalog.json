@@ -2858,5 +2858,31 @@
     "key": "text_7b6ec28",
     "default": "Výsledek Vám srozumitelně vysvětlím, včetně toho, co cenu zvyšuje a co ji naopak snižuje.",
     "groups": ["Články"]
+  },
+  {
+    "key": "text_4d16725f",
+    "default": "Máte dotaz ohledně nemovitosti, nebo chcete využít odhadu nemovitosti zdarma?",
+    "groups": ["Společné sekce", "Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_e6d7b4a7",
+    "default": "Vyberte ve formuláři, s čím Vám mám pomoci. Odhad je pro nové klienty",
+    "groups": ["Společné sekce", "Úvodní stránka"]
+  },
+  {
+    "key": "text_960179c",
+    "default": "S čím Vám mohu pomoci?",
+    "groups": ["Společné sekce", "Úvodní stránka"]
+  },
+  {
+    "key": "text_a846b85f",
+    "default": "Dotaz k nemovitosti",
+    "groups": ["Společné sekce", "Úvodní stránka"]
+  },
+  {
+    "key": "text_787adb7",
+    "default": "Odeslat dotaz",
+    "groups": ["Společné sekce", "Úvodní stránka"]
   }
 ]

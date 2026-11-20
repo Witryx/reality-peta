@@ -262,6 +262,7 @@ export function ValuationSection({
   standalone = false,
   withContact = false,
   compact = false,
+  choice = false,
   defaultMessage,
 }: {
   standalone?: boolean;
@@ -271,7 +272,10 @@ export function ValuationSection({
   compact?: boolean;
   /** Homepage: one form with two tabs (valuation / other question) and the contacts once. */
   withContact?: boolean;
+  /** Homepage: a question or a free valuation, chosen right in the form. */
+  choice?: boolean;
 }) {
+  const tabs = withContact || choice;
   const Heading = standalone ? "h1" : "h2";
   const [tab, setTab] = useState<"valuation" | "contact">("valuation");
   return (
@@ -285,13 +289,27 @@ export function ValuationSection({
           <p className="eyebrow text-valuation-ink">
             <SiteText>{"První krok k dobrému rozhodnutí"}</SiteText>
           </p>
-          <Heading className="mt-5 text-4xl leading-tight md:text-5xl">
-            <SiteText>{"Víte, za kolik se prodal"}</SiteText>
-            <br className="hidden md:block" />
-            <SiteText>{" byt ve Vašem domě?"}</SiteText>
-          </Heading>
+          {choice ? (
+            <Heading className="mt-5 text-3xl leading-tight md:text-[2.6rem]">
+              <SiteText>
+                {"Máte dotaz ohledně nemovitosti, nebo chcete využít odhadu nemovitosti zdarma?"}
+              </SiteText>
+            </Heading>
+          ) : (
+            <Heading className="mt-5 text-4xl leading-tight md:text-5xl">
+              <SiteText>{"Víte, za kolik se prodal"}</SiteText>
+              <br className="hidden md:block" />
+              <SiteText>{" byt ve Vašem domě?"}</SiteText>
+            </Heading>
+          )}
           <p className="mt-8 max-w-md font-display text-2xl font-medium leading-snug">
-            <SiteText>{"Já to zjistím. Pro nové klienty "}</SiteText>
+            {choice ? (
+              <SiteText>
+                {"Vyberte ve formuláři, s čím Vám mám pomoci. Odhad je pro nové klienty "}
+              </SiteText>
+            ) : (
+              <SiteText>{"Já to zjistím. Pro nové klienty "}</SiteText>
+            )}
             <span className="text-valuation-ink">
               <SiteText>{"zdarma."}</SiteText>
             </span>
@@ -355,7 +373,12 @@ export function ValuationSection({
           )}
         </div>
         <div className="valuation-form">
-          {withContact && (
+          {choice && (
+            <p className="form-tabs-label">
+              <SiteText>{"S čím Vám mohu pomoci?"}</SiteText>
+            </p>
+          )}
+          {tabs && (
             <div className="form-tabs" role="tablist" aria-label="Typ dotazu">
               <button
                 type="button"
@@ -371,18 +394,22 @@ export function ValuationSection({
                 aria-selected={tab === "contact"}
                 onClick={() => setTab("contact")}
               >
-                <SiteText>{"Jiný dotaz"}</SiteText>
+                {choice ? (
+                  <SiteText>{"Dotaz k nemovitosti"}</SiteText>
+                ) : (
+                  <SiteText>{"Jiný dotaz"}</SiteText>
+                )}
               </button>
             </div>
           )}
-          {tab === "valuation" || !withContact ? (
+          {tab === "valuation" || !tabs ? (
             <LeadForm
               kind="valuation"
               submitLabel="Získat odhad nemovitosti zdarma"
               defaultMessage={defaultMessage}
             />
           ) : (
-            <LeadForm kind="contact" submitLabel="Odeslat zprávu" />
+            <LeadForm kind="contact" submitLabel={choice ? "Odeslat dotaz" : "Odeslat zprávu"} />
           )}
         </div>
       </div>

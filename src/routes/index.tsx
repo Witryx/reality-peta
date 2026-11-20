@@ -154,12 +154,6 @@ function Home() {
 
       <EgyptTeaser properties={egypt} />
 
-      <section className="situation-section border-t py-16 md:py-24" data-reveal="line">
-        <div className="container-page max-w-4xl">
-          <SituationPicker />
-        </div>
-      </section>
-
       <section className="py-16 md:py-24">
         <div className="container-page">
           <div className="flex flex-wrap items-end justify-between gap-4">
@@ -172,11 +166,17 @@ function Home() {
         </div>
       </section>
 
+      <section className="situation-section border-t py-16 md:py-24" data-reveal="line">
+        <div className="container-page max-w-4xl">
+          <SituationPicker />
+        </div>
+      </section>
+
       <ReferralStrip />
 
-      <ValuationSection compact />
-
       <PriceInsight />
+
+      <ValuationSection compact choice />
     </div>
   );
 }
