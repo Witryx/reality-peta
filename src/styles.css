@@ -3730,7 +3730,8 @@
   height: 0.9rem;
 }
 .price-insight {
-  background: var(--secondary);
+  /* White, so it stands apart from the cream valuation form right below it. */
+  background: var(--background);
 }
 /* Price section: only a short teaser at first; the comparison sharpens after a click. */
 .price-reveal {
