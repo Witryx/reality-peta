@@ -16,6 +16,7 @@ import { photoAt, photoSrcSet } from "@/lib/photo-src";
 import { formatPrice, statusLabel, type Property, isRecentSale } from "@/data/types";
 import { useSiteConfig, useWebsiteImageHidden } from "@/lib/website-context";
 import { SiteText } from "./SiteText";
+import { PropertyCard } from "./PropertyCard";
 import { SiteImage } from "./SiteImage";
 import { egyptPhoto } from "@/data/website-image-defaults";
 
@@ -59,83 +60,6 @@ export function HeroFacts() {
         </span>
       </li>
     </ul>
-  );
-}
-
-/** Listing card for the homepage rail: photo (second photo on hover), place, title, price. */
-function CompactCard({ p }: { p: Property }) {
-  const photos = [...p.images].sort((a, b) => a.position - b.position);
-  const upcoming = p.status === "upcoming";
-  const [img, peek] = upcoming ? [photos[0]] : photos;
-  return (
-    <article
-      className={`compact-card group ${p.status === "sold" ? "is-sold" : ""} ${upcoming ? "is-upcoming" : ""}`}
-    >
-      <Link to="/nabidka/$slug" params={{ slug: p.slug }} className="flex h-full flex-col">
-        <div className="compact-card-photo">
-          {img && (
-            <img
-              src={photoAt(img.src, 960)}
-              srcSet={photoSrcSet(img.src, [480, 960])}
-              sizes="(min-width: 1024px) 340px, 75vw"
-              alt={upcoming ? "" : img.alt}
-              width={480}
-              height={360}
-              loading="lazy"
-              decoding="async"
-              className="compact-card-img"
-            />
-          )}
-          {peek && (
-            <img
-              src={photoAt(peek.src, 960)}
-              srcSet={photoSrcSet(peek.src, [480, 960])}
-              sizes="(min-width: 1024px) 340px, 75vw"
-              alt=""
-              aria-hidden
-              width={480}
-              height={360}
-              loading="lazy"
-              decoding="async"
-              className="compact-card-img compact-card-peek"
-            />
-          )}
-          <span className={`compact-card-badge compact-card-badge-${p.status}`}>
-            <SiteText>{statusLabel[p.status]}</SiteText>
-          </span>
-          {!upcoming && photos.length > 1 && (
-            <span className="compact-card-count">
-              <Camera aria-hidden />
-              {photos.length}
-            </span>
-          )}
-          <span className="compact-card-cta" aria-hidden>
-            <SiteText>{upcoming ? "Chci vědět víc" : "Prohlédnout"}</SiteText>
-            <ArrowUpRight />
-          </span>
-        </div>
-        <div className="compact-card-body">
-          <p className="compact-card-place">
-            {[p.location.city, p.location.district].filter(Boolean).join(" · ")}
-          </p>
-          <h3 className="compact-card-title">{p.title}</h3>
-          <p className="compact-card-price">
-            {p.status === "sold" ? (
-              <SiteText>{"Prodáno"}</SiteText>
-            ) : upcoming ? (
-              <SiteText>{"Inzerát před zveřejněním"}</SiteText>
-            ) : (
-              formatPrice(p)
-            )}
-          </p>
-          {p.market === "egypt" && p.price !== null && p.status !== "sold" && (
-            <p className="compact-card-note">
-              <SiteText>{"Cena včetně provize a kompletního servisu zprostředkování"}</SiteText>
-            </p>
-          )}
-        </div>
-      </Link>
-    </article>
   );
 }
 
@@ -204,7 +128,9 @@ export function CompactPropertyGrid({
     <div className={`compact-rail ${className}`}>
       <div ref={rail} className="compact-grid">
         {properties.slice(0, limit).map((p) => (
-          <CompactCard key={p.slug} p={p} />
+          <div key={p.slug} className="rail-item">
+            <PropertyCard p={p} />
+          </div>
         ))}
       </div>
       {scrollable && (
@@ -383,9 +309,10 @@ const egyptSteps = [
  */
 export function EgyptTeaser({ properties }: { properties: Property[] }) {
   const { contact } = useSiteConfig();
-  // Active offers first, then sales from the last 30 days; older sales live in the full offer.
+  // Active offers first, then reserved, then sales from the last 30 days; older sales live in the full offer.
   const active = [
     ...properties.filter((p) => p.status === "active"),
+    ...properties.filter((p) => p.status === "reserved"),
     ...properties.filter((p) => isRecentSale(p)),
   ];
   const whatsapp = contact.egyptWhatsapp || contact.whatsapp;

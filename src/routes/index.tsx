@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import { CollaborationStrip } from "@/components/CollaborationStrip";
 import { SituationPicker } from "@/components/SituationPicker";
+import { HeroChains } from "@/components/HeroChains";
 
 /**
  * Homepage shows what is for sale now: active Czech listings (featured first), then „Připravuji“
@@ -60,6 +61,10 @@ function Home() {
   return (
     <div className="home-page">
       <section className="home-hero relative">
+        <HeroChains
+          czech={featured}
+          egypt={egypt.filter((p) => p.status === "active" || p.status === "reserved")}
+        />
         <div
           className={`container-page grid gap-8 pt-4 pb-10 sm:pt-8 md:pt-12 ${photoHidden ? "" : "lg:grid-cols-[1.25fr_1fr]"} lg:items-stretch lg:gap-12 lg:pb-14`}
         >

@@ -5368,3 +5368,159 @@
   font-weight: 600;
   color: var(--foreground);
 }
+
+/* ── Hero chains: listing photos drifting along a wavy line in the empty side margins ──
+   Left = Czech (down), right = Egypt (up). Wide screens only (≥ 1680 px). */
+.hero-chains {
+  display: none;
+}
+@media (min-width: 1680px) {
+  .hero-chains {
+    position: absolute;
+    inset: 0;
+    display: block;
+    pointer-events: none;
+  }
+}
+.hero-chain {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: calc((100% - 82rem) / 2);
+  display: grid;
+  place-items: center;
+}
+.hero-chain-left {
+  left: 0;
+}
+.hero-chain-right {
+  right: 0;
+}
+.hero-chain-track {
+  position: relative;
+  width: 300px;
+  height: 760px;
+  mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent);
+}
+.hero-chain-line {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.hero-chain-line path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 7;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+.hero-chain-tile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 132px;
+  offset-path: path(
+    "M150,-90 C80,10 220,110 150,190 S80,370 150,450 S220,630 150,710 S80,860 150,900"
+  );
+  offset-rotate: 0deg;
+  offset-anchor: center;
+  pointer-events: auto;
+  border-radius: 12px;
+  background: var(--card);
+  padding: 4px;
+  box-shadow: 0 14px 30px -18px color-mix(in oklab, var(--ink) 60%, transparent);
+  animation: hero-chain-flow 54s linear infinite;
+  animation-delay: calc(var(--i) * -9s);
+  transition:
+    scale 0.3s,
+    box-shadow 0.3s;
+}
+.hero-chain-right .hero-chain-tile {
+  animation-direction: reverse;
+}
+.hero-chain:hover .hero-chain-tile {
+  animation-play-state: paused;
+}
+.hero-chain-tile:hover {
+  scale: 1.12;
+  z-index: 2;
+  box-shadow: 0 20px 36px -18px color-mix(in oklab, var(--ink) 70%, transparent);
+}
+.hero-chain-tile img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 9px;
+}
+.hero-chain-upcoming img {
+  filter: blur(5px);
+}
+.hero-chain-label {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 4px 2px;
+  line-height: 1.25;
+}
+.hero-chain-place {
+  overflow: hidden;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--muted-foreground);
+}
+.hero-chain-price {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--foreground);
+}
+.hero-chain-active .hero-chain-price {
+  color: #0a8f3f;
+}
+.hero-chain-upcoming .hero-chain-price {
+  color: var(--accent);
+}
+.hero-chain-reserved .hero-chain-price {
+  color: #a07800;
+}
+@keyframes hero-chain-flow {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-chain-tile {
+    animation-play-state: paused;
+  }
+}
+
+/* Homepage rail uses the same cards as the full offer. */
+.compact-grid > .rail-item {
+  flex: 0 0 82%;
+  min-width: 0;
+}
+@media (min-width: 640px) {
+  .compact-grid > .rail-item {
+    flex-basis: 46%;
+  }
+}
+@media (min-width: 1024px) {
+  .compact-grid > .rail-item {
+    flex-basis: calc((100% - 2 * 18px) / 3.15);
+  }
+}
+.property-card.is-upcoming .property-card-img {
+  filter: blur(9px) saturate(1.1);
+  transform: scale(1.12);
+}
+.property-card.is-upcoming .property-card-price {
+  color: var(--accent);
+}

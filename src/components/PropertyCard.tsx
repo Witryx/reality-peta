@@ -23,13 +23,14 @@ export function StatusBadge({
 
 export function PropertyCard({ p, eager = false }: { p: Property; eager?: boolean }) {
   const photos = [...p.images].sort((a, b) => a.position - b.position);
-  const [img, peek] = photos;
+  const upcoming = p.status === "upcoming";
+  const [img, peek] = upcoming ? [photos[0]] : photos;
   const features = [...new Set(p.features.map((feature) => feature.trim()).filter(Boolean))].slice(
     0,
     5,
   );
   return (
-    <article className="property-card group h-full">
+    <article className={`property-card group h-full ${upcoming ? "is-upcoming" : ""}`}>
       <Link to="/nabidka/$slug" params={{ slug: p.slug }} className="flex h-full flex-col">
         <div className="property-photo relative aspect-[4/3] shrink-0 overflow-hidden bg-muted">
           {img ? (
@@ -37,7 +38,7 @@ export function PropertyCard({ p, eager = false }: { p: Property; eager?: boolea
               src={photoAt(img.src, 960)}
               srcSet={photoSrcSet(img.src, [480, 960])}
               sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
-              alt={img.alt}
+              alt={upcoming ? "" : img.alt}
               width={1200}
               height={900}
               loading={eager ? "eager" : "lazy"}
@@ -63,7 +64,7 @@ export function PropertyCard({ p, eager = false }: { p: Property; eager?: boolea
               className="property-card-img property-card-peek size-full object-cover"
             />
           )}
-          {photos.length > 1 && (
+          {!upcoming && photos.length > 1 && (
             <span className="property-card-count">
               <Camera aria-hidden />
               {photos.length}
@@ -109,7 +110,13 @@ export function PropertyCard({ p, eager = false }: { p: Property; eager?: boolea
             <div className="property-card-price-row">
               <div className="min-w-0">
                 <p className="property-card-price">
-                  {p.status === "sold" ? "Prodáno" : formatPrice(p)}
+                  {p.status === "sold" ? (
+                    "Prodáno"
+                  ) : upcoming ? (
+                    <SiteText>{"Inzerát před zveřejněním"}</SiteText>
+                  ) : (
+                    formatPrice(p)
+                  )}
                 </p>
                 {p.market === "egypt" && p.price !== null && p.status !== "sold" && (
                   <p className="property-card-price-note">
