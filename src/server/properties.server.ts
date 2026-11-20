@@ -83,6 +83,20 @@ export async function saveProperty(db: Database, adminId: string, input: unknown
               "Jedna z fotografií už není v knihovně. Odeberte ji z galerie nebo ji znovu nahrajte.",
             );
         }
+        // Remember when the listing became sold: the newest sale leads the sold list and
+        // stays on the homepage for 30 days. Kept while it stays sold, cleared otherwise.
+        const [previous] = id
+          ? await tx.query<{ status: string | null; sold_at: string | null }>(
+              "SELECT data->>'status' AS status, data->>'soldAt' AS sold_at FROM properties WHERE id=$1",
+              [id],
+            )
+          : [];
+        if (data.status === "sold")
+          data.soldAt =
+            previous?.status === "sold" && previous.sold_at
+              ? previous.sold_at
+              : new Date().toISOString();
+        else delete data.soldAt;
         const [row] = id
           ? await tx.query(
               "UPDATE properties SET slug=$1,publication=$2,data=$3::jsonb,version=version+1,updated_at=now() WHERE id=$4 AND version=$5 RETURNING *",

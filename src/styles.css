@@ -5344,3 +5344,19 @@
     white-space: nowrap;
   }
 }
+
+/* Hero facts: one font, size and colour for all three values and all three labels. */
+.home-page .hero-facts strong,
+.home-page .hero-facts-link strong {
+  font-family: var(--font-brand);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+}
+.home-page .hero-facts li > span,
+.home-page .hero-facts-link > span {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--muted-foreground);
+}

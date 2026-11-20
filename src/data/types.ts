@@ -86,6 +86,8 @@ export interface Property {
   /** Tajný klíč sdíleného odkazu na připravovanou nabídku (?klic=…). Nikdy se neposílá veřejně. */
   shareKey?: string;
   publishedAt: string; // ISO datum
+  /** Kdy nabídka přešla na „Prodáno“ (ISO čas). Nastavuje server při uložení, ne formulář. */
+  soldAt?: string;
   /** true = ukázková data, ne reálná nabídka */
   isDemo: boolean;
 }
@@ -137,4 +139,13 @@ export function formatPrice(p: Property) {
   if (p.price === null) return "Cena na vyžádání";
   const v = new Intl.NumberFormat("cs-CZ").format(p.price) + " Kč";
   return p.offerType === "rent" ? `${v} / měsíc` : v;
+}
+
+const RECENT_SALE_DAYS = 30;
+/** Sold within the last 30 days: still shown on the homepage as a fresh result. */
+export function isRecentSale(p: Property, now = Date.now()): boolean {
+  return (
+    p.status === "sold" &&
+    now - (p.soldAt ? Date.parse(p.soldAt) || 0 : 0) < RECENT_SALE_DAYS * 24 * 60 * 60 * 1000
+  );
 }

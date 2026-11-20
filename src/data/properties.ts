@@ -484,8 +484,16 @@ function publicCopy(property: Property): Property {
     }),
   };
 }
+const soldTime = (p: Property) => (p.soldAt ? Date.parse(p.soldAt) || 0 : 0);
+/** Admin order, except sold listings: they keep their places, filled newest sale first. */
+function newestSoldFirst(list: Property[]): Property[] {
+  const sold = list.filter((p) => p.status === "sold").sort((a, b) => soldTime(b) - soldTime(a));
+  return list.map((p) => (p.status === "sold" ? sold.shift()! : p));
+}
 const everything = async () =>
-  (await readProperties()).map(publicCopy).sort((a, b) => a.sortOrder - b.sortOrder);
+  newestSoldFirst(
+    (await readProperties()).map(publicCopy).sort((a, b) => a.sortOrder - b.sortOrder),
+  );
 /** Připravované nabídky („Připravuji“) nejsou v běžných výpisech ani na detailu. */
 const sorted = async () => (await everything()).filter((p) => p.status !== "upcoming");
 

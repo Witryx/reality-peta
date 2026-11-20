@@ -13,7 +13,7 @@ import {
   Sun,
 } from "lucide-react";
 import { photoAt, photoSrcSet } from "@/lib/photo-src";
-import { formatPrice, statusLabel, type Property } from "@/data/types";
+import { formatPrice, statusLabel, type Property, isRecentSale } from "@/data/types";
 import { useSiteConfig, useWebsiteImageHidden } from "@/lib/website-context";
 import { SiteText } from "./SiteText";
 import { SiteImage } from "./SiteImage";
@@ -383,7 +383,11 @@ const egyptSteps = [
  */
 export function EgyptTeaser({ properties }: { properties: Property[] }) {
   const { contact } = useSiteConfig();
-  const active = properties.filter((p) => p.status === "active");
+  // Active offers first, then sales from the last 30 days; older sales live in the full offer.
+  const active = [
+    ...properties.filter((p) => p.status === "active"),
+    ...properties.filter((p) => isRecentSale(p)),
+  ];
   const whatsapp = contact.egyptWhatsapp || contact.whatsapp;
   const photoHidden = useWebsiteImageHidden("image.egypt");
   return (
