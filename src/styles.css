@@ -5299,3 +5299,48 @@
   color: var(--muted-foreground);
   line-height: 1.7;
 }
+
+/* ── Hero title: two calm lines on desktop ── */
+.home-page .hero-title {
+  letter-spacing: -0.02em;
+}
+@media (min-width: 1024px) {
+  .home-page .hero-title {
+    font-size: clamp(2.5rem, 3.9vw, 3.4rem);
+    line-height: 1.12;
+  }
+  .home-page .hero-title-line {
+    display: block;
+    white-space: nowrap;
+  }
+}
+
+/* ── Phone hero: the partner logos fit the first screen, so the guide's clicks are seen ── */
+@media (max-width: 639px) {
+  .home-hero .hero-motto,
+  .home-hero .hero-offer-link,
+  .hero-trust .partner-name {
+    display: none; /* motto is in the logo lockup, logos carry the names, offers sit right below */
+  }
+  .home-hero .hero-copy {
+    padding-block: 0;
+  }
+  .home-hero .hero-stage {
+    margin-top: 0;
+  }
+  .home-page .hero-title {
+    margin-top: 0.6rem;
+  }
+  .home-page .hero-actions {
+    margin-top: 1.1rem;
+  }
+  .home-hero .hero-trust {
+    margin-top: 0.75rem;
+    padding-top: 0.6rem;
+  }
+  .promo-bar-inner {
+    min-height: 38px;
+    font-size: 12.5px;
+    white-space: nowrap;
+  }
+}

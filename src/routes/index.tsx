@@ -61,7 +61,7 @@ function Home() {
     <div className="home-page">
       <section className="home-hero relative">
         <div
-          className={`container-page grid gap-8 pt-8 pb-10 md:pt-12 ${photoHidden ? "" : "lg:grid-cols-[1.1fr_1fr]"} lg:items-stretch lg:gap-12 lg:pb-14`}
+          className={`container-page grid gap-8 pt-4 pb-10 sm:pt-8 md:pt-12 ${photoHidden ? "" : "lg:grid-cols-[1.25fr_1fr]"} lg:items-stretch lg:gap-12 lg:pb-14`}
         >
           <div className="hero-copy">
             <p className="hero-motto">
@@ -74,9 +74,12 @@ function Home() {
               <SiteText>{"Prodej · Koupě · Pronájem · Odhad ceny"}</SiteText>
             </p>
             <h1 className="hero-title mt-4 text-5xl leading-tight sm:text-6xl">
-              <SiteText>{"Prodat dobře"}</SiteText>
-              <br className="hidden sm:block" />
-              <SiteText>{" neznamená prodat draho."}</SiteText>
+              <span className="hero-title-line">
+                <SiteText>{"Prodat dobře"}</SiteText>
+              </span>{" "}
+              <span className="hero-title-line">
+                <SiteText>{"neznamená prodat draho."}</SiteText>
+              </span>
             </h1>
             <p className="hero-description mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
               <SiteText>
@@ -96,7 +99,7 @@ function Home() {
                   <ArrowUpRight className="size-4" />
                 </Link>
               </Button>
-              <a href="#nabidka" className="text-link">
+              <a href="#nabidka" className="text-link hero-offer-link">
                 <SiteText>{"Prohlédnout nabídku"}</SiteText>
               </a>
             </div>
