@@ -13,6 +13,7 @@ import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
+import { PromoBar } from "@/components/PromoBar";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CookieConsent } from "@/components/CookieConsent";
 import { TrackingScripts } from "@/components/TrackingScripts";
@@ -124,6 +125,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <WebsiteContentContext.Provider value={website.values}>
+        {!isAdmin && <PromoBar />}
         {!isAdmin && <SiteHeader />}
         <main id="obsah">
           <Outlet />

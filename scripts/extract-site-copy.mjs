@@ -39,6 +39,7 @@ const groups = {
   "ConsentEmbed.tsx": "Mapy a videa",
   "NearbyPlaces.tsx": "Okolí nemovitosti",
   "EnergyRating.tsx": "Energetická třída",
+  "PromoBar.tsx": "Akční lišta",
 };
 const files = [
   ...(await readdir("src/routes"))
@@ -49,6 +50,7 @@ const files = [
     .map((name) => `src/components/${name}`),
   "src/routes/clanky/index.tsx",
   "src/routes/clanky/$slug.tsx",
+  "src/routes/clanky/prvni-odhad-zdarma.tsx",
 ];
 const catalog = new Map();
 const catalogOnly = process.argv.includes("--catalog-only");

@@ -22,6 +22,7 @@ import { Route as ReferenceRouteImport } from './routes/reference'
 import { Route as SluzbyRouteImport } from './routes/sluzby'
 import { Route as ClankyIndexRouteImport } from './routes/clanky/index'
 import { Route as ClankySlugRouteImport } from './routes/clanky/$slug'
+import { Route as ClankyPrvniOdhadZdarmaRouteImport } from './routes/clanky/prvni-odhad-zdarma'
 import { Route as NabidkaIndexRouteImport } from './routes/nabidka.index'
 import { Route as NabidkaSlugRouteImport } from './routes/nabidka.$slug'
 
@@ -90,6 +91,11 @@ const ClankySlugRoute = ClankySlugRouteImport.update({
   path: '/clanky/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ClankyPrvniOdhadZdarmaRoute = ClankyPrvniOdhadZdarmaRouteImport.update({
+  id: '/clanky/prvni-odhad-zdarma',
+  path: '/clanky/prvni-odhad-zdarma',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NabidkaIndexRoute = NabidkaIndexRouteImport.update({
   id: '/nabidka/',
   path: '/nabidka/',
@@ -114,6 +120,7 @@ export interface FileRoutesByFullPath {
   '/reference': typeof ReferenceRoute
   '/sluzby': typeof SluzbyRoute
   '/clanky/$slug': typeof ClankySlugRoute
+  '/clanky/prvni-odhad-zdarma': typeof ClankyPrvniOdhadZdarmaRoute
   '/nabidka/$slug': typeof NabidkaSlugRoute
   '/clanky/': typeof ClankyIndexRoute
   '/nabidka/': typeof NabidkaIndexRoute
@@ -131,6 +138,7 @@ export interface FileRoutesByTo {
   '/reference': typeof ReferenceRoute
   '/sluzby': typeof SluzbyRoute
   '/clanky/$slug': typeof ClankySlugRoute
+  '/clanky/prvni-odhad-zdarma': typeof ClankyPrvniOdhadZdarmaRoute
   '/nabidka/$slug': typeof NabidkaSlugRoute
   '/clanky': typeof ClankyIndexRoute
   '/nabidka': typeof NabidkaIndexRoute
@@ -149,6 +157,7 @@ export interface FileRoutesById {
   '/reference': typeof ReferenceRoute
   '/sluzby': typeof SluzbyRoute
   '/clanky/$slug': typeof ClankySlugRoute
+  '/clanky/prvni-odhad-zdarma': typeof ClankyPrvniOdhadZdarmaRoute
   '/nabidka/$slug': typeof NabidkaSlugRoute
   '/clanky/': typeof ClankyIndexRoute
   '/nabidka/': typeof NabidkaIndexRoute
@@ -168,6 +177,7 @@ export interface FileRouteTypes {
     | '/reference'
     | '/sluzby'
     | '/clanky/$slug'
+    | '/clanky/prvni-odhad-zdarma'
     | '/nabidka/$slug'
     | '/clanky/'
     | '/nabidka/'
@@ -185,6 +195,7 @@ export interface FileRouteTypes {
     | '/reference'
     | '/sluzby'
     | '/clanky/$slug'
+    | '/clanky/prvni-odhad-zdarma'
     | '/nabidka/$slug'
     | '/clanky'
     | '/nabidka'
@@ -202,6 +213,7 @@ export interface FileRouteTypes {
     | '/reference'
     | '/sluzby'
     | '/clanky/$slug'
+    | '/clanky/prvni-odhad-zdarma'
     | '/nabidka/$slug'
     | '/clanky/'
     | '/nabidka/'
@@ -220,6 +232,7 @@ export interface RootRouteChildren {
   ReferenceRoute: typeof ReferenceRoute
   SluzbyRoute: typeof SluzbyRoute
   ClankySlugRoute: typeof ClankySlugRoute
+  ClankyPrvniOdhadZdarmaRoute: typeof ClankyPrvniOdhadZdarmaRoute
   NabidkaSlugRoute: typeof NabidkaSlugRoute
   ClankyIndexRoute: typeof ClankyIndexRoute
   NabidkaIndexRoute: typeof NabidkaIndexRoute
@@ -318,6 +331,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClankySlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/clanky/prvni-odhad-zdarma': {
+      id: '/clanky/prvni-odhad-zdarma'
+      path: '/clanky/prvni-odhad-zdarma'
+      fullPath: '/clanky/prvni-odhad-zdarma'
+      preLoaderRoute: typeof ClankyPrvniOdhadZdarmaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/nabidka/': {
       id: '/nabidka/'
       path: '/nabidka'
@@ -348,6 +368,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReferenceRoute: ReferenceRoute,
   SluzbyRoute: SluzbyRoute,
   ClankySlugRoute: ClankySlugRoute,
+  ClankyPrvniOdhadZdarmaRoute: ClankyPrvniOdhadZdarmaRoute,
   NabidkaSlugRoute: NabidkaSlugRoute,
   ClankyIndexRoute: ClankyIndexRoute,
   NabidkaIndexRoute: NabidkaIndexRoute,

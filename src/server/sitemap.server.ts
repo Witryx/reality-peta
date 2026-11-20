@@ -12,6 +12,7 @@ const staticPaths = [
   "/nabidka-spoluprace",
   "/kontakt",
   "/odhad-ceny",
+  "/clanky/prvni-odhad-zdarma",
 ];
 
 const escapeXml = (value: string) =>

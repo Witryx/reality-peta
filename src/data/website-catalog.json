@@ -2709,5 +2709,154 @@
     "key": "text_fe7335ee",
     "default": "Tuto nemovitost připravuji k prodeji. Pošlu Vám cenu, fotografie i popis dřív, než ji uvidí kdokoli jiný.",
     "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_aff52e0f",
+    "default": "Uplatněte svůj první odhad ceny nemovitosti zcela",
+    "groups": ["Akční lišta"]
+  },
+  {
+    "key": "text_57b1ecfe",
+    "default": "ZDARMA",
+    "groups": ["Akční lišta", "Články"]
+  },
+  {
+    "key": "text_bc7cb8ae",
+    "default": "První odhad ceny nemovitosti",
+    "groups": ["Akční lišta"]
+  },
+  {
+    "key": "text_91fe0fc8",
+    "default": "Více",
+    "groups": ["Akční lišta"]
+  },
+  {
+    "key": "text_59f62998",
+    "default": "Odhad ceny",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_f689a88",
+    "default": "Nabídka pro nové klienty",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_ee3dd677",
+    "default": "Za kolik by se Vaše nemovitost opravdu prodala?",
+    "groups": ["Články"],
+    "role": "heading"
+  },
+  {
+    "key": "text_b1ec2471",
+    "default": "Chci odhad zdarma",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_c69eb6b3",
+    "default": "Bez závazků. Bez tlaku na prodej.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_73980e16",
+    "default": "1. odhad",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_26228ddf",
+    "default": "byt · dům · pozemek",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_78905393",
+    "default": "Kdy se Vám odhad hodí",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_edfd9a5e",
+    "default": "Tři situace, ve kterých se vyplatí znát přesné číslo",
+    "groups": ["Články"],
+    "role": "heading"
+  },
+  {
+    "key": "text_50bfa9ab",
+    "default": "Jak to probíhá",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_41fe8406",
+    "default": "Žádné odhady od stolu. Reálná data z Vaší lokality.",
+    "groups": ["Články"],
+    "role": "heading"
+  },
+  {
+    "key": "text_35b05c15",
+    "default": "Dobré vědět",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_8106df5e",
+    "default": "Dědíte nemovitost",
+    "groups": ["Články"],
+    "role": "heading"
+  },
+  {
+    "key": "text_c1e5da84",
+    "default": "Dědictví přináší spoustu otázek a málokdy je na ně čas. Reálná cena Vám pomůže rozhodnout se v klidu, zda si nemovitost nechat, pronajmout, nebo prodat. A pokud dědíte s dalšími členy rodiny, společné číslo usnadní férovou dohodu.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_cca603f7",
+    "default": "Potřebujete podklad pro notáře",
+    "groups": ["Články"],
+    "role": "heading"
+  },
+  {
+    "key": "text_23b3115c",
+    "default": "V dědickém řízení notář potřebuje znát hodnotu majetku. Pokud se dědicové na hodnotě shodnou, znalecký posudek často není potřeba a jako podklad poslouží odborný odhad tržní ceny. Připravím ho tak, abyste s ním mohli rovnou za notářem.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_984a5e5e",
+    "default": "Chcete mít jasno",
+    "groups": ["Články"],
+    "role": "heading"
+  },
+  {
+    "key": "text_5de2ba95",
+    "default": "Nechystáte se hned prodávat, ale chcete vědět, na čem jste? I to je dobrý důvod. Ať plánujete prodej, refinancování, nebo jen sledujete trh, ode mě získáte reálnou představu o hodnotě své nemovitosti.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_4aa668da",
+    "default": "Ozvete se",
+    "groups": ["Články"],
+    "role": "heading"
+  },
+  {
+    "key": "text_476c1625",
+    "default": "Vyplníte krátký formulář níže, nebo mi rovnou zavoláte. Stačí adresa a základní údaje o nemovitosti.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_5b8ae9da",
+    "default": "Prověřím trh",
+    "groups": ["Články"],
+    "role": "heading"
+  },
+  {
+    "key": "text_9683271a",
+    "default": "Porovnám Vaši nemovitost se skutečně prodanými nemovitostmi v okolí a zohledním její stav, dispozici i polohu.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_1ab3f613",
+    "default": "Dostanete reálnou cenu",
+    "groups": ["Články"],
+    "role": "heading"
+  },
+  {
+    "key": "text_7b6ec28",
+    "default": "Výsledek Vám srozumitelně vysvětlím, včetně toho, co cenu zvyšuje a co ji naopak snižuje.",
+    "groups": ["Články"]
   }
 ]

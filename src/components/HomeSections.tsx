@@ -190,7 +190,7 @@ export function CompactPropertyGrid({
           const width = (card?.offsetWidth ?? 200) + 18;
           const atEnd = node.scrollLeft + node.clientWidth >= node.scrollWidth - 4;
           node.scrollTo({ left: atEnd ? 0 : node.scrollLeft + width, behavior: "smooth" });
-        }, 4000);
+        }, 7000);
     return () => {
       window.clearInterval(timer);
       node.removeEventListener("scroll", measure);

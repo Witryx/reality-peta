@@ -149,6 +149,8 @@ function Home() {
         </div>
       </section>
 
+      <EgyptTeaser properties={egypt} />
+
       <section className="situation-section border-t py-16 md:py-24" data-reveal="line">
         <div className="container-page max-w-4xl">
           <SituationPicker />
@@ -166,8 +168,6 @@ function Home() {
           <Testimonials />
         </div>
       </section>
-
-      <EgyptTeaser properties={egypt} />
 
       <ReferralStrip />
 
