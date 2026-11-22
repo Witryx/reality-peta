@@ -6035,3 +6035,10 @@
     animation: none;
   }
 }
+
+/* Hidden helper texts (sr-only) inside listing cards are absolutely placed; without a positioned
+   ancestor they escaped the swipe rows and made the whole page slide sideways on iPhone. */
+.compact-grid,
+.property-card {
+  position: relative;
+}
