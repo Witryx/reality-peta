@@ -69,7 +69,7 @@ export const site = {
 export const tracking = {
   gtmId: "", // GTM-XXXXXXX
   ga4Id: "", // G-XXXXXXXXXX
-  metaPixelId: "", // 15–16místné číslo
+  metaPixelId: "3811985592377775", // Meta dataset „https://www.petrpavlat-reality.cz/“ (portfolio Petr Pavlát)
   googleAdsId: "", // AW-XXXXXXXXX
   /** Mapování událostí na štítky konverzí Google Ads (AW-ID/label). */
   googleAdsConversions: {

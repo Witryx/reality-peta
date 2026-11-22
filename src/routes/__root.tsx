@@ -74,6 +74,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { name: "twitter:card", content: "summary_large_image" },
         ...socialImageMeta(loaderData?.values ?? {}),
         { name: "theme-color", content: "#f9f7f2" },
+        // Ověření domény v Meta Business (portfolio Petr Pavlát) – nutné pro měření reklam.
+        { name: "facebook-domain-verification", content: "kcyfdthtfleh8jcqwq9xl67awsgj5x" },
       ],
       links: [
         { rel: "stylesheet", href: appCss },
