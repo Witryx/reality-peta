@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import { LeadForm } from "./LeadForm";
 import { ContactLinks } from "./ContactLinks";
-import { AboutCard } from "./AboutCard";
 import { Plus, ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { GoogleRating } from "./GoogleRating";
@@ -420,7 +419,7 @@ export function ValuationSection({
 export function AboutTeaser({ full = false }: { full?: boolean }) {
   const Heading = full ? "h1" : "h2";
   return (
-    <div className="grid gap-12 md:grid-cols-[1.15fr_0.85fr] md:items-center md:gap-16">
+    <div className="max-w-3xl">
       <div>
         <p className="eyebrow">
           <SiteText>{"O mně"}</SiteText>
@@ -439,7 +438,6 @@ export function AboutTeaser({ full = false }: { full?: boolean }) {
           </div>
         )}
       </div>
-      <AboutCard />
     </div>
   );
 }

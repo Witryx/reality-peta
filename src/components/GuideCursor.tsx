@@ -41,7 +41,11 @@ export function GuideCursor() {
     let cancelled = false;
     let busy = Promise.resolve();
     let cursor: HTMLDivElement | null = null;
-    let position = { x: window.innerWidth * 0.82, y: window.innerHeight * 0.72 };
+    // Page coordinates (not screen ones): the cursor stays on its target while the page scrolls.
+    let position = {
+      x: window.scrollX + window.innerWidth * 0.82,
+      y: window.scrollY + window.innerHeight * 0.72,
+    };
 
     const stop = () => {
       cancelled = true;
@@ -62,7 +66,10 @@ export function GuideCursor() {
     async function visit(target: HTMLElement) {
       const box = target.getBoundingClientRect();
       if (box.bottom < 0 || box.top > window.innerHeight) return;
-      const to = { x: box.left + box.width * 0.62, y: box.top + box.height * 0.58 };
+      const to = {
+        x: window.scrollX + box.left + box.width * 0.62,
+        y: window.scrollY + box.top + box.height * 0.58,
+      };
       if (cursor) {
         const from = position;
         // Slight arc: the mid point lifts above the straight line, like a real hand movement.
@@ -96,7 +103,10 @@ export function GuideCursor() {
         const first = targets[0];
         if (stop.id !== "hero" && first) {
           const box = first.getBoundingClientRect();
-          position = { x: Math.min(box.right + 160, window.innerWidth - 40), y: box.top + 90 };
+          position = {
+            x: window.scrollX + Math.min(box.right + 160, window.innerWidth - 40),
+            y: window.scrollY + box.top + 90,
+          };
         }
         place(position.x, position.y);
         cursor.classList.add("is-visible");

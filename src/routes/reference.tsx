@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { pageHead, websiteValues } from "@/lib/seo";
 import { SectionHead, Testimonials } from "@/components/Sections";
 import { SiteImage } from "@/components/SiteImage";
+import { ReferenceVisual } from "@/components/SectionVisuals";
 import { useWebsiteImage } from "@/lib/website-context";
 
 export const Route = createFileRoute("/reference")({
@@ -22,7 +23,10 @@ export const Route = createFileRoute("/reference")({
 function Page() {
   return (
     <div className="container-page py-16 md:py-24">
-      <SectionHead eyebrow="Reference" title="Spokojení klienti jsou moje nejlepší vizitka" />
+      <div className="page-visual-head">
+        <SectionHead eyebrow="Reference" title="Spokojení klienti jsou moje nejlepší vizitka" />
+        <ReferenceVisual />
+      </div>
       <Testimonials />
       <HelpBuying />
       <div className="mt-16">
@@ -60,7 +64,9 @@ function HelpBuying() {
             <SiteText>{"Byt 68 m² · Ruská, Praha"}</SiteText>
           </p>
           <p className="mt-4 font-display text-2xl leading-snug">
-            <SiteText>{"Pomohl jsem klientům najít a koupit byt, včetně právní kontroly."}</SiteText>
+            <SiteText>
+              {"Pomohl jsem klientům najít a koupit byt, včetně právní kontroly."}
+            </SiteText>
           </p>
         </div>
       </article>

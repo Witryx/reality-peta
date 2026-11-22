@@ -87,38 +87,42 @@ async function openListing(url = "/nabidka") {
   return router;
 }
 
+/** Cards of the grid layout (phones get the same cards again as swipeable rows). */
+const grid = () => within(document.querySelector<HTMLElement>('[data-layout="grid"]')!);
+const gridArticles = () => grid().getAllByRole("article");
+
 describe("Property listing filters", () => {
   it("starts with both countries and preserves each filter while changing the other", async () => {
     const router = await openListing();
-    expect(screen.getAllByRole("article")).toHaveLength(4);
+    expect(gridArticles()).toHaveLength(4);
     const countries = within(screen.getByRole("group", { name: "Filtr podle země" }));
     const statuses = within(screen.getByRole("group", { name: "Filtr podle stavu" }));
 
     fireEvent.click(countries.getByRole("link", { name: "Egypt (2)" }));
-    await waitFor(() => expect(screen.getAllByRole("article")).toHaveLength(2));
-    expect(screen.queryByRole("heading", { name: "Český byt" })).not.toBeInTheDocument();
+    await waitFor(() => expect(gridArticles()).toHaveLength(2));
+    expect(grid().queryByRole("heading", { name: "Český byt" })).not.toBeInTheDocument();
 
     expect(statuses.queryByRole("link", { name: /Rezervováno|Prodáno/ })).not.toBeInTheDocument();
     fireEvent.click(statuses.getByRole("link", { name: "Aktivní (1)" }));
-    await waitFor(() => expect(screen.getAllByRole("article")).toHaveLength(1));
-    expect(screen.getByRole("heading", { name: "Egyptský apartmán" })).toBeInTheDocument();
+    await waitFor(() => expect(gridArticles()).toHaveLength(1));
+    expect(grid().getByRole("heading", { name: "Egyptský apartmán" })).toBeInTheDocument();
     expect(router.state.location.search).toEqual({ zeme: "egypt", stav: "active" });
 
     fireEvent.click(countries.getByRole("link", { name: "Česko (1)" }));
-    await screen.findByRole("heading", { name: "Český byt" });
-    expect(screen.queryByRole("heading", { name: "Egyptský apartmán" })).not.toBeInTheDocument();
+    await grid().findByRole("heading", { name: "Český byt" });
+    expect(grid().queryByRole("heading", { name: "Egyptský apartmán" })).not.toBeInTheDocument();
     expect(router.state.location.search).toEqual({ zeme: "cz", stav: "active" });
 
     fireEvent.click(statuses.getByRole("link", { name: "Vše (2)" }));
-    await waitFor(() => expect(screen.getAllByRole("article")).toHaveLength(2));
-    expect(screen.getByRole("heading", { name: "Český byt" })).toBeInTheDocument();
+    await waitFor(() => expect(gridArticles()).toHaveLength(2));
+    expect(grid().getByRole("heading", { name: "Český byt" })).toBeInTheDocument();
     expect(router.state.location.search).toEqual({ zeme: "cz" });
   });
 
   it("opens a shared link with both filters already applied", async () => {
     await openListing("/nabidka?zeme=egypt&stav=reserved");
-    expect(screen.getAllByRole("article")).toHaveLength(1);
-    expect(screen.getByRole("heading", { name: "Rezervovaná vila" })).toBeInTheDocument();
+    expect(gridArticles()).toHaveLength(1);
+    expect(grid().getByRole("heading", { name: "Rezervovaná vila" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Egypt (1)" })).toHaveAttribute("aria-current", "page");
     expect(screen.getByRole("link", { name: "Všechny země (1)" })).not.toHaveAttribute(
       "aria-current",

@@ -7,6 +7,7 @@ import { pageHead, websiteValues } from "@/lib/seo";
 import { PropertyCard } from "@/components/PropertyCard";
 import { PropertyContactCta } from "@/components/PropertyContactCta";
 import { SectionHead } from "@/components/Sections";
+import { CompactPropertyGrid } from "@/components/HomeSections";
 import { CzechMap } from "@/components/CzechMap";
 import { listCzechMapPins } from "@/data/czech-map";
 
@@ -102,11 +103,32 @@ function Listing() {
         })}
       </div>
       {items.length ? (
-        <div className="mt-12 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((p, i) => (
-            <PropertyCard key={p.id} p={p} eager={i < 3} />
-          ))}
-        </div>
+        <>
+          {/* Phones: Czech and Egypt offers as two swipeable rows, like on the homepage. */}
+          <div className="offer-rails sm:hidden">
+            {markets
+              .filter((market): market is "cz" | "egypt" => Boolean(market))
+              .map((market) => ({ market, list: items.filter((p) => marketOf(p) === market) }))
+              .filter(({ list }) => list.length > 0)
+              .map(({ market, list }) => (
+                <section key={market} className="offer-rail-group" aria-label={marketLabel[market]}>
+                  <h2 className="offer-rail-title">
+                    <SiteText>{marketLabel[market]}</SiteText>{" "}
+                    <span className="opacity-60">({list.length})</span>
+                  </h2>
+                  <CompactPropertyGrid properties={list} limit={list.length} className="mt-4" />
+                </section>
+              ))}
+          </div>
+          <div
+            data-layout="grid"
+            className="mt-12 hidden gap-x-8 gap-y-14 sm:grid sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {items.map((p) => (
+              <PropertyCard key={p.id} p={p} />
+            ))}
+          </div>
+        </>
       ) : (
         <p className="mt-12 text-muted-foreground">
           <SiteText>{"V této kategorii teď nic není."}</SiteText>

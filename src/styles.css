@@ -5679,3 +5679,349 @@
     display: none;
   }
 }
+
+/* ── Úpravy 22. 11. 2026 ─────────────────────────────────────────────────────────────── */
+
+/* A page that failed to load first shows this quiet state while it retries once. */
+.page-retry {
+  display: grid;
+  min-height: 60vh;
+  place-items: center;
+}
+.page-retry-spinner {
+  width: 34px;
+  height: 34px;
+  border: 3px solid color-mix(in oklab, var(--primary) 22%, transparent);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: page-retry-turn 0.8s linear infinite;
+}
+@keyframes page-retry-turn {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* Gallery: the small (already loaded) copy shows at once, the sharp photo fades in over it. */
+.property-gallery-placeholder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(8px);
+  transform: scale(1.03);
+  pointer-events: none;
+}
+.property-lightbox-stage .property-gallery-placeholder {
+  padding: inherit;
+  object-fit: contain;
+  filter: blur(5px);
+  transform: none;
+}
+.property-gallery-stage > .property-gallery-image,
+.property-lightbox-stage > .property-gallery-image {
+  position: relative;
+  z-index: 1;
+}
+.property-gallery-loading,
+.property-gallery-error {
+  z-index: 2;
+}
+/* The spinner appears only when a photo really takes long. */
+.property-gallery-loading {
+  animation: gallery-wait 0.25s 0.7s both;
+}
+@keyframes gallery-wait {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Guide cursor: placed in the page, so it stays on its target while scrolling. */
+.guide-cursor {
+  position: absolute;
+}
+
+/* Nabídka on phones: Czech and Egypt offers as swipeable rows. */
+.offer-rails {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+.offer-rail-group {
+  min-width: 0;
+}
+.offer-rail-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1.15;
+}
+
+/* ── Egypt page ── */
+.egypt-top {
+  --klin: var(--sea);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(50rem 24rem at 92% 0%, rgb(255 214 140 / 0.35), transparent 60%),
+    linear-gradient(180deg, #eaf5f6 0%, #f6f4ec 70%, #fbf4e8 100%);
+  padding-block: clamp(1.75rem, 1rem + 3vw, 4rem);
+}
+.egypt-top-grid {
+  display: grid;
+  gap: 1.75rem;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .egypt-top-grid {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 3.5rem;
+  }
+}
+/* Phones: picture first, then the heading, and the offer follows right after. */
+@media (max-width: 1023px) {
+  .egypt-top-scene {
+    order: -1;
+  }
+}
+.egypt-top-lead {
+  max-width: 34rem;
+  margin-top: 1rem;
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+.egypt-top-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+@media (max-width: 639px) {
+  /* Phones: the offer comes right after the heading; prices and terms are on the cards. */
+  .egypt-top-facts {
+    display: none;
+  }
+}
+.egypt-top-facts li {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d5e7ea;
+  border-radius: 10px;
+  background: rgb(255 255 255 / 0.85);
+  padding: 0.55rem 0.9rem;
+  line-height: 1.25;
+}
+.egypt-top-facts b {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #16707d;
+}
+.egypt-top-facts span {
+  font-size: 0.78rem;
+  color: var(--muted-foreground);
+}
+.egypt-offer {
+  padding-block: clamp(2.5rem, 1.8rem + 3vw, 4.5rem);
+}
+.egypt-offer .eyebrow::before,
+.egypt-why-band .eyebrow::before,
+.egypt-distance .eyebrow::before {
+  background: #1f8a9a;
+}
+.egypt-why-band {
+  background: linear-gradient(180deg, #f1f8f9 0%, #fbf4e8 100%);
+  padding-block: clamp(3rem, 2.2rem + 3.5vw, 5.5rem);
+}
+.egypt-why-band .egypt-home-why,
+.egypt-why-band .egypt-home-steps {
+  margin-top: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem);
+}
+.egypt-why-band .egypt-home-steps {
+  background: #16707d;
+}
+.egypt-why-band .egypt-home-steps li > span {
+  color: #16707d;
+}
+.egypt-distance {
+  padding-block: clamp(3rem, 2.2rem + 3.5vw, 5.5rem);
+}
+
+/* The Egypt picture: sky, sun, pyramids, dunes with a camel, Hurghada and the Red Sea. */
+.egypt-scene {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 8px 8px 56px 8px;
+  background: #f5f0e2;
+  box-shadow: 0 26px 54px -30px rgb(22 112 125 / 0.55);
+}
+@media (min-width: 1024px) {
+  .egypt-scene {
+    aspect-ratio: 16 / 10;
+  }
+}
+.egypt-scene svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.egypt-scene-rays {
+  transform-box: view-box;
+  transform-origin: 622px 104px;
+  animation: egypt-sun-turn 60s linear infinite;
+}
+.egypt-scene-birds {
+  animation: egypt-scene-birds 9s ease-in-out infinite;
+}
+@keyframes egypt-scene-birds {
+  50% {
+    transform: translate(14px, -6px);
+  }
+}
+.egypt-scene-camel {
+  animation: egypt-scene-walk 36s linear infinite;
+}
+@keyframes egypt-scene-walk {
+  0% {
+    transform: translateX(-90px);
+    opacity: 0;
+  }
+  6%,
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(250px);
+    opacity: 0;
+  }
+}
+.egypt-scene-camel-body {
+  animation: egypt-scene-sway 1.1s ease-in-out infinite;
+}
+@keyframes egypt-scene-sway {
+  50% {
+    transform: translateY(-1.5px);
+  }
+}
+.egypt-scene-waves {
+  animation: egypt-scene-waves 7s linear infinite;
+}
+@keyframes egypt-scene-waves {
+  to {
+    transform: translateX(-200px);
+  }
+}
+.egypt-scene-boat {
+  animation: egypt-scene-boat 4.5s ease-in-out infinite;
+}
+@keyframes egypt-scene-boat {
+  50% {
+    transform: translateY(2px) rotate(-2deg);
+  }
+}
+
+/* ── Reference and Články: heading with its symbolic picture ── */
+.page-visual-head {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .page-visual-head {
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    gap: 3rem;
+  }
+}
+.section-visual {
+  width: 100%;
+  max-width: 26rem;
+  justify-self: center;
+}
+@media (max-width: 767px) {
+  .section-visual {
+    max-width: 19rem;
+  }
+}
+.section-visual svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.reference-visual-stars path {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: reference-star-pop 0.45s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+}
+@keyframes reference-star-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.2) rotate(-30deg);
+  }
+}
+.reference-visual-sparkles path {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: reference-sparkle 2.8s ease-in-out infinite;
+}
+.reference-visual-sparkles path:last-child {
+  animation-delay: -1.4s;
+}
+@keyframes reference-sparkle {
+  50% {
+    opacity: 0.35;
+    transform: scale(0.7);
+  }
+}
+.articles-visual-lines path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: articles-write 0.6s ease-out forwards;
+}
+@keyframes articles-write {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.articles-visual-pen {
+  animation: articles-pen 3.2s ease-in-out infinite;
+}
+@keyframes articles-pen {
+  50% {
+    transform: translate(-6px, -3px);
+  }
+}
+.articles-visual-badge {
+  animation: articles-badge 2.4s ease-in-out infinite;
+}
+@keyframes articles-badge {
+  50% {
+    opacity: 0.82;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .egypt-scene-rays,
+  .egypt-scene-birds,
+  .egypt-scene-camel,
+  .egypt-scene-camel-body,
+  .egypt-scene-waves,
+  .egypt-scene-boat,
+  .reference-visual-sparkles path,
+  .articles-visual-pen,
+  .articles-visual-badge {
+    animation: none;
+  }
+  .articles-visual-lines path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .reference-visual-stars path {
+    animation: none;
+  }
+}

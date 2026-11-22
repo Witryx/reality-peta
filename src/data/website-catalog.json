@@ -90,6 +90,110 @@
     "groups": ["Egypt – vyhledávače"]
   },
   {
+    "key": "text_ac838b2c",
+    "default": "Hurghada · Rudé moře",
+    "groups": ["Egypt", "Úvodní stránka"]
+  },
+  {
+    "key": "text_b773a070",
+    "default": "Nemovitosti v Egyptě",
+    "groups": ["Egypt"],
+    "role": "heading"
+  },
+  {
+    "key": "text_83a2f634",
+    "default": "Byty v centru Hurghady, 4,5 hodiny letu od Prahy. Celý proces v češtině, s právní kontrolou na místě.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_76fe145",
+    "default": "od 1,15 mil. Kč",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_ca73befb",
+    "default": "byt u moře",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_fe07c286",
+    "default": "přímý let z Prahy",
+    "groups": ["Egypt", "Úvodní stránka"]
+  },
+  {
+    "key": "text_55996c50",
+    "default": "v ceně",
+    "groups": ["Egypt", "Úvodní stránka"]
+  },
+  {
+    "key": "text_82d8ed3b",
+    "default": "právní servis i provize",
+    "groups": ["Egypt", "Úvodní stránka"]
+  },
+  {
+    "key": "text_88145f6",
+    "default": "Aktuální nabídka",
+    "groups": ["Egypt", "Úvodní stránka"]
+  },
+  {
+    "key": "text_5c66953",
+    "default": "Byty u Rudého moře",
+    "groups": ["Egypt"],
+    "role": "heading"
+  },
+  {
+    "key": "text_d7e1af08",
+    "default": "Egypt",
+    "groups": ["Egypt", "Identita", "Nabídka"]
+  },
+  {
+    "key": "text_f752208d",
+    "default": "Česko",
+    "groups": ["Egypt", "Společné sekce", "Nabídka"]
+  },
+  {
+    "key": "text_ec6d2622",
+    "default": "Celá nabídka",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_ed900127",
+    "default": "Nové nabídky pro vás právě připravuji. Mezitím mi napište, jakou nemovitost hledáte.",
+    "groups": ["Egypt", "Nabídka"]
+  },
+  {
+    "key": "text_d8c8ab08",
+    "default": "Proč se mnou",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_cac9d391",
+    "default": "V každém bytě jsem osobně byl",
+    "groups": ["Egypt"],
+    "role": "heading"
+  },
+  {
+    "key": "text_9636f8b6",
+    "default": "Nabízím jen byty v centru Hurghady, kde se žije celý rok. Víte přesně, co kupujete i kolik zaplatíte.",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_ef0aa588",
+    "default": "Praha – Hurghada",
+    "groups": ["Egypt"]
+  },
+  {
+    "key": "text_56dca3c4",
+    "default": "Blíž, než si myslíte",
+    "groups": ["Egypt"],
+    "role": "heading"
+  },
+  {
+    "key": "text_413f4ee2",
+    "default": "Přímý let trvá zhruba 4,5 hodiny. Na hodinách vidíte, kolik je právě teď v Praze a kolik u moře.",
+    "groups": ["Egypt"]
+  },
+  {
     "key": "text_4edfdf5f",
     "default": "Egypt · srozumitelně a osobně",
     "groups": ["Egypt"]
@@ -136,22 +240,6 @@
   {
     "key": "text_e69c3600",
     "default": "S partnery probereme dostupnou nabídku, právní režim vlastnictví, poplatky, kurzová rizika a správu na místě.",
-    "groups": ["Egypt"]
-  },
-  {
-    "key": "text_42789672",
-    "default": "Vybrané nabídky",
-    "groups": ["Egypt"]
-  },
-  {
-    "key": "text_7d5b8cb2",
-    "default": "Nemovitosti u Rudého moře",
-    "groups": ["Egypt"],
-    "role": "heading"
-  },
-  {
-    "key": "text_b27db081",
-    "default": "Přehled aktuálních možností. Každou nabídku projdeme osobně, včetně právního režimu vlastnictví a provozních nákladů.",
     "groups": ["Egypt"]
   },
   {
@@ -233,20 +321,10 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_88145f6",
-    "default": "Aktuální nabídka",
-    "groups": ["Úvodní stránka"]
-  },
-  {
     "key": "text_52c41bb3",
     "default": "Nástěnka českých nemovitostí",
     "groups": ["Úvodní stránka"],
     "role": "heading"
-  },
-  {
-    "key": "text_4d38d9c2",
-    "default": "Připravuji",
-    "groups": ["Úvodní stránka"]
   },
   {
     "key": "text_fbd1e1a0",
@@ -272,7 +350,7 @@
   {
     "key": "text_42ec9773",
     "default": "Kontakt",
-    "groups": ["Kontakt – vyhledávače", "Kontakt", "Identita"]
+    "groups": ["Kontakt – vyhledávače", "Kontakt", "Patička", "Identita"]
   },
   {
     "key": "text_292cb62e",
@@ -298,7 +376,7 @@
   {
     "key": "text_26f24eff",
     "default": "Odeslat zprávu",
-    "groups": ["Kontakt", "Společné sekce", "Úvodní stránka", "Odhad ceny"]
+    "groups": ["Kontakt"]
   },
   {
     "key": "text_90eeacd5",
@@ -442,6 +520,11 @@
     "groups": ["Nabídka spolupráce"]
   },
   {
+    "key": "text_f00d2996",
+    "default": "Nemovitost, kterou připravuji k prodeji. Dejte mi vědět a uvidíte ji jako první.",
+    "groups": ["Detail nemovitosti – vyhledávače"]
+  },
+  {
     "key": "text_64f41cce",
     "default": "Tato nemovitost už není v nabídce.",
     "groups": ["Detail nemovitosti"],
@@ -458,6 +541,11 @@
     "groups": ["Detail nemovitosti", "Nabídka", "Identita"]
   },
   {
+    "key": "text_c01fa4c9",
+    "default": "Exkluzivní náhled: tuto nabídku zatím vidíte jen Vy, ještě před zveřejněním.",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
     "key": "text_276e402d",
     "default": "Ukázková nabídka",
     "groups": ["Detail nemovitosti"]
@@ -465,12 +553,12 @@
   {
     "key": "text_e0633d1f",
     "default": "sold",
-    "groups": ["Detail nemovitosti", "Úvodní stránka", "Nabídka"]
+    "groups": ["Detail nemovitosti", "Nabídka"]
   },
   {
     "key": "text_7c2e0074",
     "default": "Prodáno",
-    "groups": ["Detail nemovitosti", "Úvodní stránka", "Nabídka"]
+    "groups": ["Detail nemovitosti", "Nabídka"]
   },
   {
     "key": "text_85376d9f",
@@ -512,6 +600,47 @@
     "groups": ["Detail nemovitosti"]
   },
   {
+    "key": "text_f3df622a",
+    "default": "Úvod",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_9004067b",
+    "default": "Fotografie ukážu jako první zájemcům",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_1dbe259a",
+    "default": "Typ",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_8a802a53",
+    "default": "Dispozice",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_8f2f6ae0",
+    "default": "Plocha",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_61fb5738",
+    "default": "Pozemek",
+    "groups": ["Detail nemovitosti", "Formuláře"]
+  },
+  {
+    "key": "text_9b557a1",
+    "default": "Chci vědět více informací",
+    "groups": ["Detail nemovitosti"],
+    "role": "heading"
+  },
+  {
+    "key": "text_fe7335ee",
+    "default": "Tuto nemovitost připravuji k prodeji. Pošlu Vám cenu, fotografie i popis dřív, než ji uvidí kdokoli jiný.",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
     "key": "text_e82ba952",
     "default": "Nabídka nemovitostí",
     "groups": ["Nabídka – vyhledávače"]
@@ -546,6 +675,16 @@
     "key": "text_22c9947",
     "default": "Vše",
     "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_4d2982f8",
+    "default": "cz",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_5e72c68",
+    "default": "egypt",
+    "groups": ["Nabídka", "Detail nemovitosti"]
   },
   {
     "key": "text_ad0a8872",
@@ -769,11 +908,6 @@
     "key": "text_b80fe27d",
     "default": "PRAHA",
     "groups": ["Společné sekce"]
-  },
-  {
-    "key": "text_f752208d",
-    "default": "Česko",
-    "groups": ["Společné sekce", "Nabídka"]
   },
   {
     "key": "text_d10c475d",
@@ -1042,8 +1176,8 @@
     "groups": ["Egypt"]
   },
   {
-    "key": "text_b773a070",
-    "default": "Nemovitosti v Egyptě",
+    "key": "text_4487af8",
+    "default": "Jak Vám s koupí pomůžeme",
     "groups": ["Egypt"],
     "role": "heading"
   },
@@ -1201,16 +1335,6 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_5e72c68",
-    "default": "egypt",
-    "groups": ["Úvodní stránka", "Nabídka", "Detail nemovitosti"]
-  },
-  {
-    "key": "text_b9f7e416",
-    "default": "Cena včetně provize a kompletního servisu zprostředkování",
-    "groups": ["Úvodní stránka", "Nabídka"]
-  },
-  {
     "key": "text_e956e9bb",
     "default": "Líbí se Vám tato prezentace?",
     "groups": ["Úvodní stránka"]
@@ -1313,6 +1437,11 @@
     "groups": ["Úvodní stránka"]
   },
   {
+    "key": "text_1ab45448",
+    "default": "Jak koupě probíhá",
+    "groups": ["Úvodní stránka"]
+  },
+  {
     "key": "text_3988c7c7",
     "default": "Nemovitosti v Egyptě · Hurghada",
     "groups": ["Úvodní stránka"]
@@ -1349,16 +1478,6 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_ac838b2c",
-    "default": "Hurghada · Rudé moře",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_fe07c286",
-    "default": "přímý let z Prahy",
-    "groups": ["Úvodní stránka"]
-  },
-  {
     "key": "text_ec2fd744",
     "default": "česky",
     "groups": ["Úvodní stránka"]
@@ -1366,16 +1485,6 @@
   {
     "key": "text_9a5e366c",
     "default": "celý proces i právník",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_55996c50",
-    "default": "v ceně",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_82d8ed3b",
-    "default": "právní servis i provize",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -1387,11 +1496,6 @@
   {
     "key": "text_23d87204",
     "default": "Celá nabídka v Egyptě",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_1ab45448",
-    "default": "Jak koupě probíhá",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -1469,11 +1573,6 @@
     "key": "text_53e8301b",
     "default": "Dům",
     "groups": ["Formuláře"]
-  },
-  {
-    "key": "text_61fb5738",
-    "default": "Pozemek",
-    "groups": ["Formuláře", "Detail nemovitosti"]
   },
   {
     "key": "text_bf0381c9",
@@ -1572,6 +1671,21 @@
     "groups": ["Okolí nemovitosti"]
   },
   {
+    "key": "text_31c145b7",
+    "default": "Získejte odhad nemovitosti",
+    "groups": ["Akční lišta"]
+  },
+  {
+    "key": "text_7cf4923e",
+    "default": "zdarma",
+    "groups": ["Akční lišta"]
+  },
+  {
+    "key": "text_91fe0fc8",
+    "default": "Více",
+    "groups": ["Akční lišta"]
+  },
+  {
     "key": "text_df8a3c78",
     "default": "Fotografii připravujeme",
     "groups": ["Nabídka", "Detail nemovitosti"]
@@ -1587,18 +1701,18 @@
     "groups": ["Nabídka"]
   },
   {
+    "key": "text_e53d6982",
+    "default": "Inzerát před zveřejněním",
+    "groups": ["Nabídka"]
+  },
+  {
+    "key": "text_b9f7e416",
+    "default": "Cena včetně provize a kompletního servisu zprostředkování",
+    "groups": ["Nabídka"]
+  },
+  {
     "key": "text_880a93ac",
     "default": "Detail nabídky",
-    "groups": ["Nabídka"]
-  },
-  {
-    "key": "text_e61baacf",
-    "default": "Prohlédnout",
-    "groups": ["Nabídka"]
-  },
-  {
-    "key": "text_ed900127",
-    "default": "Nové nabídky pro vás právě připravuji. Mezitím mi napište, jakou nemovitost hledáte.",
     "groups": ["Nabídka"]
   },
   {
@@ -1670,11 +1784,6 @@
   {
     "key": "text_4fea323a",
     "default": "Zálohy",
-    "groups": ["Detail nemovitosti"]
-  },
-  {
-    "key": "text_8a802a53",
-    "default": "Dispozice",
     "groups": ["Detail nemovitosti"]
   },
   {
@@ -1786,6 +1895,12 @@
     "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
+    "key": "text_4d16725f",
+    "default": "Máte dotaz ohledně nemovitosti, nebo chcete využít odhadu nemovitosti zdarma?",
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"],
+    "role": "heading"
+  },
+  {
     "key": "text_11e3b884",
     "default": "Víte, za kolik se prodal",
     "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"],
@@ -1796,6 +1911,11 @@
     "default": "byt ve Vašem domě?",
     "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"],
     "role": "heading"
+  },
+  {
+    "key": "text_e6d7b4a7",
+    "default": "Vyberte ve formuláři, s čím Vám mám pomoci. Odhad je pro nové klienty",
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
     "key": "text_74a1f2bc",
@@ -1853,9 +1973,19 @@
     "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
+    "key": "text_960179c",
+    "default": "S čím Vám mohu pomoci?",
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
+  },
+  {
     "key": "text_ae2e40db",
     "default": "Odhad ceny zdarma",
     "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny", "Patička", "Navigace"]
+  },
+  {
+    "key": "text_a846b85f",
+    "default": "Dotaz k nemovitosti",
+    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
     "key": "text_49e626b5",
@@ -1889,11 +2019,6 @@
     "groups": ["Patička"]
   },
   {
-    "key": "text_64086fd4",
-    "default": "Uložit kontakt",
-    "groups": ["Patička"]
-  },
-  {
     "key": "text_ac54b0d8",
     "default": "· IČO",
     "groups": ["Patička"]
@@ -1919,8 +2044,8 @@
     "groups": ["Patička"]
   },
   {
-    "key": "text_b58f1e4e",
-    "default": "Stačí naskenovat fotoaparátem.",
+    "key": "text_c86552be",
+    "default": "Namiřte fotoaparát telefonu na kód a kontakt se uloží.",
     "groups": ["Patička"]
   },
   {
@@ -2049,6 +2174,94 @@
   {
     "key": "text_915bb29b",
     "default": "Kontaktovat Petra",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_54aad685",
+    "default": "První odhad ceny nemovitosti zdarma",
+    "groups": ["Články – vyhledávače"]
+  },
+  {
+    "key": "text_2a39996",
+    "default": "Dědíte, potřebujete podklad pro notáře, nebo jen chcete vědět, na čem jste? Získejte reálnou tržní cenu své nemovitosti. První odhad zdarma a bez závazků.",
+    "groups": ["Články – vyhledávače"]
+  },
+  {
+    "key": "text_59f62998",
+    "default": "Odhad ceny",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_f689a88",
+    "default": "Nabídka pro nové klienty",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_ee3dd677",
+    "default": "Za kolik by se Vaše nemovitost opravdu prodala?",
+    "groups": ["Články"],
+    "role": "heading"
+  },
+  {
+    "key": "text_fe3d1cb2",
+    "default": "Inzertní ceny na portálech často neodpovídají tomu, za kolik se nemovitosti skutečně prodávají. Já Vám řeknu reálnou tržní cenu, opřenou o skutečné prodeje ve Vaší lokalitě. První odhad máte ode mě zcela zdarma.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_b1ec2471",
+    "default": "Chci odhad zdarma",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_c69eb6b3",
+    "default": "Bez závazků. Bez tlaku na prodej.",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_73980e16",
+    "default": "1. odhad",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_57b1ecfe",
+    "default": "ZDARMA",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_26228ddf",
+    "default": "byt · dům · pozemek",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_78905393",
+    "default": "Kdy se Vám odhad hodí",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_edfd9a5e",
+    "default": "Tři situace, ve kterých se vyplatí znát přesné číslo",
+    "groups": ["Články"],
+    "role": "heading"
+  },
+  {
+    "key": "text_50bfa9ab",
+    "default": "Jak to probíhá",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_41fe8406",
+    "default": "Žádné odhady od stolu. Reálná data z Vaší lokality.",
+    "groups": ["Články"],
+    "role": "heading"
+  },
+  {
+    "key": "text_35b05c15",
+    "default": "Dobré vědět",
+    "groups": ["Články"]
+  },
+  {
+    "key": "text_3cdd0cc3",
+    "default": "Můj odhad vychází ze znalosti trhu a skutečných prodejů. Nejde o znalecký posudek. Pokud ho budete potřebovat, například při sporu mezi dědici nebo pro banku, poradím Vám, jak postupovat.",
     "groups": ["Články"]
   },
   {
@@ -2561,11 +2774,6 @@
     "groups": ["Identita"]
   },
   {
-    "key": "text_d7e1af08",
-    "default": "Egypt",
-    "groups": ["Identita", "Nabídka"]
-  },
-  {
     "key": "text_216c339d",
     "default": "Mimořádně úsporná",
     "groups": ["Energetická třída"]
@@ -2666,223 +2874,8 @@
     "groups": ["Nabídka"]
   },
   {
-    "key": "text_55f4020a",
-    "default": "Chci vědět víc",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_e53d6982",
-    "default": "Inzerát před zveřejněním",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_c01fa4c9",
-    "default": "Exkluzivní náhled: tuto nabídku zatím vidíte jen Vy, ještě před zveřejněním.",
+    "key": "text_4d38d9c2",
+    "default": "Připravuji",
     "groups": ["Nabídka"]
-  },
-  {
-    "key": "text_f3df622a",
-    "default": "Úvod",
-    "groups": ["Nabídka"]
-  },
-  {
-    "key": "text_9004067b",
-    "default": "Fotografie ukážu jako první zájemcům",
-    "groups": ["Nabídka"]
-  },
-  {
-    "key": "text_1dbe259a",
-    "default": "Typ",
-    "groups": ["Nabídka"]
-  },
-  {
-    "key": "text_8f2f6ae0",
-    "default": "Plocha",
-    "groups": ["Nabídka"]
-  },
-  {
-    "key": "text_9b557a1",
-    "default": "Chci vědět více informací",
-    "groups": ["Nabídka"]
-  },
-  {
-    "key": "text_fe7335ee",
-    "default": "Tuto nemovitost připravuji k prodeji. Pošlu Vám cenu, fotografie i popis dřív, než ji uvidí kdokoli jiný.",
-    "groups": ["Nabídka"]
-  },
-  {
-    "key": "text_aff52e0f",
-    "default": "Uplatněte svůj první odhad ceny nemovitosti zcela",
-    "groups": ["Akční lišta"]
-  },
-  {
-    "key": "text_57b1ecfe",
-    "default": "ZDARMA",
-    "groups": ["Akční lišta", "Články"]
-  },
-  {
-    "key": "text_bc7cb8ae",
-    "default": "První odhad ceny nemovitosti",
-    "groups": ["Akční lišta"]
-  },
-  {
-    "key": "text_91fe0fc8",
-    "default": "Více",
-    "groups": ["Akční lišta"]
-  },
-  {
-    "key": "text_59f62998",
-    "default": "Odhad ceny",
-    "groups": ["Články"]
-  },
-  {
-    "key": "text_f689a88",
-    "default": "Nabídka pro nové klienty",
-    "groups": ["Články"]
-  },
-  {
-    "key": "text_ee3dd677",
-    "default": "Za kolik by se Vaše nemovitost opravdu prodala?",
-    "groups": ["Články"],
-    "role": "heading"
-  },
-  {
-    "key": "text_b1ec2471",
-    "default": "Chci odhad zdarma",
-    "groups": ["Články"]
-  },
-  {
-    "key": "text_c69eb6b3",
-    "default": "Bez závazků. Bez tlaku na prodej.",
-    "groups": ["Články"]
-  },
-  {
-    "key": "text_73980e16",
-    "default": "1. odhad",
-    "groups": ["Články"]
-  },
-  {
-    "key": "text_26228ddf",
-    "default": "byt · dům · pozemek",
-    "groups": ["Články"]
-  },
-  {
-    "key": "text_78905393",
-    "default": "Kdy se Vám odhad hodí",
-    "groups": ["Články"]
-  },
-  {
-    "key": "text_edfd9a5e",
-    "default": "Tři situace, ve kterých se vyplatí znát přesné číslo",
-    "groups": ["Články"],
-    "role": "heading"
-  },
-  {
-    "key": "text_50bfa9ab",
-    "default": "Jak to probíhá",
-    "groups": ["Články"]
-  },
-  {
-    "key": "text_41fe8406",
-    "default": "Žádné odhady od stolu. Reálná data z Vaší lokality.",
-    "groups": ["Články"],
-    "role": "heading"
-  },
-  {
-    "key": "text_35b05c15",
-    "default": "Dobré vědět",
-    "groups": ["Články"]
-  },
-  {
-    "key": "text_8106df5e",
-    "default": "Dědíte nemovitost",
-    "groups": ["Články"],
-    "role": "heading"
-  },
-  {
-    "key": "text_c1e5da84",
-    "default": "Dědictví přináší spoustu otázek a málokdy je na ně čas. Reálná cena Vám pomůže rozhodnout se v klidu, zda si nemovitost nechat, pronajmout, nebo prodat. A pokud dědíte s dalšími členy rodiny, společné číslo usnadní férovou dohodu.",
-    "groups": ["Články"]
-  },
-  {
-    "key": "text_cca603f7",
-    "default": "Potřebujete podklad pro notáře",
-    "groups": ["Články"],
-    "role": "heading"
-  },
-  {
-    "key": "text_23b3115c",
-    "default": "V dědickém řízení notář potřebuje znát hodnotu majetku. Pokud se dědicové na hodnotě shodnou, znalecký posudek často není potřeba a jako podklad poslouží odborný odhad tržní ceny. Připravím ho tak, abyste s ním mohli rovnou za notářem.",
-    "groups": ["Články"]
-  },
-  {
-    "key": "text_984a5e5e",
-    "default": "Chcete mít jasno",
-    "groups": ["Články"],
-    "role": "heading"
-  },
-  {
-    "key": "text_5de2ba95",
-    "default": "Nechystáte se hned prodávat, ale chcete vědět, na čem jste? I to je dobrý důvod. Ať plánujete prodej, refinancování, nebo jen sledujete trh, ode mě získáte reálnou představu o hodnotě své nemovitosti.",
-    "groups": ["Články"]
-  },
-  {
-    "key": "text_4aa668da",
-    "default": "Ozvete se",
-    "groups": ["Články"],
-    "role": "heading"
-  },
-  {
-    "key": "text_476c1625",
-    "default": "Vyplníte krátký formulář níže, nebo mi rovnou zavoláte. Stačí adresa a základní údaje o nemovitosti.",
-    "groups": ["Články"]
-  },
-  {
-    "key": "text_5b8ae9da",
-    "default": "Prověřím trh",
-    "groups": ["Články"],
-    "role": "heading"
-  },
-  {
-    "key": "text_9683271a",
-    "default": "Porovnám Vaši nemovitost se skutečně prodanými nemovitostmi v okolí a zohledním její stav, dispozici i polohu.",
-    "groups": ["Články"]
-  },
-  {
-    "key": "text_1ab3f613",
-    "default": "Dostanete reálnou cenu",
-    "groups": ["Články"],
-    "role": "heading"
-  },
-  {
-    "key": "text_7b6ec28",
-    "default": "Výsledek Vám srozumitelně vysvětlím, včetně toho, co cenu zvyšuje a co ji naopak snižuje.",
-    "groups": ["Články"]
-  },
-  {
-    "key": "text_4d16725f",
-    "default": "Máte dotaz ohledně nemovitosti, nebo chcete využít odhadu nemovitosti zdarma?",
-    "groups": ["Společné sekce", "Úvodní stránka"],
-    "role": "heading"
-  },
-  {
-    "key": "text_e6d7b4a7",
-    "default": "Vyberte ve formuláři, s čím Vám mám pomoci. Odhad je pro nové klienty",
-    "groups": ["Společné sekce", "Úvodní stránka"]
-  },
-  {
-    "key": "text_960179c",
-    "default": "S čím Vám mohu pomoci?",
-    "groups": ["Společné sekce", "Úvodní stránka"]
-  },
-  {
-    "key": "text_a846b85f",
-    "default": "Dotaz k nemovitosti",
-    "groups": ["Společné sekce", "Úvodní stránka"]
-  },
-  {
-    "key": "text_787adb7",
-    "default": "Odeslat dotaz",
-    "groups": ["Společné sekce", "Úvodní stránka"]
   }
 ]

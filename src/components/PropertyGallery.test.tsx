@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { PropertyGallery } from "./PropertyGallery";
 
@@ -116,7 +116,18 @@ describe("Property gallery", () => {
     expect(screen.queryByRole("img")).not.toBeInTheDocument();
     rerender(<PropertyGallery p={{ ...p, images: [p.images[0]!] }} />);
     expect(screen.queryByRole("button", { name: "Další fotografie" })).not.toBeInTheDocument();
+    // A failed photo is quietly asked for twice more before the message appears.
+    vi.useFakeTimers();
+    for (const attempt of [1, 2]) {
+      fireEvent.error(screen.getByRole("img", { name: "Druhá fotografie" }));
+      expect(screen.queryByText("Fotografii se nepodařilo načíst.")).not.toBeInTheDocument();
+      act(() => vi.advanceTimersByTime(700));
+      expect(screen.getByRole("img", { name: "Druhá fotografie" }).getAttribute("src")).toContain(
+        `r=${attempt}`,
+      );
+    }
     fireEvent.error(screen.getByRole("img", { name: "Druhá fotografie" }));
+    vi.useRealTimers();
     expect(screen.getByText("Fotografii se nepodařilo načíst.")).toBeInTheDocument();
     expect(screen.queryByRole("status")).not.toBeInTheDocument();
   });

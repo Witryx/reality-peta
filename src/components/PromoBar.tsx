@@ -16,16 +16,10 @@ export function PromoBar() {
     <Link to="/clanky/prvni-odhad-zdarma" className="promo-bar">
       <span className="promo-bar-inner container-page">
         <span className="promo-klin" aria-hidden />
-        <span className="promo-text promo-text-long">
-          <SiteText>{"Uplatněte svůj první odhad ceny nemovitosti zcela "}</SiteText>
+        <span className="promo-text">
+          <SiteText>{"Získejte odhad nemovitosti "}</SiteText>
           <strong>
-            <SiteText>{"ZDARMA"}</SiteText>
-          </strong>
-        </span>
-        <span className="promo-text promo-text-short">
-          <SiteText>{"První odhad ceny nemovitosti "}</SiteText>
-          <strong>
-            <SiteText>{"ZDARMA"}</SiteText>
+            <SiteText>{"zdarma"}</SiteText>
           </strong>
         </span>
         <span className="promo-more">

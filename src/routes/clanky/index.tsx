@@ -4,6 +4,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Clock } from "lucide-react";
 import { listArticles } from "@/data/articles";
 import { pageHead, websiteValues } from "@/lib/seo";
+import { ArticlesVisual } from "@/components/SectionVisuals";
 
 export const Route = createFileRoute("/clanky/")({
   head: ({ matches }) =>
@@ -24,19 +25,24 @@ function Page() {
   const { articles } = Route.useLoaderData();
   return (
     <div className="container-page py-16 md:py-24">
-      <p className="eyebrow">
-        <SiteText>{"Články"}</SiteText>
-      </p>
-      <h1 className="mt-4 max-w-3xl text-4xl leading-tight md:text-6xl">
-        <SiteText>{"Informace, na které si dát pozor"}</SiteText>
-      </h1>
-      <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-        <SiteText>
-          {
-            "Při prodeji, koupi i vlastnictví nemovitosti je potřeba hlídat spoustu povinností. Tady najdete přehledně shrnuté, co se klientů nejčastěji týká — daň z nemovitosti, předání, hypotéky i peníze."
-          }
-        </SiteText>
-      </p>
+      <div className="page-visual-head">
+        <div>
+          <p className="eyebrow">
+            <SiteText>{"Články"}</SiteText>
+          </p>
+          <h1 className="mt-4 max-w-3xl text-4xl leading-tight md:text-6xl">
+            <SiteText>{"Informace, na které si dát pozor"}</SiteText>
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            <SiteText>
+              {
+                "Při prodeji, koupi i vlastnictví nemovitosti je potřeba hlídat spoustu povinností. Tady najdete přehledně shrnuté, co se klientů nejčastěji týká — daň z nemovitosti, předání, hypotéky i peníze."
+              }
+            </SiteText>
+          </p>
+        </div>
+        <ArticlesVisual />
+      </div>
 
       <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {articles.map((a) => (

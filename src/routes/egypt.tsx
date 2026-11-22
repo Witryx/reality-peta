@@ -3,10 +3,17 @@ import { SiteText } from "@/components/SiteText";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { pageHead, websiteValues } from "@/lib/seo";
 import { EgyptSection } from "@/components/EgyptSection";
+import { AboutCard } from "@/components/AboutCard";
+import { EgyptScene } from "@/components/SectionVisuals";
+import {
+  CompactPropertyGrid,
+  EgyptReasons,
+  EgyptSteps,
+  egyptOfferOrder,
+} from "@/components/HomeSections";
 import { SectionHead } from "@/components/Sections";
 import { LeadForm } from "@/components/LeadForm";
 import { ContactLinks } from "@/components/ContactLinks";
-import { PropertyCarousel } from "@/components/PropertyCarousel";
 import { PropertyContactCta } from "@/components/PropertyContactCta";
 import { listEgypt } from "@/data/properties";
 import { site } from "@/config/site";
@@ -28,11 +35,130 @@ export const Route = createFileRoute("/egypt")({
 });
 function Page() {
   const site = useSiteConfig();
-
-  const egypt = Route.useLoaderData();
+  const egypt = egyptOfferOrder(Route.useLoaderData());
   return (
     <>
+      {/* 1. Short intro with the Egypt picture, the offer follows right below. */}
+      <section className="egypt-top">
+        <div className="container-page egypt-top-grid">
+          <div className="egypt-top-copy">
+            <p className="eyebrow">
+              <SiteText>{"Hurghada · Rudé moře"}</SiteText>
+            </p>
+            <h1 className="mt-4 text-4xl leading-tight md:text-6xl">
+              <SiteText>{"Nemovitosti v Egyptě"}</SiteText>
+            </h1>
+            <p className="egypt-top-lead">
+              <SiteText>
+                {
+                  "Byty v centru Hurghady, 4,5 hodiny letu od Prahy. Celý proces v češtině, s právní kontrolou na místě."
+                }
+              </SiteText>
+            </p>
+            <ul className="egypt-top-facts">
+              <li>
+                <b>
+                  <SiteText>{"od 1,15 mil. Kč"}</SiteText>
+                </b>
+                <span>
+                  <SiteText>{"byt u moře"}</SiteText>
+                </span>
+              </li>
+              <li>
+                <b>
+                  <SiteText>{"4,5 h"}</SiteText>
+                </b>
+                <span>
+                  <SiteText>{"přímý let z Prahy"}</SiteText>
+                </span>
+              </li>
+              <li>
+                <b>
+                  <SiteText>{"v ceně"}</SiteText>
+                </b>
+                <span>
+                  <SiteText>{"právní servis i provize"}</SiteText>
+                </span>
+              </li>
+            </ul>
+          </div>
+          <EgyptScene className="egypt-top-scene" />
+        </div>
+      </section>
+
+      {/* 2. The offer. */}
+      <section id="nabidka" className="egypt-offer container-page scroll-mt-24">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="eyebrow">
+              <SiteText>{"Aktuální nabídka"}</SiteText>
+            </p>
+            <h2 className="mt-3 text-3xl leading-tight md:text-5xl">
+              <SiteText>{"Byty u Rudého moře"}</SiteText>
+            </h2>
+          </div>
+          <nav aria-label="Přepnout nabídku" className="flex flex-wrap items-center gap-2">
+            <span className="rounded-full border border-primary bg-primary px-4 py-2 text-sm text-primary-foreground">
+              <SiteText>{"Egypt"}</SiteText>
+            </span>
+            <Link
+              to="/nabidka"
+              search={{ zeme: "cz" }}
+              className="rounded-full border px-4 py-2 text-sm transition-colors hover:border-foreground"
+            >
+              <SiteText>{"Česko"}</SiteText>
+            </Link>
+            <Link
+              to="/nabidka"
+              className="rounded-full border px-4 py-2 text-sm transition-colors hover:border-foreground"
+            >
+              <SiteText>{"Celá nabídka"}</SiteText>
+            </Link>
+          </nav>
+        </div>
+        {egypt.length ? (
+          <CompactPropertyGrid properties={egypt} limit={egypt.length} className="mt-8" />
+        ) : (
+          <p className="mt-8 rounded-lg border border-dashed bg-surface p-8 text-muted-foreground">
+            <SiteText>
+              {
+                "Nové nabídky pro vás právě připravuji. Mezitím mi napište, jakou nemovitost hledáte."
+              }
+            </SiteText>
+          </p>
+        )}
+        <PropertyContactCta />
+      </section>
+
+      {/* 3. Why buy with me and how the purchase goes. */}
+      <section className="egypt-why-band">
+        <div className="container-page">
+          <SectionHead
+            eyebrow="Proč se mnou"
+            title="V každém bytě jsem osobně byl"
+            intro="Nabízím jen byty v centru Hurghady, kde se žije celý rok. Víte přesně, co kupujete i kolik zaplatíte."
+          />
+          <EgyptReasons />
+          <EgyptSteps />
+        </div>
+      </section>
+
+      {/* 4. Prague and Hurghada side by side (moved here from O mně). */}
+      <section className="egypt-distance container-page">
+        <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
+          <SectionHead
+            eyebrow="Praha – Hurghada"
+            title="Blíž, než si myslíte"
+            intro="Přímý let trvá zhruba 4,5 hodiny. Na hodinách vidíte, kolik je právě teď v Praze a kolik u moře."
+          />
+          <AboutCard />
+        </div>
+      </section>
+
+      {/* 5. How we help on the spot, partners. */}
       <EgyptSection detail />
+
+      {/* 6. Questions worth asking before buying. */}
       <section className="container-page py-16 md:py-24">
         <SectionHead
           eyebrow="Egypt · srozumitelně a osobně"
@@ -65,36 +191,8 @@ function Page() {
           ))}
         </div>
       </section>
-      <section className="container-page pb-16 md:pb-24">
-        <SectionHead
-          eyebrow="Vybrané nabídky"
-          title="Nemovitosti u Rudého moře"
-          intro="Přehled aktuálních možností. Každou nabídku projdeme osobně, včetně právního režimu vlastnictví a provozních nákladů."
-        />
-        <nav aria-label="Přepnout nabídku" className="mt-8 flex flex-wrap items-center gap-2">
-          <span className="rounded-full border border-primary bg-primary px-4 py-2 text-sm text-primary-foreground">
-            <SiteText>{"Egypt"}</SiteText>
-          </span>
-          <Link
-            to="/nabidka"
-            search={{ zeme: "cz" }}
-            className="rounded-full border px-4 py-2 text-sm transition-colors hover:border-foreground"
-          >
-            <SiteText>{"Česko"}</SiteText>
-          </Link>
-          <Link
-            to="/nabidka"
-            className="rounded-full border px-4 py-2 text-sm transition-colors hover:border-foreground"
-          >
-            <SiteText>{"Celá nabídka"}</SiteText>
-          </Link>
-          <span className="ml-1 text-sm text-muted-foreground">
-            <SiteText>{"Prodávám i v Česku – po celé republice."}</SiteText>
-          </span>
-        </nav>
-        <PropertyCarousel properties={egypt} />
-        <PropertyContactCta />
-      </section>
+
+      {/* 7. Contact. */}
       <section id="egypt-kontakt" className="scroll-mt-24 bg-surface py-16 md:py-24">
         <div className="container-page grid gap-12 lg:grid-cols-2">
           <div>

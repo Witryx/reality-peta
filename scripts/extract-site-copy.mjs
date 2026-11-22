@@ -40,6 +40,7 @@ const groups = {
   "NearbyPlaces.tsx": "Okolí nemovitosti",
   "EnergyRating.tsx": "Energetická třída",
   "PromoBar.tsx": "Akční lišta",
+  "SectionVisuals.tsx": "Společné sekce",
 };
 const files = [
   ...(await readdir("src/routes"))

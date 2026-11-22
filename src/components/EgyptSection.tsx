@@ -64,9 +64,9 @@ export function EgyptSection({
             <SiteText>{"DALŠÍ HORIZONT · EGYPTSKO ČESKÁ REALITY"}</SiteText>
           </p>
           {detail ? (
-            <h1 className="mt-4 text-4xl md:text-5xl">
-              <SiteText>{"Nemovitosti v Egyptě"}</SiteText>
-            </h1>
+            <h2 className="mt-4 text-4xl md:text-5xl">
+              <SiteText>{"Jak Vám s koupí pomůžeme"}</SiteText>
+            </h2>
           ) : (
             <h2 className="mt-4 text-4xl md:text-5xl">
               <SiteText>{"Vaše místo"}</SiteText>
@@ -74,13 +74,15 @@ export function EgyptSection({
               <SiteText>{"u Rudého moře."}</SiteText>
             </h2>
           )}
-          <p className="mt-5 leading-relaxed text-muted-foreground">
-            <SiteText>
-              {
-                "Kolik stojí byt u Rudého moře? Krásný apartmán pořídíte od 1,15 milionu, 4,5 hodiny letu od Prahy. Celý proces v češtině, s právní kontrolou na místě."
-              }
-            </SiteText>
-          </p>
+          {!detail && (
+            <p className="mt-5 leading-relaxed text-muted-foreground">
+              <SiteText>
+                {
+                  "Kolik stojí byt u Rudého moře? Krásný apartmán pořídíte od 1,15 milionu, 4,5 hodiny letu od Prahy. Celý proces v češtině, s právní kontrolou na místě."
+                }
+              </SiteText>
+            </p>
+          )}
           {!compact && (
             <p className="mt-5 leading-relaxed text-muted-foreground">
               <SiteText>

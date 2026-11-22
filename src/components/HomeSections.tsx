@@ -304,6 +304,50 @@ const egyptSteps = [
   "Podpis, klíče a přepis energií",
 ];
 
+/** Four reasons to buy in Egypt with Petr (homepage and the Egypt page). */
+export function EgyptReasons({ className = "" }: { className?: string }) {
+  return (
+    <ul className={`egypt-home-why ${className}`}>
+      {egyptReasons.map(({ icon: Icon, title, text }) => (
+        <li key={title}>
+          <Icon className="egypt-home-why-icon" aria-hidden />
+          <strong>
+            <SiteText>{title}</SiteText>
+          </strong>
+          <span>
+            <SiteText>{text}</SiteText>
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** The four steps of an Egypt purchase (homepage and the Egypt page). */
+export function EgyptSteps({ className = "" }: { className?: string }) {
+  return (
+    <div className={`egypt-home-steps ${className}`}>
+      <p className="egypt-home-steps-title">
+        <SiteText>{"Jak koupě probíhá"}</SiteText>
+      </p>
+      <ol>
+        {egyptSteps.map((step, index) => (
+          <li key={step}>
+            <span aria-hidden>{index + 1}</span>
+            <SiteText>{step}</SiteText>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+/** Egypt offers in a sensible order: available first, then reserved, then sold. */
+export function egyptOfferOrder(properties: Property[]): Property[] {
+  const rank = { active: 0, upcoming: 1, reserved: 2, sold: 3 } as const;
+  return [...properties].sort((a, b) => (rank[a.status] ?? 4) - (rank[b.status] ?? 4));
+}
+
 /**
  * Egypt is Petr's main market, so it gets a full homepage section: the price answer,
  * three key numbers, four reasons, the current flats (moving row) and the four steps.
@@ -418,19 +462,7 @@ export function EgyptTeaser({ properties }: { properties: Property[] }) {
           </div>
         </div>
 
-        <ul className="egypt-home-why">
-          {egyptReasons.map(({ icon: Icon, title, text }) => (
-            <li key={title}>
-              <Icon className="egypt-home-why-icon" aria-hidden />
-              <strong>
-                <SiteText>{title}</SiteText>
-              </strong>
-              <span>
-                <SiteText>{text}</SiteText>
-              </span>
-            </li>
-          ))}
-        </ul>
+        <EgyptReasons />
 
         {active.length > 0 && (
           <>
@@ -446,19 +478,7 @@ export function EgyptTeaser({ properties }: { properties: Property[] }) {
           </>
         )}
 
-        <div className="egypt-home-steps">
-          <p className="egypt-home-steps-title">
-            <SiteText>{"Jak koupě probíhá"}</SiteText>
-          </p>
-          <ol>
-            {egyptSteps.map((step, index) => (
-              <li key={step}>
-                <span aria-hidden>{index + 1}</span>
-                <SiteText>{step}</SiteText>
-              </li>
-            ))}
-          </ol>
-        </div>
+        <EgyptSteps />
       </div>
     </section>
   );

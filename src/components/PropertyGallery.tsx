@@ -1,4 +1,4 @@
-import { photoAt, photoSrcSet } from "@/lib/photo-src";
+import { photoAt, photoSrcSet, photoUrl } from "@/lib/photo-src";
 import {
   useCallback,
   useEffect,
@@ -13,6 +13,31 @@ import * as Dialog from "@radix-ui/react-dialog";
 import type { Property } from "@/data/types";
 import { SiteText } from "./SiteText";
 
+/**
+ * Phones get the 960 px copy (sharp on any phone screen, about a third of the 1600 px data);
+ * big screens still get 1600 px. The "320px" for phones is only a hint for picking the file:
+ * 320 × 3 (retina) = 960, so even 3× screens stop at 960 px.
+ */
+const MAIN_SIZES = "(min-width: 1024px) 66vw, (min-width: 640px) 100vw, 320px";
+
+/** A failed photo is quietly asked for again, smaller and then as the original, before any error. */
+function retrySource(src: string, attempt: number): string {
+  const url = attempt === 1 ? photoAt(src, 960) : photoUrl(src);
+  return `${url}${url.includes("?") ? "&" : "?"}r=${attempt}`;
+}
+
+/** The width (480/960/1600) the browser picked for the main photo, to preload neighbours alike. */
+function pickedWidth(node: HTMLImageElement): 480 | 960 | 1600 {
+  try {
+    const width = Number(
+      new URL(node.currentSrc || node.src, window.location.href).searchParams.get("w"),
+    );
+    return width === 480 || width === 1600 ? width : 960;
+  } catch {
+    return 960;
+  }
+}
+
 export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }) {
   const images = [...p.images].sort((a, b) => a.position - b.position);
   const [selected, setSelected] = useState(0);
@@ -21,6 +46,9 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
   const [dialogView, setDialogView] = useState<"photo" | "overview">("photo");
   const [loaded, setLoaded] = useState("");
   const [failed, setFailed] = useState("");
+  const [retry, setRetry] = useState({ src: "", attempt: 0 });
+  const width = useRef<480 | 960 | 1600>(960);
+  const preloaded = useRef(new Set<string>());
   const rail = useRef<HTMLDivElement>(null);
   const viewer = useRef<HTMLDivElement>(null);
   const overview = useRef<HTMLDivElement>(null);
@@ -39,10 +67,33 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
     if (node?.complete && node.naturalWidth > 0) {
       node.dataset["orientation"] =
         node.naturalHeight > node.naturalWidth ? "portrait" : "landscape";
+      width.current = pickedWidth(node);
       setLoaded(node.dataset["source"] ?? node.getAttribute("src") ?? "");
       setFailed("");
+    } else if (node?.complete && node.getAttribute("src") && node.dataset["checked"] !== "1") {
+      // The photo failed before the page became interactive: start the quiet retry now.
+      node.dataset["checked"] = "1";
+      node.dispatchEvent(new Event("error"));
     }
   }, []);
+
+  // Once a photo is on screen, fetch its neighbours in the same size: swiping is then instant.
+  useEffect(() => {
+    if (!image || loaded !== image.src || images.length < 2) return;
+    const timer = window.setTimeout(() => {
+      for (const step of [1, -1, 2]) {
+        const next = images[(index + step + images.length) % images.length];
+        if (!next || next.src === image.src) continue;
+        const url = photoAt(next.src, width.current);
+        if (preloaded.current.has(url)) continue;
+        preloaded.current.add(url);
+        const preload = new Image();
+        preload.decoding = "async";
+        preload.src = url;
+      }
+    }, 150);
+    return () => window.clearTimeout(timer);
+  }, [image, images, index, loaded]);
 
   useEffect(() => {
     const thumbnail = rail.current?.querySelector<HTMLElement>(`[data-thumbnail="${index}"]`);
@@ -110,13 +161,14 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
       </button>
     </>
   );
+  const attempt = image && retry.src === image.src ? retry.attempt : 0;
   const photo = image && (
     <img
       key={image.src}
-      src={photoAt(image.src, 1600)}
+      src={attempt ? retrySource(image.src, attempt) : photoAt(image.src, 1600)}
       data-source={image.src}
-      srcSet={photoSrcSet(image.src, [960, 1600])}
-      sizes="(min-width: 1024px) 66vw, 100vw"
+      srcSet={attempt ? undefined : photoSrcSet(image.src, [480, 960, 1600])}
+      sizes={attempt ? undefined : MAIN_SIZES}
       alt={image.alt}
       width={1600}
       height={1066}
@@ -130,7 +182,24 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
         setLoaded(image.src);
         setFailed("");
       }}
-      onError={() => setFailed(image.src)}
+      onError={() => {
+        // A slow or busy connection is not an error yet: try again before saying anything.
+        if (attempt < 2)
+          window.setTimeout(() => setRetry({ src: image.src, attempt: attempt + 1 }), 700);
+        else setFailed(image.src);
+      }}
+    />
+  );
+  // The small copy is already loaded for the thumbnails, so it shows at once (softly blurred)
+  // until the sharp photo arrives.
+  const placeholder = image && loaded !== image.src && (
+    <img
+      key={`placeholder-${image.src}`}
+      src={photoAt(image.src, 480)}
+      alt=""
+      aria-hidden
+      draggable={false}
+      className="property-gallery-placeholder"
     />
   );
   const feedback = (
@@ -197,6 +266,7 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
                   suppressClick.current = true;
                 }}
               >
+                {placeholder}
                 {photo}
                 {feedback}
               </button>
@@ -367,6 +437,7 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
                 className="property-lightbox-stage"
                 aria-busy={loading}
               >
+                {placeholder}
                 {photo}
                 {feedback}
                 {arrows}

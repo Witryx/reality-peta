@@ -3,13 +3,13 @@ import {
   Outlet,
   Link,
   createRootRouteWithContext,
-  useRouter,
   HeadContent,
   Scripts,
   useRouterState,
-  type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { type ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
+import { reloadOnce } from "@/lib/stale-build";
+import { PageError } from "@/components/PageError";
 
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -37,33 +37,22 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: ErrorComponentProps) {
-  console.error(error);
-  const router = useRouter();
-  return (
-    <div className="container-page flex min-h-[60vh] flex-col items-start justify-center py-24">
-      <h1 className="text-4xl">Stránku se nepodařilo načíst</h1>
-      <p className="mt-3 text-muted-foreground">Zkuste to prosím znovu.</p>
-      <div className="mt-6 flex gap-3">
-        <button
-          onClick={() => {
-            router.invalidate();
-            reset();
-          }}
-          className="btn btn-primary"
-        >
-          Zkusit znovu
-        </button>
-        <a href="/" className="btn btn-outline">
-          Na úvod
-        </a>
-      </div>
-    </div>
-  );
-}
+/** Last texts and photos loaded in this browser, used if a later refresh fails on the way. */
+let lastWebsiteContent: Awaited<ReturnType<typeof readWebsiteContent>> | undefined;
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  loader: () => readWebsiteContent(),
+  // Site texts change rarely: no need to ask the server again on every click (admin saves
+  // refresh them right away). A failed refresh keeps the texts already shown instead of an error.
+  staleTime: 5 * 60_000,
+  loader: async () => {
+    try {
+      lastWebsiteContent = await readWebsiteContent();
+      return lastWebsiteContent;
+    } catch (error) {
+      if (typeof window !== "undefined" && lastWebsiteContent) return lastWebsiteContent;
+      throw error;
+    }
+  },
   head: ({ loaderData }) => {
     const site = resolveSiteConfig(loaderData?.values ?? {});
     return {
@@ -99,7 +88,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
-  errorComponent: ErrorComponent,
+  errorComponent: PageError,
 });
 
 function RootShell({ children }: { children: ReactNode }) {
@@ -118,10 +107,20 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const website = Route.useLoaderData();
+  // Remember what the server sent with the page, for a refresh that fails later.
+  if (typeof window !== "undefined") lastWebsiteContent = website;
   const { queryClient } = Route.useRouteContext();
   const isAdmin = useRouterState({
     select: (state) => state.location.pathname.startsWith("/admin"),
   });
+  useEffect(() => {
+    // A code chunk from the previous deployment is gone: load the new version instead of failing.
+    const stale = (event: Event) => {
+      if (reloadOnce()) event.preventDefault();
+    };
+    window.addEventListener("vite:preloadError", stale);
+    return () => window.removeEventListener("vite:preloadError", stale);
+  }, []);
   return (
     <QueryClientProvider client={queryClient}>
       <WebsiteContentContext.Provider value={website.values}>
