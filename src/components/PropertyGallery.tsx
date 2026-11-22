@@ -130,8 +130,9 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
     const dx = event.clientX - gesture.current.x;
     const dy = event.clientY - gesture.current.y;
     gesture.current = null;
-    suppressClick.current = Math.abs(dx) > 10 || Math.abs(dy) > 10;
-    if (images.length > 1 && Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+    // A tap may move the finger a little; only a real drag cancels the click.
+    suppressClick.current = Math.abs(dx) > 24 || Math.abs(dy) > 24;
+    if (images.length > 1 && Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.3) {
       const step = dx < 0 ? 1 : -1;
       select(index + step, step);
     }
@@ -436,6 +437,15 @@ export function PropertyGallery({ p }: { p: Pick<Property, "images" | "title"> }
                 tabIndex={-1}
                 className="property-lightbox-stage"
                 aria-busy={loading}
+                // Swipe left / right on the opened photo to move to the next one.
+                onPointerDown={(event) => {
+                  if ((event.target as HTMLElement).closest("button")) return;
+                  gesture.current = { x: event.clientX, y: event.clientY };
+                }}
+                onPointerUp={swipe}
+                onPointerCancel={() => {
+                  gesture.current = null;
+                }}
               >
                 {placeholder}
                 {photo}

@@ -6042,3 +6042,16 @@
 .property-card {
   position: relative;
 }
+
+/* Photo viewer: arrows always above the photo and clearly visible on any picture. */
+.property-gallery-arrow {
+  z-index: 3;
+}
+.property-lightbox-stage .property-gallery-arrow {
+  border-color: #ffffff55;
+  background: #10191499;
+  backdrop-filter: blur(4px);
+}
+.property-lightbox-stage {
+  touch-action: pan-y pinch-zoom;
+}
