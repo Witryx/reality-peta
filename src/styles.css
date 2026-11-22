@@ -5738,7 +5738,17 @@
   }
 }
 
-/* Guide cursor: placed in the page, so it stays on its target while scrolling. */
+/* Guide cursor: placed in the page, so it stays on its target while scrolling; the layer
+   clips it so it can never make the page wider than the screen. */
+.guide-cursor-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
 .guide-cursor {
   position: absolute;
 }

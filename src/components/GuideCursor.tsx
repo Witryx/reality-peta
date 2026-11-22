@@ -57,7 +57,14 @@ export function GuideCursor() {
     cursor.className = "guide-cursor";
     cursor.setAttribute("aria-hidden", "true");
     cursor.innerHTML = `<svg viewBox="0 0 24 24" width="${small ? 32 : 38}" height="${small ? 32 : 38}"><path d="M4 2.5 20 11l-7.1 1.9L9.4 20z" /></svg><span class="guide-cursor-ripple"></span>`;
-    document.body.append(cursor);
+    // A clipping layer over the whole page: the cursor can never widen the page on phones
+    // (an absolutely placed element near the edge would let the page slide sideways).
+    const layer = document.createElement("div");
+    layer.className = "guide-cursor-layer";
+    layer.setAttribute("aria-hidden", "true");
+    layer.style.height = `${document.documentElement.scrollHeight}px`;
+    layer.append(cursor);
+    document.body.append(layer);
 
     const place = (x: number, y: number) => {
       if (cursor) cursor.style.transform = `translate(${x}px, ${y}px)`;
@@ -145,7 +152,7 @@ export function GuideCursor() {
       window.cancelAnimationFrame(frame);
       observer.disconnect();
       window.removeEventListener("keydown", stop);
-      cursor?.remove();
+      layer.remove();
     };
   }, [pathname]);
   return null;
