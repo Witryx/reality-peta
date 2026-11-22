@@ -43,7 +43,7 @@ it("shows the thank-you and social links only after the lead request succeeds", 
   });
   resolveRequest({});
   const status = await screen.findByRole("status");
-  expect(status).toHaveTextContent("Děkuji za vaši zprávu.");
+  expect(status).toHaveTextContent("Děkuji za Vaši zprávu.");
   expect(status).toHaveTextContent("Můžete mě také najít zde");
   expect(screen.getByRole("link", { name: "Instagram – Petr Pavlát reality" })).toHaveAttribute(
     "href",
@@ -71,6 +71,7 @@ it("keeps valuation option values stable when the owner changes their labels", a
     target: { value: "Test formuláře" },
   });
   fireEvent.change(screen.getByLabelText("E-mail *"), { target: { value: "test@example.cz" } });
+  fireEvent.change(screen.getByLabelText("Telefon *"), { target: { value: "+420 777 123 456" } });
   expect(screen.getByRole("option", { name: "Bytová jednotka" })).toHaveValue("Byt");
   fireEvent.change(screen.getByLabelText("Typ *"), { target: { value: "Byt" } });
   fireEvent.change(screen.getByLabelText("Lokalita *"), { target: { value: "Praha" } });

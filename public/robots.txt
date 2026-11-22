@@ -1,6 +1,7 @@
 User-agent: *
 Disallow: /admin
 Disallow: /api/
+Disallow: /pruvodce/
 Allow: /
 
 # Obsah webu (texty, fotografie, design) je chráněn autorským zákonem.

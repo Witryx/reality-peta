@@ -7,6 +7,7 @@ import { LeadForm } from "@/components/LeadForm";
 import { ContactLinks, SocialLinks } from "@/components/ContactLinks";
 import portrait from "@/assets/petr-pavlat-portrait.png.asset.json";
 import { BrandImage } from "@/components/BrandImage";
+import { site as staticSite } from "@/config/site";
 
 export const Route = createFileRoute("/kontakt")({
   head: ({ matches }) =>
@@ -60,6 +61,49 @@ function Page() {
           </div>
         </div>
         <ContactLinks className="mt-10" />
+        <div className="mt-10 grid gap-6 rounded-lg border bg-card p-6 sm:grid-cols-2">
+          <div>
+            <p className="eyebrow">
+              <SiteText>{"Kancelář"}</SiteText>
+            </p>
+            <p className="mt-3 font-medium">
+              <SiteText>{staticSite.office.name}</SiteText>
+            </p>
+            <p className="text-sm text-muted-foreground">
+              {staticSite.office.street}
+              <br />
+              {staticSite.office.city}
+            </p>
+            <a
+              href={staticSite.office.mapUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-3 inline-block text-sm underline"
+            >
+              <SiteText>{"Otevřít v Google Mapách"}</SiteText>
+            </a>
+          </div>
+          <div>
+            <p className="eyebrow">
+              <SiteText>{"Kdy mě zastihnete"}</SiteText>
+            </p>
+            <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
+              {staticSite.hours.map((h) => (
+                <div key={h.days} className="contents">
+                  <dt className="font-medium">{h.days}</dt>
+                  <dd className="text-muted-foreground">{h.time}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-3 text-sm text-muted-foreground">
+              <SiteText>{"Schůzky v kanceláři po domluvě."}</SiteText>
+            </p>
+          </div>
+          <p className="text-xs text-muted-foreground sm:col-span-2">
+            <SiteText>{"Sídlo společnosti: "}</SiteText>
+            {staticSite.company.seat}
+          </p>
+        </div>
         <div className="mt-8">
           <SocialLinks />
         </div>

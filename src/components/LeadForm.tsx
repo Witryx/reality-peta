@@ -5,6 +5,7 @@ import { z } from "zod";
 import { CheckCircle2 } from "lucide-react";
 import { api } from "@/lib/api";
 import { track } from "@/lib/analytics";
+import { attributionSummary } from "@/lib/attribution";
 import { Button } from "./ui/button";
 import { ArrowUpRight } from "lucide-react";
 import { SocialIcons } from "./ContactLinks";
@@ -34,6 +35,11 @@ const schemas = {
   property_inquiry: z.object(base),
   valuation: z.object({
     ...base,
+    phone: z
+      .string()
+      .trim()
+      .max(40)
+      .regex(/^[+\d\s()-]{9,}$/, "Zadejte telefon, ať Vám můžu k odhadu rovnou zavolat"),
     property_type: z.string().min(1, "Vyberte typ nemovitosti").max(80),
     property_location: z.string().trim().min(2, "Uveďte lokalitu").max(200),
     property_size: z.string().trim().max(40).optional().or(z.literal("")),
@@ -133,6 +139,7 @@ export function LeadForm({
           property_type: (d["property_type"] as string) || null,
           property_location: (d["property_location"] as string) || null,
           property_size: (d["property_size"] as string) || null,
+          attribution: attributionSummary(),
           consent: true,
           website: fd.get("website") || "",
         }),
@@ -157,7 +164,7 @@ export function LeadForm({
             <SiteText>{"Děkuji za vaši zprávu."}</SiteText>
           </h3>
           <p className="lead-success-copy mt-4 text-muted-foreground">
-            <SiteText>{"Ozvu se vám co nejdříve osobně."}</SiteText>
+            <SiteText>{"Ozvu se Vám osobně ještě dnes, nejpozději další pracovní den."}</SiteText>
             <br />
             <SiteText>{"Těším se na společný další krok."}</SiteText>
           </p>
@@ -194,7 +201,12 @@ export function LeadForm({
         <Field kind={kind} errors={errors} name="name" label="Jméno a příjmení *">
           <input {...a("name")} autoComplete="name" maxLength={120} />
         </Field>
-        <Field kind={kind} errors={errors} name="phone" label="Telefon">
+        <Field
+          kind={kind}
+          errors={errors}
+          name="phone"
+          label={kind === "valuation" ? "Telefon *" : "Telefon"}
+        >
           <input {...a("phone")} type="tel" autoComplete="tel" maxLength={40} />
         </Field>
       </div>

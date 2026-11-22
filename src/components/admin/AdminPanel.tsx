@@ -907,7 +907,18 @@ function Leads({ items, refresh }: { items: Lead[]; refresh: () => Promise<void>
         .replace(/^[=+@-]/, "'$&")
         .replaceAll('"', '""')}"`;
     const rows = [
-      ["Jméno", "E-mail", "Telefon", "Typ", "Stav", "Nemovitost", "Zpráva", "Poznámky", "Datum"],
+      [
+        "Jméno",
+        "E-mail",
+        "Telefon",
+        "Typ",
+        "Stav",
+        "Nemovitost",
+        "Zpráva",
+        "Odkud přišel",
+        "Poznámky",
+        "Datum",
+      ],
       ...filtered.map((l) => [
         l.name,
         l.email,
@@ -916,6 +927,7 @@ function Leads({ items, refresh }: { items: Lead[]; refresh: () => Promise<void>
         leadStatusLabel[l.status],
         l.property_slug,
         l.message,
+        l.attribution,
         l.notes,
         date(l.created_at),
       ]),
@@ -1054,6 +1066,11 @@ function Leads({ items, refresh }: { items: Lead[]; refresh: () => Promise<void>
               </p>
             )}
             <p className="admin-message">{selected.message || "Bez další zprávy."}</p>
+            {selected.attribution && (
+              <p>
+                <strong>Odkud přišel:</strong> {selected.attribution}
+              </p>
+            )}
             <label>
               Stav poptávky
               <select

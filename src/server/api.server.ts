@@ -218,8 +218,8 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
       await db.transaction(async (tx) => {
         await tx.query("SET LOCAL ROLE realty_anon");
         await tx.query(
-          `INSERT INTO leads(id,kind,name,email,phone,message,property_slug,property_type,property_location,property_size,consent)
-          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,true)`,
+          `INSERT INTO leads(id,kind,name,email,phone,message,property_slug,property_type,property_location,property_size,attribution,consent)
+          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,true)`,
           [
             randomUUID(),
             d.kind,
@@ -231,6 +231,7 @@ export async function handleApi(request: Request, suppliedDb?: Database): Promis
             d.property_type || null,
             d.property_location || null,
             d.property_size || null,
+            d.attribution || null,
           ],
         );
       });

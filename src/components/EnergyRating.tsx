@@ -1,15 +1,16 @@
 import { SiteText } from "@/components/SiteText";
-import { ENERGY_PENDING, energyClasses, energyLabels } from "@/data/energy";
+import { ENERGY_EXEMPT, ENERGY_PENDING, energyClasses, energyLabels } from "@/data/energy";
 
 export function EnergyRating({ value }: { value: string }) {
   const pending = value === ENERGY_PENDING;
+  const exempt = value === ENERGY_EXEMPT;
   const known = energyClasses.some((letter) => letter === value);
   return (
     <div className="mt-6 rounded-lg border bg-surface p-5 sm:p-6">
       <div className="flex items-center gap-4">
         <span
           className={`energy-badge energy-${known ? value : "pending"}`}
-          aria-label={`Energetická třída ${pending ? "G – připravujeme" : known ? value : "neuvedena"}`}
+          aria-label={`Energetická třída ${pending ? "G – připravujeme" : exempt ? "nevyžaduje se" : known ? value : "neuvedena"}`}
         >
           <SiteText>{pending ? "G" : known ? value : "—"}</SiteText>
         </span>
@@ -21,7 +22,9 @@ export function EnergyRating({ value }: { value: string }) {
             <SiteText>
               {pending
                 ? "Vypracováváme pro vás energetickou hodnotu."
-                : energyLabels[value] || "Energetická třída zatím není uvedena."}
+                : exempt
+                  ? "Průkaz energetické náročnosti se nevyžaduje – stavba s plochou do 50 m²."
+                  : energyLabels[value] || "Energetická třída zatím není uvedena."}
             </SiteText>
           </p>
         </div>

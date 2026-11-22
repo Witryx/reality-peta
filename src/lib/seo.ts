@@ -64,13 +64,15 @@ export function agentJsonLd(values: Record<string, string> = {}) {
     founder: { "@type": "Person", name: site.agentName },
     legalName: site.company.name,
     taxID: site.company.ico,
+    // Office address, matching the Google Business profile (registered seat is in legal copy).
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Varšavská 715/36",
-      addressLocality: "Praha 2",
-      postalCode: "120 00",
+      streetAddress: "Hvězdova 1716/2B",
+      addressLocality: "Praha 4",
+      postalCode: "140 00",
       addressCountry: "CZ",
     },
+    openingHours: site.hours.map((h) => h.schema),
     sameAs: Object.values(site.social).filter(Boolean),
     ...(site.url ? { url: site.url } : {}),
     ...(site.contact.phone ? { telephone: site.contact.phone } : {}),

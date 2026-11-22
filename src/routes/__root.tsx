@@ -24,6 +24,8 @@ import { GuideCursor } from "@/components/GuideCursor";
 import { MobileContactBar } from "@/components/MobileContactBar";
 import { readWebsiteContent } from "@/data/website";
 import { WebsiteContentContext } from "@/lib/website-context";
+import { captureAttribution } from "@/lib/attribution";
+import { LandingHeader, LandingFooter, landingPaths } from "@/components/AdLandingChrome";
 
 function NotFoundComponent() {
   return (
@@ -110,28 +112,31 @@ function RootComponent() {
   // Remember what the server sent with the page, for a refresh that fails later.
   if (typeof window !== "undefined") lastWebsiteContent = website;
   const { queryClient } = Route.useRouteContext();
-  const isAdmin = useRouterState({
-    select: (state) => state.location.pathname.startsWith("/admin"),
-  });
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const isAdmin = pathname.startsWith("/admin");
+  /** Ad landing pages: no menu or promo bar, so the visitor stays with the one offer. */
+  const isLanding = landingPaths.includes(pathname.replace(/\/$/, ""));
   useEffect(() => {
     // A code chunk from the previous deployment is gone: load the new version instead of failing.
     const stale = (event: Event) => {
       if (reloadOnce()) event.preventDefault();
     };
+    captureAttribution();
     window.addEventListener("vite:preloadError", stale);
     return () => window.removeEventListener("vite:preloadError", stale);
   }, []);
   return (
     <QueryClientProvider client={queryClient}>
       <WebsiteContentContext.Provider value={website.values}>
-        {!isAdmin && <PromoBar />}
-        {!isAdmin && <SiteHeader />}
+        {!isAdmin && !isLanding && <PromoBar />}
+        {!isAdmin && !isLanding && <SiteHeader />}
+        {isLanding && <LandingHeader />}
         <main id="obsah">
           <Outlet />
         </main>
         {!isAdmin && (
           <>
-            <SiteFooter />
+            {isLanding ? <LandingFooter /> : <SiteFooter />}
             <CookieConsent />
             <TrackingScripts />
             <PageMotion />

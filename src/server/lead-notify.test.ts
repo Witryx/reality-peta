@@ -38,9 +38,9 @@ describe("lead notification", () => {
       "re_saved",
     );
     vi.stubEnv("RESEND_API_KEY", "re_env");
-    expect(notifyConfig({ notify_email: "a@b.cz, c@d.cz", resend_api_key: "re_saved" })).toMatchObject(
-      { key: "re_env", to: ["a@b.cz", "c@d.cz"] },
-    );
+    expect(
+      notifyConfig({ notify_email: "a@b.cz, c@d.cz", resend_api_key: "re_saved" }),
+    ).toMatchObject({ key: "re_env", to: ["a@b.cz", "c@d.cz"] });
   });
 
   it("sends nothing without configuration", async () => {
@@ -57,7 +57,7 @@ describe("lead notification", () => {
     const body = JSON.parse(fetchMock.mock.calls[0]![1].body);
     expect(body.to).toEqual(["petr@example.cz"]);
     expect(body.reply_to).toBe("jana@example.cz");
-    expect(body.subject).toBe("Žádost o odhad ceny: Jana Nováková, Praha 7");
+    expect(body.subject).toBe("🔔 Nová poptávka – Žádost o odhad ceny: Jana Nováková, Praha 7");
   });
 
   it("never throws when sending fails", async () => {

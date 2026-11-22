@@ -161,6 +161,7 @@ export const leadSchema = z
     property_type: text(80).nullable().optional(),
     property_location: text(200).nullable().optional(),
     property_size: text(40).nullable().optional(),
+    attribution: text(500).nullable().optional(),
     consent: z.literal(true),
     website: text(200).optional(),
   })
@@ -173,6 +174,8 @@ export const leadSchema = z
         path: ["property_location"],
         message: "Vyplňte typ a lokalitu.",
       });
+    if (v.kind === "valuation" && (v.phone?.replace(/\D/g, "").length ?? 0) < 9)
+      ctx.addIssue({ code: "custom", path: ["phone"], message: "Vyplňte telefon." });
     if (v.kind === "property_inquiry" && !v.property_slug)
       ctx.addIssue({ code: "custom", path: ["property_slug"], message: "Chybí nemovitost." });
   });

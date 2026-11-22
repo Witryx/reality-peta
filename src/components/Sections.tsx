@@ -355,7 +355,7 @@ export function ValuationSection({
           )}
           <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
             <li>
-              <SiteText>{"Odpověď obvykle do dvou pracovních dnů"}</SiteText>
+              <SiteText>{"Ozvu se Vám ještě týž den, osobně"}</SiteText>
             </li>
             <li>
               <SiteText>{"Bez závazků. Bez nátlaku."}</SiteText>

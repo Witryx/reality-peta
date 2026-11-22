@@ -15,6 +15,7 @@ export type LeadNotice = {
   property_type?: string | null;
   property_location?: string | null;
   property_size?: string | null;
+  attribution?: string | null;
 };
 
 const kindLabel: Record<LeadNotice["kind"], string> = {
@@ -41,6 +42,7 @@ export function leadRows(lead: LeadNotice, siteUrl: string): [string, string][] 
     ["Lokalita", lead.property_location],
     ["Plocha", lead.property_size],
     ["Zpráva", lead.message],
+    ["Odkud přišel", lead.attribution],
   ];
   return rows.filter((row): row is [string, string] => Boolean(row[1]?.trim()));
 }
@@ -69,7 +71,7 @@ function render(lead: LeadNotice, siteUrl: string, test: boolean) {
   const title = test ? "Zkušební upozornění z webu" : kindLabel[lead.kind];
   const subject = test
     ? title
-    : `${title}: ${lead.name}${lead.property_location ? `, ${lead.property_location}` : ""}`;
+    : `🔔 Nová poptávka – ${title}: ${lead.name}${lead.property_location ? `, ${lead.property_location}` : ""}`;
   const text = [
     ...(test ? ["Takhle Vám budou chodit nové poptávky z webu.", ""] : []),
     ...rows.map(([label, value]) => `${label}: ${value}`),
@@ -134,6 +136,36 @@ export async function sendLeadEmail(
   }
 }
 
+/**
+ * Confirmation to the person who sent the form. Only with LEAD_NOTIFY_FROM set: Resend can
+ * write to strangers only from a verified own domain (the default test sender cannot).
+ */
+export function clientConfirmation(lead: LeadNotice) {
+  const what =
+    lead.kind === "valuation"
+      ? "Vaši žádost o odhad ceny"
+      : lead.kind === "property_inquiry"
+        ? "Váš zájem o nemovitost"
+        : "Vaši zprávu";
+  const first = lead.name.trim().split(/\s+/)[0] ?? "";
+  const text = [
+    `Dobrý den${first ? `, ${first}` : ""},`,
+    "",
+    `děkuji, ${what} jsem v pořádku dostal. Ozvu se Vám osobně, nejpozději do konce dalšího pracovního dne – zpravidla ještě dnes.`,
+    "",
+    "Pokud spěcháte, zavolejte mi rovnou na +420 607 008 995.",
+    "",
+    "Petr Pavlát",
+    "Petr Pavlát reality · Bydlení v pohodě. U nás i u moře.",
+    "www.petrpavlat-reality.cz",
+  ].join("\n");
+  const html = `<div style="font-family:Arial,sans-serif;font-size:15px;color:#292927;line-height:1.6">${text
+    .split("\n")
+    .map((line) => (line ? `<p style="margin:0">${escape(line)}</p>` : "<br>"))
+    .join("")}</div>`;
+  return { subject: "Děkuji, Vaše zpráva dorazila – Petr Pavlát reality", text, html };
+}
+
 export async function notifyNewLead(
   lead: LeadNotice,
   siteUrl: string,
@@ -142,4 +174,21 @@ export async function notifyNewLead(
   if (!config) return;
   const result = await sendLeadEmail(config, lead, siteUrl);
   if (!result.ok) console.error("Lead notification failed:", result.error);
+  if (!process.env["LEAD_NOTIFY_FROM"]) return;
+  try {
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${config.key}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from: config.from,
+        to: [lead.email],
+        reply_to: config.to[0],
+        ...clientConfirmation(lead),
+      }),
+      signal: AbortSignal.timeout(5000),
+    });
+    if (!response.ok) console.error("Client confirmation failed:", response.status);
+  } catch (error) {
+    console.error("Client confirmation failed:", error);
+  }
 }

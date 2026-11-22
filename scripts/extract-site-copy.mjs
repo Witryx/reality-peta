@@ -41,6 +41,9 @@ const groups = {
   "EnergyRating.tsx": "Energetická třída",
   "PromoBar.tsx": "Akční lišta",
   "SectionVisuals.tsx": "Společné sekce",
+  "AdLanding.tsx": "Reklamní stránky",
+  "ShareButtons.tsx": "Detail nemovitosti",
+  "AdLandingChrome.tsx": "Reklamní stránky",
 };
 const files = [
   ...(await readdir("src/routes"))
@@ -290,7 +293,7 @@ for (const [filename, group] of [
         let declaration = node.parent;
         while (declaration && !ts.isVariableDeclaration(declaration))
           declaration = declaration.parent;
-        if (!declaration || !["site", "nav"].includes(declaration.name.getText(ast))) return;
+        if (!declaration || !["site", "nav", "footerExtra"].includes(declaration.name.getText(ast))) return;
       }
       const parent = ts.isArrayLiteralExpression(node.parent) ? node.parent.parent : node.parent;
       if (
@@ -308,6 +311,12 @@ for (const [filename, group] of [
           "whatsapp",
           "egyptPhone",
           "egyptWhatsapp",
+          "mapUrl",
+          "street",
+          "city",
+          "days",
+          "time",
+          "schema",
         ].includes(parent.name.getText(ast))
       )
         register(node.text, group, parent.name.getText(ast) === "title", pagesFor(node, ast));

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as BytyUMoreRouteImport } from './routes/byty-u-more'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as EgyptRouteImport } from './routes/egypt'
 import { Route as KontaktRouteImport } from './routes/kontakt'
@@ -18,6 +19,7 @@ import { Route as NabidkaSpolupraceRouteImport } from './routes/nabidka-spolupra
 import { Route as OMneRouteImport } from './routes/o-mne'
 import { Route as OchranaOsobnichUdajuRouteImport } from './routes/ochrana-osobnich-udaju'
 import { Route as OdhadCenyRouteImport } from './routes/odhad-ceny'
+import { Route as OdhadZdarmaRouteImport } from './routes/odhad-zdarma'
 import { Route as ReferenceRouteImport } from './routes/reference'
 import { Route as SluzbyRouteImport } from './routes/sluzby'
 import { Route as ClankyIndexRouteImport } from './routes/clanky/index'
@@ -34,6 +36,11 @@ const IndexRoute = IndexRouteImport.update({
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BytyUMoreRoute = BytyUMoreRouteImport.update({
+  id: '/byty-u-more',
+  path: '/byty-u-more',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CookiesRoute = CookiesRouteImport.update({
@@ -69,6 +76,11 @@ const OchranaOsobnichUdajuRoute = OchranaOsobnichUdajuRouteImport.update({
 const OdhadCenyRoute = OdhadCenyRouteImport.update({
   id: '/odhad-ceny',
   path: '/odhad-ceny',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OdhadZdarmaRoute = OdhadZdarmaRouteImport.update({
+  id: '/odhad-zdarma',
+  path: '/odhad-zdarma',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReferenceRoute = ReferenceRouteImport.update({
@@ -110,6 +122,7 @@ const NabidkaSlugRoute = NabidkaSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/byty-u-more': typeof BytyUMoreRoute
   '/cookies': typeof CookiesRoute
   '/egypt': typeof EgyptRoute
   '/kontakt': typeof KontaktRoute
@@ -117,6 +130,7 @@ export interface FileRoutesByFullPath {
   '/o-mne': typeof OMneRoute
   '/ochrana-osobnich-udaju': typeof OchranaOsobnichUdajuRoute
   '/odhad-ceny': typeof OdhadCenyRoute
+  '/odhad-zdarma': typeof OdhadZdarmaRoute
   '/reference': typeof ReferenceRoute
   '/sluzby': typeof SluzbyRoute
   '/clanky/$slug': typeof ClankySlugRoute
@@ -128,6 +142,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/byty-u-more': typeof BytyUMoreRoute
   '/cookies': typeof CookiesRoute
   '/egypt': typeof EgyptRoute
   '/kontakt': typeof KontaktRoute
@@ -135,6 +150,7 @@ export interface FileRoutesByTo {
   '/o-mne': typeof OMneRoute
   '/ochrana-osobnich-udaju': typeof OchranaOsobnichUdajuRoute
   '/odhad-ceny': typeof OdhadCenyRoute
+  '/odhad-zdarma': typeof OdhadZdarmaRoute
   '/reference': typeof ReferenceRoute
   '/sluzby': typeof SluzbyRoute
   '/clanky/$slug': typeof ClankySlugRoute
@@ -147,6 +163,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/byty-u-more': typeof BytyUMoreRoute
   '/cookies': typeof CookiesRoute
   '/egypt': typeof EgyptRoute
   '/kontakt': typeof KontaktRoute
@@ -154,6 +171,7 @@ export interface FileRoutesById {
   '/o-mne': typeof OMneRoute
   '/ochrana-osobnich-udaju': typeof OchranaOsobnichUdajuRoute
   '/odhad-ceny': typeof OdhadCenyRoute
+  '/odhad-zdarma': typeof OdhadZdarmaRoute
   '/reference': typeof ReferenceRoute
   '/sluzby': typeof SluzbyRoute
   '/clanky/$slug': typeof ClankySlugRoute
@@ -167,6 +185,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin'
+    | '/byty-u-more'
     | '/cookies'
     | '/egypt'
     | '/kontakt'
@@ -174,6 +193,7 @@ export interface FileRouteTypes {
     | '/o-mne'
     | '/ochrana-osobnich-udaju'
     | '/odhad-ceny'
+    | '/odhad-zdarma'
     | '/reference'
     | '/sluzby'
     | '/clanky/$slug'
@@ -185,6 +205,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/admin'
+    | '/byty-u-more'
     | '/cookies'
     | '/egypt'
     | '/kontakt'
@@ -192,6 +213,7 @@ export interface FileRouteTypes {
     | '/o-mne'
     | '/ochrana-osobnich-udaju'
     | '/odhad-ceny'
+    | '/odhad-zdarma'
     | '/reference'
     | '/sluzby'
     | '/clanky/$slug'
@@ -203,6 +225,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/admin'
+    | '/byty-u-more'
     | '/cookies'
     | '/egypt'
     | '/kontakt'
@@ -210,6 +233,7 @@ export interface FileRouteTypes {
     | '/o-mne'
     | '/ochrana-osobnich-udaju'
     | '/odhad-ceny'
+    | '/odhad-zdarma'
     | '/reference'
     | '/sluzby'
     | '/clanky/$slug'
@@ -222,6 +246,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
+  BytyUMoreRoute: typeof BytyUMoreRoute
   CookiesRoute: typeof CookiesRoute
   EgyptRoute: typeof EgyptRoute
   KontaktRoute: typeof KontaktRoute
@@ -229,6 +254,7 @@ export interface RootRouteChildren {
   OMneRoute: typeof OMneRoute
   OchranaOsobnichUdajuRoute: typeof OchranaOsobnichUdajuRoute
   OdhadCenyRoute: typeof OdhadCenyRoute
+  OdhadZdarmaRoute: typeof OdhadZdarmaRoute
   ReferenceRoute: typeof ReferenceRoute
   SluzbyRoute: typeof SluzbyRoute
   ClankySlugRoute: typeof ClankySlugRoute
@@ -252,6 +278,13 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/byty-u-more': {
+      id: '/byty-u-more'
+      path: '/byty-u-more'
+      fullPath: '/byty-u-more'
+      preLoaderRoute: typeof BytyUMoreRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cookies': {
@@ -301,6 +334,13 @@ declare module '@tanstack/react-router' {
       path: '/odhad-ceny'
       fullPath: '/odhad-ceny'
       preLoaderRoute: typeof OdhadCenyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/odhad-zdarma': {
+      id: '/odhad-zdarma'
+      path: '/odhad-zdarma'
+      fullPath: '/odhad-zdarma'
+      preLoaderRoute: typeof OdhadZdarmaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reference': {
@@ -358,6 +398,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
+  BytyUMoreRoute: BytyUMoreRoute,
   CookiesRoute: CookiesRoute,
   EgyptRoute: EgyptRoute,
   KontaktRoute: KontaktRoute,
@@ -365,6 +406,7 @@ const rootRouteChildren: RootRouteChildren = {
   OMneRoute: OMneRoute,
   OchranaOsobnichUdajuRoute: OchranaOsobnichUdajuRoute,
   OdhadCenyRoute: OdhadCenyRoute,
+  OdhadZdarmaRoute: OdhadZdarmaRoute,
   ReferenceRoute: ReferenceRoute,
   SluzbyRoute: SluzbyRoute,
   ClankySlugRoute: ClankySlugRoute,

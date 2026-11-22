@@ -2,11 +2,12 @@ import { SiteText } from "@/components/SiteText";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { BellRing, KeyRound, Lock, MapPin } from "lucide-react";
 import { z } from "zod";
-import { getProperty, getSharedProperty } from "@/data/properties";
+import { getProperty, getSharedProperty, listAllProperties } from "@/data/properties";
 import { formatPrice, type Property } from "@/data/types";
 import { pageHead, websiteValues } from "@/lib/seo";
 import { site } from "@/config/site";
-import { StatusBadge } from "@/components/PropertyCard";
+import { PropertyCard, StatusBadge } from "@/components/PropertyCard";
+import { ShareButtons } from "@/components/ShareButtons";
 import { LeadForm } from "@/components/LeadForm";
 import { ContactLinks, Placeholder } from "@/components/ContactLinks";
 import { ConsentEmbed } from "@/components/ConsentEmbed";
@@ -27,12 +28,17 @@ export const Route = createFileRoute("/nabidka/$slug")({
     const shared = deps.klic ? await getSharedProperty(params.slug, deps.klic) : null;
     const p = shared ?? (await getProperty(params.slug));
     if (!p) throw notFound();
-    return p;
+    // Up to three other active listings from the same market, so a visitor has where to go on.
+    const market = p.market ?? "cz";
+    const similar = (await listAllProperties())
+      .filter((x) => x.slug !== p.slug && (x.market ?? "cz") === market && x.status === "active")
+      .slice(0, 3);
+    return { p, similar };
   },
   head: ({ loaderData, params, matches }) => {
     if (!loaderData)
       return { meta: [{ title: "Nemovitost nenalezena" }, { name: "robots", content: "noindex" }] };
-    const p = loaderData;
+    const { p } = loaderData;
     if (p.status === "upcoming") {
       const h = pageHead(
         {
@@ -105,7 +111,7 @@ export const Route = createFileRoute("/nabidka/$slug")({
 });
 
 function Detail() {
-  const p = Route.useLoaderData();
+  const { p, similar } = Route.useLoaderData();
   if (isTeaser(p)) return <UpcomingTeaser p={p} />;
   const shared = p.status === "upcoming";
   const closed = p.status !== "active" && !shared;
@@ -152,6 +158,7 @@ function Detail() {
               <SiteText>{"Cena včetně provize RK."}</SiteText>
             </p>
           )}
+          <ShareButtons title={p.title} />
         </div>
       </header>
 
@@ -212,9 +219,28 @@ function Detail() {
               />
             </div>
             <ContactLinks className="mt-6 text-sm" />
+            <p className="mt-6 border-t pt-4 text-xs leading-relaxed text-muted-foreground">
+              <SiteText>
+                {
+                  "Vlastní nabídka makléře Petra Pavláta. Jednáte přímo se mnou – od první otázky až po předání klíčů."
+                }
+              </SiteText>
+            </p>
           </div>
         </aside>
       </div>
+      {similar.length > 0 && (
+        <section className="mt-14 md:mt-20" aria-labelledby="similar-title">
+          <h2 id="similar-title" className="text-3xl">
+            <SiteText>{"Mohlo by Vás zajímat"}</SiteText>
+          </h2>
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {similar.map((x) => (
+              <PropertyCard key={x.id} p={x} />
+            ))}
+          </div>
+        </section>
+      )}
       <PropertyContactCta className="mt-14 md:mt-20 [&_h2]:text-2xl md:[&_h2]:text-3xl [&_p]:text-base" />
     </article>
   );

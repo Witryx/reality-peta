@@ -58,7 +58,11 @@ export function CookieConsent() {
             <SiteText>{"Souhlas s cookies"}</SiteText>
           </h2>
           <p className="text-sm leading-snug">
-            <SiteText>{"Návštěvnost měřím pomocí cookies, jen s Vaším souhlasem."}</SiteText>{" "}
+            <SiteText>
+              {
+                "Díky cookies Vám ukážu nabídky, které Vás opravdu zajímají, místo náhodné reklamy. Zapnu je jen s Vaším souhlasem."
+              }
+            </SiteText>{" "}
             <button
               type="button"
               className="font-medium text-accent underline underline-offset-2"
@@ -80,7 +84,7 @@ export function CookieConsent() {
               className="btn btn-primary h-auto min-h-11 w-full whitespace-normal !px-3 !py-2 leading-snug"
               onClick={() => done(true, true)}
             >
-              <SiteText>{"Povolit vše"}</SiteText>
+              <SiteText>{"Rozumím, povolit"}</SiteText>
             </Button>
             <Button
               variant="outline"
@@ -171,7 +175,7 @@ export function CookieConsent() {
               className="btn btn-primary h-auto min-h-11 w-full whitespace-normal !px-5 !py-2.5 leading-snug"
               onClick={() => done(true, true)}
             >
-              <SiteText>{"Povolit vše"}</SiteText>
+              <SiteText>{"Rozumím, povolit"}</SiteText>
             </Button>
             <Button
               variant="outline"

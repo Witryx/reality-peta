@@ -19,7 +19,7 @@ import { propertySchema } from "@/server/validation";
 import { today } from "@/lib/dates";
 import { Notice, errorMessage, uploadImages } from "./AdminPanel";
 import { useDialogFocus } from "./useDialogFocus";
-import { ENERGY_PENDING, energyClasses, energyLabels } from "@/data/energy";
+import { ENERGY_EXEMPT, ENERGY_PENDING, energyClasses, energyLabels } from "@/data/energy";
 import { EnergyRating } from "@/components/EnergyRating";
 import { propertyMap } from "@/lib/property-media";
 import { NearbyPlacesEditor } from "./NearbyPlacesEditor";
@@ -483,6 +483,9 @@ export function PropertyEditor({
                       {v} – {energyLabels[v]}
                     </option>
                   ))}
+                  <option value={ENERGY_EXEMPT}>
+                    Nevyžaduje se – stavba do 50 m² (chata apod.)
+                  </option>
                   <option value="—">Neuvedeno / nevztahuje se</option>
                 </select>,
               )}

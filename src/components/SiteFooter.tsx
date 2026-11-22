@@ -4,7 +4,7 @@ import { Link, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
 import { QrCode } from "lucide-react";
 import { scrollToTop } from "@/lib/scroll-to-top";
-import { nav, site as staticSite } from "@/config/site";
+import { footerExtra, nav, site as staticSite } from "@/config/site";
 import { openConsentSettings } from "@/lib/consent";
 import { ContactLinks } from "./ContactLinks";
 import { BrandLockup } from "./BrandLockup";
@@ -36,7 +36,7 @@ export function SiteFooter() {
             <SiteText>{"Menu"}</SiteText>
           </p>
           <ul className="footer-links">
-            {nav.map((n) => (
+            {[...nav, ...footerExtra].map((n) => (
               <li key={n.to}>
                 <Link to={n.to}>
                   <SiteText>{n.label}</SiteText>
@@ -114,11 +114,7 @@ export function SiteFooter() {
 function SaveContact() {
   return (
     <div className="footer-save md:hidden">
-      <a
-        href="/kontakt.vcf"
-        download="Petr-Pavlat-reality.vcf"
-        className="btn btn-primary w-full"
-      >
+      <a href="/kontakt.vcf" download="Petr-Pavlat-reality.vcf" className="btn btn-primary w-full">
         <SiteText>{"Uložit kontakt do telefonu"}</SiteText>
       </a>
     </div>

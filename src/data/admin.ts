@@ -17,6 +17,7 @@ export interface Lead {
   property_type: string | null;
   property_location: string | null;
   property_size: string | null;
+  attribution?: string | null;
   status: "new" | "contacted" | "in_progress" | "closed";
   notes: string;
   created_at: string;

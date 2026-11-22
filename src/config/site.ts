@@ -21,6 +21,18 @@ export const site = {
       "zapsaná v obchodním rejstříku vedeném Městským soudem v Praze, oddíl C, vložka 430714",
     since: 2025,
   },
+  /** Kancelář (shodně s profilem na Googlu); sídlo firmy zůstává v company.seat. */
+  office: {
+    name: "City Tower",
+    street: "Hvězdova 1716/2B",
+    city: "140 00 Praha 4 – Pankrác",
+    mapUrl: "https://share.google/3ERvci4sNYmAwJnEp",
+  },
+  /** Otevírací doba podle profilu na Googlu. Schůzky v kanceláři po domluvě. */
+  hours: [
+    { days: "Po–Pá", time: "8:00–19:00", schema: "Mo-Fr 08:00-19:00" },
+    { days: "So–Ne", time: "11:00–14:00", schema: "Sa-Su 11:00-14:00" },
+  ],
   contact: {
     phone: "+420 607 008 995",
     email: "petr.pavlat@stelar-reality.cz",
@@ -64,6 +76,9 @@ export const tracking = {
     form_submit_contact: "",
     form_submit_valuation: "",
     property_inquiry: "",
+    phone_click: "",
+    whatsapp_click: "",
+    guide_download: "",
   } as Record<string, string>,
 };
 
@@ -73,9 +88,13 @@ export const nav = [
   { to: "/egypt", label: "Egypt" },
   { to: "/o-mne", label: "O mně" },
   { to: "/reference", label: "Reference" },
+  { to: "/kontakt", label: "Kontakt" },
+] as const;
+
+/** Odkazy jen v patičce, aby hlavní menu zůstalo krátké. */
+export const footerExtra = [
   { to: "/clanky", label: "Články" },
   { to: "/nabidka-spoluprace", label: "Nabídka spolupráce" },
-  { to: "/kontakt", label: "Kontakt" },
 ] as const;
 
 // Editable defaults and validation remain together in this configuration module.

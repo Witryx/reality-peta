@@ -7,7 +7,8 @@ export type ConversionEvent =
   | "property_inquiry"
   | "phone_click"
   | "email_click"
-  | "whatsapp_click";
+  | "whatsapp_click"
+  | "guide_download";
 
 declare global {
   interface Window {
@@ -22,7 +23,10 @@ declare global {
  * převezme), a pokud je souhlas a nástroj nakonfigurovaný, i do GA4/Ads/Meta.
  * Nikdy neposílá osobní údaje (jméno, e-mail, telefon).
  */
-export function track(event: ConversionEvent, params: Record<string, string | number | undefined> = {}) {
+export function track(
+  event: ConversionEvent,
+  params: Record<string, string | number | undefined> = {},
+) {
   if (typeof window === "undefined") return;
   const consent = readConsent();
   if (!consent || (!consent.analytics && !consent.marketing)) return;
@@ -43,6 +47,9 @@ export function track(event: ConversionEvent, params: Record<string, string | nu
         form_submit_contact: "Contact",
         form_submit_valuation: "Lead",
         property_inquiry: "Lead",
+        guide_download: "CompleteRegistration",
+        phone_click: "Contact",
+        whatsapp_click: "Contact",
       };
       const m = metaMap[event];
       if (m) window.fbq("track", m, { content_name: event });

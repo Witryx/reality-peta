@@ -12,7 +12,7 @@ import {
   egyptOfferOrder,
 } from "@/components/HomeSections";
 import { SectionHead } from "@/components/Sections";
-import { LeadForm } from "@/components/LeadForm";
+import { EgyptAlertForm } from "@/components/AdLanding";
 import { ContactLinks } from "@/components/ContactLinks";
 import { PropertyContactCta } from "@/components/PropertyContactCta";
 import { listEgypt } from "@/data/properties";
@@ -224,11 +224,7 @@ function Page() {
               </p>
             </div>
           </div>
-          <LeadForm
-            kind="contact"
-            defaultMessage="Zajímá mě nemovitost v Egyptě. "
-            submitLabel="Probrat nabídku v Egyptě"
-          />
+          <EgyptAlertForm />
         </div>
       </section>
     </>

@@ -17,5 +17,18 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "petrpavlat-reality.cz"
+        }
+      ],
+      "destination": "https://www.petrpavlat-reality.cz/:path*",
+      "permanent": true
+    }
   ]
 }

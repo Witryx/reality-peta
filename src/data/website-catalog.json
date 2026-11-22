@@ -17,7 +17,7 @@
   {
     "key": "text_58f3dcc4",
     "default": "Cookies",
-    "groups": ["Cookies", "Patička"],
+    "groups": ["Cookies", "Reklamní stránky", "Patička"],
     "role": "heading"
   },
   {
@@ -269,11 +269,6 @@
     "groups": ["Egypt"]
   },
   {
-    "key": "text_cecc80d9",
-    "default": "Probrat nabídku v Egyptě",
-    "groups": ["Egypt"]
-  },
-  {
     "key": "text_9458cf88",
     "default": "Petr Pavlát reality. Prodej, koupě a pronájem napříč Českem a pomoc s nemovitostmi v Egyptě.",
     "groups": ["Úvodní stránka – vyhledávače"]
@@ -371,6 +366,31 @@
   {
     "key": "text_2a160385",
     "default": "Realitní makléř ·",
+    "groups": ["Kontakt"]
+  },
+  {
+    "key": "text_15c7536d",
+    "default": "Kancelář",
+    "groups": ["Kontakt"]
+  },
+  {
+    "key": "text_afc49570",
+    "default": "Otevřít v Google Mapách",
+    "groups": ["Kontakt"]
+  },
+  {
+    "key": "text_8678ccf4",
+    "default": "Kdy mě zastihnete",
+    "groups": ["Kontakt"]
+  },
+  {
+    "key": "text_91b000c8",
+    "default": "Schůzky v kanceláři po domluvě.",
+    "groups": ["Kontakt"]
+  },
+  {
+    "key": "text_6503818b",
+    "default": "Sídlo společnosti:",
     "groups": ["Kontakt"]
   },
   {
@@ -600,6 +620,17 @@
     "groups": ["Detail nemovitosti"]
   },
   {
+    "key": "text_3b0133d6",
+    "default": "Vlastní nabídka makléře Petra Pavláta. Jednáte přímo se mnou – od první otázky až po předání klíčů.",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_de8a1baf",
+    "default": "Mohlo by Vás zajímat",
+    "groups": ["Detail nemovitosti"],
+    "role": "heading"
+  },
+  {
     "key": "text_f3df622a",
     "default": "Úvod",
     "groups": ["Detail nemovitosti"]
@@ -728,6 +759,7 @@
     "groups": [
       "Ochrana osobních údajů – vyhledávače",
       "Ochrana osobních údajů",
+      "Reklamní stránky",
       "Cookies",
       "Patička"
     ],
@@ -945,6 +977,171 @@
     "groups": ["Společné sekce"]
   },
   {
+    "key": "text_709410a0",
+    "default": "Krok 1 ze 2",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_411a9d7",
+    "default": "Krok 2 ze 2",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_7fbb37a7",
+    "default": "Pokračovat",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_aa50366a",
+    "default": "Kam se Vám mám ozvat?",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_dc4c9590",
+    "default": "Jméno a příjmení *",
+    "groups": ["Reklamní stránky", "Formuláře"]
+  },
+  {
+    "key": "text_b16e277a",
+    "default": "Telefon *",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_3ddc6c6e",
+    "default": "E-mail *",
+    "groups": ["Reklamní stránky", "Formuláře"]
+  },
+  {
+    "key": "text_1a684df7",
+    "default": "Souhlasím se zpracováním osobních údajů za účelem vyřízení dotazu dle",
+    "groups": ["Reklamní stránky", "Formuláře"]
+  },
+  {
+    "key": "text_7447c27d",
+    "default": "zásad ochrany osobních údajů",
+    "groups": ["Reklamní stránky", "Formuláře"]
+  },
+  {
+    "key": "text_9b9a1df1",
+    "default": "Odesílám…",
+    "groups": ["Reklamní stránky", "Formuláře"]
+  },
+  {
+    "key": "text_de537d20",
+    "default": "Zpět",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_164c6023",
+    "default": "Ještě se nerozhodujete?",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_e720f097",
+    "default": "5 chyb, které majitele při prodeji stojí nejvíc peněz",
+    "groups": ["Reklamní stránky"],
+    "role": "heading"
+  },
+  {
+    "key": "text_50cffde2",
+    "default": "Krátký průvodce zdarma. Za deset minut budete vědět, čemu se vyhnout dřív, než nemovitost nabídnete.",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_86a2cd10",
+    "default": "Děkuji, průvodce je Váš.",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_604456a6",
+    "default": "Stáhnout průvodce (PDF)",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_cead1670",
+    "default": "Souhlasím se zpracováním osobních údajů dle",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_bc80b051",
+    "default": "Poslat průvodce zdarma",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_cb74fa57",
+    "default": "Odhad ceny zdarma · celé Česko",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_bb7103a6",
+    "default": "Za kolik reálně prodáte svůj byt nebo dům?",
+    "groups": ["Reklamní stránky"],
+    "role": "heading"
+  },
+  {
+    "key": "text_8d399df8",
+    "default": "Odhad postavím na skutečných prodejích ve Vašem okolí, ne na inzerátech. Nezávazně, diskrétně a pro nové klienty zdarma.",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_b1ec2471",
+    "default": "Chci odhad zdarma",
+    "groups": ["Reklamní stránky", "Články"]
+  },
+  {
+    "key": "text_50bfa9ab",
+    "default": "Jak to probíhá",
+    "groups": ["Reklamní stránky", "Články"],
+    "role": "heading"
+  },
+  {
+    "key": "text_5514bff7",
+    "default": "Hurghada · Egypt",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_bb62cfed",
+    "default": "Vlastní byt u Rudého moře od 1,15 mil. Kč",
+    "groups": ["Reklamní stránky"],
+    "role": "heading"
+  },
+  {
+    "key": "text_f8312e0d",
+    "default": "Zrekonstruované a zařízené byty v centru Hurghady, kde se žije a všude dojdete pěšky. V každém bytě jsem osobně byl.",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_1e9074bf",
+    "default": "Napsat přes WhatsApp",
+    "groups": ["Reklamní stránky", "Úvodní stránka"]
+  },
+  {
+    "key": "text_1ab45448",
+    "default": "Jak koupě probíhá",
+    "groups": ["Reklamní stránky", "Úvodní stránka"],
+    "role": "heading"
+  },
+  {
+    "key": "text_cc27594c",
+    "default": "Prohlédnout aktuální byty v Hurghadě",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_29473e3e",
+    "default": "Poslat mi vhodné byty",
+    "groups": ["Reklamní stránky"]
+  },
+  {
+    "key": "text_ac54b0d8",
+    "default": "· IČO",
+    "groups": ["Reklamní stránky", "Patička"]
+  },
+  {
+    "key": "text_9c40b789",
+    "default": "Nastavení cookies",
+    "groups": ["Reklamní stránky", "Patička"]
+  },
+  {
     "key": "text_12f36293",
     "default": "reality",
     "groups": ["Identita"]
@@ -1031,8 +1228,8 @@
     "role": "heading"
   },
   {
-    "key": "text_f06faaca",
-    "default": "Návštěvnost měřím pomocí cookies, jen s Vaším souhlasem.",
+    "key": "text_d23e8660",
+    "default": "Díky cookies Vám ukážu nabídky, které Vás opravdu zajímají, místo náhodné reklamy. Zapnu je jen s Vaším souhlasem.",
     "groups": ["Cookies"]
   },
   {
@@ -1046,8 +1243,8 @@
     "groups": ["Cookies"]
   },
   {
-    "key": "text_33508c48",
-    "default": "Povolit vše",
+    "key": "text_73776c6b",
+    "default": "Rozumím, povolit",
     "groups": ["Cookies"]
   },
   {
@@ -1249,6 +1446,11 @@
     "groups": ["Energetická třída"]
   },
   {
+    "key": "text_e53d3a4b",
+    "default": "Průkaz energetické náročnosti se nevyžaduje – stavba s plochou do 50 m².",
+    "groups": ["Energetická třída"]
+  },
+  {
     "key": "text_a74b39dd",
     "default": "Energetická třída zatím není uvedena.",
     "groups": ["Energetická třída"]
@@ -1437,11 +1639,6 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_1ab45448",
-    "default": "Jak koupě probíhá",
-    "groups": ["Úvodní stránka"]
-  },
-  {
     "key": "text_3988c7c7",
     "default": "Nemovitosti v Egyptě · Hurghada",
     "groups": ["Úvodní stránka"]
@@ -1470,11 +1667,6 @@
   {
     "key": "text_442e2b66",
     "default": "Prohlédnout byty u moře",
-    "groups": ["Úvodní stránka"]
-  },
-  {
-    "key": "text_1e9074bf",
-    "default": "Napsat přes WhatsApp",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -1510,8 +1702,8 @@
     "role": "heading"
   },
   {
-    "key": "text_bf9bb4cb",
-    "default": "Ozvu se vám co nejdříve osobně.",
+    "key": "text_8fb14db6",
+    "default": "Ozvu se Vám osobně ještě dnes, nejpozději další pracovní den.",
     "groups": ["Formuláře"]
   },
   {
@@ -1527,21 +1719,6 @@
   {
     "key": "text_b063d907",
     "default": "Webová stránka",
-    "groups": ["Formuláře"]
-  },
-  {
-    "key": "text_dc4c9590",
-    "default": "Jméno a příjmení *",
-    "groups": ["Formuláře"]
-  },
-  {
-    "key": "text_9efa9d9c",
-    "default": "Telefon",
-    "groups": ["Formuláře"]
-  },
-  {
-    "key": "text_3ddc6c6e",
-    "default": "E-mail *",
     "groups": ["Formuláře"]
   },
   {
@@ -1605,16 +1782,6 @@
     "groups": ["Formuláře"]
   },
   {
-    "key": "text_1a684df7",
-    "default": "Souhlasím se zpracováním osobních údajů za účelem vyřízení dotazu dle",
-    "groups": ["Formuláře"]
-  },
-  {
-    "key": "text_7447c27d",
-    "default": "zásad ochrany osobních údajů",
-    "groups": ["Formuláře"]
-  },
-  {
     "key": "text_cd345cbd",
     "default": "consent",
     "groups": ["Formuláře"]
@@ -1632,11 +1799,6 @@
   {
     "key": "text_53542549",
     "default": "sending",
-    "groups": ["Formuláře"]
-  },
-  {
-    "key": "text_9b9a1df1",
-    "default": "Odesílám…",
     "groups": ["Formuláře"]
   },
   {
@@ -1958,8 +2120,8 @@
     "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
-    "key": "text_5d501bac",
-    "default": "Odpověď obvykle do dvou pracovních dnů",
+    "key": "text_97914872",
+    "default": "Ozvu se Vám ještě týž den, osobně",
     "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
@@ -2014,23 +2176,23 @@
     "groups": ["Společné sekce", "Úvodní stránka", "O mně"]
   },
   {
+    "key": "text_a1266445",
+    "default": "Odkaz zkopírován",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
+    "key": "text_fd5ab94a",
+    "default": "Sdílet nabídku",
+    "groups": ["Detail nemovitosti"]
+  },
+  {
     "key": "text_c6075a",
     "default": "Menu",
     "groups": ["Patička"]
   },
   {
-    "key": "text_ac54b0d8",
-    "default": "· IČO",
-    "groups": ["Patička"]
-  },
-  {
     "key": "text_72d09b7a",
     "default": "Všechna práva vyhrazena. Texty, fotografie a design webu jsou chráněny autorským zákonem.",
-    "groups": ["Patička"]
-  },
-  {
-    "key": "text_9c40b789",
-    "default": "Nastavení cookies",
     "groups": ["Patička"]
   },
   {
@@ -2208,11 +2370,6 @@
     "groups": ["Články"]
   },
   {
-    "key": "text_b1ec2471",
-    "default": "Chci odhad zdarma",
-    "groups": ["Články"]
-  },
-  {
     "key": "text_c69eb6b3",
     "default": "Bez závazků. Bez tlaku na prodej.",
     "groups": ["Články"]
@@ -2242,11 +2399,6 @@
     "default": "Tři situace, ve kterých se vyplatí znát přesné číslo",
     "groups": ["Články"],
     "role": "heading"
-  },
-  {
-    "key": "text_50bfa9ab",
-    "default": "Jak to probíhá",
-    "groups": ["Články"]
   },
   {
     "key": "text_41fe8406",
@@ -2751,6 +2903,11 @@
   {
     "key": "text_49f19a9f",
     "default": "zapsaná v obchodním rejstříku vedeném Městským soudem v Praze, oddíl C, vložka 430714",
+    "groups": ["Identita"]
+  },
+  {
+    "key": "text_4582c8d3",
+    "default": "City Tower",
     "groups": ["Identita"]
   },
   {

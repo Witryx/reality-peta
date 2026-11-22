@@ -46,6 +46,8 @@ CREATE TABLE IF NOT EXISTS leads (
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS status text NOT NULL DEFAULT 'new';
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS notes text NOT NULL DEFAULT '';
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS updated_at timestamptz NOT NULL DEFAULT now();
+-- Which campaign, ad or page brought the enquiry (summary line, no personal data).
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS attribution text;
 CREATE INDEX IF NOT EXISTS leads_created ON leads(created_at DESC);
 CREATE TABLE IF NOT EXISTS media (
   id uuid PRIMARY KEY, filename text NOT NULL UNIQUE, original_name text NOT NULL,
@@ -108,7 +110,7 @@ GRANT realty_anon TO CURRENT_USER;
 GRANT USAGE ON SCHEMA public TO realty_anon;
 REVOKE ALL ON leads FROM realty_anon;
 GRANT INSERT (id, kind, name, email, phone, message, property_slug, property_type,
-  property_location, property_size, consent) ON leads TO realty_anon;
+  property_location, property_size, consent, attribution) ON leads TO realty_anon;
 ALTER TABLE leads ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS realty_lead_insert ON leads;
 CREATE POLICY realty_lead_insert ON leads FOR INSERT TO realty_anon WITH CHECK (consent = true);
