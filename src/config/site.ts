@@ -64,20 +64,20 @@ export const site = {
 
 /**
  * Měřicí a reklamní nástroje. Načtou se pouze po souhlasu v cookie liště
- * a pouze pokud je ID vyplněné. Žádná reálná ID nejsou zatím vložena.
+ * a pouze pokud je ID vyplněné.
  */
 export const tracking = {
   gtmId: "", // GTM-XXXXXXX
   ga4Id: "", // G-XXXXXXXXXX
   metaPixelId: "3811985592377775", // Meta dataset „https://www.petrpavlat-reality.cz/“ (portfolio Petr Pavlát)
-  googleAdsId: "", // AW-XXXXXXXXX
+  googleAdsId: "AW-18591266307", // Google Ads účet 393-437-2649 (Petr Pavlát - reality)
   /** Mapování událostí na štítky konverzí Google Ads (AW-ID/label). */
   googleAdsConversions: {
-    form_submit_contact: "",
-    form_submit_valuation: "",
-    property_inquiry: "",
-    phone_click: "",
-    whatsapp_click: "",
+    form_submit_valuation: "VSLxCLLq6b0dEIPsgKFF", // Lead – odhad ceny (web)
+    form_submit_contact: "L-_XCLXq6b0dEIPsgKFF", // Lead – kontaktní formulář (web)
+    property_inquiry: "sNqsCLjq6b0dEIPsgKFF", // Lead – zájem o nemovitost (web)
+    phone_click: "lCwfCLvq6b0dEIPsgKFF", // Klik na telefon (web)
+    whatsapp_click: "Y4XSCLzx6b0dEIPsgKFF", // Klik na WhatsApp (web)
     guide_download: "",
   } as Record<string, string>,
 };
