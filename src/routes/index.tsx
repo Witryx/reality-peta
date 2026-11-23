@@ -76,7 +76,7 @@ function Home() {
               </span>
             </p>
             <p className="eyebrow hero-stage mt-3">
-              <SiteText>{"Prodej · Koupě · Pronájem · Odhad ceny"}</SiteText>
+              <SiteText>{"Řešíte změnu bydlení?"}</SiteText>
             </p>
             <h1 className="hero-title mt-4 text-5xl leading-tight sm:text-6xl">
               <span className="hero-title-line">

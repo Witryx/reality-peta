@@ -284,9 +284,9 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_bdf8c137",
-    "default": "Prodej · Koupě · Pronájem · Odhad ceny",
-    "groups": ["Úvodní stránka"]
+    "key": "text_9b5968c2",
+    "default": "Řešíte změnu bydlení?",
+    "groups": ["Úvodní stránka", "Reklamní stránky", "Společné sekce", "Odhad ceny"]
   },
   {
     "key": "text_5f5bdae9",
@@ -1081,11 +1081,6 @@
   {
     "key": "text_bc80b051",
     "default": "Poslat průvodce zdarma",
-    "groups": ["Reklamní stránky"]
-  },
-  {
-    "key": "text_cb74fa57",
-    "default": "Odhad ceny zdarma · celé Česko",
     "groups": ["Reklamní stránky"]
   },
   {
@@ -2067,11 +2062,6 @@
     "key": "text_761ddf6d",
     "default": "Další reference",
     "groups": ["Společné sekce", "Úvodní stránka", "Reference"]
-  },
-  {
-    "key": "text_a828a98a",
-    "default": "První krok k dobrému rozhodnutí",
-    "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
     "key": "text_3a92f27",

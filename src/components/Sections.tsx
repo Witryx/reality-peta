@@ -286,7 +286,7 @@ export function ValuationSection({
       <div className="container-page grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
         <div className="valuation-copy">
           <p className="eyebrow text-valuation-ink">
-            <SiteText>{"První krok k dobrému rozhodnutí"}</SiteText>
+            <SiteText>{"Řešíte změnu bydlení?"}</SiteText>
           </p>
           {choice ? (
             <Heading className="mt-5 text-3xl leading-tight md:text-[2.6rem]">

@@ -346,7 +346,7 @@ export function SellerLanding() {
         <div className="container-page grid items-start gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
           <div>
             <p className="eyebrow">
-              <SiteText>{"Odhad ceny zdarma · celé Česko"}</SiteText>
+              <SiteText>{"Řešíte změnu bydlení?"}</SiteText>
             </p>
             <h1 className="mt-5 text-4xl leading-tight md:text-5xl">
               <SiteText>{"Za kolik reálně prodáte svůj byt nebo dům?"}</SiteText>
