@@ -14,9 +14,15 @@ function addScript(id: string, src?: string, inline?: string) {
   document.head.appendChild(s);
 }
 
-/** Načítá měřicí skripty až po souhlasu. Bez souhlasu se nic nenačte. */
+let adsReady = false;
+let ga4Ready = false;
+
+/**
+ * Značka Google Ads se načte vždy, ale v režimu souhlasu „zamítnuto“: bez souhlasu
+ * neukládá cookies ani osobní údaje, posílá jen anonymní signál bez cookies
+ * (pokročilý režim souhlasu Google). Ostatní nástroje (GA4, GTM, Meta) až po souhlasu.
+ */
 function apply(c: ConsentState | null) {
-  if (!c) return;
   window.dataLayer = window.dataLayer || [];
   if (!window.gtag) {
     window.gtag = function () {
@@ -30,6 +36,16 @@ function apply(c: ConsentState | null) {
       ad_personalization: "denied",
     });
   }
+  if (tracking.googleAdsId) {
+    addScript("gtag", `https://www.googletagmanager.com/gtag/js?id=${tracking.googleAdsId}`);
+    if (!adsReady) {
+      adsReady = true;
+      window.gtag("js", new Date());
+      window.gtag("config", tracking.googleAdsId, { allow_enhanced_conversions: true });
+    }
+  }
+  if (!c) return;
+
   const g = c.marketing ? "granted" : "denied";
   window.gtag("consent", "update", {
     analytics_storage: c.analytics ? "granted" : "denied",
@@ -42,12 +58,11 @@ function apply(c: ConsentState | null) {
     window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
     addScript("gtm", `https://www.googletagmanager.com/gtm.js?id=${tracking.gtmId}`);
   }
-  const gtagId = (c.analytics && tracking.ga4Id) || (c.marketing && tracking.googleAdsId) || "";
-  if (gtagId) {
-    addScript("gtag", `https://www.googletagmanager.com/gtag/js?id=${gtagId}`);
+  if (c.analytics && tracking.ga4Id && !ga4Ready) {
+    ga4Ready = true;
+    addScript("gtag", `https://www.googletagmanager.com/gtag/js?id=${tracking.ga4Id}`);
     window.gtag("js", new Date());
-    if (c.analytics && tracking.ga4Id) window.gtag("config", tracking.ga4Id);
-    if (c.marketing && tracking.googleAdsId) window.gtag("config", tracking.googleAdsId);
+    window.gtag("config", tracking.ga4Id);
   }
   if (c.marketing && tracking.metaPixelId) {
     addScript(

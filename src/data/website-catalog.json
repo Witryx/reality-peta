@@ -54,8 +54,8 @@
     "role": "heading"
   },
   {
-    "key": "text_f8fb3597",
-    "default": "Google Ads a Meta Pixel – měření účinnosti reklam. Načtou se až po vašem souhlasu.",
+    "key": "text_fd4f28d",
+    "default": "Google Ads a Meta Pixel – měření účinnosti reklam. Meta Pixel se načte až po vašem souhlasu. Značka Google Ads se načítá vždy, ale bez souhlasu neukládá žádné cookies a neposílá osobní údaje – Googlu předá jen anonymní signál, že proběhla návštěva nebo odeslání formuláře (tzv. režim souhlasu Google).",
     "groups": ["Cookies"]
   },
   {
@@ -832,8 +832,8 @@
     "role": "heading"
   },
   {
-    "key": "text_59db3560",
-    "default": "Poskytovatel hostingu a databáze. Po udělení souhlasu s marketingovými cookies také Google (Analytics, Ads) a Meta (Facebook, Instagram) pro měření návštěvnosti a reklam.",
+    "key": "text_a8f94d84",
+    "default": "Poskytovatel hostingu a databáze. Po udělení souhlasu s marketingovými cookies také Google (Analytics, Ads) a Meta (Facebook, Instagram) pro měření návštěvnosti a reklam. Pokud jste s marketingovými cookies souhlasili a odešlete formulář, předá se Googlu i váš e-mail a telefon v zašifrované (hashované) podobě, aby šlo změřit, zda poptávka přišla z reklamy (tzv. rozšířené konverze). Bez souhlasu se Googlu předává jen anonymní signál bez cookies a bez osobních údajů.",
     "groups": ["Ochrana osobních údajů"]
   },
   {

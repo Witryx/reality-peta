@@ -79,7 +79,7 @@ export function StepForm({
           website: fd.get("website") || "",
         }),
       });
-      track(event, { placement: "landing" });
+      track(event, { placement: "landing" }, { email, phone });
       setStep(3);
     } catch {
       setError("Odeslání se nepovedlo. Zkuste to prosím znovu, nebo mi rovnou zavolejte.");
@@ -266,7 +266,7 @@ export function GuideOffer() {
           website: fd.get("website") || "",
         }),
       });
-      track("guide_download", { placement: "landing" });
+      track("guide_download", { placement: "landing" }, { email });
       setDone(true);
     } catch {
       setError("Odeslání se nepovedlo. Zkuste to prosím znovu.");

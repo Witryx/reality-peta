@@ -18,7 +18,7 @@ describe("website copy", () => {
     );
     expect(resolveCopy({}, "S úpravami a dodávámkou.")).toBe("S úpravami a dodávámkou.");
     expect(catalog.find((entry) => entry.key === copyKey(aboutStory))?.groups).toEqual(
-      expect.arrayContaining(["O mně"]),
+      expect.arrayContaining(["Společné sekce"]),
     );
   });
   it("applies contact configuration to rendered links without mutating the defaults", () => {

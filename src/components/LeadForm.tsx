@@ -148,7 +148,10 @@ export function LeadForm({
       setState("error");
       return;
     }
-    track(eventMap[kind], propertySlug ? { property_slug: propertySlug } : {});
+    track(eventMap[kind], propertySlug ? { property_slug: propertySlug } : {}, {
+      email: d["email"] as string,
+      phone: (d["phone"] as string) || null,
+    });
     setState("done");
   }
 

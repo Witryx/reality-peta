@@ -71,7 +71,7 @@ function Page() {
       <p>
         <SiteText>
           {
-            "Poskytovatel hostingu a databáze. Po udělení souhlasu s marketingovými cookies také Google (Analytics, Ads) a Meta (Facebook, Instagram) pro měření návštěvnosti a reklam."
+            "Poskytovatel hostingu a databáze. Po udělení souhlasu s marketingovými cookies také Google (Analytics, Ads) a Meta (Facebook, Instagram) pro měření návštěvnosti a reklam. Pokud jste s marketingovými cookies souhlasili a odešlete formulář, předá se Googlu i váš e-mail a telefon v zašifrované (hashované) podobě, aby šlo změřit, zda poptávka přišla z reklamy (tzv. rozšířené konverze). Bez souhlasu se Googlu předává jen anonymní signál bez cookies a bez osobních údajů."
           }
         </SiteText>
       </p>

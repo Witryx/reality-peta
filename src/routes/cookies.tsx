@@ -57,7 +57,9 @@ function Page() {
       </h2>
       <p>
         <SiteText>
-          {"Google Ads a Meta Pixel – měření účinnosti reklam. Načtou se až po vašem souhlasu."}
+          {
+            "Google Ads a Meta Pixel – měření účinnosti reklam. Meta Pixel se načte až po vašem souhlasu. Značka Google Ads se načítá vždy, ale bez souhlasu neukládá žádné cookies a neposílá osobní údaje – Googlu předá jen anonymní signál, že proběhla návštěva nebo odeslání formuláře (tzv. režim souhlasu Google)."
+          }
         </SiteText>
       </p>
       <p>
