@@ -53,7 +53,8 @@ export type StoredNotifySettings = {
   resend_api_key?: string | null;
 } | null;
 
-const defaultFrom = "Web Petr Pavlát reality <onboarding@resend.dev>";
+/** Own domain, verified in Resend (DNS at Webglobe, 23 Nov 2026). */
+const defaultFrom = "Petr Pavlát reality <info@petrpavlat-reality.cz>";
 
 /** Environment wins over values saved in the administration. */
 export function notifyConfig(stored: StoredNotifySettings): NotifyConfig | null {
@@ -137,8 +138,8 @@ export async function sendLeadEmail(
 }
 
 /**
- * Confirmation to the person who sent the form. Only with LEAD_NOTIFY_FROM set: Resend can
- * write to strangers only from a verified own domain (the default test sender cannot).
+ * Confirmation to the person who sent the form, sent from the verified own domain
+ * (Resend's shared test sender cannot write to strangers).
  */
 export function clientConfirmation(lead: LeadNotice) {
   const what =
@@ -174,7 +175,8 @@ export async function notifyNewLead(
   if (!config) return;
   const result = await sendLeadEmail(config, lead, siteUrl);
   if (!result.ok) console.error("Lead notification failed:", result.error);
-  if (!process.env["LEAD_NOTIFY_FROM"]) return;
+  // Resend's shared test sender may write only to the account owner, never to clients.
+  if (config.from.includes("@resend.dev")) return;
   try {
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
