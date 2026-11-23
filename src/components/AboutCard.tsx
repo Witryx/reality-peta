@@ -134,7 +134,7 @@ export function AboutCard() {
         </svg>
       </div>
       <p className="about-card-flight">
-        <SiteText>{"PŘÍMÝ LET CCA 4,5 HODINY"}</SiteText>
+        <SiteText>{"PŘÍMÝ LET 4,5 HODINY"}</SiteText>
       </p>
       <div className="about-card-facts">
         <div className="about-card-fact">

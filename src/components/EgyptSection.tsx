@@ -78,35 +78,16 @@ export function EgyptSection({
             <p className="mt-5 leading-relaxed text-muted-foreground">
               <SiteText>
                 {
-                  "Kolik stojí byt u Rudého moře? Krásný apartmán pořídíte od 1,15 milionu, 4,5 hodiny letu od Prahy. Celý proces v češtině, s právní kontrolou na místě."
+                  "Krásný apartmán u Rudého moře pořídíte od 1,15 mil. Kč, 4,5 hodiny letu od Prahy. Celý proces v češtině, s právníkem na místě."
                 }
               </SiteText>
             </p>
           )}
-          {!compact && (
+          {detail && (
             <p className="mt-5 leading-relaxed text-muted-foreground">
               <SiteText>
                 {
-                  "Ve spolupráci s prověřenými partnerskými značkami vám pomáhám se zprostředkováním koupě i pronájmu apartmánu v Egyptě. Pomůžeme vám zorientovat se na místním trhu, prověřit vybranou nemovitost a v případě potřeby zajistit také její dovybavení nebo rekonstrukci podle vašich představ."
-                }
-              </SiteText>
-              <br />
-              <br />
-              <SiteText>
-                {
-                  "Celým procesem vás provedeme přehledně v češtině a s dostatkem prostoru pro všechny vaše otázky. Hurghadu dobře známe a chceme, abyste se zde dokázali rychle zorientovat a cítili se jako doma."
-                }
-              </SiteText>
-              <br />
-              <br />
-              <SiteText>
-                {"Právní podporu máme k dispozici přímo na místě, a to v českém i arabském jazyce."}
-              </SiteText>
-              <br />
-              <br />
-              <SiteText>
-                {
-                  "Vy si vyberete. My nemovitost prověříme a pomůžeme vám celý proces bezpečně realizovat."
+                  "Vy si vyberete. My byt prověříme, zajistíme právníka v češtině i arabštině a provedeme Vás až ke klíčům."
                 }
               </SiteText>
             </p>

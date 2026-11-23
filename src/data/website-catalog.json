@@ -90,13 +90,13 @@
     "groups": ["Egypt – vyhledávače"]
   },
   {
-    "key": "text_ac838b2c",
-    "default": "Hurghada · Rudé moře",
+    "key": "text_3988c7c7",
+    "default": "Nemovitosti v Egyptě · Hurghada",
     "groups": ["Egypt", "Úvodní stránka"]
   },
   {
-    "key": "text_b773a070",
-    "default": "Nemovitosti v Egyptě",
+    "key": "text_4466e5fc",
+    "default": "Váš byt u Rudého moře",
     "groups": ["Egypt"],
     "role": "heading"
   },
@@ -189,8 +189,8 @@
     "role": "heading"
   },
   {
-    "key": "text_413f4ee2",
-    "default": "Přímý let trvá zhruba 4,5 hodiny. Na hodinách vidíte, kolik je právě teď v Praze a kolik u moře.",
+    "key": "text_a3a12c32",
+    "default": "Přímý let trvá 4,5 hodiny. Na hodinách vidíte, kolik je právě teď v Praze a kolik u moře.",
     "groups": ["Egypt"]
   },
   {
@@ -223,7 +223,7 @@
   {
     "key": "text_6e6c9cfc",
     "default": "Využití majetku",
-    "groups": ["Egypt"],
+    "groups": ["Egypt", "Služby a reference", "Úvodní stránka", "Služby"],
     "role": "heading"
   },
   {
@@ -289,20 +289,20 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_7e4a56c6",
-    "default": "Prodat dobře",
+    "key": "text_5f5bdae9",
+    "default": "Správná cena prodá rychleji.",
     "groups": ["Úvodní stránka"],
     "role": "heading"
   },
   {
-    "key": "text_a392baa2",
-    "default": "neznamená prodat draho.",
+    "key": "text_b3dd58ac",
+    "default": "A často i dráž.",
     "groups": ["Úvodní stránka"],
     "role": "heading"
   },
   {
-    "key": "text_83d8fb9c",
-    "default": "Přestřelená cena prodej jen protáhne a sleva stejně přijde. Řeknu Vám, za kolik se u Vás opravdu prodává.",
+    "key": "text_b4683d6c",
+    "default": "Přestřelená cena odradí zájemce a sleva pak přijde stejně. Řeknu Vám, za kolik se u Vás opravdu prodává.",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -316,8 +316,8 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_52c41bb3",
-    "default": "Nástěnka českých nemovitostí",
+    "key": "text_7348ffae",
+    "default": "Aktuálně v Česku",
     "groups": ["Úvodní stránka"],
     "role": "heading"
   },
@@ -415,8 +415,8 @@
     "groups": ["Nabídka spolupráce"]
   },
   {
-    "key": "text_e1c91790",
-    "default": "Znáte někoho, kdo řeší nemovitost? Nebo na toto téma narazíte při rozhovoru s přáteli, kolegy či klienty? Vzpomeňte si na mě a propojte nás. O další komunikaci a realitní servis se postarám já, vy můžete získat odměnu za doporučení.",
+    "key": "text_a0975721",
+    "default": "Víte o někom, kdo prodává? Propojte nás. O vše ostatní se postarám já – a Vy můžete získat až 100 000 Kč.",
     "groups": ["Nabídka spolupráce"]
   },
   {
@@ -442,8 +442,8 @@
     "role": "heading"
   },
   {
-    "key": "text_5abddf39",
-    "default": "Nemusíte být z realitního oboru. Stačí znát někoho, kdo chce prodávat byt, dům, pozemek nebo jinou nemovitost, a doporučit mu mé služby. Celým prodejem pak majitele provedu osobně.",
+    "key": "text_a1a017c3",
+    "default": "Nemusíte být z oboru. Stačí znát někoho, kdo chce prodat byt, dům nebo pozemek.",
     "groups": ["Nabídka spolupráce"]
   },
   {
@@ -453,8 +453,8 @@
     "role": "heading"
   },
   {
-    "key": "text_cd75af98",
-    "default": "Zavolejte nebo napište, že víte o někom, kdo uvažuje o prodeji. Nejjednodušší je předat můj kontakt přímo majiteli. Pokud nás chcete propojit sami, nejprve se s ním domluvte, že mi můžete jeho kontakt předat.",
+    "key": "text_f3794b0c",
+    "default": "Nejjednodušší je předat můj kontakt přímo majiteli. Jeho kontakt mi dejte jen s jeho souhlasem.",
     "groups": ["Nabídka spolupráce"]
   },
   {
@@ -464,8 +464,8 @@
     "role": "heading"
   },
   {
-    "key": "text_beca3742",
-    "default": "Společně si předem potvrdíme, ke které nemovitosti se doporučení vztahuje, jaká bude vaše odměna a za jakých podmínek ji získáte. Ať obě strany od začátku vědí, na čem jsou.",
+    "key": "text_e3f00ed3",
+    "default": "Předem si potvrdíme, ke které nemovitosti se doporučení vztahuje, jaká bude Vaše odměna a za jakých podmínek.",
     "groups": ["Nabídka spolupráce"]
   },
   {
@@ -475,8 +475,8 @@
     "role": "heading"
   },
   {
-    "key": "text_b7346eb1",
-    "default": "S majitelem proberu jeho situaci a možnosti prodeje. Pokud se dohodneme na zastoupení, zajistím přípravu nemovitosti, prezentaci, komunikaci se zájemci i koordinaci dalších kroků. Vy nemusíte organizovat prohlídky ani vyjednávat.",
+    "key": "text_14b7a63b",
+    "default": "S majitelem proberu jeho situaci a když se dohodneme, postarám se o celý prodej. Vy nemusíte nic organizovat.",
     "groups": ["Nabídka spolupráce"]
   },
   {
@@ -744,8 +744,24 @@
     "groups": ["O mně"]
   },
   {
-    "key": "text_f2f1ac91",
-    "default": "Mám zázemí v Praze a okolí, ale obrátit se na mě můžete odkudkoli z Česka. Ať prodáváte, hledáte nové bydlení nebo řešíte svůj majetek, začneme obyčejným rozhovorem.",
+    "key": "text_434d2036",
+    "default": "Kdo za mnou stojí",
+    "groups": ["O mně"],
+    "role": "heading"
+  },
+  {
+    "key": "text_766d2c2f",
+    "default": "Spolupracuji se skupinou STELAR, která má vlastní nemovitostní fond Aurelia. Kancelář mám v City Tower na Pankráci, pomáhám po celém Česku. Osvědčení realitního zprostředkovatele mám od února 2024.",
+    "groups": ["O mně"]
+  },
+  {
+    "key": "text_be751ec1",
+    "default": "Co je fond Aurelia a proč na tom záleží",
+    "groups": ["O mně"]
+  },
+  {
+    "key": "text_25c069a9",
+    "default": "Ať prodáváte, hledáte nové bydlení nebo řešíte svůj majetek, začneme obyčejným rozhovorem.",
     "groups": ["O mně"]
   },
   {
@@ -952,8 +968,8 @@
     "groups": ["Společné sekce"]
   },
   {
-    "key": "text_22e8e6c",
-    "default": "PŘÍMÝ LET CCA 4,5 HODINY",
+    "key": "text_8245c44f",
+    "default": "PŘÍMÝ LET 4,5 HODINY",
     "groups": ["Společné sekce"]
   },
   {
@@ -1391,28 +1407,13 @@
     "role": "heading"
   },
   {
-    "key": "text_bd72d24c",
-    "default": "Kolik stojí byt u Rudého moře? Krásný apartmán pořídíte od 1,15 milionu, 4,5 hodiny letu od Prahy. Celý proces v češtině, s právní kontrolou na místě.",
+    "key": "text_82a21a10",
+    "default": "Krásný apartmán u Rudého moře pořídíte od 1,15 mil. Kč, 4,5 hodiny letu od Prahy. Celý proces v češtině, s právníkem na místě.",
     "groups": ["Egypt"]
   },
   {
-    "key": "text_f5f4e7aa",
-    "default": "Ve spolupráci s prověřenými partnerskými značkami vám pomáhám se zprostředkováním koupě i pronájmu apartmánu v Egyptě. Pomůžeme vám zorientovat se na místním trhu, prověřit vybranou nemovitost a v případě potřeby zajistit také její dovybavení nebo rekonstrukci podle vašich představ.",
-    "groups": ["Egypt"]
-  },
-  {
-    "key": "text_766a8e44",
-    "default": "Celým procesem vás provedeme přehledně v češtině a s dostatkem prostoru pro všechny vaše otázky. Hurghadu dobře známe a chceme, abyste se zde dokázali rychle zorientovat a cítili se jako doma.",
-    "groups": ["Egypt"]
-  },
-  {
-    "key": "text_ab0562ff",
-    "default": "Právní podporu máme k dispozici přímo na místě, a to v českém i arabském jazyce.",
-    "groups": ["Egypt"]
-  },
-  {
-    "key": "text_2eda435b",
-    "default": "Vy si vyberete. My nemovitost prověříme a pomůžeme vám celý proces bezpečně realizovat.",
+    "key": "text_5ea0a98",
+    "default": "Vy si vyberete. My byt prověříme, zajistíme právníka v češtině i arabštině a provedeme Vás až ke klíčům.",
     "groups": ["Egypt"]
   },
   {
@@ -1434,6 +1435,11 @@
     "key": "text_bf353012",
     "default": "Probrat možnosti",
     "groups": ["Egypt", "Společné sekce", "Úvodní stránka", "Služby"]
+  },
+  {
+    "key": "text_b773a070",
+    "default": "Nemovitosti v Egyptě",
+    "groups": ["Egypt"]
   },
   {
     "key": "text_bfb1d53a",
@@ -1542,8 +1548,8 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_92d7d50c",
-    "default": "Takhle prodám i tu Vaši",
+    "key": "text_56efee87",
+    "default": "Takhle představím i tu Vaši",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -1553,19 +1559,19 @@
     "role": "heading"
   },
   {
-    "key": "text_e30bb8ed",
-    "default": "Nižší, správně stanovená cena neznamená, že prodáte za míň.",
+    "key": "text_75959b65",
+    "default": "Proč se dobře naceněná nemovitost často prodá dráž?",
     "groups": ["Úvodní stránka"],
     "role": "heading"
   },
   {
-    "key": "text_a71fb4b8",
-    "default": "Zní to jako paradox. Ve skutečnosti je to nejčastější důvod, proč se nemovitost prodá dráž.",
+    "key": "text_475e59c6",
+    "default": "Protože přiláká víc zájemců naráz. A když o byt stojí víc lidí, vyjednáváte z pozice síly.",
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_ce382808",
-    "default": "Rozumná cena přivede víc zájemců najednou – a kde je víc lidí, vyjednává se z pozice síly. A i když ne, peníze máte dřív a můžete koupit to, co dává smysl.",
+    "key": "text_cbc08fee",
+    "default": "A i když se nakonec neprodá dráž, peníze máte dřív a můžete koupit to, co dává smysl.",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -1639,11 +1645,6 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_3988c7c7",
-    "default": "Nemovitosti v Egyptě · Hurghada",
-    "groups": ["Úvodní stránka"]
-  },
-  {
     "key": "text_c4664940",
     "default": "Kolik stojí byt u Rudého moře?",
     "groups": ["Úvodní stránka"],
@@ -1660,13 +1661,18 @@
     "groups": ["Úvodní stránka"]
   },
   {
-    "key": "text_7ce5e538",
-    "default": "Byty v centru Hurghady u Sheratonu – tam, kde se žije a všude dojdete pěšky. V každém z nich jsem osobně byl.",
+    "key": "text_122e8f44",
+    "default": "Byty v centru Hurghady u Sheratonu – tam, kde se žije a všude dojdete pěšky.",
     "groups": ["Úvodní stránka"]
   },
   {
     "key": "text_442e2b66",
     "default": "Prohlédnout byty u moře",
+    "groups": ["Úvodní stránka"]
+  },
+  {
+    "key": "text_ac838b2c",
+    "default": "Hurghada · Rudé moře",
     "groups": ["Úvodní stránka"]
   },
   {
@@ -1888,10 +1894,21 @@
     "groups": ["Nabídka"]
   },
   {
+    "key": "text_863daf0b",
+    "default": "Nenašli jste ten pravý?",
+    "groups": ["Kontakt u nabídek"],
+    "role": "heading"
+  },
+  {
     "key": "text_81dd2f44",
     "default": "Líbí se vám tato prezentace a uvažujete i o prodeji vaší nemovitosti?",
     "groups": ["Kontakt u nabídek"],
     "role": "heading"
+  },
+  {
+    "key": "text_3052a37b",
+    "default": "Napište mi, co hledáte. Mám i byty, které ještě nejsou venku.",
+    "groups": ["Kontakt u nabídek"]
   },
   {
     "key": "text_538c536d",
@@ -2057,8 +2074,8 @@
     "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
-    "key": "text_4d16725f",
-    "default": "Máte dotaz ohledně nemovitosti, nebo chcete využít odhadu nemovitosti zdarma?",
+    "key": "text_3a92f27",
+    "default": "Začněme jednoduše.",
     "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"],
     "role": "heading"
   },
@@ -2075,8 +2092,8 @@
     "role": "heading"
   },
   {
-    "key": "text_e6d7b4a7",
-    "default": "Vyberte ve formuláři, s čím Vám mám pomoci. Odhad je pro nové klienty",
+    "key": "text_228e415c",
+    "default": "Napište mi pár údajů. Odhad je pro nové klienty",
     "groups": ["Společné sekce", "Úvodní stránka", "Odhad ceny"]
   },
   {
@@ -2351,7 +2368,8 @@
   {
     "key": "text_59f62998",
     "default": "Odhad ceny",
-    "groups": ["Články"]
+    "groups": ["Články", "Služby a reference", "Úvodní stránka", "Služby"],
+    "role": "heading"
   },
   {
     "key": "text_f689a88",
@@ -2543,12 +2561,6 @@
     "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
-    "key": "text_113ba0f4",
-    "default": "Za kolik byste nemovitost opravdu prodali?",
-    "groups": ["Služby a reference", "Úvodní stránka", "Služby"],
-    "role": "heading"
-  },
-  {
     "key": "text_bdc5432f",
     "default": "Tržní odhad podle skutečných prodejů v okolí. Vyberte, k čemu ho potřebujete.",
     "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
@@ -2586,14 +2598,8 @@
     "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
-    "key": "text_d4516fdf",
-    "default": "Odhad a využití majetku",
-    "groups": ["Služby a reference", "Úvodní stránka", "Služby"],
-    "role": "heading"
-  },
-  {
-    "key": "text_89030f2b",
-    "default": "Kolik má nemovitost hodnotu a jaké možnosti vám může otevřít?",
+    "key": "text_ede2ed04",
+    "default": "Pronajmout, prodat, nebo nechat? Spočítáme, co se Vám vyplatí.",
     "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
@@ -2650,8 +2656,8 @@
     "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
-    "key": "text_6f2d2bf2",
-    "default": "Někdy se vyplatí prodat o něco níž, mít peníze v ruce a koupit to, co dává smysl. Měsíce čekání na vysněnou cenu Vás od cíle spíš vzdalují. Spočítáme si, co se Vám vyplatí víc.",
+    "key": "text_c2de0b71",
+    "default": "Někdy vyjde lépe prodat za reálnou cenu, mít peníze v ruce a koupit to, co chcete, než měsíce čekat na vysněnou částku. Spočítáme Vám obě varianty a rozhodnete se sám.",
     "groups": ["Služby a reference", "Úvodní stránka", "Služby"]
   },
   {
@@ -2738,14 +2744,14 @@
     "groups": ["Služby a reference", "Úvodní stránka"]
   },
   {
-    "key": "text_cbb8bdb1",
-    "default": "Nejvíc peněz se často ztratí hned na začátku.",
+    "key": "text_76b2597f",
+    "default": "Každá situace je jiná. Začneme tou Vaší.",
     "groups": ["Služby a reference", "Úvodní stránka"],
     "role": "heading"
   },
   {
-    "key": "text_1b68ed9a",
-    "default": "Špatně nastavenou cenou, ne při vyjednávání. Nastavíme ji podle skutečných prodejů v okolí.",
+    "key": "text_88dde6d4",
+    "default": "Nejvíc peněz se ztratí špatně nastavenou cenou, ne při vyjednávání. Nastavíme ji podle skutečných prodejů v okolí.",
     "groups": ["Služby a reference", "Úvodní stránka"]
   },
   {
@@ -2864,6 +2870,11 @@
     "key": "text_69632327",
     "default": "Věřím, že dobře odvedená práce začíná pochopením toho, na čem Vám skutečně záleží. Proto svou práci stavím na osobním přístupu, otevřené komunikaci a pečlivé přípravě. Chci, abyste rozuměli každému kroku, měli se o koho opřít a došli k výsledku, který Vám přinese jistotu a posune Vás blíž k životu, jaký si přejete. Právě v tom vidím hodnotu své práce a důvod, proč ji dělám tak, jak ji dělám.",
     "groups": ["Společné sekce", "Úvodní stránka", "O mně"]
+  },
+  {
+    "key": "text_6d17d0c8",
+    "default": "Prodával jsem byty v Praze, naposledy v Holešovicích, i v Hlinsku, spoluvlastnické podíly i apartmány v Hurghadě. Některé projekty jsme sami zrekonstruovali a prodali.",
+    "groups": ["Společné sekce"]
   },
   {
     "key": "text_c8f9b370",

@@ -80,16 +80,16 @@ function Home() {
             </p>
             <h1 className="hero-title mt-4 text-5xl leading-tight sm:text-6xl">
               <span className="hero-title-line">
-                <SiteText>{"Prodat dobře"}</SiteText>
+                <SiteText>{"Správná cena prodá rychleji."}</SiteText>
               </span>{" "}
               <span className="hero-title-line">
-                <SiteText>{"neznamená prodat draho."}</SiteText>
+                <SiteText>{"A často i dráž."}</SiteText>
               </span>
             </h1>
             <p className="hero-description mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
               <SiteText>
                 {
-                  "Přestřelená cena prodej jen protáhne a sleva stejně přijde. Řeknu Vám, za kolik se u Vás opravdu prodává."
+                  "Přestřelená cena odradí zájemce a sleva pak přijde stejně. Řeknu Vám, za kolik se u Vás opravdu prodává."
                 }
               </SiteText>
             </p>
@@ -145,7 +145,7 @@ function Home() {
                 <SiteText>{"Aktuální nabídka"}</SiteText>
               </p>
               <h2 className="mt-3 text-4xl leading-tight md:text-[2.75rem]">
-                <SiteText>{"Nástěnka českých nemovitostí"}</SiteText>
+                <SiteText>{"Aktuálně v Česku"}</SiteText>
               </h2>
             </div>
             <Link to="/nabidka" className="text-link">

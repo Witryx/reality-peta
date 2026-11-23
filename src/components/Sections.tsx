@@ -2,7 +2,7 @@ import { SiteText } from "@/components/SiteText";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { processSteps, services, testimonials } from "@/data/content";
-import { aboutDescription } from "@/data/about-copy";
+import { aboutStory } from "@/data/about-copy";
 import {
   Camera,
   ChartNoAxesCombined,
@@ -290,9 +290,7 @@ export function ValuationSection({
           </p>
           {choice ? (
             <Heading className="mt-5 text-3xl leading-tight md:text-[2.6rem]">
-              <SiteText>
-                {"Máte dotaz ohledně nemovitosti, nebo chcete využít odhadu nemovitosti zdarma?"}
-              </SiteText>
+              <SiteText>{"Začněme jednoduše."}</SiteText>
             </Heading>
           ) : (
             <Heading className="mt-5 text-4xl leading-tight md:text-5xl">
@@ -303,9 +301,7 @@ export function ValuationSection({
           )}
           <p className="mt-8 max-w-md font-display text-2xl font-medium leading-snug">
             {choice ? (
-              <SiteText>
-                {"Vyberte ve formuláři, s čím Vám mám pomoci. Odhad je pro nové klienty "}
-              </SiteText>
+              <SiteText>{"Napište mi pár údajů. Odhad je pro nové klienty "}</SiteText>
             ) : (
               <SiteText>{"Já to zjistím. Pro nové klienty "}</SiteText>
             )}
@@ -428,7 +424,7 @@ export function AboutTeaser({ full = false }: { full?: boolean }) {
           <SiteText>{"Řeknu Vám i to, co slyšet nechcete."}</SiteText>
         </Heading>
         <p className="mt-6 text-lg text-muted-foreground">
-          <SiteText>{aboutDescription}</SiteText>
+          <SiteText>{aboutStory}</SiteText>
         </p>
         {!full && (
           <div className="mt-8 flex flex-wrap gap-3">

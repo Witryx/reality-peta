@@ -27,18 +27,22 @@ it("saves a public headline and restores its source default with the current con
     return { values: {}, version: 1 };
   });
   setup();
-  const field = await screen.findByLabelText("Prodat dobře");
-  fireEvent.change(screen.getByLabelText("Najít text"), { target: { value: "Prodat dobře" } });
+  const field = await screen.findByLabelText("Správná cena prodá rychleji.");
+  fireEvent.change(screen.getByLabelText("Najít text"), {
+    target: { value: "Správná cena prodá rychleji." },
+  });
   fireEvent.change(field, { target: { value: "Váš nový domov" } });
   fireEvent.click(screen.getByRole("button", { name: "Uložit texty" }));
   await screen.findByRole("status");
   const writes = vi.mocked(api).mock.calls.filter(([, options]) => options?.method === "PUT");
   expect(JSON.parse(writes[0]![1]!.body as string)).toEqual({
-    values: { [copyKey("Prodat dobře")]: "Váš nový domov" },
+    values: { [copyKey("Správná cena prodá rychleji.")]: "Váš nový domov" },
     version: 1,
   });
   fireEvent.click(screen.getByRole("button", { name: "Obnovit původní text 1" }));
-  expect(screen.getByLabelText("Prodat dobře")).toHaveValue("Prodat dobře");
+  expect(screen.getByLabelText("Správná cena prodá rychleji.")).toHaveValue(
+    "Správná cena prodá rychleji.",
+  );
   fireEvent.click(screen.getByRole("button", { name: "Uložit texty" }));
   await waitFor(() =>
     expect(
@@ -56,7 +60,7 @@ it("retains unsaved text after a failed save", async () => {
     return { values: {}, version: 1 };
   });
   setup();
-  const field = await screen.findByLabelText("Prodat dobře");
+  const field = await screen.findByLabelText("Správná cena prodá rychleji.");
   fireEvent.change(field, { target: { value: "Můj neuložený nadpis" } });
   fireEvent.click(screen.getByRole("button", { name: "Uložit texty" }));
   expect(await screen.findByRole("alert")).toHaveTextContent("Texty mezitím upravil jiný správce");

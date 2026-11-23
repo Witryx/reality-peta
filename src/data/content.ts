@@ -10,7 +10,7 @@ export const services = [
   {
     slug: "odhad",
     label: "Odhad ceny nemovitosti",
-    title: "Za kolik byste nemovitost opravdu prodali?",
+    title: "Odhad ceny",
     text: "Tržní odhad podle skutečných prodejů v okolí. Vyberte, k čemu ho potřebujete.",
   },
   {
@@ -29,8 +29,8 @@ export const services = [
   },
   {
     slug: "odhad",
-    title: "Odhad a využití majetku",
-    text: "Kolik má nemovitost hodnotu a jaké možnosti vám může otevřít?",
+    title: "Využití majetku",
+    text: "Pronajmout, prodat, nebo nechat? Spočítáme, co se Vám vyplatí.",
     detail:
       "Odhad vychází ze skutečných prodejů v konkrétní lokalitě. Probereme prodej, pronájem i další využití majetku, včetně nákladů a rizik, bez slibů zaručeného zhodnocení.",
   },
@@ -58,7 +58,7 @@ export const processSteps = [
   {
     title: "Cena a strategie",
     text: "Připravím analýzu trhu a navrhnu cenu i způsob prodeje, který dává smysl.",
-    note: "Někdy se vyplatí prodat o něco níž, mít peníze v ruce a koupit to, co dává smysl. Měsíce čekání na vysněnou cenu Vás od cíle spíš vzdalují. Spočítáme si, co se Vám vyplatí víc.",
+    note: "Někdy vyjde lépe prodat za reálnou cenu, mít peníze v ruce a koupit to, co chcete, než měsíce čekat na vysněnou částku. Spočítáme Vám obě varianty a rozhodnete se sám.",
   },
   {
     title: "Příprava a prezentace",
@@ -101,8 +101,8 @@ export const situations = [
   {
     slug: "prodej",
     label: "Prodávám",
-    title: "Nejvíc peněz se často ztratí hned na začátku.",
-    text: "Špatně nastavenou cenou, ne při vyjednávání. Nastavíme ji podle skutečných prodejů v okolí.",
+    title: "Každá situace je jiná. Začneme tou Vaší.",
+    text: "Nejvíc peněz se ztratí špatně nastavenou cenou, ne při vyjednávání. Nastavíme ji podle skutečných prodejů v okolí.",
   },
   {
     slug: "koupe",

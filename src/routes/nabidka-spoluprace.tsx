@@ -34,7 +34,7 @@ function Page() {
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               <SiteText>
                 {
-                  "Znáte někoho, kdo řeší nemovitost? Nebo na toto téma narazíte při rozhovoru s přáteli, kolegy či klienty? Vzpomeňte si na mě a propojte nás. O další komunikaci a realitní servis se postarám já, vy můžete získat odměnu za doporučení."
+                  "Víte o někom, kdo prodává? Propojte nás. O vše ostatní se postarám já – a Vy můžete získat až 100 000 Kč."
                 }
               </SiteText>
             </p>
@@ -63,9 +63,7 @@ function Page() {
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
               <SiteText>
-                {
-                  "Nemusíte být z realitního oboru. Stačí znát někoho, kdo chce prodávat byt, dům, pozemek nebo jinou nemovitost, a doporučit mu mé služby. Celým prodejem pak majitele provedu osobně."
-                }
+                {"Nemusíte být z oboru. Stačí znát někoho, kdo chce prodat byt, dům nebo pozemek."}
               </SiteText>
             </p>
             <ol className="mt-8 space-y-8">
@@ -76,7 +74,7 @@ function Page() {
                 <p className="mt-3 leading-relaxed text-muted-foreground">
                   <SiteText>
                     {
-                      "Zavolejte nebo napište, že víte o někom, kdo uvažuje o prodeji. Nejjednodušší je předat můj kontakt přímo majiteli. Pokud nás chcete propojit sami, nejprve se s ním domluvte, že mi můžete jeho kontakt předat."
+                      "Nejjednodušší je předat můj kontakt přímo majiteli. Jeho kontakt mi dejte jen s jeho souhlasem."
                     }
                   </SiteText>
                 </p>
@@ -88,7 +86,7 @@ function Page() {
                 <p className="mt-3 leading-relaxed text-muted-foreground">
                   <SiteText>
                     {
-                      "Společně si předem potvrdíme, ke které nemovitosti se doporučení vztahuje, jaká bude vaše odměna a za jakých podmínek ji získáte. Ať obě strany od začátku vědí, na čem jsou."
+                      "Předem si potvrdíme, ke které nemovitosti se doporučení vztahuje, jaká bude Vaše odměna a za jakých podmínek."
                     }
                   </SiteText>
                 </p>
@@ -100,7 +98,7 @@ function Page() {
                 <p className="mt-3 leading-relaxed text-muted-foreground">
                   <SiteText>
                     {
-                      "S majitelem proberu jeho situaci a možnosti prodeje. Pokud se dohodneme na zastoupení, zajistím přípravu nemovitosti, prezentaci, komunikaci se zájemci i koordinaci dalších kroků. Vy nemusíte organizovat prohlídky ani vyjednávat."
+                      "S majitelem proberu jeho situaci a když se dohodneme, postarám se o celý prodej. Vy nemusíte nic organizovat."
                     }
                   </SiteText>
                 </p>

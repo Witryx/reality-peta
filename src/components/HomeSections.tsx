@@ -172,7 +172,7 @@ export function PresentationNote() {
     <p className="presentation-note">
       <SiteText>{"Líbí se Vám tato prezentace?"}</SiteText>{" "}
       <Link to="/odhad-ceny">
-        <SiteText>{"Takhle prodám i tu Vaši "}</SiteText>
+        <SiteText>{"Takhle představím i tu Vaši "}</SiteText>
         <ArrowUpRight aria-hidden />
       </Link>
     </p>
@@ -190,12 +190,12 @@ export function PriceInsight() {
             <SiteText>{"Cena a strategie"}</SiteText>
           </p>
           <h2 className="mt-4 text-4xl leading-tight md:text-5xl">
-            <SiteText>{"Nižší, správně stanovená cena neznamená, že prodáte za míň."}</SiteText>
+            <SiteText>{"Proč se dobře naceněná nemovitost často prodá dráž?"}</SiteText>
           </h2>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
             <SiteText>
               {
-                "Zní to jako paradox. Ve skutečnosti je to nejčastější důvod, proč se nemovitost prodá dráž."
+                "Protože přiláká víc zájemců naráz. A když o byt stojí víc lidí, vyjednáváte z pozice síly."
               }
             </SiteText>
           </p>
@@ -203,7 +203,7 @@ export function PriceInsight() {
             <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted-foreground">
               <SiteText>
                 {
-                  "Rozumná cena přivede víc zájemců najednou – a kde je víc lidí, vyjednává se z pozice síly. A i když ne, peníze máte dřív a můžete koupit to, co dává smysl."
+                  "A i když se nakonec neprodá dráž, peníze máte dřív a můžete koupit to, co dává smysl."
                 }
               </SiteText>
             </p>
@@ -292,7 +292,7 @@ const egyptReasons = [
   },
   {
     icon: KeyRound,
-    title: "Správa, když nejste tam",
+    title: "Správa, když jste doma v Česku",
     text: "Úklid, dohled, přepis energií a internetu.",
   },
 ];
@@ -393,9 +393,7 @@ export function EgyptTeaser({ properties }: { properties: Property[] }) {
             </p>
             <p className="egypt-home-lead">
               <SiteText>
-                {
-                  "Byty v centru Hurghady u Sheratonu – tam, kde se žije a všude dojdete pěšky. V každém z nich jsem osobně byl."
-                }
+                {"Byty v centru Hurghady u Sheratonu – tam, kde se žije a všude dojdete pěšky."}
               </SiteText>
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4">

@@ -33,14 +33,31 @@ function Page() {
             }
           </SiteText>
         </p>
+        <h2 className="pt-6 text-4xl text-foreground">
+          <SiteText>{"Kdo za mnou stojí"}</SiteText>
+        </h2>
         <p>
           <SiteText>
             {
-              "Mám zázemí v Praze a okolí, ale obrátit se na mě můžete odkudkoli z Česka. Ať prodáváte, hledáte nové bydlení nebo řešíte svůj majetek, začneme obyčejným rozhovorem."
+              "Spolupracuji se skupinou STELAR, která má vlastní nemovitostní fond Aurelia. Kancelář mám v City Tower na Pankráci, pomáhám po celém Česku. Osvědčení realitního zprostředkovatele mám od února 2024."
             }
           </SiteText>
         </p>
-        <Link to="/kontakt" className="btn btn-primary">
+        <Link
+          to="/clanky/$slug"
+          params={{ slug: "fond-aurelia" }}
+          className="text-link inline-flex"
+        >
+          <SiteText>{"Co je fond Aurelia a proč na tom záleží"}</SiteText>
+        </Link>
+        <p>
+          <SiteText>
+            {
+              "Ať prodáváte, hledáte nové bydlení nebo řešíte svůj majetek, začneme obyčejným rozhovorem."
+            }
+          </SiteText>
+        </p>
+        <Link to="/kontakt" className="btn btn-primary mt-2">
           <SiteText>{"Ozvěte se mi"}</SiteText>
         </Link>
       </div>

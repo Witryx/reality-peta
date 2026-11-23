@@ -43,10 +43,10 @@ function Page() {
         <div className="container-page egypt-top-grid">
           <div className="egypt-top-copy">
             <p className="eyebrow">
-              <SiteText>{"Hurghada · Rudé moře"}</SiteText>
+              <SiteText>{"Nemovitosti v Egyptě · Hurghada"}</SiteText>
             </p>
             <h1 className="mt-4 text-4xl leading-tight md:text-6xl">
-              <SiteText>{"Nemovitosti v Egyptě"}</SiteText>
+              <SiteText>{"Váš byt u Rudého moře"}</SiteText>
             </h1>
             <p className="egypt-top-lead">
               <SiteText>
@@ -127,7 +127,7 @@ function Page() {
             </SiteText>
           </p>
         )}
-        <PropertyContactCta />
+        <PropertyContactCta buyer />
       </section>
 
       {/* 3. Why buy with me and how the purchase goes. */}
@@ -149,7 +149,7 @@ function Page() {
           <SectionHead
             eyebrow="Praha – Hurghada"
             title="Blíž, než si myslíte"
-            intro="Přímý let trvá zhruba 4,5 hodiny. Na hodinách vidíte, kolik je právě teď v Praze a kolik u moře."
+            intro="Přímý let trvá 4,5 hodiny. Na hodinách vidíte, kolik je právě teď v Praze a kolik u moře."
           />
           <AboutCard />
         </div>

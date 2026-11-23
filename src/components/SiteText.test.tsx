@@ -7,7 +7,7 @@ import { copyKey, resolveCopy } from "@/lib/site-copy";
 import catalog from "@/data/website-catalog.json";
 import { ContactLinks, SocialIcons } from "./ContactLinks";
 import { resolveSiteConfig, site, validateSiteOverrides } from "@/config/site";
-import { aboutDescription } from "@/data/about-copy";
+import { aboutStory } from "@/data/about-copy";
 
 describe("website copy", () => {
   it("capitalizes Vám in source and saved copy while retaining existing override keys", () => {
@@ -17,8 +17,8 @@ describe("website copy", () => {
       "Ozvu se Vám, přeji Vám hezký den.",
     );
     expect(resolveCopy({}, "S úpravami a dodávámkou.")).toBe("S úpravami a dodávámkou.");
-    expect(catalog.find((entry) => entry.key === copyKey(aboutDescription))?.groups).toEqual(
-      expect.arrayContaining(["Úvodní stránka", "O mně"]),
+    expect(catalog.find((entry) => entry.key === copyKey(aboutStory))?.groups).toEqual(
+      expect.arrayContaining(["O mně"]),
     );
   });
   it("applies contact configuration to rendered links without mutating the defaults", () => {
