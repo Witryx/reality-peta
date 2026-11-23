@@ -428,7 +428,7 @@ export function EgyptLanding() {
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
               <SiteText>
                 {
-                  "Zrekonstruované a zařízené byty v centru Hurghady, kde se žije a všude dojdete pěšky. V každém bytě jsem osobně byl."
+                  "Zrekonstruované a zařízené byty v centru Hurghady, kde se žije a všude dojdete pěšky."
                 }
               </SiteText>
             </p>
