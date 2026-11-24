@@ -42,9 +42,14 @@ const filterClass = (active: boolean) =>
 function Listing() {
   const { all, mapPins } = Route.useLoaderData();
   const { stav, zeme } = Route.useSearch();
+  // Sold listings never mix with the current offer: they get their own folded section below.
   const inMarket = zeme ? all.filter((p) => marketOf(p) === zeme) : all;
-  const inStatus = stav ? all.filter((p) => p.status === stav) : all;
-  const items = stav ? inMarket.filter((p) => p.status === stav) : inMarket;
+  const offer = (list: Property[]) => list.filter((p) => p.status !== "sold");
+  const inStatus = stav ? all.filter((p) => p.status === stav) : offer(all);
+  const current = stav
+    ? inMarket.filter((p) => p.status === stav && stav !== "sold")
+    : offer(inMarket);
+  const sold = inMarket.filter((p) => p.status === "sold");
   return (
     <div className="container-page py-16 md:py-24">
       <SectionHead
@@ -84,7 +89,7 @@ function Listing() {
       <div role="group" aria-label="Filtr podle stavu" className="mt-3 flex flex-wrap gap-2">
         {filters.map((f) => {
           const active = stav === f;
-          const count = f ? inMarket.filter((p) => p.status === f).length : inMarket.length;
+          const count = f ? inMarket.filter((p) => p.status === f).length : offer(inMarket).length;
           return (
             <Link
               key={f ?? "all"}
@@ -102,39 +107,55 @@ function Listing() {
           );
         })}
       </div>
-      {items.length ? (
-        <>
-          {/* Phones: Czech and Egypt offers as two swipeable rows, like on the homepage. */}
-          <div className="offer-rails sm:hidden">
-            {markets
-              .filter((market): market is "cz" | "egypt" => Boolean(market))
-              .map((market) => ({ market, list: items.filter((p) => marketOf(p) === market) }))
-              .filter(({ list }) => list.length > 0)
-              .map(({ market, list }) => (
-                <section key={market} className="offer-rail-group" aria-label={marketLabel[market]}>
-                  <h2 className="offer-rail-title">
-                    <SiteText>{marketLabel[market]}</SiteText>{" "}
-                    <span className="opacity-60">({list.length})</span>
-                  </h2>
-                  <CompactPropertyGrid properties={list} limit={list.length} className="mt-4" />
-                </section>
-              ))}
-          </div>
-          <div
-            data-layout="grid"
-            className="mt-12 hidden gap-x-8 gap-y-14 sm:grid sm:grid-cols-2 lg:grid-cols-3"
-          >
-            {items.map((p) => (
-              <PropertyCard key={p.id} p={p} />
-            ))}
-          </div>
-        </>
+      {current.length ? (
+        <OfferList items={current} />
       ) : (
         <p className="mt-12 text-muted-foreground">
           <SiteText>{"V této kategorii teď nic není."}</SiteText>
         </p>
       )}
+      {sold.length > 0 && (
+        // Sold listings wait at the bottom, folded away; only the curious open them.
+        <details className="sold-offers mt-16 border-t pt-8" open={stav === "sold"}>
+          <summary className="cursor-pointer text-lg font-medium focus-visible:outline-ring">
+            <SiteText>{"Prodané nemovitosti"}</SiteText>{" "}
+            <span className="opacity-60">({sold.length})</span>
+          </summary>
+          <OfferList items={sold} layout="sold-grid" />
+        </details>
+      )}
       <PropertyContactCta />
     </div>
+  );
+}
+
+/** Phones get swipeable Czech/Egypt rows (like the homepage), larger screens a grid. */
+function OfferList({ items, layout = "grid" }: { items: Property[]; layout?: string }) {
+  return (
+    <>
+      <div className="offer-rails sm:hidden">
+        {markets
+          .filter((market): market is "cz" | "egypt" => Boolean(market))
+          .map((market) => ({ market, list: items.filter((p) => marketOf(p) === market) }))
+          .filter(({ list }) => list.length > 0)
+          .map(({ market, list }) => (
+            <section key={market} className="offer-rail-group" aria-label={marketLabel[market]}>
+              <h2 className="offer-rail-title">
+                <SiteText>{marketLabel[market]}</SiteText>{" "}
+                <span className="opacity-60">({list.length})</span>
+              </h2>
+              <CompactPropertyGrid properties={list} limit={list.length} className="mt-4" />
+            </section>
+          ))}
+      </div>
+      <div
+        data-layout={layout}
+        className="mt-12 hidden gap-x-8 gap-y-14 sm:grid sm:grid-cols-2 lg:grid-cols-3"
+      >
+        {items.map((p) => (
+          <PropertyCard key={p.id} p={p} />
+        ))}
+      </div>
+    </>
   );
 }

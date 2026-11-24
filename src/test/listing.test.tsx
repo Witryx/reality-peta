@@ -94,7 +94,8 @@ const gridArticles = () => grid().getAllByRole("article");
 describe("Property listing filters", () => {
   it("starts with both countries and preserves each filter while changing the other", async () => {
     const router = await openListing();
-    expect(gridArticles()).toHaveLength(4);
+    expect(gridArticles()).toHaveLength(3);
+    expect(grid().queryByRole("heading", { name: "Prodaný český byt" })).not.toBeInTheDocument();
     const countries = within(screen.getByRole("group", { name: "Filtr podle země" }));
     const statuses = within(screen.getByRole("group", { name: "Filtr podle stavu" }));
 
@@ -113,8 +114,8 @@ describe("Property listing filters", () => {
     expect(grid().queryByRole("heading", { name: "Egyptský apartmán" })).not.toBeInTheDocument();
     expect(router.state.location.search).toEqual({ zeme: "cz", stav: "active" });
 
-    fireEvent.click(statuses.getByRole("link", { name: "Vše (2)" }));
-    await waitFor(() => expect(gridArticles()).toHaveLength(2));
+    fireEvent.click(statuses.getByRole("link", { name: "Vše (1)" }));
+    await waitFor(() => expect(gridArticles()).toHaveLength(1));
     expect(grid().getByRole("heading", { name: "Český byt" })).toBeInTheDocument();
     expect(router.state.location.search).toEqual({ zeme: "cz" });
   });
@@ -127,5 +128,15 @@ describe("Property listing filters", () => {
     expect(screen.getByRole("link", { name: "Všechny země (1)" })).not.toHaveAttribute(
       "aria-current",
     );
+  });
+
+  it("keeps sold listings folded at the bottom until opened", async () => {
+    await openListing();
+    const folded = document.querySelector<HTMLDetailsElement>("details.sold-offers")!;
+    expect(folded.open).toBe(false);
+    expect(within(folded).getByText("Prodané nemovitosti")).toBeInTheDocument();
+    const soldGrid = within(folded.querySelector<HTMLElement>('[data-layout="sold-grid"]')!);
+    expect(soldGrid.getAllByRole("article")).toHaveLength(1);
+    expect(soldGrid.getByRole("heading", { name: "Prodaný český byt" })).toBeInTheDocument();
   });
 });
