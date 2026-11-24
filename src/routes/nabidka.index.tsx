@@ -121,6 +121,9 @@ function Listing() {
             <SiteText>{"Prodané nemovitosti"}</SiteText>{" "}
             <span className="opacity-60">({sold.length})</span>
           </summary>
+          <p className="mt-4 text-muted-foreground">
+            <SiteText>{"Nemovitosti, které už mají nové majitele."}</SiteText>
+          </p>
           <OfferList items={sold} layout="sold-grid" />
         </details>
       )}
